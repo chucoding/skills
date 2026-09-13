@@ -26,7 +26,7 @@ import os
 import re
 import subprocess
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 
 def plugin_scripts_dir():
@@ -80,6 +80,29 @@ def sprints(collect, state=None):
             break
         start += len(vals)
     return out
+
+
+def _kst_date(iso, midnight_back=False):
+    """Jira 시각을 한국시간 날짜 문자열로. `midnight_back` 이면 자정을 전날로 당긴다.
+
+    두 가지를 한꺼번에 맞춘다.
+
+    - **시간대**: Jira 는 UTC 로 준다. 그냥 `[:10]` 으로 자르면 하루가 어긋난다
+      (실측: 26_3_#5 의 startDate 가 UTC 로 08-30, KST 로는 08-31).
+    - **자정 경계**: 스프린트 종료가 `09-14T00:00` 이면 실제 마지막 날은 09-13 이다.
+      종료일에는 `midnight_back=True` 를 줘서 목록·머리말·PR 조회가 같은 날짜를 말하게 한다.
+    """
+    if not iso:
+        return "?"
+    try:
+        d = datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
+    except ValueError:
+        return str(iso)[:10]
+    if d.tzinfo is not None:
+        d = d.astimezone(timezone(timedelta(hours=9)))
+    if midnight_back and (d.hour, d.minute, d.second) == (0, 0, 0):
+        d -= timedelta(days=1)
+    return d.strftime("%Y-%m-%d")
 
 
 def patch_for_sprint(collect, target):
@@ -169,17 +192,13 @@ def gh_merged_prs(start, end):
 
 
 def display_end(end_iso):
-    """스프린트의 **표시용 종료일** — 종료가 자정이면 전날이다.
+    """스프린트의 **표시용 종료일** — 머리말과 PR 조회가 함께 쓰는 값.
 
-    이 값을 회고 머리말과 PR 조회에 똑같이 쓴다. 안 맞추면 경계일이 두 스프린트에 겹쳐
-    들어간다(실측: 26_3_#4 의 종료가 08-31T00:00 이라 08-31 05:45Z 머지된 PR #2211 이
-    #4 에도 #5 에도 잡혔다). GitHub 의 `merged:` 범위는 UTC 기준이라 이 보정 뒤에도
-    한국시간 오전 9시 이전 머지 몇 건은 앞 스프린트로 넘어갈 수 있다.
+    안 맞추면 경계일이 두 스프린트에 겹쳐 들어간다(실측: 26_3_#4 의 종료가 08-31T00:00 이라
+    08-31 05:45Z 머지된 PR #2211 이 #4 에도 #5 에도 잡혔다). GitHub 의 `merged:` 범위는
+    UTC 기준이라 이 보정 뒤에도 한국시간 오전 9시 이전 머지 몇 건은 앞 스프린트로 넘어갈 수 있다.
     """
-    d = datetime.fromisoformat(end_iso)
-    if (d.hour, d.minute, d.second) == (0, 0, 0):
-        d -= timedelta(days=1)
-    return d.strftime("%Y-%m-%d")
+    return _kst_date(end_iso, midnight_back=True)
 
 
 def h(sec):
@@ -293,7 +312,7 @@ def main():
     if args.list:
         for s in sprints(collect):
             print(f"{s.get('id'):>5}  {s.get('state','?'):7} {s.get('name',''):10} "
-                  f"{(s.get('startDate') or '')[:10]} ~ {(s.get('endDate') or '')[:10]}")
+                  f"{_kst_date(s.get('startDate'))} ~ {_kst_date(s.get('endDate'), True)}")
         return
 
     os.makedirs(args.out, exist_ok=True)
