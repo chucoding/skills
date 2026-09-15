@@ -5,10 +5,10 @@
 ## 팩 만드는 법
 
 ```bash
-python3 ~/.claude/skills/sprint-retro/scripts/sprint_pack.py --list                    # 스프린트 목록 (id 포함)
-python3 ~/.claude/skills/sprint-retro/scripts/sprint_pack.py --sprint "26_3_#4" --out ./pack
-python3 ~/.claude/skills/sprint-retro/scripts/sprint_pack.py --sprint 2080 --out ./pack  # 이름이 겹칠 때 id 로
-python3 ~/.claude/skills/sprint-retro/scripts/sprint_pack.py --current --out ./pack    # 진행 중
+python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --list                    # 스프린트 목록 (id 포함)
+python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --sprint "26_3_#4" --out ./pack
+python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --sprint 2080 --out ./pack  # 이름이 겹칠 때 id 로
+python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --current --out ./pack    # 진행 중
 ```
 
 `--sprint` 는 Jira 에서 다시 수집한다. 폴러의 `results.json` 은 **활성 스프린트만** 담고 있어 지난 스프린트 회고에는 못 쓴다. 스크립트가 `collect.py` 의 스프린트 질의만 갈아끼워 같은 계산기(`compute.py`)를 태우므로, 대시보드와 같은 규칙으로 계산된 값이 나온다.

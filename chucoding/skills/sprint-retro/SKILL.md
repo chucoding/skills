@@ -20,7 +20,7 @@ description: 스프린트 회고 문서를 쓴다. 닫힌 스프린트의 Jira �
 ## 1. 대상 스프린트 확정
 
 ```bash
-python3 ~/.claude/skills/sprint-retro/scripts/sprint_pack.py --list
+python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --list
 ```
 
 - 사용자가 이름이나 기간을 지정했으면 그 값을 쓴다.
@@ -31,9 +31,9 @@ python3 ~/.claude/skills/sprint-retro/scripts/sprint_pack.py --list
 
 ```bash
 cd <스크래치패드>
-python3 ~/.claude/skills/sprint-retro/scripts/sprint_pack.py --sprint "26_3_#4" --out ./pack
+python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --sprint "26_3_#4" --out ./pack
 # 진행 중인 스프린트면
-python3 ~/.claude/skills/sprint-retro/scripts/sprint_pack.py --current --out ./pack
+python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --current --out ./pack
 ```
 
 - 지난 스프린트는 Jira에서 재수집하므로 티켓 수에 따라 2~5분 걸린다. 한 번만 돌리고 `pack/retro-pack.json`을 재사용한다.
@@ -80,7 +80,7 @@ python3 ~/.claude/skills/sprint-retro/scripts/sprint_pack.py --current --out ./p
 
 ## 6. 저장
 
-- 정본 위치는 이 스킬 옆의 `~/chucoding/skills/sprint-retro/docs/` 다. 바로 여기에 쓴다.
+- 정본 위치는 이 스킬 옆의 `~/.claude/skills/chucoding/skills/sprint-retro/docs/` 다. 바로 여기에 쓴다.
 - 그 폴더의 `.gitignore` 는 **회고 본문(`.md`)만 막고 스냅샷(`.json`)은 추적한다.** 본문은 업무 내용이라 올리지 않고, 스냅샷은 숫자의 기준을 확인하는 근거라 남긴다.
 - 파일을 쓴 뒤 `git status` 로 회고 파일이 미추적으로도 안 잡히는지 확인한다. 잡히면 `.gitignore` 가 깨진 것이므로 커밋하지 말고 알린다.
 - `~/Documents/스프린트회고/` 는 예전 정본 위치였다. 지금은 JSON 보관용이고 macOS 개인정보 보호(TCC)가 막아 `ls` 도 `Read` 도 `EPERM` 으로 실패하므로(실측 2026-09-13) 여기에 쓰려고 시도하지 않는다.
