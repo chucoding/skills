@@ -1,7 +1,7 @@
 {
   "name": "chucoding",
-  "description": "AGENTS.md에서 분리한 개인 작업 규칙. 커밋과 PR 작성, Jira 티켓 운영, Notion 문서 작업, ego-browser 다이얼로그 무력화, 스프린트 회고 스킬과 커밋 초안 누락을 막는 Stop 훅을 포함한다.",
-  "version": "1.1.0",
+  "description": "AGENTS.md에서 분리한 개인 작업 규칙. 커밋과 PR 작성, Jira 티켓 운영, GitHub 이슈 착수와 종료, Notion 문서 작업, ego-browser 다이얼로그 무력화, 스프린트 회고 스킬과 커밋 초안 누락을 막는 Stop 훅을 포함한다.",
+  "version": "1.2.0",
   "author": {
     "name": "chucoding"
   },
