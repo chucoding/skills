@@ -58,5 +58,5 @@ if printf '%s' "$input" | grep -q '```' \
   exit 0
 fi
 
-printf '%s\n' '{"hookSpecificOutput":{"hookEventName":"Stop","decision":"block","reason":"이번 턴에서 작업 트리가 달라졌고 커밋되지 않은 변경이 남아 있는데 커밋 초안을 제시하지 않았다. chucoding:commit-pr 스킬을 호출해 제목과 본문을 갖춘 커밋 메시지 초안을 제시하고, AskUserQuestion으로 커밋과 커밋 & 푸시 선택지를 물어라. 승인 없이 git commit 을 실행하지 마라. 테스트 실행 지침에 해당하는 변경이면 초안보다 먼저 테스트를 실행하라. 다만 작업이 아직 중간 단계이거나, 스크래치패드나 임시 파일만 바꿨거나, 사용자가 커밋하지 않겠다고 밝혔다면 초안을 만들지 말고 그 사실만 한 줄로 밝히고 끝내라."}}'
+printf '%s\n' '{"hookSpecificOutput":{"hookEventName":"Stop","decision":"block","reason":"이번 턴에서 작업 트리가 달라졌고 커밋되지 않은 변경이 남아 있는데 커밋 초안을 제시하지 않았다. chucoding:commit-pr 스킬을 호출해 제목과 본문을 갖춘 커밋 메시지 초안을 제시하고, AskUserQuestion으로 커밋, 커밋 & 푸시, 커밋대기 세 선택지를 물어라. 승인 없이 git commit 을 실행하지 마라. 테스트 실행 지침에 해당하는 변경이면 초안보다 먼저 테스트를 실행하라. 다만 작업이 아직 중간 단계이거나, 스크래치패드나 임시 파일만 바꿨거나, 사용자가 커밋하지 않겠다고 밝혔다면 초안을 만들지 말고 그 사실만 한 줄로 밝히고 끝내라."}}'
 exit 0
