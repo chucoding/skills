@@ -1,0 +1,3 @@
+# Claude Code가 사용자 계정에서 내려받는 스킬 캐시
+# ~/.claude/skills가 이 저장소를 가리키는 심볼릭 링크라서 여기 생성됨
+synced/
