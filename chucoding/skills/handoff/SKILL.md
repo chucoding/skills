@@ -24,7 +24,7 @@ description: 지금 작업 중인 저장소와 다른 저장소에 속하는 작
 | 요청 | 저장소 선택자 |
 |------|------|
 | 위키 문서 작성이나 수정 | `name:hd-cloud-wiki` |
-| today-i-learned, TIL, 학습 기록 | `name:공부봇` |
+| today-i-learned, TIL, 학습 기록 | `name:today-i-learned` |
 | 스킬 생성이나 수정, 플러그인 훅 | `name:skills` |
 | 전역 AGENTS.md 수정 | `name:AGENTS.md` |
 
@@ -56,7 +56,12 @@ description: 지금 작업 중인 저장소와 다른 저장소에 속하는 작
 
 ## 5-A. 세션 fork로 넘기기
 
-현재 세션 id는 시스템 프롬프트의 스크래치패드 경로에서만 읽는다. `/private/tmp/claude-501/<프로젝트슬러그>/<세션id>/scratchpad`의 UUID 구간이 세션 id다.
+현재 세션 id는 시스템 프롬프트의 스크래치패드 경로에서만 읽는다. 경로 형태는 운영체제마다 다르므로 형태를 외우지 말고 UUID 구간을 세션 id로 읽는다.
+
+```
+macOS    /private/tmp/claude-501/<프로젝트슬러그>/<세션id>/scratchpad
+Windows  C:\Users\<사용자>\AppData\Local\Temp\claude\<프로젝트슬러그>\<세션id>\scratchpad
+```
 
 - 시스템 프롬프트에 스크래치패드 경로가 없으면 세션 id를 추정하지 않는다. 그 사실을 밝히고 `5-B. 브리핑 파일로 넘기기`로 돌아간다.
 - `~/.claude/projects/<슬러그>/*.jsonl`을 수정 시각으로 골라 쓰지 않는다. 같은 저장소에 다른 세션이 함께 떠 있으면 최신 파일이 내 세션이 아니고, 잘못 고르면 남의 대화를 fork한다.
