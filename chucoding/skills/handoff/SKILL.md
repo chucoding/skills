@@ -21,16 +21,17 @@ description: 지금 작업 중인 저장소와 다른 저장소에 속하는 작
 
 ## 2. 대상 저장소 판별
 
-| 요청 | 저장소 선택자 |
-|------|------|
-| 위키 문서 작성이나 수정 | `name:hd-cloud-wiki` |
-| today-i-learned, TIL, 학습 기록 | `name:today-i-learned` |
-| 스킬 생성이나 수정, 플러그인 훅 | `name:skills` |
-| 전역 AGENTS.md 수정 | `name:AGENTS.md` |
+| 요청 | 저장소 선택자 | displayName | 경로 |
+|------|------|------|------|
+| 위키 문서 작성이나 수정 | `id:8654953e-f2f4-4113-8cb8-0d88ee47a381` | hd-cloud-wiki | `/Users/hyeonseoksuh/homedot/hd-cloud-wiki` |
+| today-i-learned, TIL, 학습 기록 | `id:1c6e1311-4b74-4e18-a756-c02700999bcc` | 공부봇 | `/Users/hyeonseoksuh/chucoding/today-i-learned` |
+| 스킬 생성이나 수정, 플러그인 훅 | `id:21a598b8-a367-4b33-9f2b-db5951ba8e7b` | skills | `/Users/hyeonseoksuh/chucoding/skills` |
+| 전역 AGENTS.md 수정 | `id:fa350229-dad6-4de3-8974-4829886eda79` | AGENTS.md | `/Users/hyeonseoksuh/chucoding/a548473d5c3a2a954e1a633adfcd636b` |
 
 - 표에 없는 요청은 추측하지 말고 어느 저장소로 보낼지 되묻는다.
-- 선택자가 맞지 않으면 `orca repo list --json`으로 `displayName`을 확인한다. 표의 이름은 그 값이다.
-- Orca에 등록되지 않은 저장소면 `orca repo add --path <절대경로> --json`으로 먼저 등록한다.
+- 선택자는 `name:<displayName>`이 아니라 `id:<repoId>`를 쓴다. displayName은 Orca에서 바꿀 수 있는 표시 이름이라 폴더 이름과 다를 수 있고, 바뀌면 `repo_not_found`로 깨진다. today-i-learned가 `공부봇`으로 등록되어 `name:today-i-learned`가 실패한 일이 있었다.
+- id가 맞지 않거나 저장소를 다시 등록했다면 `orca repo list --json`에서 표의 경로와 `path`가 같은 항목을 찾아 그 `id`를 쓰고, 표의 id도 고친다.
+- Orca에 등록되지 않은 저장소면 `orca repo add --path <절대경로> --json`으로 먼저 등록하고, 결과에 나온 `id`로 선택자를 만든다.
 - 이미 그 저장소 워크스페이스 안에 있으면 핸드오프하지 않는다. `orca worktree current --json`의 저장소와 대상이 같은지 먼저 본다.
 
 ## 3. 맥락 전달 방식 선택
@@ -67,7 +68,7 @@ Windows  C:\Users\<사용자>\AppData\Local\Temp\claude\<프로젝트슬러그>\
 - `~/.claude/projects/<슬러그>/*.jsonl`을 수정 시각으로 골라 쓰지 않는다. 같은 저장소에 다른 세션이 함께 떠 있으면 최신 파일이 내 세션이 아니고, 잘못 고르면 남의 대화를 fork한다.
 
 ```bash
-orca worktree create --repo <선택자> --name <작업이름> --no-parent --json
+orca worktree create --repo id:<repoId> --name <작업이름> --no-parent --json
 orca terminal create --worktree "id:<repoId>::<worktreePath>" --title <작업이름> \
   --command "claude --resume <세션id> --fork-session" --json
 orca terminal wait --terminal <handle> --for tui-idle --timeout-ms 90000 --json
@@ -86,7 +87,7 @@ orca terminal send --terminal <handle> --text "<새 세션이 할 일>" --enter 
 ```bash
 mkdir -p ~/.claude/handoffs
 # ~/.claude/handoffs/<YYYYMMDD-HHMM>-<슬러그>.md 작성
-orca worktree create --repo <선택자> --name <작업이름> --no-parent --agent claude \
+orca worktree create --repo id:<repoId> --name <작업이름> --no-parent --agent claude \
   --prompt "먼저 /Users/<사용자>/.claude/handoffs/<파일명>.md 를 읽고 그 지시대로 작업해" --json
 ```
 
