@@ -30,7 +30,9 @@ description: 지금 작업 중인 저장소와 다른 저장소에 속하는 작
 
 - 표에 없는 요청은 추측하지 말고 어느 저장소로 보낼지 되묻는다.
 - 선택자는 `name:<displayName>`이 아니라 `id:<repoId>`를 쓴다. displayName은 Orca에서 바꿀 수 있는 표시 이름이라 폴더 이름과 다를 수 있고, 바뀌면 `repo_not_found`로 깨진다. today-i-learned가 `공부봇`으로 등록되어 `name:today-i-learned`가 실패한 일이 있었다.
-- id가 맞지 않거나 저장소를 다시 등록했다면 `orca repo list --json`에서 표의 경로와 `path`가 같은 항목을 찾아 그 `id`를 쓰고, 표의 id도 고친다.
+- 표의 id와 경로는 macOS 작업 머신의 Orca에 등록된 값이다. repo id는 각 머신의 Orca에 등록할 때 정해지는 값이라 다른 머신에서는 맞지 않을 수 있다.
+- id가 맞지 않거나 저장소를 다시 등록했다면 `orca repo list --json`에서 표의 경로와 `path`가 같은 항목을 찾아 그 `id`를 쓴다. 다른 머신이라 경로가 다르면 `path`의 마지막 폴더 이름이 표 경로의 마지막 폴더 이름과 같은 항목을 찾는다.
+- 표의 id가 낡았으면 이번 핸드오프는 찾은 id로 진행하고, 표 수정은 사용자에게 알린다. 표는 skills 저장소에 있으므로 지금 세션이 skills 저장소 밖이면 직접 고치지 않고, 사용자가 원하면 skills 저장소로 따로 핸드오프한다.
 - Orca에 등록되지 않은 저장소면 `orca repo add --path <절대경로> --json`으로 먼저 등록하고, 결과에 나온 `id`로 선택자를 만든다.
 - 이미 그 저장소 워크스페이스 안에 있으면 핸드오프하지 않는다. `orca worktree current --json`의 저장소와 대상이 같은지 먼저 본다.
 
