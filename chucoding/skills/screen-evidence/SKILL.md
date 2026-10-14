@@ -62,12 +62,14 @@ description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE
 ~/.cache/chucoding/screen-evidence/<티켓키>/
   <티켓키>-as-is.gif|png     # AS-IS가 있을 때만
   <티켓키>-to-be.gif|png
-  meta.txt                   # 형식, AS-IS 출처, 테스트방법 문구, 캡션
+  meta.txt                   # 작업 브랜치, 형식, AS-IS 출처, 테스트방법 문구, 캡션
   pr-body.md                 # ./파일 상대 참조가 든 PR 본문 원본
   frames-as-is/, frames-to-be/   # GIF 녹화 프레임과 concat 목록
 ```
 
 - `meta.txt`에는 정한 형식과 AS-IS 출처, PR 본문과 Jira 댓글에 쓴 문구를 그대로 남긴다. 개발완료 때 같은 문구를 다시 쓰기 위해서다.
+- `meta.txt` 첫 줄에는 `branch: <작업 브랜치>`를 적는다. 같은 티켓 키 폴더에 예전 작업의 파일이 남아 있어도, 개발완료 때 브랜치가 다르면 이번 증빙으로 쓰지 않게 하려는 것이다.
+- 새로 녹화하거나 캡처하기 전에는 그 폴더의 기존 증빙 파일(`<키>-as-is*`, `<키>-to-be*`, `meta.txt`, `pr-body.md`)을 지운다. AS-IS가 없어진 재녹화에서 옛 AS-IS가 남지 않게 하려는 것이다. 이번 작업을 건너뛰기로 했을 때도 같은 폴더의 파일을 지운다.
 - `pr-body.md`에는 `--attach`로 생성하기 전의 PR 본문을 그대로 남긴다. 생성 뒤 PR 본문의 `./파일` 참조는 업로드 주소로 바뀌어, 리뷰 반영으로 TO-BE를 다시 넣을 때 `gh pr edit --body-file`에 쓸 원본이 없어지기 때문이다. 다시 넣을 때는 현재 PR 본문에서 증빙 블록만 `pr-body.md`의 블록으로 바꿔 쓴다. 그사이 고친 다른 섹션을 되돌리지 않기 위해서다.
 - 화면이 여럿이면 파일 이름 끝에 화면 번호를 붙인다. 예: `<키>-to-be-1.png`, `<키>-to-be-2.gif`.
 - 폴더와 파일 이름의 티켓 키는 브랜치 이름의 키다. `chucoding:jira`의 `착수 브랜치 이름`에 따라 QA 클론은 HOM 키를 쓰므로, 개발완료 때는 HDIT 키 폴더가 없으면 Cloners로 연결된 HOM 키 폴더를 찾는다.
