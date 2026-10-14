@@ -70,7 +70,7 @@ description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE
 - 화면이 여럿이면 파일 이름 끝에 화면 번호를 붙인다. 예: `<키>-to-be-1.png`, `<키>-to-be-2.gif`.
 - 폴더와 파일 이름의 티켓 키는 브랜치 이름의 키다. `chucoding:jira`의 `착수 브랜치 이름`에 따라 QA 클론은 HOM 키를 쓰므로, 개발완료 때는 HDIT 키 폴더가 없으면 Cloners로 연결된 HOM 키 폴더를 찾는다.
 - 티켓 키가 없는 GitHub 이슈 경로면 `<저장소>-<이슈번호>`를 키 대신 쓴다.
-- 개발완료 때 폴더에 파일이 없으면 PR에서 다시 받는다. `gh api repos/<o>/<r>/pulls/<n> -H "Accept: application/vnd.github.html+json" --jq .body_html`에서 `<img src="https://private-user-images…?jwt=…">`를 뽑아(`&amp;`는 `&`로) `curl -o`로 받는다. jwt는 몇 분 안에 만료되므로 받기 직전에 조회한다. 받은 파일의 형식과 크기를 `file`과 `sips`로 확인한다.
+- 개발완료 때 폴더에 파일이 없으면 PR에서 다시 받는다. `gh api repos/<o>/<r>/pulls/<n> -H "Accept: application/vnd.github.html+json" --jq .body_html`에서 `<img src="https://private-user-images…?jwt=…">`를 뽑아(`&amp;`는 `&`로) `curl -o`로 받는다. 주소가 `https://private-user-images.githubusercontent.com/`로 시작하고 `alt`가 보관 파일 이름(`<키>-as-is`, `<키>-to-be` 등)과 맞는 것만 받는다. PR 본문은 다른 사람도 고칠 수 있어서다. 주소의 jwt는 보고나 로그에 그대로 남기지 않는다. jwt는 몇 분 안에 만료되므로 받기 직전에 조회한다. 받은 파일의 형식과 크기를 `file`과 `sips`로 확인한다.
 
 ## 건너뛰는 조건
 
@@ -142,6 +142,7 @@ AS-IS 출처가 이 프로젝트의 변경 전 화면일 때만 쓴다. 레거�
 개발 서버(Vite HMR)는 그대로 두고, 작업 트리의 변경 경로만 base 커밋으로 되돌려 녹화하거나 캡처한 뒤 바로 복원한다.
 
 ```bash
+git diff --name-only --diff-filter=M <base커밋> HEAD -- <대상 경로>   # 변경 경로 목록
 git status --short -- <변경 경로>            # 비어 있어야 진행
 git checkout <base커밋> -- <변경 경로>       # AS-IS로 되돌림
 sleep 4                                     # HMR 반영 대기
@@ -154,7 +155,8 @@ git status --short                          # 깨끗한지 다시 확인
 - base 커밋은 `chucoding:commit-pr`의 `### 1. PR 제안 시점` 통합 브랜치 판정으로 정한 base와의 merge-base다.
 - base 커밋에 없는 신규 파일은 checkout으로 지워지지 않는다. 이전 코드가 import하지 않으면 남아 있어도 무해하다.
 - 변경 경로에 커밋하지 않은 변경(staged, untracked 포함)이 있으면 되돌리지 않는다. 복원이 `HEAD` 기준이라 그 변경이 사라지기 때문이다. 먼저 커밋할지 사용자에게 묻고, 커밋한 뒤에 진행한다.
-- `<변경 경로>`에는 base 커밋에 있는 경로만 넘긴다. base에 없는 경로를 넘기면 checkout 전체가 실패한다.
+- `<변경 경로>`는 base와 HEAD 양쪽에 있는 수정 파일(`--diff-filter=M`)로 한정한다. 신규 파일을 넘기면 첫 checkout이, 삭제하거나 이름을 바꾼 파일을 넘기면 복원 checkout이 실패해 옛 파일이 작업 트리에 남는다.
+- 삭제나 이름 변경이 AS-IS 재현에 꼭 필요하면 이 방법으로 되돌리지 않고, base 커밋을 따로 띄울 방법(예: 별도 워크트리의 개발 서버)을 사용자에게 묻는다.
 - 녹화나 캡처가 중간에 실패해도 복원 명령은 반드시 실행하고, 마지막 `git status --short`가 비어 있는지 확인한 뒤 다음 단계로 간다.
 
 ### GIF 검증과 인코딩
@@ -162,12 +164,13 @@ git status --short                          # 깨끗한지 다시 확인
 [`scripts/encode.sh`](scripts/encode.sh)로 첫 프레임 크기 확인, 프레임 시트 생성, GIF 인코딩을 한 번에 한다. 경로는 절대경로로 넘긴다.
 
 ```bash
-bash encode.sh "$FF" ~/.cache/chucoding/ticket-gif/<키>/frames-as-is ~/.cache/chucoding/ticket-gif/<키>/<키>-as-is.gif
+bash <이 스킬 디렉토리>/scripts/encode.sh "$FF" ~/.cache/chucoding/ticket-gif/<키>/frames-as-is ~/.cache/chucoding/ticket-gif/<키>/<키>-as-is.gif
 ```
 
 - 첫 프레임이 1440×900인지 출력으로 확인한다.
 - **프레임 시트(`sheet.png`)를 Read로 열어 눈으로 확인한다.** AS-IS에는 결함이나 이전 동작이, TO-BE에는 바뀐 동작이 실제로 담겼는지 본다. 담기지 않았으면 GIF를 쓰지 않고 다시 녹화한다. 아래 `민감정보 확인`도 함께 한다.
 - 프레임이 0장이면 `record.mjs`와 `encode.sh` 모두 실패로 끝난다. 창 가림(`rafPerSec`)이나 조작 셀렉터를 확인하고 다시 녹화한다.
+- 결과는 960×600 GIF다. 인코딩 옵션(`fps=25`, `palettegen=stats_mode=diff`, `paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle`, `-loop 0`)은 확정본이라 바꾸지 않는다.
 
 ### 민감정보 확인
 
@@ -176,7 +179,6 @@ bash encode.sh "$FF" ~/.cache/chucoding/ticket-gif/<키>/frames-as-is ~/.cache/c
 - 실제 고객 이름, 연락처, 주소, 계약 금액 같은 개인정보나 영업 정보가 보이는지 본다. 테스트 단지(예: 999999)와 테스트 계정을 쓰면 대부분 피할 수 있다.
 - 레거시나 벤치마킹 서비스 화면에 로그인 계정 이름, 이메일, 상대 서비스의 비공개 데이터가 보이는지 본다.
 - 보이면 쓰지 않고, 테스트 데이터로 다시 남기거나 그 영역을 가리는 방법을 사용자에게 묻는다. 그대로 올릴지는 사용자가 정한다.
-- 결과는 960×600 GIF다. 인코딩 옵션(`fps=25`, `palettegen=stats_mode=diff`, `paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle`, `-loop 0`)은 확정본이라 바꾸지 않는다.
 
 ## GitHub PR에 넣기
 
@@ -214,7 +216,7 @@ bash encode.sh "$FF" ~/.cache/chucoding/ticket-gif/<키>/frames-as-is ~/.cache/c
 
 - PR 초안을 제시할 때는 본문의 참조가 `./<키>-to-be.gif` 같은 상대경로로 보이고, 생성 때 업로드 주소로 바뀐다는 점을 함께 알린다. 정한 형식과 AS-IS 출처도 한 줄로 함께 밝힌다.
 - 일부 첨부만 실패해도 PR은 만들어지고 종료 코드가 0이 아니다. 출력된 PR URL을 확인하고 실패한 첨부를 보고한다.
-- **업로드를 확인한다.** 비공개 저장소는 ego 브라우저가 GitHub에 로그인돼 있지 않으면 404다. 대신 `gh api repos/<o>/<r>/pulls/<n> -H "Accept: application/vnd.github.html+json" --jq .body_html`로 렌더링된 `<img src>`를 모두 뽑아(`&amp;`는 `&`로) `curl -sI`로 `200`과 `content-type`(`image/gif` 또는 `image/png`), 바이트 수를 확인한다.
+- **업로드를 확인한다.** 비공개 저장소는 ego 브라우저가 GitHub에 로그인돼 있지 않으면 404다. 대신 `gh api repos/<o>/<r>/pulls/<n> -H "Accept: application/vnd.github.html+json" --jq .body_html`로 렌더링된 `<img src>` 중 `https://private-user-images.githubusercontent.com/`로 시작하는 것만 뽑아(`&amp;`는 `&`로) `curl -sI`로 `200`과 `content-type`(`image/gif` 또는 `image/png`), 바이트 수를 확인한다.
 
 ## Jira 댓글에 넣기
 
