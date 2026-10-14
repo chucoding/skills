@@ -160,7 +160,7 @@ PR을 만들 때 `chucoding:ticket-gif`로 GIF나 이미지 증빙을 남겼으�
 2. **accountId와 이름을 정한다.** 담당자와 보고자 필드의 `accountId`와 `displayName`을 그대로 쓴다. 사용자가 멘션할 사람을 이름으로 직접 지정했을 때처럼 accountId를 필드에서 얻을 수 없을 때만 `GET /rest/api/3/user/search?query=<이름>`으로 찾고, `accountType`이 `atlassian`인 결과만 남긴다. 0건이거나 2건 이상이면 임의로 고르지 말고 되묻는다.
 3. **ADF로 게시한다.** 멘션은 텍스트 `@이름`이 아니라 mention 노드로 넣어야 알림이 간다. 게시 방법은 증빙 파일 유무로 갈린다.
    - 파일이 없으면 `POST /rest/api/3/issue/<원본키>/comment`에 ADF 본문을 한 번에 보낸다.
-   - 파일이 있으면 `chucoding:ticket-gif`의 `미디어 블록 만들기`를 따른다. 원본 티켓에 파일을 따로 첨부하고, v2로 파일만 담은 댓글을 만들어 media id를 얻은 뒤, `PUT /rest/api/3/issue/<원본키>/comment/<id>`로 아래 ADF 전체 뒤에 미디어 블록을 붙여 다시 쓴다. media는 티켓 단위라 HDIT에 첨부한 파일을 원본에서 쓸 수 없다.
+   - 파일이 있으면 `chucoding:ticket-gif`의 `미디어 블록 만들기`를 따른다. 원본 티켓에 파일을 따로 첨부하고, 멘션(`[~accountid:<accountId>]`)과 파일을 담은 댓글을 v2로 먼저 만들어 media id와 멘션을 확인한 뒤, `PUT /rest/api/3/issue/<원본키>/comment/<id>`로 아래 ADF 전체 뒤에 미디어 블록을 붙여 다시 쓴다. 멘션은 처음 만들 때 넣어야 알림이 확실히 간다. media는 티켓 단위라 HDIT에 첨부한 파일을 원본에서 쓸 수 없다.
 
    ```json
    {"type": "mention", "attrs": {"id": "<accountId>", "text": "@<displayName>"}}

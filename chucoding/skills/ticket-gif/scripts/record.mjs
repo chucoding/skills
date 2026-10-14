@@ -57,6 +57,13 @@ const rafPerSec = await page.evaluate(
 )
 await page.cdp('Emulation.clearDeviceMetricsOverride')
 
+// 프레임 0장이면 저장하지 않고 실패 종료. 창 가림이나 조작 셀렉터 오류가 원인
+if (frames.length === 0) {
+  console.log(JSON.stringify({ frames: 0, rafPerSec, error: '프레임 없음. 다시 녹화 필요' }))
+  await task.finish({ keep: [] })
+  throw new Error('녹화 프레임 0장')
+}
+
 // 프레임 JPEG 저장과 ffmpeg concat 목록 작성. duration에 실제 프레임 간격 기록
 await mkdir(OUT, { recursive: true })
 let list = ''

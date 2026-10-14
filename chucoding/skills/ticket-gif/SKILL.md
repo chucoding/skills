@@ -109,7 +109,7 @@ sed -e "s#__OUT__#$OUT#" -e "s#__NAME__#TO-BE#" -e "s#__KEY__#<키>#" capture.mj
 
 - 스켈레톤이나 로딩 표시가 사라진 뒤 캡처한다.
 - 결과는 1440×900 PNG다. 화면 아래까지 담아야 하면 `captureBeyondViewport: true`로 바꾸고, 높이가 달라지므로 `sips`로 실제 크기를 확인해 Jira에 그 값을 쓴다.
-- 캡처한 PNG를 Read로 열어 대상 화면이 담겼는지 눈으로 확인한다.
+- 캡처한 PNG를 Read로 열어 대상 화면이 담겼는지 눈으로 확인한다. 아래 `민감정보 확인`도 함께 한다.
 
 ### GIF 녹화
 
@@ -142,7 +142,7 @@ AS-IS 출처가 이 프로젝트의 변경 전 화면일 때만 쓴다. 레거�
 개발 서버(Vite HMR)는 그대로 두고, 작업 트리의 변경 경로만 base 커밋으로 되돌려 녹화하거나 캡처한 뒤 바로 복원한다.
 
 ```bash
-git status --short                          # 시작 전 깨끗한지 확인
+git status --short -- <변경 경로>            # 비어 있어야 진행
 git checkout <base커밋> -- <변경 경로>       # AS-IS로 되돌림
 sleep 4                                     # HMR 반영 대기
 # … 녹화나 캡처 …
@@ -153,7 +153,9 @@ git status --short                          # 깨끗한지 다시 확인
 - **`git stash`는 쓰지 않는다.** stash 스택은 워크트리끼리 공유된다.
 - base 커밋은 `chucoding:commit-pr`의 `### 1. PR 제안 시점` 통합 브랜치 판정으로 정한 base와의 merge-base다.
 - base 커밋에 없는 신규 파일은 checkout으로 지워지지 않는다. 이전 코드가 import하지 않으면 남아 있어도 무해하다.
-- 커밋하지 않은 변경이 있으면 먼저 `git diff > <스크래치패드>/patch`로 떠 두고, 복원 뒤 `git diff`의 해시를 대조한다.
+- 변경 경로에 커밋하지 않은 변경(staged, untracked 포함)이 있으면 되돌리지 않는다. 복원이 `HEAD` 기준이라 그 변경이 사라지기 때문이다. 먼저 커밋할지 사용자에게 묻고, 커밋한 뒤에 진행한다.
+- `<변경 경로>`에는 base 커밋에 있는 경로만 넘긴다. base에 없는 경로를 넘기면 checkout 전체가 실패한다.
+- 녹화나 캡처가 중간에 실패해도 복원 명령은 반드시 실행하고, 마지막 `git status --short`가 비어 있는지 확인한 뒤 다음 단계로 간다.
 
 ### GIF 검증과 인코딩
 
@@ -164,12 +166,22 @@ bash encode.sh "$FF" ~/.cache/chucoding/ticket-gif/<키>/frames-as-is ~/.cache/c
 ```
 
 - 첫 프레임이 1440×900인지 출력으로 확인한다.
-- **프레임 시트(`sheet.png`)를 Read로 열어 눈으로 확인한다.** AS-IS에는 결함이나 이전 동작이, TO-BE에는 바뀐 동작이 실제로 담겼는지 본다. 담기지 않았으면 GIF를 쓰지 않고 다시 녹화한다.
+- **프레임 시트(`sheet.png`)를 Read로 열어 눈으로 확인한다.** AS-IS에는 결함이나 이전 동작이, TO-BE에는 바뀐 동작이 실제로 담겼는지 본다. 담기지 않았으면 GIF를 쓰지 않고 다시 녹화한다. 아래 `민감정보 확인`도 함께 한다.
+- 프레임이 0장이면 `record.mjs`와 `encode.sh` 모두 실패로 끝난다. 창 가림(`rafPerSec`)이나 조작 셀렉터를 확인하고 다시 녹화한다.
+
+### 민감정보 확인
+
+증빙은 PR과 Jira(HDIT, HC, HOM)에 그대로 올라가고, Jira 게시는 개발완료 전환에 딸려 따로 승인받지 않는다. 그래서 파일을 만든 직후에 확인한다.
+
+- 실제 고객 이름, 연락처, 주소, 계약 금액 같은 개인정보나 영업 정보가 보이는지 본다. 테스트 단지(예: 999999)와 테스트 계정을 쓰면 대부분 피할 수 있다.
+- 레거시나 벤치마킹 서비스 화면에 로그인 계정 이름, 이메일, 상대 서비스의 비공개 데이터가 보이는지 본다.
+- 보이면 쓰지 않고, 테스트 데이터로 다시 남기거나 그 영역을 가리는 방법을 사용자에게 묻는다. 그대로 올릴지는 사용자가 정한다.
 - 결과는 960×600 GIF다. 인코딩 옵션(`fps=25`, `palettegen=stats_mode=diff`, `paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle`, `-loop 0`)은 확정본이라 바꾸지 않는다.
 
 ## GitHub PR에 넣기
 
 - `gh --version`이 2.99.0 이상이어야 `--attach`가 있다. 낮으면 직접 업그레이드하지 않고 `brew upgrade gh`를 실행할지 사용자에게 묻는다. `gh image`라는 명령은 없다.
+- **증빙은 PR을 만들 때 함께 넣는다.** 리뷰어가 PR을 처음 열 때부터 변경 전후를 보게 하려는 것이다. PR을 먼저 만들고 나중에 붙이지 않는다. 그래서 녹화와 캡처는 PR 초안을 제시하기 전에 끝낸다.
 - 증빙 블록은 저장소 PR 템플릿의 테스트 섹션(hd-cloud-client는 `테스트 방법`, 템플릿이 없으면 `How to test`) 안에 둔다. 녹화와 캡처는 증빙 수집이라 테스트 실행 기록이 아니다. 테스트 섹션의 다른 항목은 `chucoding:commit-pr` 규칙대로 실제 실행한 테스트만 적는다.
 - AS-IS가 있으면 2칸 표로 좌우 배치한다. GIF면 첫 줄 괄호에 `실제 속도, 반복 재생`을 붙이고, 이미지면 붙이지 않는다.
 
@@ -196,7 +208,7 @@ bash encode.sh "$FF" ~/.cache/chucoding/ticket-gif/<키>/frames-as-is ~/.cache/c
   cd ~/.cache/chucoding/ticket-gif/<키>
   gh pr create -R <owner>/<repo> --head <브랜치> --base <base> --title "…" --body-file <본문 파일> \
     --attach ./<키>-as-is.gif --attach ./<키>-to-be.gif --assignee @me --label <라벨>
-  # 이미 열린 PR
+  # 리뷰 반영으로 TO-BE를 다시 남겼을 때만. 이미 열린 PR의 본문 교체
   gh pr edit <번호> -R <owner>/<repo> --body-file <본문 파일> --attach ./<키>-as-is.gif --attach ./<키>-to-be.gif
   ```
 
@@ -224,7 +236,7 @@ bash encode.sh "$FF" ~/.cache/chucoding/ticket-gif/<키>/frames-as-is ~/.cache/c
 v3 ADF로 미디어를 넣으려면 media 파일 id(UUID)가 필요한데, `GET /rest/api/3/attachment/<id>`의 `mediaApiFileId`는 null로 온다. 그래서 v2 위키 마크업으로 한 번 써서 Jira가 media 노드를 만들게 한 뒤, v3로 다시 쓴다. 티켓마다 아래를 따로 한다.
 
 1. **파일을 그 티켓에 첨부한다.** `POST /rest/api/3/issue/<키>/attachments`, multipart, 헤더 `X-Atlassian-Token: no-check`, 파일 `Content-Type`은 `image/gif` 또는 `image/png`. media는 티켓 단위라 HDIT에 붙인 첨부를 원본 티켓에서 쓸 수 없다. HDIT, HC, HOM 각각에 첨부한다.
-2. **v2로 파일만 담은 댓글을 쓴다.** `POST /rest/api/2/issue/<키>/comment`에 파일마다 `!<파일명>|width=<w>,height=<h>!`를 공백으로 이어 보낸다. 파일명은 그 티켓에 첨부한 이름이고, width와 height는 파일 실제 크기다(GIF 960×600, 이미지 1440×900. 다르면 `sips`로 잰 값). **width와 height를 둘 다 준다.** width만 주면 Jira가 height를 엉뚱하게 채워(실측 960×183) 플레이어가 납작해진다.
+2. **v2로 댓글을 처음 쓴다.** `POST /rest/api/2/issue/<키>/comment`에 머리 문장과 파일 마크업을 함께 보낸다. 파일은 `!<파일명>|width=<w>,height=<h>!`로 쓴다. 원본 댓글이면 멘션을 `[~accountid:<accountId>]`로 이 단계에 넣는다. 멘션 알림은 댓글을 처음 만들 때 확실히 가므로, 수정 단계에서 처음 넣지 않는다. 파일명은 그 티켓에 첨부한 이름이고, width와 height는 파일 실제 크기다(GIF 960×600, 이미지 1440×900. 다르면 `sips`로 잰 값). **width와 height를 둘 다 준다.** width만 주면 Jira가 height를 엉뚱하게 채워(실측 960×183) 플레이어가 납작해진다.
 3. **media id를 읽는다.** `GET /rest/api/3/issue/<키>/comment/<id>`의 본문을 재귀로 훑어 `type: media` 노드의 `attrs.id`를 모은다. 첨부한 파일 수와 다르면 멈추고 보고한다.
 4. **v3로 전체를 다시 쓴다.** `PUT /rest/api/3/issue/<키>/comment/<id>`에 머리 문단과 미디어 블록을 담는다. media `attrs`는 `{"id": "<media id>", "type": "file", "collection": "<읽은 값>", "width": <w>, "height": <h>}`로 둔다. `collection`은 3단계에서 읽은 값을 그대로 쓰고, width와 height는 2단계와 같다.
 
@@ -251,8 +263,8 @@ AS-IS가 있으면 `layoutSection`으로 좌우 배치한다.
 AS-IS가 없으면 `layoutSection` 없이 캡션 paragraph와 `mediaSingle`(`layout: center`, `width: 100`, `widthType: percentage`)만 둔다. 화면이 여럿이면 화면마다 위 블록을 이어 붙인다.
 
 - HDIT 댓글이면 머리 문단은 `[개발완료]`, `hardBreak`, `테스트방법 : …`이다.
-- 원본(HC, HOM) 댓글이면 머리는 `chucoding:jira`의 `원본 티켓 완료 댓글` ADF 전체(멘션 문단, 본문 제목, 목록)이고, 그 뒤에 같은 미디어 블록을 붙인다. v2 마크업에는 mention 노드를 넣기 어려우므로, 2단계에서는 파일만 쓰고 멘션은 4단계 v3에서 넣는다. 수정으로 추가한 멘션에도 알림이 가는지는 이 순서로 처음 게시할 때 멘션 대상의 알림 수신을 사용자에게 확인받고, 가지 않으면 그 사실을 이 스킬에 반영한다.
-- 2단계 이후 실패하면 재시도하지 말고 남은 댓글 id와 상태를 보고한다. 파일만 담긴 v2 댓글이 남아 있으면 지우지 않고 그 사실을 보고한다.
+- 원본(HC, HOM) 댓글이면 머리는 `chucoding:jira`의 `원본 티켓 완료 댓글` ADF 전체(멘션 문단, 본문 제목, 목록)이고, 그 뒤에 같은 미디어 블록을 붙인다. 3단계에서 media id와 함께 `type: mention` 노드의 `attrs.id`도 모아, 의도한 멘션 대상이 모두 있는지 확인한다. 빠졌으면 4단계로 가지 말고 그 사실을 보고하고 되묻는다. 4단계에서는 3단계에서 읽은 mention 노드를 그대로 옮겨 쓴다.
+- 2단계 이후 실패하면 재시도하지 말고 남은 댓글 id와 상태를 보고한다. v2로 쓴 댓글이 그대로 남아 있으면 지우지 않고 그 사실을 보고한다.
 
 ### 화면 확인
 
