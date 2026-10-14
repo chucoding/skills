@@ -1,7 +1,7 @@
 // AS-IS와 TO-BE 녹화 스크립트. `ego-browser nodejs`로 실행
 // 실행 전 sed로 치환: __OUT__(프레임 저장 폴더 절대경로), __NAME__(AS-IS 또는 TO-BE), __KEY__(티켓 키)
 // 진입 경로, 대기 조건, 조작 셀렉터, 녹화 시간은 작업마다 수정
-const { writeFile, mkdir } = await import('node:fs/promises')
+const { writeFile, mkdir, rm } = await import('node:fs/promises')
 const OUT = '__OUT__'
 const task = await taskSpace('__KEY__ 녹화 __NAME__')
 const page = task.page('p1')
@@ -63,8 +63,12 @@ try {
     throw new Error('녹화 프레임 0장')
   }
 
-  // 프레임 JPEG 저장과 ffmpeg concat 목록 작성. duration에 실제 프레임 간격 기록
+  // 재녹화 시 이전 프레임이 시트에 섞이지 않도록 폴더 비우기. 보관 폴더의 frames- 폴더만 대상
+  if (!/\/ticket-gif\/[^/]+\/frames-[^/]+$/.test(OUT)) throw new Error(`프레임 폴더 경로 아님: ${OUT}`)
+  await rm(OUT, { recursive: true, force: true })
   await mkdir(OUT, { recursive: true })
+
+  // 프레임 JPEG 저장과 ffmpeg concat 목록 작성. duration에 실제 프레임 간격 기록
   let list = ''
   for (let i = 0; i < frames.length; i++) {
     const file = `f${String(i).padStart(4, '0')}.jpg`
