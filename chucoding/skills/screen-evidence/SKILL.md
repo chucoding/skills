@@ -1,5 +1,5 @@
 ---
-name: ticket-gif
+name: screen-evidence
 description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE)를 GIF나 이미지로 남겨 GitHub PR 본문과 Jira 댓글에 넣는 절차. 동작이 필요한지로 GIF와 이미지를 고르는 기준, 기존 기능 수정과 신규 기능, 레거시 이관, 벤치마킹에 따라 AS-IS 출처를 정하는 기준, ego-browser 녹화와 캡처, base 커밋으로 되돌린 AS-IS 녹화, ffmpeg GIF 인코딩, `gh pr create --attach` 업로드, Jira 첨부와 v2에서 v3로 이어지는 미디어 댓글 작성, 건너뛰는 조건을 포함한다. `chucoding:commit-pr`의 PR 생성 단계와 `chucoding:jira`의 개발완료 처리에서 호출한다. 사용자가 "GIF 녹화", "스크린샷 첨부", "AS-IS TO-BE", "변경 전후 영상", "PR에 GIF 넣어줘"를 요청할 때도 사용한다.
 ---
 
@@ -59,7 +59,7 @@ description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE
 스크래치패드는 세션마다 달라 PR 생성과 개발완료 처리 사이에 파일을 잃는다. 그래서 티켓별 고정 폴더에 둔다.
 
 ```
-~/.cache/chucoding/ticket-gif/<티켓키>/
+~/.cache/chucoding/screen-evidence/<티켓키>/
   <티켓키>-as-is.gif|png     # AS-IS가 있을 때만
   <티켓키>-to-be.gif|png
   meta.txt                   # 형식, AS-IS 출처, 테스트방법 문구, 캡션
@@ -72,7 +72,7 @@ description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE
 - 화면이 여럿이면 파일 이름 끝에 화면 번호를 붙인다. 예: `<키>-to-be-1.png`, `<키>-to-be-2.gif`.
 - 폴더와 파일 이름의 티켓 키는 브랜치 이름의 키다. `chucoding:jira`의 `착수 브랜치 이름`에 따라 QA 클론은 HOM 키를 쓰므로, 개발완료 때는 HDIT 키 폴더가 없으면 Cloners로 연결된 HOM 키 폴더를 찾는다.
 - 티켓 키가 없는 GitHub 이슈 경로면 `<저장소>-<이슈번호>`를 키 대신 쓴다.
-- 개발완료 때 폴더에 파일이 없으면 PR에서 다시 받는다. `gh api repos/<o>/<r>/pulls/<n> -H "Accept: application/vnd.github.html+json" --jq .body_html`에서 `<img src="https://private-user-images…?jwt=…">`를 뽑아(`&amp;`는 `&`로) `curl -o`로 받는다. 주소가 `https://private-user-images.githubusercontent.com/`로 시작하고 `alt`가 보관 파일 이름(`<키>-as-is`, `<키>-to-be` 등, 아래 PR 본문 템플릿의 alt)과 맞는 것만 받는다. PR 본문은 다른 사람도 고칠 수 있어서다. 주소의 jwt는 보고나 로그에 그대로 남기지 않는다. jwt는 몇 분 안에 만료되므로 받기 직전에 조회한다. 받은 파일의 형식과 크기를 `file`과 `sips`로 확인한다.
+- 개발완료 때 폴더에 파일이 없으면 PR에서 다시 받는다. `gh api repos/<o>/<r>/pulls/<n> -H "Accept: application/vnd.github.html+json" --jq .body_html`에서 `<img src="https://private-user-images…?jwt=…">`를 뽑아(`&amp;`는 `&`로) `curl -o`로 받는다. 주소가 `https://private-user-images.githubusercontent.com/`로 시작하고 `alt`가 보관 파일 이름(`<키>-as-is`, `<키>-to-be` 등, 아래 PR 본문 템플릿의 alt)과 맞는 것만 받는다. PR 본문은 다른 사람도 고칠 수 있어서다. 주소의 jwt는 보고나 로그에 그대로 남기지 않는다. jwt는 몇 분 안에 만료되므로 받기 직전에 조회한다. 받은 파일의 형식과 크기를 `file`과 `sips`로 확인한다. 받은 파일은 PR 생성 뒤 바뀌었을 수 있으므로 Read로 내용을 다시 보고 아래 `민감정보 확인`을 다시 한다. 그리고 Jira에 올리기 전에 PR에서 다시 받은 파일이라는 사실과 파일 목록을 보여 주고 게시 여부를 묻는다. 개발완료 전환의 게시 승인은 보관 폴더의 파일에만 적용한다.
 
 ## 건너뛰는 조건
 
@@ -82,6 +82,7 @@ description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE
 - 개발 서버를 띄울 수 없는 저장소이거나, 변경 화면에 들어갈 계정과 데이터가 없다.
 - `ego-browser`를 쓸 수 없다.
 - 사용자가 이번 작업은 남기지 않겠다고 밝혔다.
+- macOS가 아니다. 크기 확인(`sips`)과 창 전면화(`open -a`)가 macOS 전용이다.
 
 화면 변화 여부가 애매하면(예: 공통 컴포넌트 수정이 여러 화면에 번지는 경우) 남길 화면을 되묻는다.
 
@@ -96,17 +97,19 @@ description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE
 
 - 페이지를 열기 전에 `Skill` 도구로 `chucoding:browser-automation`을 호출한다. 스크립트에는 다이얼로그 무력화 주입이 이미 들어 있다.
 - 개발 서버가 떠 있지 않으면 전역 AGENTS.md `개발 서버 지침`대로 띄운다. AS-IS가 레거시나 참고 서비스면 그 주소를 쓴다.
-- GIF를 만들 때만 ffmpeg가 필요하다. 시스템 것을 쓰고, 없으면 스크래치패드에 `npm i ffmpeg-static@5.2.0`으로 받아 `node_modules/ffmpeg-static/ffmpeg`를 쓴다. 전역 설치는 하지 않는다. 아래에서 이 경로를 `$FF`라 부른다.
+- GIF를 만들 때만 ffmpeg가 필요하다. 시스템 것을 쓰고, 없으면 스크래치패드에 `npm i ffmpeg-static@5.2.0`으로 받아 `node_modules/ffmpeg-static/ffmpeg`를 쓴다. 전역 설치는 하지 않는다. 아래에서 이 경로를 `$FF`라 부르고, 반드시 절대경로로 둔다. `encode.sh`가 프레임 폴더로 `cd`한 뒤 실행하므로 상대경로면 GIF 인코딩에서 실패한다.
 - 화면 크기는 GIF와 이미지 모두 1440×900(16:10)으로 고정한다. 고정하지 않으면 ego 창 크기(예: 1908×807)를 따라 화면이 납작해지고, Jira에서 좌우로 놓으면 높이가 187px밖에 안 된다.
 - 실제 사용 경로로 진입한다. 상세 URL로 바로 들어가면 앱 구조(KeepAliveOutlet 등)에 따라 동작이 달라질 수 있다.
+- 스크립트의 `__KEY__`와 `__OUT__`은 sed로 JS 문자열 안에 그대로 들어간다. 치환 전에 키가 `^[A-Za-z0-9][A-Za-z0-9._-]*$`에 맞는지 확인하고, 맞지 않으면 멈춘다. 따옴표나 `#`가 섞이면 스크립트가 깨지거나 그 문자가 코드로 실행되기 때문이다. 아래 명령의 `KEY` 검사가 이 확인이다.
 
 ### 이미지 캡처
 
 [`scripts/capture.mjs`](scripts/capture.mjs)를 스크래치패드에 복사해 진입 경로와 대기 조건을 고친다. `__OUT__`, `__NAME__`, `__KEY__`는 실행할 때 sed로 치환한다.
 
 ```bash
-OUT=~/.cache/chucoding/ticket-gif/<키>/<키>-to-be.png
-sed -e "s#__OUT__#$OUT#" -e "s#__NAME__#TO-BE#" -e "s#__KEY__#<키>#" capture.mjs | ego-browser nodejs
+KEY=<키>; [[ "$KEY" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || { echo "키 형식 오류: $KEY"; exit 1; }
+OUT=$HOME/.cache/chucoding/screen-evidence/$KEY/$KEY-to-be.png
+sed -e "s#__OUT__#$OUT#" -e "s#__NAME__#TO-BE#" -e "s#__KEY__#$KEY#" capture.mjs | ego-browser nodejs
 ```
 
 - 스켈레톤이나 로딩 표시가 사라진 뒤 캡처한다.
@@ -118,8 +121,9 @@ sed -e "s#__OUT__#$OUT#" -e "s#__NAME__#TO-BE#" -e "s#__KEY__#<키>#" capture.mj
 [`scripts/record.mjs`](scripts/record.mjs)를 스크래치패드에 복사해 진입 경로, 대기 조건, 조작 셀렉터, 녹화 시간을 작업에 맞게 고친다.
 
 ```bash
-OUT=~/.cache/chucoding/ticket-gif/<키>/frames-to-be
-(sed -e "s#__OUT__#$OUT#" -e "s#__NAME__#TO-BE#" -e "s#__KEY__#<키>#" record.mjs | ego-browser nodejs) & sleep 3; open -a "ego lite"; wait
+KEY=<키>; [[ "$KEY" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || { echo "키 형식 오류: $KEY"; exit 1; }
+OUT=$HOME/.cache/chucoding/screen-evidence/$KEY/frames-to-be
+(sed -e "s#__OUT__#$OUT#" -e "s#__NAME__#TO-BE#" -e "s#__KEY__#$KEY#" record.mjs | ego-browser nodejs) & sleep 3; open -a "ego lite"; wait
 ```
 
 스크립트에 담긴 판단은 다음과 같다.
@@ -166,7 +170,7 @@ git status --short -- <변경 경로>            # 비어 있는지 다시 확�
 [`scripts/encode.sh`](scripts/encode.sh)로 첫 프레임 크기 확인, 프레임 시트 생성, GIF 인코딩을 한 번에 한다. 경로는 절대경로로 넘긴다.
 
 ```bash
-bash <이 스킬 디렉토리>/scripts/encode.sh "$FF" ~/.cache/chucoding/ticket-gif/<키>/frames-as-is ~/.cache/chucoding/ticket-gif/<키>/<키>-as-is.gif
+bash <이 스킬 디렉토리>/scripts/encode.sh "$FF" ~/.cache/chucoding/screen-evidence/<키>/frames-as-is ~/.cache/chucoding/screen-evidence/<키>/<키>-as-is.gif
 ```
 
 - 첫 프레임이 1440×900인지 출력으로 확인한다.
@@ -188,6 +192,7 @@ bash <이 스킬 디렉토리>/scripts/encode.sh "$FF" ~/.cache/chucoding/ticket
 
 - `gh --version`이 2.99.0 이상이어야 `--attach`가 있다. 낮으면 직접 업그레이드하지 않고 `brew upgrade gh`를 실행할지 사용자에게 묻는다. `gh image`라는 명령은 없다.
 - **증빙은 PR을 만들 때 함께 넣는다.** 리뷰어가 PR을 처음 열 때부터 변경 전후를 보게 하려는 것이다. PR을 먼저 만들고 나중에 붙이지 않는다. 그래서 녹화와 캡처는 PR 초안을 제시하기 전에 끝낸다.
+- 예외로 사용자가 이미 열린 PR에 증빙을 넣어 달라고 직접 요청하면, 현재 PR 본문(`gh pr view <번호> --json body`)의 테스트 섹션에 증빙 블록을 넣은 본문을 `pr-body.md`로 저장한다. 변경된 본문을 보여 주고 승인을 받은 뒤 `gh pr edit --body-file pr-body.md --attach …`로 올린다. 이 경우에도 녹화 전 `무엇을 남길지 정하기`와 `민감정보 확인`은 같다.
 - 증빙 블록은 저장소 PR 템플릿의 테스트 섹션(hd-cloud-client는 `테스트 방법`, 템플릿이 없으면 `How to test`) 안에 둔다. 녹화와 캡처는 증빙 수집이라 테스트 실행 기록이 아니다. 테스트 섹션의 다른 항목은 `chucoding:commit-pr` 규칙대로 실제 실행한 테스트만 적는다.
 - AS-IS가 있으면 2칸 표로 좌우 배치한다. GIF면 첫 줄 괄호에 `실제 속도, 반복 재생`을 붙이고, 이미지면 붙이지 않는다.
 
@@ -211,7 +216,7 @@ bash <이 스킬 디렉토리>/scripts/encode.sh "$FF" ~/.cache/chucoding/ticket
 - `--attach`는 본문의 `![alt](./파일)` 참조를 업로드 주소로 바꾼다. 참조 문자열과 `--attach` 인자가 같아야 하므로 보관 폴더에서 `./<파일>` 형태로 넘긴다. 저장소 밖에서 실행하므로 저장소와 브랜치를 명시한다. 파일마다 `--attach`를 하나씩 붙인다.
 
   ```bash
-  cd ~/.cache/chucoding/ticket-gif/<키>
+  cd ~/.cache/chucoding/screen-evidence/<키>
   gh pr create -R <owner>/<repo> --head <브랜치> --base <base> --title "…" --body-file <본문 파일> \
     --attach ./<키>-as-is.gif --attach ./<키>-to-be.gif --assignee @me --label <라벨>
   # 리뷰 반영으로 TO-BE를 다시 남겼을 때만. 이미 열린 PR의 본문 교체

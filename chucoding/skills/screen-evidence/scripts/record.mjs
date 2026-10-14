@@ -64,7 +64,10 @@ try {
   }
 
   // 재녹화 시 이전 프레임이 시트에 섞이지 않도록 폴더 비우기. 보관 폴더의 frames- 폴더만 대상
-  if (!/\/ticket-gif\/[^/]+\/frames-[^/]+$/.test(OUT)) throw new Error(`프레임 폴더 경로 아님: ${OUT}`)
+  // 키 구간을 영숫자 시작으로 제한해 `..` 경로 통과 차단
+  if (!/^\/.+\/\.cache\/chucoding\/screen-evidence\/[A-Za-z0-9][A-Za-z0-9._-]*\/frames-[A-Za-z0-9-]+$/.test(OUT)) {
+    throw new Error(`프레임 폴더 경로 아님: ${OUT}`)
+  }
   await rm(OUT, { recursive: true, force: true })
   await mkdir(OUT, { recursive: true })
 
