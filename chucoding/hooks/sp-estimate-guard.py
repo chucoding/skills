@@ -4,7 +4,8 @@
 생성 수단(MCP, curl, 스크래치패드 스크립트)이 제각각이라 호출 패턴 대신 Jira 결과로 판정.
 - 대상: 세션 시작 이후 내가 만든 HDIT 티켓 중 이 세션 transcript에 키가 나온 것
   (병렬 세션이 같은 시간대에 만든 티켓으로 차단하지 않기 위함)
-- 제외: 연차 유형, `[데일리 스크럼]`, `[회의]` 제목 (폴러 `estimate_sp.targets`와 같은 기준)
+- 제외: 연차 유형, `[데일리 스크럼]`, `[회의]` 제목 (폴러 `estimate_sp.targets`와 제목, 유형 기준만 같음.
+  묶음 판정은 SP가 0인 티켓만 해당해 빈 SP와 겹치지 않으므로 생략)
 - 무한 루프 방지: 키마다 한 번만 차단. 정당하게 못 채운 티켓은 두 번째 종료에서 통과
 - 자격증명, 네트워크, transcript 중 하나라도 없으면 조용히 통과 (정본은 jira 스킬)
 """
@@ -75,6 +76,9 @@ def main():
     transcript_path = data.get("transcript_path")
     if not session_id or not transcript_path:
         return
+    # 상태 파일 경로로 쓰므로 경로 문자가 섞인 값은 통과
+    if not re.fullmatch(r"[A-Za-z0-9_-]+", session_id):
+        return
     try:
         with open(transcript_path, encoding="utf-8", errors="replace") as f:
             transcript = f.read()
@@ -104,6 +108,9 @@ def main():
     for i in issues:
         key = i.get("key") or ""
         f = i.get("fields") or {}
+        # 검색 색인이 방금 기입한 값을 아직 반영하지 않은 경우 대비
+        if f.get(SP_FIELD) is not None:
+            continue
         summary = (f.get("summary") or "").lstrip()
         if (f.get("issuetype") or {}).get("name") == "연차" or summary.startswith(SKIP_PREFIXES):
             continue
