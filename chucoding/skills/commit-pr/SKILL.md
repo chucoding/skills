@@ -3,7 +3,7 @@ name: commit-pr
 description: 커밋 메시지와 PR 제목, 본문 초안을 작성하는 규칙. 파일 수정을 마쳐 커밋 초안을 제시할 때, 사용자가 커밋이나 commit, PR, pull request 작성을 요청할 때, 푸시 후 PR 생성 여부를 판단할 때, main 푸시나 PR 머지로 원격 통합 브랜치가 바뀌었을 때 사용한다. 제목 접두사 확인, 저장소 commitlint 규칙 확인과 줄 길이 검증, Why 중심 본문 작성, 푸시 전 self-review, PR 템플릿 섹션 순서, 화면 변경 PR의 AS-IS와 TO-BE GIF나 이미지 첨부, Assignee와 라벨 지정, PR 생성 후 Jira 티켓 리뷰중 전환, main 푸시나 PR 머지 뒤 로컬 통합 브랜치 동기화 절차를 포함한다.
 ---
 
-파일 수정을 마쳐 커밋 초안을 제시할 때, 사용자가 커밋이나 PR 작성을 요청할 때, 푸시를 마치고 PR 생성 여부를 판단할 때 이 스킬을 적용한다. 아래 `커밋 메시지 및 PR 작성 공통 원칙`은 커밋 메시지와 PR 양쪽에 모두 적용되는 상위 원칙이고, 이어지는 `커밋 메시지 작성 지침`과 `PR 작성 지침`은 그 위에서 각 산출물에 더해지는 세부 규칙이다.
+파일 수정을 마쳐 커밋 초안을 제시할 때, 사용자가 커밋이나 PR 작성을 요청할 때, 푸시를 마치고 PR 생성 여부를 판단할 때, main 푸시나 PR 머지 뒤 로컬 통합 브랜치를 맞출 때 이 스킬을 적용한다. 아래 `커밋 메시지 및 PR 작성 공통 원칙`은 커밋 메시지와 PR 양쪽에 모두 적용되는 상위 원칙이고, 이어지는 `커밋 메시지 작성 지침`과 `PR 작성 지침`은 그 위에서 각 산출물에 더해지는 세부 규칙이다.
 
 ## 커밋 메시지 및 PR 작성 공통 원칙
 
@@ -129,14 +129,14 @@ CI가 commitlint로 커밋 메시지를 검사하는 저장소에서는 규칙�
 
 - 수행 시점은 아래 둘이다. 대상 브랜치는 원격에 변경이 들어간 브랜치다.
   - `main으로 바로 커밋 & 푸시`의 푸시가 성공했을 때. 대상은 `main`이다.
-  - 이 세션에서 PR 머지를 확인했을 때. `gh pr merge`를 실행했거나, `gh pr view --json state,baseRefName`에서 `MERGED`를 확인한 경우다. `chucoding:jira`의 `개발완료` 전환과 `chucoding:github-issue`의 이슈 종료 전에 하는 머지 확인도 여기에 해당한다. 대상은 그 PR의 `baseRefName`이다.
+  - 이 세션에서 PR 머지를 확인했을 때. `gh pr merge`를 실행했거나, `gh pr view <PR> --json state,baseRefName,url`에서 `MERGED`를 확인한 경우다. `gh pr merge`를 실행한 뒤에도 같은 명령으로 `baseRefName`과 `url`을 조회한다. `chucoding:jira`의 `개발완료` 전환과 `chucoding:github-issue`의 이슈 종료 전에 하는 머지 확인도 여기에 해당한다. 대상은 그 PR의 `baseRefName`이다.
 - PR이 현재 저장소(`origin`)의 PR이 아니면 맞출 로컬 체크아웃이 없으므로 건너뛴다. `gh pr view`의 `url`에 담긴 `<owner>/<repo>`가 `git remote get-url origin`의 경로와 같을 때만 수행한다.
 - 먼저 `git fetch origin <대상>`으로 원격을 갱신한다.
 - `git worktree list --porcelain`에서 `branch refs/heads/<대상>`인 워크트리를 찾는다.
-  - 현재 워크트리가 그곳이면 현재 워크트리에서 아래와 같은 조건으로 당긴다.
+  - 현재 워크트리가 그곳이면 `git status --porcelain`이 비어 있을 때만 `git pull --ff-only origin <대상>`을 실행한다. 변경이 남아 있거나 fast-forward가 안 되면 당기지 않고 이유를 보고에 남긴다. `main`에서 바로 푸시한 직후라면 로컬이 이미 같으므로 건너뛴다.
   - 다른 워크트리에 체크아웃되어 있으면 `git -C <경로> status --porcelain`이 비어 있을 때만 `git -C <경로> pull --ff-only origin <대상>`을 실행한다. 변경이 남아 있거나 fast-forward가 안 되면 당기지 않고, 경로와 이유를 보고에 남긴다. stash, reset, merge 커밋으로 맞추지 않는다.
   - 어느 워크트리에도 체크아웃되어 있지 않으면 `git fetch origin <대상>:<대상>`으로 로컬 ref만 맞춘다. fast-forward가 아니면 거부되므로 그대로 두고 보고한다.
-- 맞춘 뒤 `git -C <경로> log --oneline -1`이 `origin/<대상>`과 같은지 확인해 보고에 적는다. 이미 같았으면 따로 적지 않는다.
+- 맞춘 뒤 `git rev-parse <대상> origin/<대상>`의 두 값이 같은지 확인해 보고에 적는다. 워크트리가 있든 ref만 맞췄든 같은 명령으로 확인한다. 이미 같았으면 따로 적지 않는다.
 
 ### 푸시 전 self-review
 
