@@ -23,7 +23,7 @@ JIRA_BASE = "https://rsquare.atlassian.net"
 CONFIG = os.path.expanduser("~/.config/homedot-worktime/config.env")
 SP_FIELD = "customfield_10028"
 TIMEOUT = 6
-# transcript에 Jira 쓰기 흔적이 없으면 네트워크 호출 없이 통과
+# transcript에 Jira 흔적(읽기 포함)이 없으면 네트워크 호출 없이 통과
 JIRA_HINT = re.compile(r"atlassian\.net|createJiraIssue|rest/api/3/issue")
 SKIP_PREFIXES = ("[데일리 스크럼]", "[회의]")
 
@@ -47,9 +47,11 @@ def session_start(transcript):
     if not m:
         return None
     try:
-        return dt.datetime.fromisoformat(m.group(1).replace("Z", "+00:00"))
+        start = dt.datetime.fromisoformat(m.group(1).replace("Z", "+00:00"))
     except ValueError:
         return None
+    # 시간대 표기가 없으면 UTC로 간주
+    return start if start.tzinfo else start.replace(tzinfo=dt.timezone.utc)
 
 
 def search(env, jql):
@@ -91,14 +93,14 @@ def main():
         return
     try:
         env = read_env(CONFIG)
-    except OSError:
+    except (OSError, ValueError):
         return
     if not env.get("JIRA_EMAIL") or not env.get("JIRA_API_TOKEN"):
         return
 
     minutes = int((dt.datetime.now(dt.timezone.utc) - start).total_seconds() // 60) + 5
     jql = (f"project = HDIT AND creator = currentUser() AND created >= -{minutes}m "
-           f"AND cf[10028] IS EMPTY ORDER BY created ASC")
+           f"AND cf[10028] IS EMPTY ORDER BY created DESC")
     try:
         issues = search(env, jql)
     except Exception:  # noqa: BLE001 - 조회 실패는 통과 (보조 안전망)
