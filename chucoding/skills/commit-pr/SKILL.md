@@ -136,7 +136,7 @@ CI가 commitlint로 커밋 메시지를 검사하는 저장소에서는 규칙�
   - 현재 워크트리가 그곳이면 `git status --porcelain`이 비어 있을 때만 `git pull --ff-only origin <대상>`을 실행한다. 변경이 남아 있거나 fast-forward가 안 되면 당기지 않고 이유를 보고에 남긴다. `main`에서 바로 푸시한 직후라면 로컬이 이미 같으므로 건너뛴다.
   - 다른 워크트리에 체크아웃되어 있으면 `git -C <경로> status --porcelain`이 비어 있을 때만 `git -C <경로> pull --ff-only origin <대상>`을 실행한다. 변경이 남아 있거나 fast-forward가 안 되면 당기지 않고, 경로와 이유를 보고에 남긴다. stash, reset, merge 커밋으로 맞추지 않는다.
   - 어느 워크트리에도 체크아웃되어 있지 않으면 `git fetch origin <대상>:<대상>`으로 로컬 ref만 맞춘다. 단 `git rev-parse --verify --quiet refs/heads/<대상>`이 실패해 로컬 브랜치가 아예 없으면 새로 만들지 않고 건너뛴다. fast-forward가 아니면 거부되므로 그대로 두고 보고한다.
-- 맞춘 뒤 `git rev-parse <대상> origin/<대상>`의 두 값이 같은지 확인해 보고에 적는다. 워크트리가 있든 ref만 맞췄든 같은 명령으로 확인한다. 이미 같았으면 따로 적지 않는다.
+- 실제로 당기거나 ref를 맞춘 분기에서만 `git rev-parse <대상> origin/<대상>`으로 두 값이 같은지 확인한다. 같으면 맞춘 브랜치와 커밋을 한 줄로 보고하고, 다르면 두 값을 보고한다. 건너뛴 분기는 확인하지 않고 건너뛴 이유만 보고한다.
 
 ### 푸시 전 self-review
 
