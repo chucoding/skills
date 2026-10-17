@@ -58,8 +58,7 @@ description: GitHub 이슈로 만든 워크스페이스에서 착수부터 이�
 ## 7. 이슈 종료
 
 - 이슈는 사용자가 종료를 요청할 때만 닫는다. PR을 만들었다고 스스로 닫지 않는다.
-- 닫기 전에 `gh pr view <PR번호> --repo <owner>/<repo> --json number,state,mergedAt,mergeCommit,baseRefName,url`으로 PR의 머지 여부를 조회한다. 조회하지 않은 상태로 머지됐다거나 머지되지 않았다고 쓰지 않는다.
-- 머지를 확인했으면 `chucoding:commit-pr`의 `로컬 통합 브랜치 동기화`로 로컬의 PR base 브랜치(`baseRefName`)를 맞춘다.
+- 닫기 전에 `gh pr view <PR번호> --repo <owner>/<repo> --json number,state,mergedAt,mergeCommit,baseRefName`으로 PR의 머지 여부를 조회한다. 조회하지 않은 상태로 머지됐다거나 머지되지 않았다고 쓰지 않는다.
 - 닫기는 아래 형태로 실행한다. 어디서 처리됐는지 이슈만 보고 추적할 수 있도록 PR 링크를 댓글로 남긴다.
 
   ```bash
