@@ -73,14 +73,14 @@ def load_config():
         os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
 
 
-def sprints(collect, state=None):
-    """보드의 스프린트 목록 — state 는 active/closed/future 또는 None(전부)."""
+def sprints(collect, state=None, board=None):
+    """보드의 스프린트 목록 — state 는 active/closed/future 또는 None(전부), board 는 없으면 설정의 보드."""
     out, start = [], 0
     while True:
         params = {"startAt": start, "maxResults": 50}
         if state:
             params["state"] = state
-        res = collect._call(f"/rest/agile/1.0/board/{collect.BOARD_ID}/sprint", params=params)
+        res = collect._call(f"/rest/agile/1.0/board/{board or collect.BOARD_ID}/sprint", params=params)
         vals = res.get("values") or []
         out += vals
         if res.get("isLast", True) or not vals:
@@ -97,7 +97,8 @@ def _kst_date(iso, midnight_back=False):
     - **시간대**: Jira 는 UTC 로 준다. 그냥 `[:10]` 으로 자르면 하루가 어긋난다
       (실측: 26_3_#5 의 startDate 가 UTC 로 08-30, KST 로는 08-31).
     - **자정 경계**: 스프린트 종료가 `09-14T00:00` 이면 실제 마지막 날은 09-13 이다.
-      종료일에는 `midnight_back=True` 를 줘서 목록·머리말·PR 조회가 같은 날짜를 말하게 한다.
+      `midnight_back=True` 는 다음 회차를 모를 때의 근사다. 목록·머리말·PR 조회의 마지막 날은
+      `last_day()` 가 플러그인 sprint_days() 규칙으로 정하고, 이 근사는 옛 결과의 폴백에만 쓴다.
     """
     if not iso:
         return "?"
@@ -134,8 +135,9 @@ def patch_for_sprint(collect, target):
     sprint = found[0]
     sid = sprint["id"]
 
-    missing = [n for n in ("current_sprint", "next_sprint", "sprint_days", "sprint_time", "search", "_iso")
-               if not callable(getattr(collect, n, None))]
+    missing = [n for n in ("current_sprint", "next_sprint", "sprint_days", "sprint_time", "search", "_iso",
+                           "_call", "JiraError", "BOARD_ID")
+               if not hasattr(collect, n)]
     if missing:
         sys.exit(f"collect.py 에 {', '.join(missing)} 가 없습니다 — 플러그인 구조가 바뀌었습니다. "
                  "patch_for_sprint() 의 패치 지점을 다시 정하세요.")
@@ -179,11 +181,11 @@ def following_sprint(collect, sprint, all_sprints):
     cands = {s["id"]: s for s in all_sprints}
     if origin not in (None, collect.BOARD_ID):
         try:
-            res = collect._call(f"/rest/agile/1.0/board/{origin}/sprint", params={"maxResults": 50})
-            for s in res.get("values") or []:
+            for s in sprints(collect, board=origin):
                 cands.setdefault(s["id"], s)
-        except collect.JiraError:
-            pass
+        except collect.JiraError as e:
+            print(f"[sprint_pack] 보드 {origin} 의 스프린트를 읽지 못해 이 보드 목록에서만 다음 회차를 찾습니다: {e}",
+                  file=sys.stderr)
     picks = []
     for s in cands.values():
         start = collect.sprint_time(s.get("startDate"))
@@ -195,6 +197,12 @@ def following_sprint(collect, sprint, all_sprints):
             picks.append((rank, start, s["id"], s))
     picks.sort(key=lambda p: p[:3])
     return picks[0][3] if picks else None
+
+
+def last_day(collect, sprint, following):
+    """플러그인 sprint_days() 규칙의 마지막 날(KST 날짜 문자열). 날짜가 없으면 "?"."""
+    _first, last = collect.sprint_days(sprint, following)
+    return last.isoformat() if last else "?"
 
 
 def _canonical_repo(slug):
@@ -248,7 +256,10 @@ def gh_merged_prs(start, end):
 
 
 def display_end(end_iso):
-    """스프린트의 **표시용 종료일** — 머리말과 PR 조회가 함께 쓰는 값.
+    """끝 시각만으로 구한 **표시용 종료일** — `last_day` 가 없는 옛 results.json 의 폴백.
+
+    자정 종료를 무조건 전날로 당기므로, 끝 날짜를 포함하는 IT부서 보드 회차(26_4_#2 끝 10-30 00:00 은
+    「10/30 까지」)에서는 하루 짧게 나온다. 새 결과는 플러그인이 정한 `last_day` 를 쓴다.
 
     안 맞추면 경계일이 두 스프린트에 겹쳐 들어간다(실측: 26_3_#4 의 종료가 08-31T00:00 이라
     08-31 05:45Z 머지된 PR #2211 이 #4 에도 #5 에도 잡혔다). GitHub 의 `merged:` 범위는
@@ -366,9 +377,11 @@ def main():
     import collect                                                # noqa: E402
 
     if args.list:
-        for s in sprints(collect):
+        all_sprints = sprints(collect)
+        for s in all_sprints:
+            following = following_sprint(collect, s, all_sprints)
             print(f"{s.get('id'):>5}  {s.get('state','?'):7} {s.get('name',''):10} "
-                  f"{_kst_date(s.get('startDate'))} ~ {_kst_date(s.get('endDate'), True)}")
+                  f"{_kst_date(s.get('startDate'))} ~ {last_day(collect, s, following)}")
         return
 
     os.makedirs(args.out, exist_ok=True)
@@ -388,7 +401,7 @@ def main():
             sys.exit("--sprint 또는 --current 중 하나가 필요합니다. 목록은 --list.")
         sprint, following, seen = patch_for_sprint(collect, args.sprint)
         print(f"재수집: {sprint['name']} (id {sprint['id']}, {_kst_date(sprint.get('startDate'))} ~ "
-              f"{_kst_date(sprint.get('endDate'), True)}), 다음 회차: "
+              f"{last_day(collect, sprint, following)}), 다음 회차: "
               + (f"{following['name']} (id {following['id']})" if following else "없음"))
         data = collect.collect()
         got = data.get("sprint") or {}
