@@ -113,6 +113,20 @@ def _kst_date(iso, midnight_back=False):
     return d.strftime("%Y-%m-%d")
 
 
+def require_plugin_api(collect):
+    """이 스크립트가 쓰거나 갈아끼우는 collect 의 이름이 다 있는지 본다. 없으면 안내와 함께 종료한다.
+
+    `--list` 와 `--sprint` 가 collect 를 처음 쓰기 전에 부른다. 늦게 보면 이름이 사라졌을 때 안내 대신
+    AttributeError 트레이스백이 난다.
+    """
+    missing = [n for n in ("current_sprint", "next_sprint", "sprint_days", "sprint_time", "search", "_iso",
+                           "_call", "JiraError", "BOARD_ID")
+               if not hasattr(collect, n)]
+    if missing:
+        sys.exit(f"collect.py 에 {', '.join(missing)} 가 없습니다 — 플러그인 구조가 바뀌었습니다. "
+                 "patch_for_sprint() 의 패치 지점을 다시 정하세요.")
+
+
 def patch_for_sprint(collect, target):
     """collect 모듈을 대상 스프린트용으로 갈아끼운다.
 
@@ -135,13 +149,6 @@ def patch_for_sprint(collect, target):
     sprint = found[0]
     sid = sprint["id"]
 
-    missing = [n for n in ("current_sprint", "next_sprint", "sprint_days", "sprint_time", "search", "_iso",
-                           "_call", "JiraError", "BOARD_ID")
-               if not hasattr(collect, n)]
-    if missing:
-        sys.exit(f"collect.py 에 {', '.join(missing)} 가 없습니다 — 플러그인 구조가 바뀌었습니다. "
-                 "patch_for_sprint() 의 패치 지점을 다시 정하세요.")
-
     following = following_sprint(collect, sprint, all_sprints)
     orig_search = collect.search
     seen = {"a": False}
@@ -162,6 +169,9 @@ def patch_for_sprint(collect, target):
     return sprint, following, seen
 
 
+_BOARD_SPRINTS = {}  # 보드 id → 스프린트 목록 — `--list` 가 회차마다 같은 보드를 다시 읽지 않게 (실패는 빈 목록)
+
+
 def following_sprint(collect, sprint, all_sprints):
     """대상 스프린트 바로 다음 회차 — 상태와 무관하게 고른다. 없으면 None.
 
@@ -180,12 +190,15 @@ def following_sprint(collect, sprint, all_sprints):
     origin = sprint.get("originBoardId")
     cands = {s["id"]: s for s in all_sprints}
     if origin not in (None, collect.BOARD_ID):
-        try:
-            for s in sprints(collect, board=origin):
-                cands.setdefault(s["id"], s)
-        except collect.JiraError as e:
-            print(f"[sprint_pack] 보드 {origin} 의 스프린트를 읽지 못해 이 보드 목록에서만 다음 회차를 찾습니다: {e}",
-                  file=sys.stderr)
+        if origin not in _BOARD_SPRINTS:
+            try:
+                _BOARD_SPRINTS[origin] = sprints(collect, board=origin)
+            except collect.JiraError as e:
+                _BOARD_SPRINTS[origin] = []
+                print(f"[sprint_pack] 보드 {origin} 의 스프린트를 읽지 못해 이 보드 목록에서만 다음 회차를 찾습니다: {e}",
+                      file=sys.stderr)
+        for s in _BOARD_SPRINTS[origin]:
+            cands.setdefault(s["id"], s)
     picks = []
     for s in cands.values():
         start = collect.sprint_time(s.get("startDate"))
@@ -375,6 +388,9 @@ def main():
     load_config()
     sys.path.insert(0, plugin_scripts_dir())
     import collect                                                # noqa: E402
+
+    if args.list or not args.current:
+        require_plugin_api(collect)
 
     if args.list:
         all_sprints = sprints(collect)

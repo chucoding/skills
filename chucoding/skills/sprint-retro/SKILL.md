@@ -25,7 +25,7 @@ python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --
 
 - 사용자가 이름이나 기간을 지정했으면 그 값을 쓴다.
 - 지정이 없으면 **가장 최근에 닫힌 스프린트**를 기본값으로 제시하고 AskUserQuestion으로 확인한다. 같은 이름의 스프린트가 둘일 수 있으므로(실측: `26_3_#3` → id 2077·2078) 기간까지 보여 주고 고르게 한 뒤, 겹치면 이름 대신 **id로** 넘긴다.
-- 진행 중인 스프린트를 회고하려는 것이면 그렇게 확인받는다. 그때는 2단계에서 `--current`를 쓴다.
+- 진행 중인 스프린트를 회고하려는 것이면 그렇게 확인받는다. 그때는 2단계에서 `--current`를 쓴다. `--current`는 대시보드의 이번 스프린트를 쓰는데, 활성 스프린트가 끝났으면 시작 전인 다음 회차일 수 있다. 출력의 스프린트 이름이 회고하려는 스프린트인지 확인한다.
 - 스프린트가 확정되면 2단계와 함께 **채용 공고 조사를 바로 시작**한다. 조사는 팩에 의존하지 않고 둘 다 몇 분씩 걸리므로 병렬로 돌린다. 묶음별로 읽기 전용 하위 에이전트에 나눠 맡긴다. 대상과 범위, 저장 형식은 `references/job-market.md`를 따른다.
 
 ## 2. 데이터 팩 생성
@@ -33,7 +33,7 @@ python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --
 ```bash
 cd <스크래치패드>
 python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --sprint "26_3_#4" --out ./pack
-# 진행 중인 스프린트면
+# 진행 중인 스프린트면 (대시보드의 이번 스프린트)
 python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --current --out ./pack
 ```
 
