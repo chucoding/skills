@@ -11,14 +11,21 @@
 (그쪽은 담당자·상태 동기화와 실적 기입을 한다).
 
 sprint-worktime-report 플러그인의 `collect.py`·`compute.py` 를 그대로 재사용한다.
-collect.collect() 는 활성 스프린트만 보므로, 아래 두 지점만 갈아끼워 지난 스프린트를 태운다.
+collect.collect() 는 대시보드의 **이번 스프린트**만 보므로, 아래 세 지점만 갈아끼워 지난 스프린트를 태운다
+(플러그인 0.9.107 기준).
 
-  - search()        : 경로 A 의 openSprints() 질의를 `sprint = "<대상>"` 으로 바꾸고,
-                      경로 B(QA reopen)·경로 D(미완료 전부)는 빈 목록으로 만든다.
-                      회고는 **그 스프린트에 배정됐던 것**만 대상이기 때문이다.
-  - _active_sprint(): state 와 무관하게 대상 스프린트를 찾아 준다. closed 스프린트는
-                      state=="active" 가 아니라 원본 함수가 None 을 돌려주고,
-                      그러면 collect() 가 스프린트 메타를 못 찾아 죽는다.
+  - current_sprint(): 대상 스프린트를 그대로 돌려준다. collect() 가 경로 A 질의
+                      (`sprint = <id>`)와 스프린트 메타를 둘 다 이 값으로 정한다.
+  - next_sprint()   : 대상 바로 다음 회차를 상태(active/closed/future)와 무관하게 돌려준다.
+                      원본은 future 스프린트만 후보로 봐서, 다음 회차가 이미 시작했으면 None 이
+                      되고 sprint_days() 의 경계 규칙(다음 회차가 끝 날짜에 시작하면 전날까지)이
+                      빠진다(실측: 26_4_#1 마지막 날이 10-18 이 아니라 10-19 로 나왔다).
+  - search()        : 대상 스프린트 질의(경로 A)만 통과시키고, 경로 B(QA reopen)·경로 D(미완료 전부)는
+                      빈 목록으로 만든다. 회고는 **그 스프린트에 배정됐던 것**만 대상이기 때문이다.
+
+플러그인 구조가 바뀌어 패치가 빗나가면 조용히 다른 스프린트나 빈 결과를 내지 않고 종료한다
+(실측: 0.9.107 에서 경로 A 가 openSprints() 에서 current_sprint() 로 바뀌자 지난 스프린트 대신
+활성 스프린트를 0건으로 수집했다).
 """
 import argparse
 import json
@@ -106,7 +113,10 @@ def _kst_date(iso, midnight_back=False):
 
 
 def patch_for_sprint(collect, target):
-    """collect 모듈을 대상 스프린트용으로 갈아끼운다. 찾은 스프린트 dict 를 돌려준다."""
+    """collect 모듈을 대상 스프린트용으로 갈아끼운다.
+
+    (찾은 스프린트 dict, 다음 회차 dict 또는 None, 경로 A 질의를 봤는지 담는 dict)를 돌려준다.
+    """
     all_sprints = sprints(collect)
     # 같은 이름의 스프린트가 둘인 경우가 실재한다(실측: 26_3_#3 2건). 이름이 겹치면
     # --list 가 보여 주는 id 로 지목할 수 있어야 한다.
@@ -124,21 +134,67 @@ def patch_for_sprint(collect, target):
     sprint = found[0]
     sid = sprint["id"]
 
+    missing = [n for n in ("current_sprint", "next_sprint", "sprint_days", "sprint_time", "search", "_iso")
+               if not callable(getattr(collect, n, None))]
+    if missing:
+        sys.exit(f"collect.py 에 {', '.join(missing)} 가 없습니다 — 플러그인 구조가 바뀌었습니다. "
+                 "patch_for_sprint() 의 패치 지점을 다시 정하세요.")
+
+    following = following_sprint(collect, sprint, all_sprints)
     orig_search = collect.search
+    seen = {"a": False}
 
     def search(jql, *a, **kw):
-        if "openSprints()" in jql:
-            return orig_search(
-                f"project = {collect.PROJECT} AND assignee = {collect.ASSIGNEE_ID} "
-                f"AND sprint = {sid} ORDER BY updated DESC", *a, **kw)
+        if f"sprint = {sid} " in f"{jql} ":
+            seen["a"] = True
+            return orig_search(jql, *a, **kw)
+        if re.search(r"\bsprint\s*(=|in)\s", jql):
+            sys.exit(f"collect.py 가 대상 스프린트(id {sid})가 아닌 스프린트를 질의했습니다 — "
+                     f"current_sprint 패치가 빗나갔습니다. 질의: {jql}")
         # 경로 B(QA reopen)·경로 D(미완료 전부)는 '지금 열려 있는 일' 이라 회고 대상이 아니다.
         return []
 
     collect.search = search
-    collect._active_sprint = lambda issue: next(
-        (sp for sp in (issue.get("fields", {}).get(collect.SPRINT_FIELD) or [])
-         if sp.get("id") == sid), None)
-    return sprint
+    collect.current_sprint = lambda *a, **kw: sprint
+    collect.next_sprint = lambda *a, **kw: following
+    return sprint, following, seen
+
+
+def following_sprint(collect, sprint, all_sprints):
+    """대상 스프린트 바로 다음 회차 — 상태와 무관하게 고른다. 없으면 None.
+
+    플러그인 next_sprint() 와 같은 기준으로 고르되 future 로 거르지 않는다. 후보는 이 보드 목록 전부와,
+    대상을 만든 보드가 이 보드가 아니면 그 보드 목록이다. 시작이 대상 끝 하루 앞 ~ 나흘 뒤인 것만 보고
+    대상과 같은 보드 → 이 보드 → 그 밖 순, 그다음 먼저 시작하는 것을 고른다.
+
+    - 다른 보드 회차: 이 보드 목록에 PM 보드 26_3_#6(id 2157)처럼 남의 회차가 섞인다. 시작 시각으로는 못 가르므로
+      보드 순위로 가른다. 26_4_#2(id 2245)는 IT부서 보드(1224)가 만들었지만 남은 후보가 없어 그대로 고른다.
+    - 쌍둥이 스프린트: 같은 이름(26_3_#3 id 2077·2078)은 후보에서 뺀다. 시작 날짜가 같아 다음 회차가 아니다.
+    - 플러그인의 팀 비율(team_share)은 쓰지 않는다. 폴러 상태 폴더에 캐시를 쓰기 때문이다.
+    """
+    end = collect.sprint_time(sprint.get("endDate"))
+    if not end:
+        return None
+    origin = sprint.get("originBoardId")
+    cands = {s["id"]: s for s in all_sprints}
+    if origin not in (None, collect.BOARD_ID):
+        try:
+            res = collect._call(f"/rest/agile/1.0/board/{origin}/sprint", params={"maxResults": 50})
+            for s in res.get("values") or []:
+                cands.setdefault(s["id"], s)
+        except collect.JiraError:
+            pass
+    picks = []
+    for s in cands.values():
+        start = collect.sprint_time(s.get("startDate"))
+        if s["id"] == sprint["id"] or s.get("name") == sprint.get("name") or not start:
+            continue
+        if end - timedelta(days=1) <= start <= end + timedelta(days=4):
+            rank = (0 if s.get("originBoardId") == origin
+                    else 1 if s.get("originBoardId") in (None, collect.BOARD_ID) else 2)
+            picks.append((rank, start, s["id"], s))
+    picks.sort(key=lambda p: p[:3])
+    return picks[0][3] if picks else None
 
 
 def _canonical_repo(slug):
@@ -330,20 +386,25 @@ def main():
     else:
         if not args.sprint:
             sys.exit("--sprint 또는 --current 중 하나가 필요합니다. 목록은 --list.")
-        sprint = patch_for_sprint(collect, args.sprint)
-        print(f"재수집: {sprint['name']} ({sprint.get('startDate','')[:10]} ~ "
-              f"{sprint.get('endDate','')[:10]})")
-        try:
-            data = collect.collect()
-        except collect.JiraError as e:
-            # collect 는 '활성 스프린트' 를 못 찾았다고 말하지만, 여기서는 원인이 하나다 —
-            # 그 스프린트에 이 담당자의 티켓이 한 건도 없다(같은 이름의 빈 쌍둥이 스프린트가
-            # 실재한다: 26_3_#3 은 2077·2078 두 개이고 티켓은 한쪽에만 있다).
-            if "활성 스프린트" in str(e):
-                sys.exit(f"스프린트 {sprint['name']}(id {sprint['id']})에 "
-                         f"{os.environ.get('WORKTIME_ASSIGNEE_NAME', '담당자')}의 티켓이 "
-                         f"없습니다. --list 로 같은 이름의 다른 id 를 확인하세요.")
-            raise
+        sprint, following, seen = patch_for_sprint(collect, args.sprint)
+        print(f"재수집: {sprint['name']} (id {sprint['id']}, {_kst_date(sprint.get('startDate'))} ~ "
+              f"{_kst_date(sprint.get('endDate'), True)}), 다음 회차: "
+              + (f"{following['name']} (id {following['id']})" if following else "없음"))
+        data = collect.collect()
+        got = data.get("sprint") or {}
+        if (got.get("name") != sprint["name"]
+                or got.get("jira_start") != collect._iso(sprint["startDate"])):
+            sys.exit(f"수집 결과의 스프린트가 대상과 다릅니다: {got.get('name')} "
+                     f"({got.get('jira_start')}) — 대상 {sprint['name']}(id {sprint['id']}). "
+                     "플러그인 구조가 바뀌어 current_sprint 패치가 빗나갔습니다.")
+        if not seen["a"]:
+            sys.exit("collect.py 가 대상 스프린트 질의(경로 A)를 보내지 않았습니다 — "
+                     "플러그인 구조가 바뀌었습니다. patch_for_sprint() 의 search 패치를 다시 정하세요.")
+        if not data.get("issues"):
+            # 같은 이름의 빈 쌍둥이 스프린트가 실재한다: 26_3_#3 은 2077·2078 두 개이고 티켓은 한쪽에만 있다.
+            sys.exit(f"스프린트 {sprint['name']}(id {sprint['id']})에 "
+                     f"{os.environ.get('WORKTIME_ASSIGNEE_NAME', '담당자')}의 티켓이 "
+                     f"없습니다. --list 로 같은 이름의 다른 id 를 확인하세요.")
         inp = os.path.join(args.out, "input.json")
         json.dump(data, open(inp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         compute = os.path.join(plugin_scripts_dir(), "compute.py")
@@ -357,7 +418,8 @@ def main():
 
     sp_meta = res.get("sprint") or {}
     start = (sp_meta.get("start") or "")[:10]
-    end = display_end(sp_meta["end"]) if sp_meta.get("end") else ""
+    # last_day 는 플러그인 sprint_days() 가 다음 회차까지 보고 정한 마지막 날이다. 없는 옛 결과만 끝 시각으로 계산한다.
+    end = sp_meta.get("last_day") or (display_end(sp_meta["end"]) if sp_meta.get("end") else "")
     prs, pr_errors = gh_merged_prs(start, end) if start and end else ([], ["스프린트 구간 없음"])
 
     pack = summarize(res, prs, pr_errors)

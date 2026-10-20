@@ -11,7 +11,13 @@ python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --
 python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --current --out ./pack    # 진행 중
 ```
 
-`--sprint` 는 Jira 에서 다시 수집한다. 폴러의 `results.json` 은 **활성 스프린트만** 담고 있어 지난 스프린트 회고에는 못 쓴다. 스크립트가 `collect.py` 의 스프린트 질의만 갈아끼워 같은 계산기(`compute.py`)를 태우므로, 대시보드와 같은 규칙으로 계산된 값이 나온다.
+`--sprint` 는 Jira 에서 다시 수집한다. 폴러의 `results.json` 은 **활성 스프린트만** 담고 있어 지난 스프린트 회고에는 못 쓴다. 스크립트가 `collect.py` 의 세 지점만 갈아끼워 같은 계산기(`compute.py`)를 태우므로, 대시보드와 같은 규칙으로 계산된 값이 나온다.
+
+- `current_sprint()` 는 대상 스프린트를 돌려준다. 티켓 질의와 스프린트 메타가 이 값으로 정해진다.
+- `next_sprint()` 는 대상 바로 다음 회차를 상태와 무관하게 돌려준다. 원본은 예정(future) 스프린트만 보므로, 다음 회차가 이미 시작했으면 경계 규칙(다음 회차가 끝 날짜에 시작하면 그 전날까지)이 빠져 경계일이 두 스프린트에 겹친다.
+- `search()` 는 대상 스프린트 질의만 통과시키고 QA reopen과 미완료 전부 경로는 빈 목록으로 만든다.
+
+플러그인 구조가 바뀌어 패치가 빗나가면 스크립트가 종료한다. 수집 결과의 스프린트 이름이나 시작 시각이 대상과 다르거나, 대상이 아닌 스프린트를 질의하거나, 대상 스프린트 질의가 아예 없을 때다. 이때는 플러그인 `collect.py` 를 읽고 `patch_for_sprint()` 의 패치 지점을 다시 정한다.
 
 산출물:
 
