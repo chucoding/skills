@@ -9,7 +9,7 @@ Jira 티켓의 작업 맥락을 읽고 필요한 참고 화면을 Orca 탭으로
 
 탭 대상은 5종이다 — Jira(현재 티켓과 메인 티켓 2개), Notion, Figma, Swagger, 개발 페이지.
 
-이 스킬은 `homedot-cloud-devteam` 플러그인에서 옮겨 왔다. 본문의 `ticket-start`, `setup`, `sprint-worktime-report`는 그 플러그인의 스킬을 가리킨다.
+이 스킬은 `homedot-cloud-devteam` 플러그인에서 옮겨 왔다. 본문에 접두 없이 적은 `ticket-start`는 `homedot-cloud-devteam:ticket-start`를 가리킨다.
 
 ## 안전 경계
 
@@ -71,10 +71,17 @@ HomeDot wiki MCP의 `wiki_search`와 `wiki_get`을 사용할 수 있는지 확�
 4. 모두 불가능하면 현재 티켓의 Jira URL만 열고 접근 수단 부족을 보고
 
 ```bash
+KEY="HDIT-1"
+[[ "$KEY" =~ ^[A-Z][A-Z0-9]+-[0-9]+$ ]] || { echo "키 형식 아님: $KEY"; exit 1; }
 set -a; . ~/.config/homedot-worktime/config.env; set +a
-curl -s -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
-  "https://rsquare.atlassian.net/rest/api/3/issue/HDIT-1?fields=summary,description,issuelinks,parent,comment,attachment,issuetype"
+# 자격 증명은 셸 내장 printf로 stdin 설정에 넣어 curl 인자(argv)에 남기지 않음
+printf 'user = "%s:%s"\n' "$JIRA_EMAIL" "$JIRA_API_TOKEN" \
+  | curl -sS --fail-with-body -K - \
+    "https://rsquare.atlassian.net/rest/api/3/issue/$KEY?fields=summary,description,issuelinks,parent,subtasks,comment,attachment,issuetype"
 ```
+
+- **키는 `^[A-Z][A-Z0-9]+-[0-9]+$`에 맞을 때만 REST 경로와 탭 URL에 쓴다.** 착수 입력, Linked work items, `issuelinks`에서 온 키 모두 같다. 맞지 않으면 그 키를 쓰지 않고 보고한다.
+- **HTTP 오류는 읽기 실패다.** `--fail-with-body`가 401·403·404를 비정상 종료로 돌려준다. 이때 받은 오류 본문을 티켓으로 읽지 않는다. 링크가 없는 티켓으로 처리하면 §2-1이 메인 티켓을 `후보 없음`으로 잘못 확정한다. 2·3번 읽기 수단으로 내려가고, 그것도 없으면 접근 수단 부족을 보고한다.
 
 이 스킬의 REST 사용은 **읽기(GET)뿐이다.** POST·PUT 같은 쓰기 호출은 하지 않는다 — 상태 전환은 `ticket-start` 소관이다(`안전 경계`).
 
@@ -84,24 +91,28 @@ config.env 접근이 권한 분류기에 거부되면 우회하지 않는다. �
 
 ### 2-1. Jira 탭 2개 결정
 
-Jira 탭은 **현재 티켓**과 **메인 티켓** 두 개다. 현재 티켓은 착수 입력의 키이고, 메인 티켓은 현재 티켓의 연관 티켓 중 이 작업이 출발한 티켓이다. 판정은 §2에서 읽은 `issuelinks`만으로 하며 추가 조회를 하지 않는다.
+Jira 탭은 **현재 티켓**과 **메인 티켓** 두 개다. 현재 티켓은 착수 입력의 키이고, 메인 티켓은 현재 티켓의 연관 티켓 중 이 작업이 출발한 티켓이다. 판정은 §2에서 읽은 `issuelinks`와 `description`만으로 하며 추가 조회를 하지 않는다.
 
-탭 URL은 `https://rsquare.atlassian.net/browse/<키>`다. 키는 대문자로 쓰고 쿼리를 붙이지 않는다.
+탭 URL은 `https://rsquare.atlassian.net/browse/<키>`다. 키는 대문자로 쓰고 쿼리를 붙이지 않는다. 키 형식 검증은 §2와 같다.
 
 메인 티켓은 아래 순서로 먼저 걸리는 것 하나를 고른다.
 
 | 순서 | 조건 | 근거 |
 |---|---|---|
+| 0 | 현재 티켓이 `HOM`이고, 링크 유형 `Cloners`의 상대 프로젝트가 `HDIT` | HOM으로 착수하면 개발 작업이 HDIT 클론에 있다 |
 | 1 | 링크 유형 `Cloners`이고 상대 프로젝트가 `HOM` | QA 원본. `ticket-start`의 HOM ↔ HDIT 연동과 같은 판정 |
 | 2 | 링크 유형 `Cloners`이고 상대 프로젝트가 `HC` | 기획 원본 |
 | 3 | 링크 유형 `Relates`이고 상대가 `HC`이며, 현재 티켓 설명에 `요청:`이나 `출처:` 바로 뒤에 그 키가 있음 | HC 댓글 요청으로 만든 파생 티켓. `chucoding:jira`의 원본 판정과 같다 |
 | 4 | 링크 유형 `Relates`이고 링크 객체에 상대가 `outwardIssue`로 들어 있음 | 작업 중 따로 만든 파생 티켓. `chucoding:jira`의 파생 티켓 링크가 새 티켓을 inward, 출발 티켓을 outward로 건다 |
 
-- 착수 입력이 HOM 키면 현재 티켓은 HOM이고, 메인 티켓 자리에는 `Cloners`로 연결된 HDIT 티켓을 연다. 개발 작업이 그쪽에 있기 때문이다.
-- 링크 방향(`clones`, `is cloned by`)은 1~3번에서 가리지 않는다. 4번만 방향을 본다.
+- 0순위는 현재 티켓이 HOM일 때만 본다. HOM이 아니면 1순위부터 본다.
+- 링크 방향(`clones`, `is cloned by`)은 0~3번에서 가리지 않는다. 4번만 방향을 본다.
+- 3번의 설명은 ADF라서 `text` 노드와 링크 URL(`marks`의 `href`)까지 이어 읽는다. `요청:`과 키가 다른 노드로 나뉘어 있어도 이어진 텍스트로 비교한다.
 - 키는 뒤에 숫자가 더 이어지지 않는 정확한 키로 비교한다. `HC-29`는 `HC-293`과 일치하지 않는다.
+- 4번은 링크 방향만으로 고른 **추정**이다. 사람이 손으로 건 Relates는 방향이 임의일 수 있다. §9 보고에 `추정`을 붙여 사용자가 탭을 보고 고칠 수 있게 한다.
+- 4번 후보에 HOM과 HDIT가 함께 있으면 HDIT를 연다. `chucoding:jira`가 파생 링크를 출발 HDIT와 그 HOM 원본에 함께 걸기 때문이다. 두 후보는 한 작업이고, 개발 맥락은 HDIT에 있다.
 - 같은 순서에 후보가 여럿이면 현재 티켓 설명에 키가 적힌 후보를 고른다. 그래도 여럿이면 `issuelinks` 순서상 첫 후보를 연다. 나머지 키는 §9 보고에 남긴다. **되묻지 않는다** — `실행 계약`대로 이 스킬은 떼어서 돌아도 막히지 않아야 한다.
-- 1~4번이 모두 비었으면 현재 티켓 탭만 열고 메인 티켓은 `후보 없음`으로 보고한다. HDIT `QA_Bug`처럼 티켓 자신이 원본인 경우가 여기 든다. 근거로 살펴본 링크 유형과 건수를 적는다.
+- 0~4번이 모두 비었으면 현재 티켓 탭만 열고 메인 티켓은 `후보 없음`으로 보고한다. HDIT `QA_Bug`처럼 티켓 자신이 원본인 경우가 여기 든다. 근거로 살펴본 링크 유형과 건수를 적는다.
 - 부모(Epic)나 `Blocks` 같은 다른 링크 유형은 메인 티켓으로 쓰지 않는다.
 
 ### 3. 링크 찾기
@@ -254,7 +265,7 @@ Swagger는 로컬이 아니라 개발 환경의 고정 주소를 사용한다.
 - 검색·추론 링크는 페이지 제목, 위키 매핑에 기록된 Figma 노드, Swagger UI 식별 중 하나 이상을 확인한다. **개발 페이지는 §4의 후보 탭 확인이 검증이다** — `orca tab list`가 돌려준 탭이 곧 실행 중인 dev 서버이고, 로드 성공 여부는 §8-2의 `goto` 응답으로 확정된다.
 - 확신도가 낮다는 이유로 열지 않고 넘기지 않는다. 대상별 최상위 후보를 열고 근거를 보고한다.
 
-후보에 점수를 매기지 않는다. 아래 순서로 먼저 맞는 후보를 곧바로 연다. Notion만 걸리는 후보를 전부 열고, 나머지 대상은 하나만 연다(§3).
+후보에 점수를 매기지 않는다. 아래 순서로 먼저 맞는 후보를 곧바로 연다. Notion은 걸리는 후보를 전부 열고(§3), Jira는 현재 티켓과 메인 티켓 두 개를 열며(§2-1), 나머지 대상은 하나만 연다.
 
 1. Jira 본문·댓글·첨부에 직접 명시된 링크
 2. 페이지 제목에 Jira 키가 정확히 일치하는 후보
@@ -409,8 +420,9 @@ fi
 메인 티켓이 없거나 후보가 여럿인 경우의 줄은 이렇게 적는다.
 
 ```text
-- Jira 메인    미개방            후보 없음 — issuelinks 2건(Blocks 1, Relates inward 1), §2-1 1~4순위 해당 없음
+- Jira 메인    미개방            후보 없음 — issuelinks 2건(Blocks 1, Relates inward 1), §2-1 0~4순위 해당 없음
 - Jira 메인    열림(새 탭)        HC-2993 (Relates 요청 출처, §2-1 3순위) · 같은 순위 후보 HC-3001 미개방
+- Jira 메인    열림(새 탭)        HDIT-4380 (Relates outward, §2-1 4순위 추정) · 같은 작업의 HOM-2417은 HDIT 우선으로 미개방
 ```
 
 `goto` 가 실패한 경우의 줄은 이렇게 적는다.
@@ -427,7 +439,7 @@ fi
 - 탭을 열기 전에 5종 각각의 탐색 도구 호출을 확인 — §7 게이트를 통과
 - `wiki_search`·`wiki_get`을 탭을 열기 전에 수행하고, Notion 후보가 없을 때 `notion-search`까지 확장한 뒤 두 검색어를 보고에 남김
 - 다섯 종류의 URL을 중복 없이 열거나, 미개방 대상은 생략 유형(`후보 없음`·`의도적 생략`)과 확인 항목을 함께 보고
-- Notion은 §3의 4단계에 걸리는 후보를 전부 열고 각각의 탐색 방법을 보고 — 복수 개방은 Notion에만 적용
+- Notion은 §3의 4단계에 걸리는 후보를 전부 열고 각각의 탐색 방법을 보고 — 후보 복수 개방은 Notion에만 적용하고, Jira 2개는 §2-1의 고정 구성
 - 개발 페이지와 스토리북은 §4대로 `orca tab list`의 후보 탭을 §8-2의 `goto --page`로 이동시키고, 후보 탭이 없으면 새 탭을 만들지 않고 미개방으로 끝냄 — 포트를 훑지 않음
 - 이동 전 URL을 기록하고, `goto` 실패 시 그 URL과 실패 사유를 §9 보고에 남김
 - 새 탭은 §8-1대로 병렬 생성하고, 각 응답의 `ok`로 요청 수락을 확인한 뒤 `orca tab list`의 `url`·`loadError`로 실제 개방을 확인 — 응답을 버리지 않음
