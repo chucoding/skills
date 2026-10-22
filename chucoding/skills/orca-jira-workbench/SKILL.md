@@ -231,7 +231,7 @@ def origins(url):
             sp = up.urlsplit(u)
             # http·https만 채택하고 userinfo 를 버리도록 netloc 대신 hostname·port 로 조립
             if sp.scheme in ("http", "https") and sp.hostname == "localhost":
-                port = sp.port or 80
+                port = sp.port or (443 if sp.scheme == "https" else 80)
                 out.append((port, f"{sp.scheme}://localhost:{port}"))
         except ValueError:
             continue  # 범위 밖 포트 같은 비정상 URL은 그 URL만 건너뜀
@@ -315,7 +315,7 @@ Swagger는 로컬이 아니라 개발 환경의 고정 주소를 사용한다.
 
 애매하다고 탭을 비워두지 않는다. 틀린 탭은 사용자가 화면을 보고 주소창에서 바로 고치는 편이 빠르다. 후보가 하나도 없는 대상만 열지 않고 이유를 보고한다. 탐색 도구를 호출하지 않은 대상은 §7 게이트에서 걸러야 하고, 보고에서는 `후보 없음`이 아니라 `미탐색`으로 적는다.
 
-개발 페이지에는 "대신 열지 않는다"는 금지가 성립하지 않는다 — §4의 이동은 사람이 이미 만든 탭을 쓰므로 워크벤치가 임의의 origin을 고를 여지가 없다. 후보 탭이 없으면 §4대로 미개방으로 끝낸다.
+개발 페이지에는 "대신 열지 않는다"는 금지가 성립하지 않는다 — §4의 이동은 사람이 이미 만든 탭을 쓰므로 워크벤치가 임의의 origin을 고를 여지가 없다. 후보 탭이 없으면 §4대로 미개방으로 끝내고, 후보 탭이 여럿이어도 §4대로 이동하지 않고 `후보 복수`로 미개방한다.
 
 중복 비교 전에 URL을 정규화한다.
 
@@ -403,9 +403,9 @@ PAGE_ID="<browserPageId>"
 TARGET="<목표 URL>"
 
 # 이동 전 URL을 먼저 기록한다 — 실패하면 이 탭이 에러 페이지로 덮인다
-# 인증 code 같은 쿼리가 보고에 남지 않게 쿼리와 fragment를 뺀 값만 기록
+# 인증 code 같은 쿼리와 userinfo가 보고에 남지 않게 쿼리, fragment, userinfo를 뺀 값만 기록
 BEFORE=$(orca tab list --worktree active --json \
-  | jq -r --arg id "$PAGE_ID" '.result.tabs[]? | select(.browserPageId == $id) | (.url // "") | sub("[?#].*$"; "")')
+  | jq -r --arg id "$PAGE_ID" '.result.tabs[]? | select(.browserPageId == $id) | (.url // "") | sub("[?#].*$"; "") | sub("//[^/@]*@"; "//")')
 
 orca goto --worktree active --page "$PAGE_ID" --url "$TARGET" --json > "$DIR/goto.json" 2>&1
 if jq -e '.ok == true' "$DIR/goto.json" >/dev/null 2>&1; then
