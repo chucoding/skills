@@ -1,6 +1,6 @@
 ---
 name: orca-jira-workbench
-description: Jira 티켓과 함께 들어온 작업 요청에서 티켓 맥락을 읽고 현재 티켓과 연관 티켓의 메인 티켓, 관련 Notion, Figma, Swagger, 개발 페이지를 찾아 Orca 내장 브라우저 탭으로 여는 워크벤치 스킬. Jira·Notion·코드에는 쓰지 않으며 상태 전환도 하지 않는다. 유일한 예외는 개발 서버·스토리북 탭을 목표 화면으로 이동시키는 것이다. 프롬프트에 Jira URL이나 티켓 키(HDIT-1234 등)가 있으면, 뒤에 붙은 문구가 "작업 시작"·"작업해줘"·"개발할게" 같은 착수 요청이든 "고쳐줘"·"바꿔줘"·"통일해줘" 같은 구체적 수정 지시든 상관없이 코드나 파일을 만지기 전에 먼저 실행한다. Orca 워크스페이스를 Jira 티켓에서 만든 경우(시작 프롬프트의 Linked work items, 또는 사용자가 붙여넣은 Jira URL)와 워크벤치·작업 탭·참고 화면 구성 요청도 포함한다.
+description: Jira 티켓과 함께 들어온 작업 요청에서 티켓 맥락을 읽고 현재 티켓과 연관 티켓의 메인 티켓, 관련 Notion, Figma, Swagger, 개발 페이지를 찾아 Orca 내장 브라우저 탭으로 여는 워크벤치 스킬. Jira·Notion·코드에는 쓰지 않으며 상태 전환도 하지 않는다. 유일한 예외는 개발 서버·스토리북 탭을 목표 화면으로 이동시키는 것이다. 프롬프트에 Jira URL이나 티켓 키(HDIT-1234 등)가 있으면, 뒤에 붙은 문구가 "작업 시작"·"작업해줘"·"개발할게" 같은 착수 요청이든 "고쳐줘"·"바꿔줘"·"통일해줘" 같은 구체적 수정 지시든 상관없이 코드나 파일을 만지기 전에 먼저 실행한다. 상태 전환, 티켓 생성, 댓글, SP 산정처럼 Jira 운영만 요청할 때는 실행하지 않는다. Orca 워크스페이스를 Jira 티켓에서 만든 경우(시작 프롬프트의 Linked work items, 또는 사용자가 붙여넣은 Jira URL)와 워크벤치·작업 탭·참고 화면 구성 요청도 포함한다.
 ---
 
 # Orca Jira Workbench
@@ -35,6 +35,10 @@ Jira 티켓의 작업 맥락을 읽고 필요한 참고 화면을 Orca 탭으로
 **예외를 두지 않는다.** 조회로 끝날 질문인지 착수로 이어질 질문인지는 요청 문구로 갈리지 않으므로, 조회 어휘 목록을 만들지 않는다. Jira 참조가 있으면 구성하고, 조회로 끝나면 탭이 남는 것으로 끝난다.
 
 Jira URL이나 키가 없으면 추측해서 다른 티켓을 선택하지 않는다.
+
+티켓의 코드 작업이 아니라 상태 전환, 티켓 생성, 댓글, SP 산정 같은 Jira 운영만 요청받았으면 실행하지 않는다. 그 요청은 `chucoding:jira`가 맡는다.
+
+착수 때 함께 도는 `chucoding:jira`의 브랜치 이름 정렬과 `ticket-start`의 `개발중` 전환은 이 스킬과 순서 의존이 없다. 이 스킬은 Jira와 git에 쓰지 않으므로 앞뒤 어느 쪽에 돌아도 결과가 같다(`실행 계약`).
 
 ## 실행 계약 — 떼어서 돌려도 안전한 근거
 
@@ -71,16 +75,19 @@ HomeDot wiki MCP의 `wiki_search`와 `wiki_get`을 사용할 수 있는지 확�
 4. 모두 불가능하면 현재 티켓의 Jira URL만 열고 접근 수단 부족을 보고
 
 ```bash
-KEY="HDIT-1"
+# 서브셸로 감싸 검증 실패의 exit가 에이전트 셸 세션을 끝내지 않게 함
+(
+KEY=$(printf '%s' "hdit-1" | tr '[:lower:]' '[:upper:]')
 [[ "$KEY" =~ ^[A-Z][A-Z0-9]+-[0-9]+$ ]] || { echo "키 형식 아님: $KEY"; exit 1; }
 set -a; . ~/.config/homedot-worktime/config.env; set +a
 # 자격 증명은 셸 내장 printf로 stdin 설정에 넣어 curl 인자(argv)에 남기지 않음
 printf 'user = "%s:%s"\n' "$JIRA_EMAIL" "$JIRA_API_TOKEN" \
   | curl -sS --fail-with-body -K - \
     "https://rsquare.atlassian.net/rest/api/3/issue/$KEY?fields=summary,description,issuelinks,parent,subtasks,comment,attachment,issuetype"
+)
 ```
 
-- **키는 `^[A-Z][A-Z0-9]+-[0-9]+$`에 맞을 때만 REST 경로와 탭 URL에 쓴다.** 착수 입력, Linked work items, `issuelinks`에서 온 키 모두 같다. 맞지 않으면 그 키를 쓰지 않고 보고한다.
+- **키는 대문자로 바꾼 뒤 `^[A-Z][A-Z0-9]+-[0-9]+$`에 맞을 때만 REST 경로와 탭 URL에 쓴다.** 착수 입력, Linked work items, `issuelinks`에서 온 키 모두 같다. 맞지 않으면 그 키를 쓰지 않고 보고한다.
 - **HTTP 오류는 읽기 실패다.** `--fail-with-body`가 401·403·404를 비정상 종료로 돌려준다. 이때 받은 오류 본문을 티켓으로 읽지 않는다. 링크가 없는 티켓으로 처리하면 §2-1이 메인 티켓을 `후보 없음`으로 잘못 확정한다. 2·3번 읽기 수단으로 내려가고, 그것도 없으면 접근 수단 부족을 보고한다.
 
 이 스킬의 REST 사용은 **읽기(GET)뿐이다.** POST·PUT 같은 쓰기 호출은 하지 않는다 — 상태 전환은 `ticket-start` 소관이다(`안전 경계`).
@@ -94,6 +101,8 @@ config.env 접근이 권한 분류기에 거부되면 우회하지 않는다. �
 Jira 탭은 **현재 티켓**과 **메인 티켓** 두 개다. 현재 티켓은 착수 입력의 키이고, 메인 티켓은 현재 티켓의 연관 티켓 중 이 작업이 출발한 티켓이다. 판정은 §2에서 읽은 `issuelinks`와 `description`만으로 하며 추가 조회를 하지 않는다.
 
 탭 URL은 `https://rsquare.atlassian.net/browse/<키>`다. 키는 대문자로 쓰고 쿼리를 붙이지 않는다. 키 형식 검증은 §2와 같다.
+
+**링크 유형과 방향을 읽은 경우에만 판정한다.** REST나 Jira MCP는 `issuelinks`에 유형명(`Cloners`, `Relates`)과 `inwardIssue`/`outwardIssue`를 준다. 브라우저 snapshot은 이 구조를 주지 않는다. §2가 snapshot이나 4번(URL만 열기)까지 내려갔으면 메인 티켓을 판정하지 않고 `미탐색`으로 보고한다. 사유에 사용한 읽기 수단을 적는다. 구조를 못 읽은 채 `후보 없음`으로 적으면 링크가 없는 티켓과 구분되지 않는다.
 
 메인 티켓은 아래 순서로 먼저 걸리는 것 하나를 고른다.
 
@@ -110,7 +119,8 @@ Jira 탭은 **현재 티켓**과 **메인 티켓** 두 개다. 현재 티켓은 
 - 3번의 설명은 ADF라서 `text` 노드와 링크 URL(`marks`의 `href`)까지 이어 읽는다. `요청:`과 키가 다른 노드로 나뉘어 있어도 이어진 텍스트로 비교한다.
 - 키는 뒤에 숫자가 더 이어지지 않는 정확한 키로 비교한다. `HC-29`는 `HC-293`과 일치하지 않는다.
 - 4번은 링크 방향만으로 고른 **추정**이다. 사람이 손으로 건 Relates는 방향이 임의일 수 있다. §9 보고에 `추정`을 붙여 사용자가 탭을 보고 고칠 수 있게 한다.
-- 4번 후보에 HOM과 HDIT가 함께 있으면 HDIT를 연다. `chucoding:jira`가 파생 링크를 출발 HDIT와 그 HOM 원본에 함께 걸기 때문이다. 두 후보는 한 작업이고, 개발 맥락은 HDIT에 있다.
+- 4번 후보에 HOM과 HDIT가 함께 있으면 HOM을 후보에서 뺀다. `chucoding:jira`가 파생 링크를 출발 HDIT와 그 HOM 원본에 함께 걸기 때문이다. 두 후보는 한 작업이고, 개발 맥락은 HDIT에 있다. 이 제외는 아래 동률 규칙보다 먼저 적용한다.
+- 4번은 `chucoding:jira`가 원인 커밋의 티켓처럼 다른 연관 티켓에도 같은 방향으로 건 링크를 구분하지 못한다. 그래서 4번으로 열었으면 §9 보고에 다른 4번 후보의 키를 전부 남긴다.
 - 같은 순서에 후보가 여럿이면 현재 티켓 설명에 키가 적힌 후보를 고른다. 그래도 여럿이면 `issuelinks` 순서상 첫 후보를 연다. 나머지 키는 §9 보고에 남긴다. **되묻지 않는다** — `실행 계약`대로 이 스킬은 떼어서 돌아도 막히지 않아야 한다.
 - 0~4번이 모두 비었으면 현재 티켓 탭만 열고 메인 티켓은 `후보 없음`으로 보고한다. HDIT `QA_Bug`처럼 티켓 자신이 원본인 경우가 여기 든다. 근거로 살펴본 링크 유형과 건수를 적는다.
 - 부모(Epic)나 `Blocks` 같은 다른 링크 유형은 메인 티켓으로 쓰지 않는다.
@@ -122,9 +132,11 @@ Jira 탭은 **현재 티켓**과 **메인 티켓** 두 개다. 현재 티켓은 
 | 종류 | 기본 판별 |
 |---|---|
 | Jira | §2-1에서 정한 두 키. 티켓 본문에 적힌 다른 Jira URL은 탭 대상이 아니다 |
-| Notion | `notion.so`, `www.notion.so`, `app.notion.com` |
-| Figma | `figma.com/design`, `figma.com/file`, `figma.com/proto` |
-| Swagger | `dev.cloud.homedot.co.kr` host의 `swagger-ui` 경로 |
+| Notion | host가 `notion.so`, `www.notion.so`, `app.notion.com` 중 하나 |
+| Figma | host가 `figma.com` 또는 `www.figma.com`이고 경로가 `/design/`, `/file/`, `/proto/`로 시작 |
+| Swagger | host가 `dev.cloud.homedot.co.kr` 또는 그 하위 도메인이고 경로에 `swagger-ui`가 있음 |
+
+**host는 URL을 파싱한 `hostname`으로 판별한다.** 문자열 포함으로 판별하지 않는다. `https://evil.example/figma.com/design`이나 `notion.so.evil.example`은 어느 종류에도 걸리지 않는다. 하위 도메인은 Swagger 행처럼 표에 적힌 경우에만 허용하고, `.`으로 이어진 끝부분이 정확히 일치해야 한다. Jira 본문에서 온 외부 host는 `https`만 연다. `http`는 §4의 `localhost` 개발 페이지에만 쓴다.
 | 개발 페이지 | Wiki에 기록된 화면 경로, Orca 탭에 이미 떠 있는 개발 서버·스토리북의 `localhost` origin(§4), 사내 dev·preview host |
 
 `dev.cloud.homedot.co.kr`의 `swagger-ui` 경로는 사내 dev host 조건에도 걸리지만 Swagger로 분류한다. 개발 페이지로 넣으면 §5의 앵커 매핑을 건너뛰고 개발 페이지 탭이 비게 된다.
@@ -185,8 +197,10 @@ Figma 후보는 **티켓의 직접 링크와 위키 매핑에서만** 고른다.
 1. Wiki 문서의 `source_of_truth`, 화면 경로, 라우트 설명에서 대상 화면의 라우트를 확인한다.
 2. Wiki에 라우트가 없을 때만 현재 저장소의 라우터 파일과 라우트 상수를 읽기 전용으로 찾는다.
 3. `orca tab list --worktree active --json`에서 후보 탭을 찾는다. **앱과 스토리북은 별개 대상으로 구분한다.**
-4. 후보 탭이 있으면 `orca goto --worktree active --page <browserPageId> --url <목표 URL>`로 그 탭을 이동시킨다(§8-2).
-5. 후보 탭이 없으면 `미개방`으로 보고하고 끝낸다. **포트를 훑지 않고 새 탭도 만들지 않는다.**
+4. 후보 탭이 없으면 `미개방`으로 보고하고 끝낸다. **포트를 훑지 않고 새 탭도 만들지 않는다.**
+5. 후보 탭이 있으면 아래 `라우트 결합`(6~8)으로 목표 URL을 만든다.
+6~8. `라우트 결합` 참고
+9. 만든 목표 URL로 `orca goto --worktree active --page <browserPageId> --url <목표 URL>`를 실행해 그 탭을 이동시킨다(§8-2).
 
 #### 후보 탭 판별
 
@@ -198,7 +212,7 @@ Figma 후보는 **티켓의 직접 링크와 위키 매핑에서만** 고른다.
 - **그 밖의 `localhost` 탭은 후보가 아니다.** 작업시간 대시보드(`8787`) 같은 로컬 정적 서버 탭을 개발 페이지로 잡으면 §8-2의 이동이 사용자가 보던 화면을 덮는다.
 - **`redirect_uri` 쿼리를 디코드해 localhost origin을 꺼낸다.** 인증 리다이렉트가 걸린 탭은 host가 `auth.dev.cloud.homedot.co.kr`이라 host 매칭으로는 잡히지 않는다. 실측 사례: `https://auth.dev.cloud.homedot.co.kr/realms/a1/…?redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Flogin%2Fcallback` — 디코드하면 `http://localhost:3000`이 나오고, 이게 앱 후보다.
 - **워크트리 스코프가 포트 소유를 보장하지는 않는다.** 위 auth 탭은 design-system 워크트리의 탭인데 `redirect_uri`가 hub-react 소유 포트(`3000`)를 가리켰다. 사람이 직접 만든 탭이므로 이동을 막지는 않되, **그 origin을 §9 보고에 남겨** 사용자가 알아볼 수 있게 한다.
-- **후보가 한 대상에 여러 개면 이동시키지 않고 어느 탭인지 확인한다.** 이동은 파괴적이라(§8-2) 되돌릴 수 없다.
+- **후보가 한 대상에 여러 개면 이동시키지 않는다.** 이동은 파괴적이라(§8-2) 되돌릴 수 없다. 되묻지도 않는다 — `실행 계약`대로 떼어서 돌아도 막히지 않아야 한다. 그 대상은 `미개방`으로 두고, 후보 탭들의 `browserPageId`와 쿼리를 뺀 URL을 §9 보고에 남겨 사용자가 고르게 한다.
 
 ```bash
 orca tab list --worktree active --json | /usr/bin/python3 -c '
@@ -207,21 +221,41 @@ import json, sys, urllib.parse as up
 def origins(url):
     """탭 URL 자체의 origin 과 redirect_uri 에 인코딩된 origin 을 모두 돌려준다"""
     out = []
-    for u in [url] + up.parse_qs(up.urlsplit(url).query).get("redirect_uri", []):
-        sp = up.urlsplit(u)
-        if sp.hostname == "localhost":
-            out.append((sp.port or 80, f"{sp.scheme}://{sp.netloc}"))
+    try:
+        cands = [url] + up.parse_qs(up.urlsplit(url).query).get("redirect_uri", [])
+    except ValueError:
+        return out
+    for u in cands:
+        try:
+            sp = up.urlsplit(u)
+            if sp.hostname == "localhost":
+                out.append((sp.port or 80, f"{sp.scheme}://{sp.netloc}"))
+        except ValueError:
+            continue  # 범위 밖 포트 같은 비정상 URL은 그 URL만 건너뜀
     return out
 
-for t in json.load(sys.stdin)["result"]["tabs"]:
+def bare(url):
+    """보고용 URL — 인증 code 나 session_state 가 실릴 수 있는 쿼리와 fragment 제거"""
+    try:
+        sp = up.urlsplit(url)
+        return f"{sp.scheme}://{sp.netloc}{sp.path}"
+    except ValueError:
+        return "(파싱 불가 URL)"
+
+for t in json.load(sys.stdin).get("result", {}).get("tabs", []):
+    page = t.get("browserPageId")
+    if not page:
+        continue
     for port, origin in origins(t.get("url") or ""):
-        print(port, t["browserPageId"], origin, t.get("url"), sep="\t")
+        print(port, page, origin, bare(t.get("url") or ""), sep="\t")
 '
 ```
 
-`redirect_uri` 는 퍼센트 인코딩이라 `parse_qs` 가 디코드해 준다. 출력의 포트 칼럼으로 앱(`server.port` 대역)과 스토리북(`6006`)을 가르고, 그 밖의 포트는 버린다. `origin` 칼럼이 탭 URL과 다르면 auth 리다이렉트에서 꺼낸 값이므로 §9 보고에 그 origin 을 남긴다.
+`redirect_uri` 는 퍼센트 인코딩이라 `parse_qs` 가 디코드해 준다. 마지막 칼럼은 쿼리를 뺀 URL이다. `/auth/login/callback` 같은 탭은 쿼리에 인증 `code`가 실릴 수 있어 출력과 보고에 쿼리를 남기지 않는다(§6). 출력의 포트 칼럼으로 앱(`server.port` 대역)과 스토리북(`6006`)을 가르고, 그 밖의 포트는 버린다. `origin` 칼럼이 탭 URL과 다르면 auth 리다이렉트에서 꺼낸 값이므로 §9 보고에 그 origin 을 남긴다.
 
 #### 라우트 결합
+
+위 5단계에서 이어지고, 끝나면 9단계의 `goto`로 간다.
 
 6. 티켓 화면명과 일치하는 라우트 상수를 확인하고 후보 탭의 origin과 결합해 목표 URL을 만든다.
 7. 동적 파라미터가 필요한 라우트는 실제 식별자를 확인하지 못하면 임의 값을 만들지 않는다.
@@ -261,7 +295,7 @@ Swagger는 로컬이 아니라 개발 환경의 고정 주소를 사용한다.
 
 ### 6. URL 검증과 중복 제거
 
-- 명시 링크도 host와 scheme을 검증한다.
+- 명시 링크도 host와 scheme을 검증한다. 기준은 §3 표 아래의 `hostname` 일치 규칙이다.
 - 검색·추론 링크는 페이지 제목, 위키 매핑에 기록된 Figma 노드, Swagger UI 식별 중 하나 이상을 확인한다. **개발 페이지는 §4의 후보 탭 확인이 검증이다** — `orca tab list`가 돌려준 탭이 곧 실행 중인 dev 서버이고, 로드 성공 여부는 §8-2의 `goto` 응답으로 확정된다.
 - 확신도가 낮다는 이유로 열지 않고 넘기지 않는다. 대상별 최상위 후보를 열고 근거를 보고한다.
 
@@ -284,7 +318,7 @@ Swagger는 로컬이 아니라 개발 환경의 고정 주소를 사용한다.
 - 일반 추적 파라미터(`utm_*`) 제거
 - host는 소문자로 비교
 - 기본 포트와 끝 `/` 차이는 중복 비교에서 정규화
-- 인증 토큰·서명·세션 파라미터는 보고하거나 저장하지 않음
+- 인증 토큰·서명·세션 파라미터는 보고하거나 저장하지 않음. 기존 탭 URL(§4 후보, §8-2 이동 전 URL)은 쿼리와 fragment를 뺀 `scheme://host/path`로만 출력하고 보고한다
 - Jira는 `/browse/<키>` 경로의 키만 대문자로 비교한다. `selectedIssue` 같은 쿼리는 무시한다
 
 `orca tab list --worktree active --json` 결과와 정규화 URL이 같으면 다시 열지 않는다. 후보끼리도 같은 규칙으로 비교한다 — 같은 페이지의 `/p/<id>` 형태와 슬러그가 붙은 정규 주소는 한 건이다.
@@ -342,6 +376,7 @@ for u in "${URLS[@]}"; do
       end
   ' "$DIR/tabs.json"
 done
+rm -rf "$DIR"
 ```
 
 - **응답을 `>/dev/null`로 버리지 않는다.** `ok: false`는 탭이 만들어지지 않았다는 뜻이고, 출력을 버리면 이 실패가 드러나지 않는다.
@@ -363,18 +398,20 @@ PAGE_ID="<browserPageId>"
 TARGET="<목표 URL>"
 
 # 이동 전 URL을 먼저 기록한다 — 실패하면 이 탭이 에러 페이지로 덮인다
+# 인증 code 같은 쿼리가 보고에 남지 않게 쿼리와 fragment를 뺀 값만 기록
 BEFORE=$(orca tab list --worktree active --json \
-  | jq -r --arg id "$PAGE_ID" '.result.tabs[] | select(.browserPageId == $id) | .url')
+  | jq -r --arg id "$PAGE_ID" '.result.tabs[]? | select(.browserPageId == $id) | .url | sub("[?#].*$"; "")')
 
 orca goto --worktree active --page "$PAGE_ID" --url "$TARGET" --json > "$DIR/goto.json" 2>&1
 if jq -e '.ok == true' "$DIR/goto.json" >/dev/null 2>&1; then
   echo "이동 성공: $TARGET"
 else
-  echo "이동 실패: $TARGET — 이동 전 URL $BEFORE · $(cat "$DIR/goto.json")"
+  echo "이동 실패: $TARGET — 이동 전 URL $BEFORE · $(jq -c '.error // .' "$DIR/goto.json" 2>/dev/null || cat "$DIR/goto.json")"
 fi
+rm -rf "$DIR"
 ```
 
-응답 파일은 §8-1과 같이 `mktemp -d` 아래에 둔다. 작업 저장소에 `goto.json`을 남기면 워크벤치가 워크트리를 더럽힌다 — 이 스킬의 쓰기는 탭 조작뿐이라는 계약(`안전 경계`)에 어긋난다.
+응답 파일은 §8-1과 같이 `mktemp -d` 아래에 두고 끝나면 지운다. 작업 저장소에 `goto.json`을 남기면 워크벤치가 워크트리를 더럽힌다 — 이 스킬의 쓰기는 탭 조작뿐이라는 계약(`안전 경계`)에 어긋난다.
 
 - **`goto`는 `tab create`보다 검증이 강하다.** 죽은 포트로 각각 호출한 실측 결과다. `tab create --url http://localhost:39998/`은 `ok: true`를 돌려줘 실패가 드러나지 않지만, `goto --page … --url http://localhost:39999/`는 `ok: false` / `browser_error` / `ERR_CONNECTION_REFUSED (-102)`를 돌려준다.
 - 따라서 **이 경로에서는 §8-1의 2단계 `tab list` 재대조가 필요 없다.** 호출 1회로 개방과 로드가 함께 확정된다. §8-1이 경고하는 `ok: true`가 로드를 보증하지 않는 문제가 `goto`에는 없다.
