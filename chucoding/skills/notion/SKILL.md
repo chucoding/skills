@@ -24,17 +24,18 @@ Notion 페이지 URL이나 UUID가 주어지거나 Notion 문서를 읽고 쓰�
     - 상태 다이어그램, 모듈과 컴포넌트 간 의존 관계
     - 아키텍처 결정 비교
     - 아이콘으로 표현할 요소가 없는 시스템 구성도
-  - 그렇다면 `drawio`로 그려 PNG 이미지로 넣는다. Slack, GitHub, AWS, DB처럼 구성 요소가 외부 서비스나 인프라이고, 그 정체를 아이콘으로 보여 주는 시스템 구성도가 여기에 든다. 아이콘으로 표현할 요소가 하나도 없으면 drawio를 쓰지 않는다. Mermaid를 drawio로 변환한 그림은 네모 상자뿐이라 Mermaid와 다를 것이 없기 때문이다.
+  - 그렇다면 `drawio`로 그려 PNG 이미지로 넣는다. Slack, GitHub, AWS, PostgreSQL처럼 구성 요소가 외부 서비스나 인프라이고, 그 정체를 아이콘으로 보여 주는 시스템 구성도가 여기에 든다. 아이콘으로 표현할 요소가 하나도 없으면 drawio를 쓰지 않는다. Mermaid를 drawio로 변환한 그림은 네모 상자뿐이라 Mermaid와 다를 것이 없기 때문이다.
 - drawio로 그릴 때 순서는 다음과 같다.
   1. `Skill` 도구로 `drawio` 스킬을 호출한다. 그 스킬은 Mermaid 작성을 우선 권하지만 이 경우에는 따르지 않고 draw.io XML을 직접 작성한다. 좌표는 손으로 맞추지 않고 `--layout horizontalFlow`나 `verticalFlow`로 배치한다.
   2. 그림에 나오는 외부 서비스와 인프라마다 아이콘 셰이프를 쓴다. 스타일 이름은 추측하지 않고 아래 순서로 찾은 값을 그대로 쓴다.
      - 내장 셰이프 라이브러리: draw.io 공식 셰이프 색인(`https://raw.githubusercontent.com/jgraph/drawio-mcp/main/shape-search/search-index.json`)을 받아 `title`과 `tags`로 찾고, 그 항목의 `style`을 그대로 쓴다. AWS(`mxgraph.aws4.*`), Azure, GCP, Kubernetes와 일부 웹 로고(`mxgraph.weblogos.github` 등)가 여기에 있다.
-     - 색인에 없는 브랜드 로고(Slack 등): draw.io 아이콘 서비스를 `curl 'https://icons.diagrams.net/api/icons/search?q=<서비스 이름>&p=0&c=5'`로 검색해 결과의 `url`을 고르고, 스타일 `shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=default;imageAspect=0;aspect=fixed;image=<url>`로 넣는다. 이 이미지는 원격 URL이라 내보낼 때 네트워크가 필요하고, PNG에 포함된 XML도 그 URL을 가리킨다.
-     - 두 곳 모두에 없는 요소만 일반 도형으로 그린다.
+     - 색인에 없는 브랜드 로고(Slack 등): draw.io 아이콘 서비스를 `curl 'https://icons.diagrams.net/api/icons/search?q=<서비스 이름>&p=0&c=5'`로 검색해 결과 중 제목이 서비스 이름과 맞는 로고의 `url`을 고르고, 스타일 `shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=default;imageAspect=0;aspect=fixed;image=<url>`로 넣는다. 이 이미지는 원격 URL이라 내보낼 때 네트워크가 필요하고, PNG에 포함된 XML도 그 URL을 가리킨다.
+     - 두 곳 모두에서 맞는 결과가 없는 요소만 일반 도형으로 그린다. 색인 다운로드나 검색 요청 자체가 실패한 것은 결과가 없는 것과 다르므로 6단계로 간다.
+     - 찾고 나니 아이콘을 쓴 요소가 하나도 없으면 drawio를 그만두고 Mermaid로 그린다.
   3. `drawio` 스킬의 내보내기 절차대로 XML을 포함한 PNG(`<이름>.drawio.png`)로 내보낸다. 내보낸 PNG는 draw.io에서 다시 열어 고칠 수 있다. 내보낸 PNG를 `Read`로 열어 아이콘이 실제로 그려졌는지 확인한다.
   4. `notion-create-file-upload`에 파일 이름을 넘겨 업로드 URL을 받고, Bash의 `curl`로 받은 `upload_headers`를 모두 붙여 `file` 필드에 PNG를 담은 multipart POST 요청을 한 번 보낸다. 한 번에 올릴 수 있는 파일은 20 MiB까지다.
   5. 응답의 `suggested_markdown`을 새 페이지면 `notion-create-pages`의 본문에, 기존 페이지면 `notion-update-page`로 원하는 위치에 넣는다. 업로드한 파일은 페이지에 넣기 전까지 임시 상태라 만료되면 지워지므로 바로 넣는다.
-  6. draw.io 데스크톱 CLI가 없어 PNG를 만들지 못했거나, 아이콘이 그려지지 않았거나, 파일이 20 MiB를 넘거나, 업로드가 실패하면 받은 오류를 그대로 보여주고 Mermaid로 대신 그릴지 사용자에게 묻는다.
+  6. draw.io 데스크톱 CLI가 없어 PNG를 만들지 못했거나, 셰이프 색인 다운로드나 아이콘 검색이 실패했거나, 아이콘이 그려지지 않았거나, 파일이 20 MiB를 넘거나, 업로드가 실패하면 받은 오류를 그대로 보여주고 Mermaid로 대신 그릴지 사용자에게 묻는다.
 - 이번 세션에서 한 작업을 노션에 작성하라는 요청을 받으면 페이지 맨 끝에 `## 결정내역` 섹션을 하나 넣는다. 사용자가 나중에 자기 결정을 다시 검토하려고 남기는 섹션이므로, 이 세션에서 한 질문과 요청, 그에 대한 결정을 시간 순서대로 아래 형식으로 적는다.
   - 항목마다 `<번호>. <사용자의 질문이나 요청> > <결정>` 한 줄로 쓴다. 질문과 요청은 사용자가 쓴 말을 그대로 옮기고, 너무 길면 뜻을 바꾸지 않는 범위에서 줄인다. 구분자 `>`는 이스케이프하지 않는다.
   - 결정에는 무엇을 하기로 했는지 쓰고, 근거가 있으면 짧게 덧붙인다. 답하면서 추천했지만 사용자가 아직 고르지 않은 것은 그 항목의 결정 칸 안에 `추천`으로 표시해 결정과 구분한다.
