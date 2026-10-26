@@ -17,20 +17,21 @@ Notion 페이지 URL이나 UUID가 주어지거나 Notion 문서를 읽고 쓰�
 - Notion 페이지에 쓰는 내용은 한국어로 작성한다.
 - 섹션은 `#` 제목으로 구분하고, 비교나 정리에는 테이블을 사용한다.
 - 예시 코드는 언어 태그를 포함한 코드 블록으로 작성한다.
-- 다이어그램 도구는 그림의 종류를 먼저 보고, 시스템 구성도일 때만 아이콘 필요 여부를 본다.
-  - 처리 흐름과 동작을 그리는 그림은 외부 서비스가 나와도 Mermaid로 노션 본문에 바로 넣는다.
+- 다이어그램 도구는 그림의 종류를 먼저 보고, 시스템 구성도일 때만 아이콘을 쓸 요소가 있는지 본다.
+  - 처리 흐름과 동작, 코드 내부 구조를 그리는 그림은 외부 서비스가 나와도 Mermaid로 노션 본문에 바로 넣는다.
     - 데이터 흐름(API 호출, 번들 분리 등)
     - 시퀀스 다이어그램(사용자 플로우)
-    - 상태 다이어그램, 모듈과 컴포넌트 간 의존 관계
+    - 상태 다이어그램
+    - 코드 안 모듈과 컴포넌트 간 의존 관계. 실행 환경이나 외부 서비스가 함께 나오면 시스템 구성도로 본다.
     - 아키텍처 결정 비교
-  - 시스템을 이루는 실행 환경과 외부 서비스를 그리는 시스템 구성도는 "외부 서비스나 인프라를 아이콘으로 보여야 의미가 사는가"로 고른다.
-    - Slack, GitHub, AWS, PostgreSQL처럼 구성 요소의 정체를 아이콘으로 보여 줄 수 있으면 `drawio`로 그려 PNG 이미지로 넣는다.
+  - 시스템을 이루는 실행 환경과 외부 서비스를 그리는 시스템 구성도는 아이콘으로 정체를 보여 줄 외부 서비스나 인프라가 있는지로 고른다.
+    - Slack, GitHub, AWS, PostgreSQL처럼 아이콘을 쓸 요소가 하나 이상이면 `drawio`로 그려 PNG 이미지로 넣는다.
     - 아이콘으로 표현할 요소가 하나도 없으면 drawio를 쓰지 않고 Mermaid로 그린다. Mermaid를 drawio로 변환한 그림은 네모 상자뿐이라 Mermaid와 다를 것이 없기 때문이다.
-- 사용자가 "스펙 문서 작성해줘"처럼 설계나 구축 결과를 정리하는 스펙 문서를 요청하면 개요 바로 뒤에 다이어그램 섹션 두 개를 이 순서로 둔다. 스펙 문서가 아닌 노션 작성에서는 이 구성을 강제하지 않고 위 기준만 따른다.
+- 사용자가 "스펙 문서 작성해줘"처럼 설계나 구축 결과를 정리하는 스펙 문서를 요청하면 개요 바로 뒤에 다이어그램 섹션 두 개를 이 순서로 둔다. 개요가 없으면 페이지 맨 앞에 두고, 그릴 대상이 없는 섹션은 만들지 않는다. 스펙 문서가 아닌 노션 작성에서는 이 구성을 강제하지 않고 위 기준만 따른다.
   1. `# 구성도`: 시스템을 이루는 실행 환경과 외부 서비스(GitHub, Slack, AWS, DB 등)를 그린 시스템 구성도다. 위 기준대로 아이콘으로 보일 요소가 있으면 drawio, 없으면 Mermaid로 그린다.
   2. `# 전체 흐름`: 처리 흐름이나 시퀀스를 Mermaid로 그린다.
 - drawio로 그릴 때 순서는 다음과 같다.
-  1. `Skill` 도구로 `drawio` 스킬을 호출한다. 그 스킬은 Mermaid 작성을 우선 권하지만 이 경우에는 따르지 않고 draw.io XML을 직접 작성한다. 좌표는 손으로 맞추지 않고 `--layout horizontalFlow`나 `verticalFlow`로 배치한다.
+  1. `Skill` 도구로 `drawio` 스킬을 호출한다. 그 스킬은 Mermaid 작성을 우선 권하지만 이 경우에는 따르지 않고 draw.io XML을 직접 작성한다. 좌표는 손으로 맞추지 않고 `--layout horizontalFlow`로 배치한다. 단계가 위에서 아래로 이어지는 그림이면 `verticalFlow`를 쓴다.
   2. 그림에 나오는 외부 서비스와 인프라마다 아이콘 셰이프를 쓴다. 스타일 이름은 추측하지 않고 아래 순서로 찾은 값을 그대로 쓴다.
      - 내장 셰이프 라이브러리: draw.io 공식 셰이프 색인(`https://raw.githubusercontent.com/jgraph/drawio-mcp/main/shape-search/search-index.json`)을 받아 `title`과 `tags`로 찾고, 그 항목의 `style`을 그대로 쓴다. AWS(`mxgraph.aws4.*`), Azure, GCP, Kubernetes와 일부 웹 로고(`mxgraph.weblogos.github` 등)가 여기에 있다.
      - 색인에 없는 브랜드 로고(Slack 등): draw.io 아이콘 서비스를 `curl 'https://icons.diagrams.net/api/icons/search?q=<서비스 이름>&p=0&c=5'`로 검색해 결과 중 제목이 서비스 이름과 맞는 로고의 `url`을 고르고, 스타일 `shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=default;imageAspect=0;aspect=fixed;image=<url>`로 넣는다. 이 이미지는 원격 URL이라 내보낼 때 네트워크가 필요하고, PNG에 포함된 XML도 그 URL을 가리킨다.
