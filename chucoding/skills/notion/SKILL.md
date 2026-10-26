@@ -1,9 +1,9 @@
 ---
 name: notion
-description: Notion 페이지를 읽거나 수정할 때 따르는 작성 규칙. Notion 마크다운 규격(테이블 문법, 특수문자 이스케이프, 구분선 금지), 한국어 작성과 Mermaid 다이어그램 활용, 접근 실패 시 공유 설정 안내를 포함한다. Notion 링크나 페이지 UUID가 주어지거나 Notion 문서를 읽고 쓰라는 요청이 있을 때 사용한다.
+description: Notion 페이지를 읽거나 수정할 때 따르는 작성 규칙. Notion 마크다운 규격(테이블 문법, 특수문자 이스케이프, 구분선 금지), 한국어 작성과 Mermaid 다이어그램 활용, MCP 인증이 끊겼을 때 로그인 창을 띄우는 재연결 절차, 접근 실패 시 공유 설정 안내를 포함한다. Notion 링크나 페이지 UUID가 주어지거나 Notion 문서를 읽고 쓰라는 요청이 있을 때 사용한다.
 ---
 
-Notion 페이지 URL이나 UUID가 주어지거나 Notion 문서를 읽고 쓰라는 요청이 있을 때 이 스킬을 적용한다. 수정 전 조회와 최소 범위 수정, Notion 마크다운 규격(`notion://docs/notion-flavored-markdown-spec`) 확인은 Notion MCP 도구 설명을 따르고, 이 스킬은 그 위에 더하는 작성 규칙과 접근 실패 안내만 다룬다.
+Notion 페이지 URL이나 UUID가 주어지거나 Notion 문서를 읽고 쓰라는 요청이 있을 때 이 스킬을 적용한다. 수정 전 조회와 최소 범위 수정, Notion 마크다운 규격(`notion://docs/notion-flavored-markdown-spec`) 확인은 Notion MCP 도구 설명을 따르고, 이 스킬은 그 위에 더하는 작성 규칙과 연결, 접근 실패 처리만 다룬다.
 
 ### 1. Notion용 마크다운
 
@@ -23,6 +23,21 @@ Notion 페이지 URL이나 UUID가 주어지거나 Notion 문서를 읽고 쓰�
   - 시퀀스 다이어그램(사용자 플로우)
   - 아키텍처 결정 비교
 
-### 3. 접근 실패 안내
+### 3. 연결과 접근 실패
 
-- 조회나 수정이 권한 문제로 실패하면 사용자에게 Notion URL 확인과 공유 설정(연동 계정 접근 허용)을 안내한다.
+Notion 작업을 시작할 때 첫 도구 호출 전에 `ToolSearch`로 `select:mcp__notion__notion-fetch,mcp__notion__authenticate,mcp__notion__complete_authentication`을 조회해 연결 상태를 판정한다. 조회는 있는 도구만 돌려준다. 작업 도중 도구 호출이 인증 오류(401, 토큰 만료)로 실패하면 `notion-fetch`가 남아 있어도 인증이 끊긴 것으로 보고, `authenticate`가 있으면 아래 재연결 순서를, 없으면 `/mcp` 안내를 따른다. 재연결 순서는 한 작업 요청 안에서 한 번만 수행한다.
+
+- `notion-fetch`가 있으면 연결된 상태다. 원래 작업을 진행한다.
+- `notion-fetch`가 없고 `authenticate`가 있으면 인증이 끊긴 상태다. 사용자에게 `/mcp` 입력을 먼저 요청하지 않고 아래 순서로 재연결한다.
+- `notion-fetch`와 `authenticate`가 모두 없으면 서버가 연결되지 않은 상태다. 사용자에게 알리고 `/mcp`에서 `notion` 서버 상태를 확인하도록 안내한다.
+
+재연결 순서는 다음과 같다.
+
+1. `mcp__notion__authenticate`를 호출해 인증 URL을 받는다.
+2. macOS면 `open "<URL>"`로 기본 브라우저에서 연다. 그 밖의 환경에서는 열지 않는다. 어느 경우든 URL을 응답에 함께 적는다.
+3. 사용자에게 브라우저에서 승인한 뒤 알려 달라고 하고 응답을 기다린다. 승인을 대신할 방법은 없다.
+4. 사용자가 승인했다고 하면 위 조회를 다시 한다. `notion-fetch`가 있으면 원래 작업을 이어 간다.
+5. 여전히 `notion-fetch`가 없으면 승인 뒤 브라우저 주소창에 남은 `http://localhost:<port>/callback?code=...&state=...` 전체 URL을 달라고 해서 `mcp__notion__complete_authentication`의 `callback_url`로 넘기고, 4단계의 조회를 한 번 더 한다. `notion-fetch`가 있으면 원래 작업을 이어 간다.
+6. 그래도 `notion-fetch`가 없거나, 사용자가 승인을 거부했거나 콜백 URL을 주지 못했거나, `authenticate`가 URL을 주지 않았거나, 도구 호출이 오류를 돌려주면 받은 오류(없으면 도구가 여전히 없다는 사실)를 그대로 보여주고 `/mcp`에서 `notion`을 직접 재인증하도록 안내한다. 같은 절차를 자동으로 반복하지 않는다.
+
+인증은 되어 있는데 조회나 수정이 권한 문제로 실패하면 사용자에게 Notion URL 확인과 공유 설정(연동 계정 접근 허용)을 안내한다.
