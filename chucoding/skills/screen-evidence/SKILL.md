@@ -220,7 +220,7 @@ bash <이 스킬 디렉토리>/scripts/encode.sh "$FF" ~/.cache/chucoding/screen
   ```bash
   cd ~/.cache/chucoding/screen-evidence/<키>
   gh pr create -R <owner>/<repo> --head <브랜치> --base <base> --title "…" --body-file <본문 파일> \
-    --attach ./<키>-as-is.gif --attach ./<키>-to-be.gif --assignee @me --label <라벨>
+    --attach ./<키>-as-is.gif --attach ./<키>-to-be.gif --assignee @me
   # 리뷰 반영으로 TO-BE를 다시 남겼을 때만. 이미 열린 PR의 본문 교체
   gh pr edit <번호> -R <owner>/<repo> --body-file <본문 파일> --attach ./<키>-as-is.gif --attach ./<키>-to-be.gif
   ```

@@ -65,7 +65,7 @@ python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --
 
 챌린지 한 건마다 아래 순서로 읽는다. 앞에서 나온 것이 우선이다.
 
-1. **PR 본문** — `gh pr view <번호> --repo <저장소> --json title,body,additions,deletions,changedFiles`. 이 팀 PR 본문에는 `Purpose`·`Decision / Trade-offs`가 있어 **판단 근거가 그대로 들어 있다.** 챌린지의 `판단` 블록은 대부분 여기서 나온다.
+1. **PR 본문** — `gh pr view <번호> --repo <저장소> --json title,body,additions,deletions,changedFiles`.
 2. **Jira 티켓** — 설명과 댓글. 결정 사항, 배제한 대안, 기획과 주고받은 내용.
 3. **커밋 본문** — `git log --format='%H%n%s%n%b' <범위>`. 제목이 아니라 본문을 읽는다.
 4. **리뷰 코멘트** — 지적받아 방향을 바꾼 지점이 `어려웠던 지점`의 재료다.
