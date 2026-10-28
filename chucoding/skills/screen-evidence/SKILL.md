@@ -48,7 +48,7 @@ description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE
 | 시점 | 하는 일 | 호출하는 스킬 |
 |------|------|------|
 | PR 초안 제시 전 | GIF나 이미지를 만들어 PR 본문에 `--attach`로 넣는다 | `chucoding:commit-pr` |
-| 개발완료 처리 | 같은 파일을 HDIT 티켓과 원본(HC, HOM) 티켓 댓글에 넣는다. `QA_Bug` HDIT는 완료 댓글과 합친 한 댓글에 넣는다 | `chucoding:jira` |
+| 개발완료 처리 | 같은 파일을 HDIT 티켓과 원본(HOM) 티켓 댓글에 넣는다. `QA_Bug` HDIT는 완료 댓글과 합친 한 댓글에 넣는다 | `chucoding:jira` |
 
 - 녹화와 캡처는 PR 초안을 제시하기 전에 한 번 한다. 개발완료 때 다시 하지 않는다.
 - PR 생성 뒤 리뷰 반영으로 화면이 다시 바뀌었으면, Jira 댓글을 쓰기 전에 TO-BE만 다시 남긴다. 이때 `gh pr edit --attach`로 PR 본문의 TO-BE도 함께 바꾼다.
@@ -182,7 +182,7 @@ bash <이 스킬 디렉토리>/scripts/encode.sh "$FF" ~/.cache/chucoding/screen
 
 ### 민감정보 확인
 
-증빙은 PR과 Jira(HDIT, HC, HOM)에 그대로 올라가고, Jira 게시는 개발완료 전환에 딸려 따로 승인받지 않는다. 그래서 파일을 만든 직후에 확인한다.
+증빙은 PR과 Jira(HDIT, HOM)에 그대로 올라가고, Jira 게시는 개발완료 전환에 딸려 따로 승인받지 않는다. 그래서 파일을 만든 직후에 확인한다.
 
 - GIF는 프레임 시트가 아니라 프레임 전체로 확인한다. 시트는 최대 12장 샘플이라 잠깐 비친 화면을 놓친다. 프레임 폴더의 JPEG를 전부 Read로 훑거나, 프레임이 많으면 `tile`로 여러 장의 시트를 나눠 만들어 전부 본다.
 
@@ -249,7 +249,7 @@ bash <이 스킬 디렉토리>/scripts/encode.sh "$FF" ~/.cache/chucoding/screen
 
 v3 ADF로 미디어를 넣으려면 media 파일 id(UUID)가 필요한데, `GET /rest/api/3/attachment/<id>`의 `mediaApiFileId`는 null로 온다. 그래서 v2 위키 마크업으로 한 번 써서 Jira가 media 노드를 만들게 한 뒤, v3로 다시 쓴다. 티켓마다 아래를 따로 한다.
 
-1. **파일을 그 티켓에 첨부한다.** `POST /rest/api/3/issue/<키>/attachments`, multipart, 헤더 `X-Atlassian-Token: no-check`, 파일 `Content-Type`은 `image/gif` 또는 `image/png`. media는 티켓 단위라 HDIT에 붙인 첨부를 원본 티켓에서 쓸 수 없다. HDIT, HC, HOM 각각에 첨부한다. `QA_Bug` HDIT의 합친 댓글은 그 댓글에 쓸 파일을 그 HDIT에 한 번만 첨부한다.
+1. **파일을 그 티켓에 첨부한다.** `POST /rest/api/3/issue/<키>/attachments`, multipart, 헤더 `X-Atlassian-Token: no-check`, 파일 `Content-Type`은 `image/gif` 또는 `image/png`. media는 티켓 단위라 HDIT에 붙인 첨부를 원본 티켓에서 쓸 수 없다. HDIT와 HOM 각각에 첨부한다. `QA_Bug` HDIT의 합친 댓글은 그 댓글에 쓸 파일을 그 HDIT에 한 번만 첨부한다.
 2. **v2로 댓글을 처음 쓴다.** `POST /rest/api/2/issue/<키>/comment`에 머리 문장과 파일 마크업을 함께 보낸다. 파일은 `!<파일명>|width=<w>,height=<h>!`로 쓴다. 원본 댓글이거나 `QA_Bug` HDIT의 합친 댓글이면 멘션을 `[~accountid:<accountId>]`로 이 단계에 넣는다. 멘션 알림은 댓글을 처음 만들 때 확실히 가므로, 수정 단계에서 처음 넣지 않는다. 파일명은 그 티켓에 첨부한 이름이고, width와 height는 파일 실제 크기다(GIF 960×600, 이미지 1440×900. 다르면 `sips`로 잰 값). **width와 height를 둘 다 준다.** width만 주면 Jira가 height를 엉뚱하게 채워(실측 960×183) 플레이어가 납작해진다.
 3. **media id를 읽는다.** `GET /rest/api/3/issue/<키>/comment/<id>`의 본문을 재귀로 훑어 `type: media` 노드의 `attrs.id`를 모은다. 첨부한 파일 수와 다르면 멈추고 보고한다.
 4. **v3로 전체를 다시 쓴다.** `PUT /rest/api/3/issue/<키>/comment/<id>`에 머리 문단과 미디어 블록을 담는다. media `attrs`는 `{"id": "<media id>", "type": "file", "collection": "<읽은 값>", "width": <w>, "height": <h>}`로 둔다. `collection`은 3단계에서 읽은 값을 그대로 쓰고, width와 height는 2단계와 같다.
@@ -278,7 +278,7 @@ AS-IS가 없으면 `layoutSection` 없이 캡션 paragraph와 `mediaSingle`(`lay
 
 - HDIT 댓글이면 머리 문단은 `[개발완료]`, `hardBreak`, `테스트방법 : …`이다.
 - `QA_Bug` HDIT의 합친 댓글이면 머리는 멘션 문단, 본문 제목, 목록, `[개발완료]`와 `테스트방법 :` 문단 순이다. 2단계의 멘션 삽입, 3단계의 멘션 확인, 4단계의 mention 노드 재사용은 아래 원본 댓글과 같이 한다.
-- 원본(HC, HOM) 댓글이면 머리는 `chucoding:jira`의 `원본 티켓 완료 댓글` ADF 전체(멘션 문단, 본문 제목, 목록)이고, 그 뒤에 같은 미디어 블록을 붙인다. 3단계에서 media id와 함께 `type: mention` 노드의 `attrs.id`도 모아, 의도한 멘션 대상이 모두 있는지 확인한다. 빠졌으면 4단계로 가지 말고 그 사실을 보고하고 되묻는다. 4단계에서는 3단계에서 읽은 mention 노드를 그대로 옮겨 쓴다.
+- 원본(HOM) 댓글이면 머리는 `chucoding:jira`의 `원본 티켓 완료 댓글` ADF 전체(멘션 문단, 본문 제목, 목록)이고, 그 뒤에 같은 미디어 블록을 붙인다. 3단계에서 media id와 함께 `type: mention` 노드의 `attrs.id`도 모아, 의도한 멘션 대상이 모두 있는지 확인한다. 빠졌으면 4단계로 가지 말고 그 사실을 보고하고 되묻는다. 4단계에서는 3단계에서 읽은 mention 노드를 그대로 옮겨 쓴다.
 - 2단계 이후 실패하면 재시도하지 말고 남은 댓글 id와 상태를 보고한다. v2로 쓴 댓글이 그대로 남아 있으면 지우지 않고 그 사실을 보고한다.
 
 ### 화면 확인
