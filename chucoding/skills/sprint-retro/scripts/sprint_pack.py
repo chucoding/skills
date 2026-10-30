@@ -320,7 +320,7 @@ def summarize(res, prs, pr_errors):
             "머지": len(prs),
             "저장소별": {r: sum(1 for p in prs if p["repo"] == r) for r in {p["repo"] for p in prs}},
             # 티켓 키가 없거나, 있어도 이 스프린트 티켓 목록에 없는 PR.
-            # 회고 5절의 "티켓 밖에 있던 작업" 후보다 — 릴리스 PR 도 여기 섞인다.
+            # 회고 3절 작업 기록의 티켓 밖 PR 이자 4절 `잘 안 된 지점` 의 재료다 — 릴리스 PR 도 여기 섞인다.
             "스프린트_티켓에_없는_PR": [f"{p['repo']}#{p['number']} {p['title']}"
                                 for p in orphan_prs],
             "조회_실패": pr_errors,
@@ -349,23 +349,6 @@ def summarize(res, prs, pr_errors):
             "장기_열림_의심": [f"{i['key']} {h(i.get('work_in_sprint_biz_seconds'))}h"
                           for i in iss if i.get("long_open")],
         },
-        "챌린지_후보": [
-            {
-                "key": i["key"],
-                "summary": i["summary"],
-                "status": i.get("status"),
-                "실적h": h(i.get("work_in_sprint_biz_seconds")),
-                "reopen": (i.get("reopen_count") or 0) + (i.get("qa_reopen_count") or 0),
-                # 방치된 체류가 실적으로 잡힌 행 — 시간 순으로 맨 위에 오므로 여기 같이 실어
-                # 목록만 보고 '가장 큰 작업' 으로 오해하지 않게 한다.
-                "장기열림": bool(i.get("long_open")),
-                "qa": i.get("qa_key"),
-                "pr": [f"{p['repo']}#{p['number']} +{p['additions']}/-{p['deletions']} "
-                       f"{p['changedFiles']}파일"
-                       for p in prs if (p.get("jira") or "").upper() == i["key"]],
-            }
-            for i in by_hours[:15]
-        ],
         "reopen_있음": [f"{i['key']} x{(i.get('reopen_count') or 0) + (i.get('qa_reopen_count') or 0)}"
                       for i in reopened],
         "부록_티켓별_실적": [
@@ -458,9 +441,9 @@ def main():
     pack_path = os.path.join(args.out, "retro-pack.json")
     json.dump(pack, open(pack_path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
-    view = {k: v for k, v in pack.items() if k not in ("prs", "부록_티켓별_실적", "챌린지_후보")}
+    view = {k: v for k, v in pack.items() if k not in ("prs", "부록_티켓별_실적")}
     print(json.dumps(view, ensure_ascii=False, indent=1))
-    print(f"\n팩: {pack_path}  (챌린지 후보·부록·PR 원본은 이 파일 안)")
+    print(f"\n팩: {pack_path}  (부록·PR 원본은 이 파일 안)")
 
 
 if __name__ == "__main__":
