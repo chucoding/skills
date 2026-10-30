@@ -1,6 +1,6 @@
 {
   "name": "chucoding",
-  "description": "AGENTS.md에서 분리한 개인 작업 규칙. 커밋과 PR 작성, Jira 티켓 운영, GitHub 이슈 착수와 종료, Notion 문서 작업, ego-browser 다이얼로그 무력화, 다른 저장소로의 핸드오프, Firebase 개발 환경 점검과 배포, 화면 변경의 AS-IS와 TO-BE GIF와 이미지 증빙, 스프린트 회고, 원본 Jira 티켓을 보고 연결된 개발 티켓을 설계해 만드는 절차, Jira 티켓 맥락을 Orca 탭으로 여는 워크벤치 스킬과 커밋 초안 누락, 생성한 Jira 티켓의 SP 누락을 막는 Stop 훅을 포함한다.",
+  "description": "AGENTS.md에서 분리한 개인 작업 규칙. 커밋과 PR 작성, Jira 티켓 운영, GitHub 이슈 착수와 종료, Notion 문서 작업, ego-browser 다이얼로그 무력화, 다른 저장소로의 핸드오프, Firebase 개발 환경 점검과 배포, 화면 변경의 AS-IS와 TO-BE GIF와 이미지 증빙, 스프린트 회고, 채용 공고 매칭, 원본 Jira 티켓을 보고 연결된 개발 티켓을 설계해 만드는 절차, Jira 티켓 맥락을 Orca 탭으로 여는 워크벤치 스킬과 커밋 초안 누락, 생성한 Jira 티켓의 SP 누락을 막는 Stop 훅을 포함한다.",
   "version": "2.0.0",
   "author": {
     "name": "chucoding"
