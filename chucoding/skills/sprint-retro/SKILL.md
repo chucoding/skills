@@ -27,7 +27,7 @@ python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --
 
 - 사용자가 이름이나 기간을 지정했으면 그 값을 쓴다.
 - 지정이 없으면 **가장 최근에 닫힌 스프린트**를 기본값으로 제시하고 AskUserQuestion으로 확인한다. 같은 이름의 스프린트가 둘일 수 있으므로(실측: `26_3_#3` → id 2077·2078) 기간까지 보여 주고 고르게 한 뒤, 겹치면 이름 대신 **id로** 넘긴다.
-- 진행 중인 스프린트를 회고하려는 것이면 그렇게 확인받는다. 그때는 2단계에서 `--current`를 쓴다. `--current`는 대시보드의 이번 스프린트를 쓰는데, 활성 스프린트가 끝났으면 시작 전인 다음 회차일 수 있다. 출력의 스프린트 이름이 회고하려는 스프린트인지 확인한다.
+- 진행 중인 스프린트를 회고하려는 것이면 그렇게 확인받는다. 그때도 2단계에서 `--list`의 **id로** `--sprint <id>`를 쓴다. `--current`는 쓰지 않는다. 폴러의 `results.json`을 그대로 가져와 백로그 전부와 QA reopen 경로 티켓까지 섞이기 때문이다. 실측 2026-10-30: 26_4_#2를 `--current`로 뽑자 101건(Backlog 56건, QA `DONE` 6건 포함)이 나왔고 `--sprint 2245`는 38건이었다. 계획 SP도 82.98과 20.29로 갈렸다.
 - 스프린트가 확정되면 `Skill` 도구로 `chucoding:job-match`를 호출한다. 채용 공고 조사는 팩에 의존하지 않고 둘 다 몇 분씩 걸리므로 2단계와 병렬로 시작한다. job-match는 확정한 스프린트와 2단계 팩을 그대로 받아 쓰고, 결과 파일도 자기 `docs/`에 따로 저장한다.
 
 ## 2. 데이터 팩 생성
@@ -35,8 +35,8 @@ python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --
 ```bash
 cd <스크래치패드>
 python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --sprint "26_3_#4" --out ./pack
-# 진행 중인 스프린트면 (대시보드의 이번 스프린트)
-python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --current --out ./pack
+# 진행 중인 스프린트도 id로 재수집한다 (--current 는 백로그가 섞인다, 1단계 참고)
+python3 ~/.claude/skills/chucoding/skills/sprint-retro/scripts/sprint_pack.py --sprint 2245 --out ./pack
 ```
 
 - 지난 스프린트는 Jira에서 재수집하므로 티켓 수에 따라 2~5분 걸린다. 한 번만 돌리고 `pack/retro-pack.json`을 재사용한다.
