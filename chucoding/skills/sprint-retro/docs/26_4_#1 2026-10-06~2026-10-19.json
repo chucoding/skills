@@ -1,0 +1,2811 @@
+{
+ "jira_base": "https://rsquare.atlassian.net",
+ "board_label": "Cloud개발팀 보드 (HDIT · 1079)",
+ "assignee": "서현석",
+ "sprint": {
+  "name": "26_4_#1",
+  "start": "2026-10-06T00:00:00+09:00",
+  "jira_start": "2026-10-06T00:00:08+09:00",
+  "end": "2026-10-20T00:00:00+09:00",
+  "last_day": "2026-10-19",
+  "jira_end": "2026-10-19T00:00:00+09:00"
+ },
+ "generated": "2026-10-20T15:37:01.119465+09:00",
+ "overlap_split": true,
+ "capacity": {
+  "basis": "평일 09:00~18:00, 점심 제외 (하루 8시간) · 마지막주 금요일 4h · 공휴일 제외 — 캐파는 일정 기준, 출근 기록은 경과·실작업에만",
+  "attendance_window": true,
+  "attendance_days": 7,
+  "total_biz_seconds": 259200.0,
+  "elapsed_biz_seconds": 278040.0,
+  "work_biz_seconds": 146340.0,
+  "union_biz_seconds": 222187.717,
+  "leave_seconds": 28800.0,
+  "wip_avg": 0.53,
+  "off_days": [
+   "2026-10-05",
+   "2026-10-07",
+   "2026-10-09"
+  ]
+ },
+ "issues": [
+  {
+   "key": "HDIT-4030",
+   "summary": "[인사관리] 직원정보 본인 삭제 불가 정책 추가",
+   "type": "작업_기획",
+   "status": "작업완료",
+   "created": "2026-10-08T11:15:05.093+0900",
+   "labels": [
+    "Cloud"
+   ],
+   "start_first": "2026-10-08T11:23:17.666000+09:00",
+   "done_first": "2026-10-08T11:37:00.127000+09:00",
+   "done_last": "2026-10-08T11:37:00.127000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-4026",
+     "summary": "[인사관리] 직원정보 본인 삭제 불가 정책 추가",
+     "status": "완료",
+     "link_type": "Cloners"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-08T11:23:17.666000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 0,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 822.461,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-08T11:23:00.000+0900",
+   "jira_actual_end": "2026-10-08T11:37:00.000+0900",
+   "jira_start_date": "2026-10-08",
+   "jira_end_date": "2026-10-08",
+   "jira_story_points": 0.125,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 3600,
+   "worklog_intervals": [
+    [
+     "2026-10-08T11:23:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-08T11:23:17.666+0900",
+     "from": "Backlog",
+     "to": "작업중"
+    },
+    {
+     "t": "2026-10-08T11:37:00.127+0900",
+     "from": "작업중",
+     "to": "작업완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-4031",
+   "summary": "[FE][공통] autoHeight 그리드에서 세로 스크롤 후 가로 스크롤 시 새로 드러난 열이 늦게 그려지는 현상 개선",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-08T11:31:18.497+0900",
+   "labels": [],
+   "start_first": "2026-10-08T14:54:16.627000+09:00",
+   "done_first": "2026-10-14T13:15:03.526000+09:00",
+   "done_last": "2026-10-14T13:15:03.526000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-3434",
+     "summary": "[FE] [2.0 입주] 세대관리 상세 > 사업장 사업자번호 조건부 필수 기준 정의 (상호만 사용하는 단지 저장 허용)",
+     "status": "개발완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4132",
+     "summary": "[FE][공통] 공용 Grid의 domLayout 옵션 외부 노출 제거하고 가상 스크롤로 일원화",
+     "status": "개발완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4229",
+     "summary": "[세대관리 상세] 동/호 이동 시 이전 폼과 다음 폼이 함께 밀리며 교체되도록 슬라이드 효과 복원",
+     "status": "개발완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4377",
+     "summary": "입주민 탭 로딩 속도 개선 및 스크롤 옵션바 동작 전환 방식 변경",
+     "status": "개발완료",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-14T13:04:08.160000+09:00",
+   "long_open": true,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 5,
+   "work_seconds": 44100.0,
+   "work_in_sprint_seconds": 44100.0,
+   "work_in_sprint_biz_seconds": 44100.0,
+   "work_source": "worklog",
+   "lead_seconds": 512446.899,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 44100.0,
+   "dev_biz_seconds": 44100.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 1.53,
+   "jira_actual_start": "2026-10-08T14:54:00.000+0900",
+   "jira_actual_end": "2026-10-14T13:15:00.000+0900",
+   "jira_start_date": "2026-10-08",
+   "jira_end_date": "2026-10-14",
+   "jira_story_points": 0.86,
+   "jira_timespent_seconds": 44100,
+   "jira_original_estimate_seconds": 24780,
+   "worklog_intervals": [
+    [
+     "2026-10-08T14:54:00.000+0900",
+     44100
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-08T14:54:16.627+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-14T11:39:06.581+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-14T13:04:08.160+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-14T13:15:03.526+0900",
+     "from": "개발중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-3117",
+   "summary": "ERP 고도화 프론트 - PR 리뷰 확인",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-09-16T11:16:55.619+0900",
+   "labels": [],
+   "start_first": "2026-09-16T15:32:00.345000+09:00",
+   "done_first": "2026-10-19T10:23:07.717000+09:00",
+   "done_last": "2026-10-19T10:23:07.717000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-4528",
+     "summary": "[FE] PR 리뷰 반복 지적을 AGENTS.md 규칙으로 정리",
+     "status": "개발완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4867",
+     "summary": "[FE] AGENTS.md 리뷰 규칙 반영 전후 리뷰 지적 비교 측정",
+     "status": "Backlog",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-09-16T15:32:00.345000+09:00",
+   "long_open": true,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 0,
+   "work_seconds": 519180.0,
+   "work_in_sprint_seconds": 0.0,
+   "work_in_sprint_biz_seconds": 0.0,
+   "work_source": "worklog",
+   "lead_seconds": 2832667.372,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 519180.0,
+   "dev_biz_seconds": 519180.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 18.03,
+   "jira_actual_start": "2026-09-16T15:32:00.000+0900",
+   "jira_actual_end": "2026-10-19T10:23:00.000+0900",
+   "jira_start_date": "2026-09-16",
+   "jira_end_date": "2026-10-19",
+   "jira_story_points": 5.0,
+   "jira_timespent_seconds": 519180,
+   "jira_original_estimate_seconds": 86400,
+   "worklog_intervals": [
+    [
+     "2026-09-16T15:32:00.000+0900",
+     519180
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-09-16T15:32:00.345+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-19T10:23:07.717+0900",
+     "from": "개발중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-4464",
+   "summary": "[FE] hub deprecated Select 컴포넌트를 SelectOne으로 이관",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-16T14:27:05.561+0900",
+   "labels": [],
+   "start_first": "2026-10-16T17:22:32.790000+09:00",
+   "done_first": "2026-10-19T10:09:13.598000+09:00",
+   "done_last": "2026-10-19T10:09:13.598000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-4459",
+     "summary": "[FE] hd-ds Select 계열 item 타입 사용처를 컴포넌트에 맞게 정리 (hub, admin)",
+     "status": "개발완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4846",
+     "summary": "[FE] 의료비공제등록 옵션 배열 타입을 deprecated SelectOption 에서 SelectOneItem 으로 변경",
+     "status": "Backlog",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-16T17:22:32.790000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 1,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 233200.808,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-16T17:22:00.000+0900",
+   "jira_actual_end": "2026-10-19T10:07:00.000+0900",
+   "jira_start_date": "2026-10-16",
+   "jira_end_date": "2026-10-19",
+   "jira_story_points": 0.5,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 14400,
+   "worklog_intervals": [
+    [
+     "2026-10-16T17:22:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-16T17:22:32.790+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-17T18:17:48.875+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-19T10:09:13.598+0900",
+     "from": "리뷰중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-3434",
+   "summary": "[FE] [2.0 입주] 세대관리 상세 > 사업장 사업자번호 조건부 필수 기준 정의 (상호만 사용하는 단지 저장 허용)",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-09-22T17:49:14.159+0900",
+   "labels": [],
+   "start_first": "2026-10-06T17:01:10.483000+09:00",
+   "done_first": "2026-10-13T13:17:06.810000+09:00",
+   "done_last": "2026-10-13T13:17:06.810000+09:00",
+   "linked": [
+    {
+     "key": "HC-2989",
+     "summary": "[2.0 입주] 세대관리 상세 > 사업장 사업자번호 조건부 필수 기준 정의 (상호만 사용하는 단지 저장 허용)",
+     "status": "QA중",
+     "link_type": "Cloners"
+    },
+    {
+     "key": "HDIT-3433",
+     "summary": "[BE] [2.0 입주] 세대관리 상세 > 사업장 사업자번호 조건부 필수 기준 정의 (상호만 사용하는 단지 저장 허용)",
+     "status": "개발완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4031",
+     "summary": "[FE][공통] autoHeight 그리드에서 세로 스크롤 후 가로 스크롤 시 새로 드러난 열이 늦게 그려지는 현상 개선",
+     "status": "개발완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4088",
+     "summary": "[FE] [2.0 입주] 세대관리 목록 그리드 인라인 수정에 사업장 구분별 규칙 적용",
+     "status": "Backlog",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4230",
+     "summary": "[FE] [2.0 입주] 세대관리 상세 > 사업장 대표자 주민등록번호를 서버와 같이 숫자 13자리로 받는다",
+     "status": "개발완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4843",
+     "summary": "[세대관리] 아파트 단지 세대 상세에서 숨겨진 사업장 정보 형식 검증이 저장을 막는 문제 수정",
+     "status": "개발완료",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-06T17:01:10.483000+09:00",
+   "long_open": true,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 11,
+   "work_seconds": 7500.0,
+   "work_in_sprint_seconds": 7500.0,
+   "work_in_sprint_biz_seconds": 7500.0,
+   "work_source": "worklog",
+   "lead_seconds": 591356.327,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 7500.0,
+   "dev_biz_seconds": 7500.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.26,
+   "jira_actual_start": "2026-10-06T17:01:00.000+0900",
+   "jira_actual_end": "2026-10-13T13:17:00.000+0900",
+   "jira_start_date": "2026-10-06",
+   "jira_end_date": "2026-10-13",
+   "jira_story_points": 0.57,
+   "jira_timespent_seconds": 7500,
+   "jira_original_estimate_seconds": 16440,
+   "worklog_intervals": [
+    [
+     "2026-10-06T17:01:00.000+0900",
+     7500
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-06T17:01:10.483+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-08T11:37:26.469+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-13T13:17:06.810+0900",
+     "from": "리뷰중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-4230",
+   "summary": "[FE] [2.0 입주] 세대관리 상세 > 사업장 대표자 주민등록번호를 서버와 같이 숫자 13자리로 받는다",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-13T22:26:49.071+0900",
+   "labels": [],
+   "start_first": "2026-10-13T22:31:40.182000+09:00",
+   "done_first": "2026-10-14T14:53:39.748000+09:00",
+   "done_last": "2026-10-14T14:53:39.748000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-3434",
+     "summary": "[FE] [2.0 입주] 세대관리 상세 > 사업장 사업자번호 조건부 필수 기준 정의 (상호만 사용하는 단지 저장 허용)",
+     "status": "개발완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4843",
+     "summary": "[세대관리] 아파트 단지 세대 상세에서 숨겨진 사업장 정보 형식 검증이 저장을 막는 문제 수정",
+     "status": "개발완료",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-14T12:11:03.784000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 5,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 58919.566,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-13T22:31:00.000+0900",
+   "jira_actual_end": "2026-10-14T14:53:00.000+0900",
+   "jira_start_date": "2026-10-13",
+   "jira_end_date": "2026-10-14",
+   "jira_story_points": 0.29,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 8340,
+   "worklog_intervals": [
+    [
+     "2026-10-13T22:31:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-13T22:31:40.182+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-14T10:34:17.405+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-14T12:11:03.784+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-14T14:27:18.954+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-14T14:53:39.748+0900",
+     "from": "리뷰중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-4432",
+   "summary": "[FE][Design System] Select 계열 item 제네릭을 string으로 제약해 객체 value 오해 정리",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-16T11:15:09.288+0900",
+   "labels": [],
+   "start_first": "2026-10-17T18:24:54.459000+09:00",
+   "done_first": "2026-10-19T11:12:12.732000+09:00",
+   "done_last": "2026-10-19T11:12:12.732000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-4032",
+     "summary": "[인사관리] 이관 단지 삭제 직원 원복 기능 어드민 추가 (025243 군산산북부향3차)",
+     "status": "배포완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4459",
+     "summary": "[FE] hd-ds Select 계열 item 타입 사용처를 컴포넌트에 맞게 정리 (hub, admin)",
+     "status": "개발완료",
+     "link_type": "Blocks"
+    },
+    {
+     "key": "HDIT-4465",
+     "summary": "[FE] Select 계열 \"선택 없음\" 값을 null로 통일",
+     "status": "Backlog",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4488",
+     "summary": "[DEFER][FE][Design System] hd-ds 공개 타입 변경 시 소비 저장소 타입체크 자동 검증",
+     "status": "Backlog",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-17T18:24:54.459000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 2,
+   "work_seconds": 7144.443,
+   "work_in_sprint_seconds": 7144.443,
+   "work_in_sprint_biz_seconds": 0.0,
+   "work_source": "changelog",
+   "lead_seconds": 146838.273,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 0.0,
+   "dev_biz_seconds": 0.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": null,
+   "jira_actual_start": "2026-10-17T18:24:00.000+0900",
+   "jira_actual_end": "2026-10-19T11:12:00.000+0900",
+   "jira_start_date": "2026-10-17",
+   "jira_end_date": "2026-10-19",
+   "jira_story_points": 1.01,
+   "jira_timespent_seconds": null,
+   "jira_original_estimate_seconds": 29100,
+   "worklog_intervals": [],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [
+    {
+     "start": "2026-10-17T18:24:54.459000+09:00",
+     "end": "2026-10-17T20:23:58.902000+09:00",
+     "kind": "dev"
+    }
+   ],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-17T18:24:54.459+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-17T20:23:58.902+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-19T11:12:12.732+0900",
+     "from": "리뷰중",
+     "to": "개발완료"
+    }
+   ],
+   "work_biz_seconds_raw": 0.0
+  },
+  {
+   "key": "HDIT-4022",
+   "summary": "[FE] 공용 Grid 단일 행 선택 시 포커스 이동으로 행 선택을 기본 동작으로 제공",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-08T09:25:44.763+0900",
+   "labels": [],
+   "start_first": "2026-10-08T11:50:23.409000+09:00",
+   "done_first": "2026-10-19T10:09:03.926000+09:00",
+   "done_last": "2026-10-19T10:09:03.926000+09:00",
+   "linked": [],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-08T14:01:47.486000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 3,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 944320.517,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-08T11:50:00.000+0900",
+   "jira_actual_end": "2026-10-08T14:59:00.000+0900",
+   "jira_start_date": "2026-10-08",
+   "jira_end_date": "2026-10-08",
+   "jira_story_points": 0.72,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 20760,
+   "worklog_intervals": [
+    [
+     "2026-10-08T11:50:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-08T11:50:23.409+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-08T13:17:05.280+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-08T14:01:47.486+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-08T14:09:47.737+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-19T10:09:03.926+0900",
+     "from": "리뷰중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-4231",
+   "summary": "[FE][공통] 결재 상세 매핑 테스트가 UTC 환경에서 9시간 어긋나 실패하는 시간대 의존 수정",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-13T22:32:54.843+0900",
+   "labels": [],
+   "start_first": "2026-10-13T22:40:11.852000+09:00",
+   "done_first": "2026-10-19T10:09:11.603000+09:00",
+   "done_last": "2026-10-19T10:09:11.603000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-4173",
+     "summary": "[FE][공통] 브랜치 접두어, PR 라벨, PR 템플릿, 커밋 메시지를 IT 워크플로우 런북에 맞추고 it-ci-gates(conventions, typescript) 적용 (hd-cloud-client, hd-cloud-admin)",
+     "status": "개발완료",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-13T22:40:11.852000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 1,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 473339.751,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-13T22:40:00.000+0900",
+   "jira_actual_end": "2026-10-14T11:21:00.000+0900",
+   "jira_start_date": "2026-10-13",
+   "jira_end_date": "2026-10-14",
+   "jira_story_points": 0.29,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 8340,
+   "worklog_intervals": [
+    [
+     "2026-10-13T22:40:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-13T22:40:11.852+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-14T11:02:15.165+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-19T10:09:11.603+0900",
+     "from": "리뷰중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-3913",
+   "summary": "[FE] [기본설정] 단지 상세 패널을 수정하지 않아도 닫을 때 이탈 확인창이 뜸",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-06T14:59:53.933+0900",
+   "labels": [],
+   "start_first": "2026-10-08T15:01:35.465000+09:00",
+   "done_first": "2026-10-19T10:09:01.661000+09:00",
+   "done_last": "2026-10-19T10:09:01.661000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-3900",
+     "summary": "[FE] [공통] 화면 전환 시 모달 닫힘 신호를 하나로 줄이고 사이드패널 closeOnOutsideClick 옵션 제거",
+     "status": "개발완료",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-08T15:01:35.465000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 3,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 932846.196,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-08T15:01:00.000+0900",
+   "jira_actual_end": "2026-10-12T09:16:00.000+0900",
+   "jira_start_date": "2026-10-08",
+   "jira_end_date": "2026-10-12",
+   "jira_story_points": 0.29,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 8340,
+   "worklog_intervals": [
+    [
+     "2026-10-08T15:01:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-08T15:01:35.465+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-08T15:57:38.151+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-19T10:09:01.661+0900",
+     "from": "리뷰중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-4459",
+   "summary": "[FE] hd-ds Select 계열 item 타입 사용처를 컴포넌트에 맞게 정리 (hub, admin)",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-16T14:06:58.386+0900",
+   "labels": [],
+   "start_first": "2026-10-16T15:12:01.371000+09:00",
+   "done_first": "2026-10-16T17:05:53.978000+09:00",
+   "done_last": "2026-10-16T17:05:53.978000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-4432",
+     "summary": "[FE][Design System] Select 계열 item 제네릭을 string으로 제약해 객체 value 오해 정리",
+     "status": "개발완료",
+     "link_type": "Blocks"
+    },
+    {
+     "key": "HDIT-4464",
+     "summary": "[FE] hub deprecated Select 컴포넌트를 SelectOne으로 이관",
+     "status": "개발완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4465",
+     "summary": "[FE] Select 계열 \"선택 없음\" 값을 null로 통일",
+     "status": "Backlog",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-16T15:49:52.396000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 4,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 6832.607,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-16T15:12:00.000+0900",
+   "jira_actual_end": "2026-10-16T17:05:00.000+0900",
+   "jira_start_date": "2026-10-16",
+   "jira_end_date": "2026-10-16",
+   "jira_story_points": 0.57,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 16440,
+   "worklog_intervals": [
+    [
+     "2026-10-16T15:12:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-16T15:12:01.371+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-16T15:40:06.776+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-16T15:49:52.396+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-16T15:51:06.693+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-16T17:05:53.978+0900",
+     "from": "리뷰중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-3918",
+   "summary": "[FE] [공통] CODEOWNERS를 파트별 경로로 나눠 PR 리뷰어 자동 요청을 담당 영역으로 좁힘",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-06T15:54:52.610+0900",
+   "labels": [],
+   "start_first": "2026-10-06T15:58:40.878000+09:00",
+   "done_first": "2026-10-06T18:51:46.152000+09:00",
+   "done_last": "2026-10-16T10:49:59.723000+09:00",
+   "linked": [],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-13T18:34:57.460000+09:00",
+   "long_open": true,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 8,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 845478.845,
+   "reopen_count": 1,
+   "reopen_times": [
+    "2026-10-13T18:34:57.460+0900"
+   ],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-06T15:58:00.000+0900",
+   "jira_actual_end": "2026-10-06T18:51:00.000+0900",
+   "jira_start_date": "2026-10-06",
+   "jira_end_date": "2026-10-06",
+   "jira_story_points": 0.57,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 3600,
+   "worklog_intervals": [
+    [
+     "2026-10-06T15:58:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-06T15:58:40.878+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-06T16:20:47.677+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-06T16:28:46.701+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-06T16:36:26.005+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-06T16:50:47.773+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-06T16:52:14.522+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-06T18:51:46.152+0900",
+     "from": "리뷰중",
+     "to": "개발완료"
+    },
+    {
+     "t": "2026-10-13T18:34:57.460+0900",
+     "from": "개발완료",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-16T10:49:59.723+0900",
+     "from": "개발중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-4105",
+   "summary": "[FE][공통] hd-ds 브랜치 전략 교체",
+   "type": "작업_개발",
+   "status": "배포완료",
+   "created": "2026-10-12T11:08:41.553+0900",
+   "labels": [],
+   "start_first": null,
+   "done_first": "2026-10-16T10:03:05.201000+09:00",
+   "done_last": "2026-10-16T10:03:05.201000+09:00",
+   "linked": [],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": null,
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 0,
+   "work_seconds": null,
+   "work_in_sprint_seconds": null,
+   "work_in_sprint_biz_seconds": null,
+   "work_source": "changelog",
+   "lead_seconds": 341663.648,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": null,
+   "dev_biz_seconds": null,
+   "review_biz_seconds": null,
+   "suggested_sp": null,
+   "jira_actual_start": null,
+   "jira_actual_end": "2026-10-16T10:03:00.000+0900",
+   "jira_start_date": null,
+   "jira_end_date": "2026-10-16",
+   "jira_story_points": 0.43,
+   "jira_timespent_seconds": null,
+   "jira_original_estimate_seconds": 12360,
+   "worklog_intervals": [],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": "no_start_record",
+   "transitions": [
+    {
+     "t": "2026-10-16T10:03:05.201+0900",
+     "from": "Backlog",
+     "to": "개발완료"
+    },
+    {
+     "t": "2026-10-16T10:03:07.329+0900",
+     "from": "개발완료",
+     "to": "배포완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-4400",
+   "summary": "[FE] [클라우드 공통] 가로로 넘치는 표의 가로 스크롤바를 화면 하단에 플로팅",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-15T17:34:14.542+0900",
+   "labels": [],
+   "start_first": "2026-10-15T17:47:57.522000+09:00",
+   "done_first": "2026-10-15T18:53:46.789000+09:00",
+   "done_last": "2026-10-15T18:53:46.789000+09:00",
+   "linked": [
+    {
+     "key": "HC-2993",
+     "summary": "[클라우드 공통] 전체 스크롤 개선",
+     "status": "배포대기",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-3443",
+     "summary": "[FE] [클라우드 공통] 전체 스크롤 개선",
+     "status": "개발완료",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-15T18:33:23.713000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 4,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 3949.267,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-15T17:47:00.000+0900",
+   "jira_actual_end": "2026-10-15T18:53:00.000+0900",
+   "jira_start_date": "2026-10-15",
+   "jira_end_date": "2026-10-15",
+   "jira_story_points": 0.65,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 18720,
+   "worklog_intervals": [
+    [
+     "2026-10-15T17:47:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-15T17:47:57.522+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-15T18:20:58.471+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-15T18:33:23.713+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-15T18:53:46.789+0900",
+     "from": "개발중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-4401",
+   "summary": "[FE] [클라우드 공통] 홈 퀵메뉴 가로 스크롤바 제거 및 끌어서 이동 지원",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-15T17:34:18.182+0900",
+   "labels": [],
+   "start_first": "2026-10-15T17:49:52.489000+09:00",
+   "done_first": "2026-10-15T18:43:41.099000+09:00",
+   "done_last": "2026-10-15T18:43:41.099000+09:00",
+   "linked": [
+    {
+     "key": "HC-2993",
+     "summary": "[클라우드 공통] 전체 스크롤 개선",
+     "status": "배포대기",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-3443",
+     "summary": "[FE] [클라우드 공통] 전체 스크롤 개선",
+     "status": "개발완료",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-15T18:21:25.273000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 3,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 3228.61,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-15T17:49:00.000+0900",
+   "jira_actual_end": "2026-10-15T18:43:00.000+0900",
+   "jira_start_date": "2026-10-15",
+   "jira_end_date": "2026-10-15",
+   "jira_story_points": 0.29,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 8340,
+   "worklog_intervals": [
+    [
+     "2026-10-15T17:49:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-15T17:49:52.489+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-15T18:07:56.592+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-15T18:21:25.273+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-15T18:43:41.099+0900",
+     "from": "개발중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-3443",
+   "summary": "[FE] [클라우드 공통] 전체 스크롤 개선",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-09-22T18:19:52.067+0900",
+   "labels": [
+    "쪼개기검토"
+   ],
+   "start_first": "2026-10-12T11:22:02.487000+09:00",
+   "done_first": "2026-10-15T14:51:56.824000+09:00",
+   "done_last": "2026-10-15T14:51:56.824000+09:00",
+   "linked": [
+    {
+     "key": "HC-2993",
+     "summary": "[클라우드 공통] 전체 스크롤 개선",
+     "status": "배포대기",
+     "link_type": "Cloners"
+    },
+    {
+     "key": "HDIT-3151",
+     "summary": "[공통] 전체 스크롤 개선",
+     "status": "작업완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4400",
+     "summary": "[FE] [클라우드 공통] 가로로 넘치는 표의 가로 스크롤바를 화면 하단에 플로팅",
+     "status": "개발완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4401",
+     "summary": "[FE] [클라우드 공통] 홈 퀵메뉴 가로 스크롤바 제거 및 끌어서 이동 지원",
+     "status": "개발완료",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-14T19:14:33.487000+09:00",
+   "long_open": true,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 13,
+   "work_seconds": 15540.0,
+   "work_in_sprint_seconds": 15540.0,
+   "work_in_sprint_biz_seconds": 15540.0,
+   "work_source": "worklog",
+   "lead_seconds": 271794.337,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 15540.0,
+   "dev_biz_seconds": 15540.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.54,
+   "jira_actual_start": "2026-10-12T11:22:00.000+0900",
+   "jira_actual_end": "2026-10-15T14:51:00.000+0900",
+   "jira_start_date": "2026-10-12",
+   "jira_end_date": "2026-10-15",
+   "jira_story_points": 2.01,
+   "jira_timespent_seconds": 15540,
+   "jira_original_estimate_seconds": 57900,
+   "worklog_intervals": [
+    [
+     "2026-10-12T11:22:00.000+0900",
+     15540
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-12T11:22:02.487+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-13T20:07:42.866+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-14T18:34:22.213+0900",
+     "from": "리뷰중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-14T19:14:33.487+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-15T14:51:56.824+0900",
+     "from": "개발중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-3819",
+   "summary": "[FE] 편집 그리드 미저장 변경 안내 모달 공통화 및 세대관리 적용",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-02T14:07:21.452+0900",
+   "labels": [],
+   "start_first": "2026-10-15T09:56:34.554000+09:00",
+   "done_first": "2026-10-15T14:54:46.447000+09:00",
+   "done_last": "2026-10-15T14:54:46.447000+09:00",
+   "linked": [],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-15T14:37:35.790000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 2,
+   "work_seconds": 5400.0,
+   "work_in_sprint_seconds": 5400.0,
+   "work_in_sprint_biz_seconds": 5400.0,
+   "work_source": "worklog",
+   "lead_seconds": 17891.893,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 5400.0,
+   "dev_biz_seconds": 5400.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.19,
+   "jira_actual_start": "2026-10-15T09:56:00.000+0900",
+   "jira_actual_end": "2026-10-15T14:54:00.000+0900",
+   "jira_start_date": "2026-10-15",
+   "jira_end_date": "2026-10-15",
+   "jira_story_points": 0.86,
+   "jira_timespent_seconds": 5400,
+   "jira_original_estimate_seconds": 24780,
+   "worklog_intervals": [
+    [
+     "2026-10-15T09:56:00.000+0900",
+     5400
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-15T09:56:34.554+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-15T13:56:59.961+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-15T14:37:35.790+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-15T14:54:46.447+0900",
+     "from": "개발중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-4229",
+   "summary": "[세대관리 상세] 동/호 이동 시 이전 폼과 다음 폼이 함께 밀리며 교체되도록 슬라이드 효과 복원",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-13T20:42:09.052+0900",
+   "labels": [],
+   "start_first": "2026-10-14T14:56:24.975000+09:00",
+   "done_first": "2026-10-14T20:05:20.096000+09:00",
+   "done_last": "2026-10-14T20:05:20.096000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-2606",
+     "summary": "[디자인 QA][세대관리 상세] 이메일 형식 에러 문구가 다른 화면과 다름",
+     "status": "개발완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4031",
+     "summary": "[FE][공통] autoHeight 그리드에서 세로 스크롤 후 가로 스크롤 시 새로 드러난 열이 늦게 그려지는 현상 개선",
+     "status": "개발완료",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-14T18:34:08.260000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 3,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 18535.121,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-14T14:56:00.000+0900",
+   "jira_actual_end": "2026-10-14T20:05:00.000+0900",
+   "jira_start_date": "2026-10-14",
+   "jira_end_date": "2026-10-14",
+   "jira_story_points": 0.72,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 20760,
+   "worklog_intervals": [
+    [
+     "2026-10-14T14:56:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-14T14:56:24.975+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-14T16:50:55.549+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-14T17:26:29.663+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-14T17:27:37.027+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-14T18:34:08.260+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-14T18:46:54.803+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-14T20:05:20.096+0900",
+     "from": "리뷰중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-4132",
+   "summary": "[FE][공통] 공용 Grid의 domLayout 옵션 외부 노출 제거하고 가상 스크롤로 일원화",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-12T15:08:39.225+0900",
+   "labels": [
+    "쪼개기검토"
+   ],
+   "start_first": "2026-10-14T14:24:28.736000+09:00",
+   "done_first": "2026-10-14T19:08:18.423000+09:00",
+   "done_last": "2026-10-14T19:08:18.423000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-4031",
+     "summary": "[FE][공통] autoHeight 그리드에서 세로 스크롤 후 가로 스크롤 시 새로 드러난 열이 늦게 그려지는 현상 개선",
+     "status": "개발완료",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-14T18:46:44.620000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 10,
+   "work_seconds": 7440.0,
+   "work_in_sprint_seconds": 7440.0,
+   "work_in_sprint_biz_seconds": 7440.0,
+   "work_source": "worklog",
+   "lead_seconds": 17029.687,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 7440.0,
+   "dev_biz_seconds": 7440.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.26,
+   "jira_actual_start": "2026-10-14T14:24:00.000+0900",
+   "jira_actual_end": "2026-10-14T19:08:00.000+0900",
+   "jira_start_date": "2026-10-14",
+   "jira_end_date": "2026-10-14",
+   "jira_story_points": 0.93,
+   "jira_timespent_seconds": 7440,
+   "jira_original_estimate_seconds": 41460,
+   "worklog_intervals": [
+    [
+     "2026-10-14T14:24:00.000+0900",
+     7440
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-14T14:24:28.736+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-14T18:33:46.914+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-14T18:46:44.620+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-14T19:08:18.423+0900",
+     "from": "개발중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-4176",
+   "summary": "[FE][hd-ds] SelectOne에서 errorMessage, helperText가 렌더링되도록 구현하고 ComboBox에서는 전달을 막음",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-13T10:40:51.360+0900",
+   "labels": [],
+   "start_first": "2026-10-14T10:15:26.109000+09:00",
+   "done_first": "2026-10-14T13:03:25.407000+09:00",
+   "done_last": "2026-10-14T13:03:25.407000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-4272",
+     "summary": "[FE][공통] SelectOne 오류 문구를 SupportingText 직접 배치 대신 errorMessage, helperText로 전환 (hd-cloud-client, hd-cloud-admin)",
+     "status": "Backlog",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-14T10:15:26.109000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 4,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 10079.298,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-14T10:15:00.000+0900",
+   "jira_actual_end": "2026-10-14T13:03:00.000+0900",
+   "jira_start_date": "2026-10-14",
+   "jira_end_date": "2026-10-14",
+   "jira_story_points": 0.22,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 6360,
+   "worklog_intervals": [
+    [
+     "2026-10-14T10:15:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-14T10:15:26.109+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-14T11:06:03.745+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-14T13:03:25.407+0900",
+     "from": "리뷰중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-4173",
+   "summary": "[FE][공통] 브랜치 접두어, PR 라벨, PR 템플릿, 커밋 메시지를 IT 워크플로우 런북에 맞추고 it-ci-gates(conventions, typescript) 적용 (hd-cloud-client, hd-cloud-admin)",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-13T10:13:34.948+0900",
+   "labels": [],
+   "start_first": "2026-10-13T11:53:38.915000+09:00",
+   "done_first": "2026-10-14T15:40:18.697000+09:00",
+   "done_last": "2026-10-14T15:40:18.697000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-4231",
+     "summary": "[FE][공통] 결재 상세 매핑 테스트가 UTC 환경에서 9시간 어긋나 실패하는 시간대 의존 수정",
+     "status": "개발완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4240",
+     "summary": "[FE][공통] hd-cloud-client에 Vite+ 도입 검토 (린트, 빌드, 테스트 툴체인 통합)",
+     "status": "Backlog",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-4268",
+     "summary": "[FE][공통] hd-cloud-admin에 브랜치, 커밋, PR 규칙과 it-ci-gates 적용",
+     "status": "개발완료",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-13T22:28:18.407000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 3,
+   "work_seconds": 9240.0,
+   "work_in_sprint_seconds": 9240.0,
+   "work_in_sprint_biz_seconds": 9240.0,
+   "work_source": "worklog",
+   "lead_seconds": 99999.782,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 9240.0,
+   "dev_biz_seconds": 9240.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.32,
+   "jira_actual_start": "2026-10-13T11:53:00.000+0900",
+   "jira_actual_end": "2026-10-14T15:40:00.000+0900",
+   "jira_start_date": "2026-10-13",
+   "jira_end_date": "2026-10-14",
+   "jira_story_points": 0.43,
+   "jira_timespent_seconds": 9240,
+   "jira_original_estimate_seconds": 12360,
+   "worklog_intervals": [
+    [
+     "2026-10-13T11:53:00.000+0900",
+     9240
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-13T11:53:38.915+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-13T20:38:45.015+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-13T22:28:18.407+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-14T15:40:18.697+0900",
+     "from": "개발중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-3924",
+   "summary": "10월7일 연차",
+   "type": "연차",
+   "status": "DONE",
+   "created": "2026-10-06T18:54:18.715+0900",
+   "start_first": null,
+   "done_first": null,
+   "done_last": null,
+   "work_seconds": 28800,
+   "work_in_sprint_seconds": 28800,
+   "work_biz_seconds": 0.0,
+   "work_in_sprint_biz_seconds": 28800,
+   "lead_seconds": null,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "ip_segments": [],
+   "flag": "leave",
+   "transitions": [
+    {
+     "t": "2026-10-06T18:54:20.589+0900",
+     "from": "Backlog",
+     "to": "DONE"
+    }
+   ],
+   "work_biz_seconds_raw": 28800,
+   "dev_biz_seconds": 0.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": null
+  },
+  {
+   "key": "HDIT-4140",
+   "summary": "DB 개발환경 셋팅",
+   "type": "작업_개발",
+   "status": "배포완료",
+   "created": "2026-10-12T17:14:44.814+0900",
+   "labels": [],
+   "start_first": "2026-10-12T17:14:55.008000+09:00",
+   "done_first": "2026-10-12T17:14:55.710000+09:00",
+   "done_last": "2026-10-12T17:14:55.710000+09:00",
+   "linked": [],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-12T17:14:55.008000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 0,
+   "work_seconds": 6720.0,
+   "work_in_sprint_seconds": 6720.0,
+   "work_in_sprint_biz_seconds": 6720.0,
+   "work_source": "worklog",
+   "lead_seconds": 0.702,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 6720.0,
+   "dev_biz_seconds": 6720.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.23,
+   "jira_actual_start": "2026-10-12T15:22:00.000+0900",
+   "jira_actual_end": "2026-10-12T17:14:00.000+0900",
+   "jira_start_date": "2026-10-12",
+   "jira_end_date": "2026-10-12",
+   "jira_story_points": 0.27,
+   "jira_timespent_seconds": 6720,
+   "jira_original_estimate_seconds": 7800,
+   "worklog_intervals": [
+    [
+     "2026-10-12T15:22:28.000+0900",
+     6720
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-12T17:14:55.008+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-12T17:14:55.710+0900",
+     "from": "개발중",
+     "to": "개발완료"
+    },
+    {
+     "t": "2026-10-12T17:14:56.254+0900",
+     "from": "개발완료",
+     "to": "배포완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-3900",
+   "summary": "[FE] [공통] 화면 전환 시 모달 닫힘 신호를 하나로 줄이고 사이드패널 closeOnOutsideClick 옵션 제거",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-10-06T13:25:00.642+0900",
+   "labels": [],
+   "start_first": "2026-10-06T13:57:02.005000+09:00",
+   "done_first": "2026-10-06T15:39:33.338000+09:00",
+   "done_last": "2026-10-06T15:39:33.338000+09:00",
+   "linked": [
+    {
+     "key": "HDIT-3913",
+     "summary": "[FE] [기본설정] 단지 상세 패널을 수정하지 않아도 닫을 때 이탈 확인창이 뜸",
+     "status": "개발완료",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-06T13:57:02.005000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 3,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 6151.333,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-06T13:57:00.000+0900",
+   "jira_actual_end": "2026-10-06T15:39:00.000+0900",
+   "jira_start_date": "2026-10-06",
+   "jira_end_date": "2026-10-06",
+   "jira_story_points": 0.5,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 3600,
+   "worklog_intervals": [
+    [
+     "2026-10-06T13:57:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-06T13:57:02.005+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-06T14:44:36.633+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-06T15:39:33.338+0900",
+     "from": "리뷰중",
+     "to": "개발완료"
+    }
+   ]
+  },
+  {
+   "key": "HDIT-3416",
+   "summary": "[FE] [업무계획] 반복 유형 반기 추가",
+   "type": "작업_개발",
+   "status": "개발완료",
+   "created": "2026-09-22T16:20:43.268+0900",
+   "labels": [],
+   "start_first": "2026-10-06T14:03:55.161000+09:00",
+   "done_first": "2026-10-06T14:48:12.610000+09:00",
+   "done_last": "2026-10-06T14:48:12.610000+09:00",
+   "linked": [
+    {
+     "key": "HC-2964",
+     "summary": "[업무계획] 반복 유형 반기 추가",
+     "status": "QA중",
+     "link_type": "Cloners"
+    },
+    {
+     "key": "HDIT-2860",
+     "summary": "[업무계획] 반복 유형 반기 추가",
+     "status": "완료",
+     "link_type": "Relates"
+    },
+    {
+     "key": "HDIT-3415",
+     "summary": "[BE] [업무계획] 반복 유형 반기 추가",
+     "status": "배포완료",
+     "link_type": "Relates"
+    }
+   ],
+   "merged_pr": null,
+   "review_resume_at": null,
+   "dev_entered_at": "2026-10-06T14:44:52.550000+09:00",
+   "long_open": false,
+   "leave_excluded_seconds": null,
+   "dev_by_commits": false,
+   "dev_commit_count": 1,
+   "work_seconds": 3600.0,
+   "work_in_sprint_seconds": 3600.0,
+   "work_in_sprint_biz_seconds": 3600.0,
+   "work_source": "worklog",
+   "lead_seconds": 2657.449,
+   "reopen_count": 0,
+   "reopen_times": [],
+   "qa_key": null,
+   "qa_reopen_count": 0,
+   "qa_reopen_times": [],
+   "qa_status": null,
+   "qa_open": false,
+   "qa_assignee": null,
+   "hdit_assignee": "712020:c9be69ad-db40-4bdd-9ecd-5b3c6a2009c8",
+   "work_biz_seconds": 3600.0,
+   "dev_biz_seconds": 3600.0,
+   "review_biz_seconds": 0.0,
+   "suggested_sp": 0.13,
+   "jira_actual_start": "2026-10-06T14:03:00.000+0900",
+   "jira_actual_end": "2026-10-06T14:48:00.000+0900",
+   "jira_start_date": "2026-10-06",
+   "jira_end_date": "2026-10-06",
+   "jira_story_points": 0.13,
+   "jira_timespent_seconds": 3600,
+   "jira_original_estimate_seconds": 3720,
+   "worklog_intervals": [
+    [
+     "2026-10-06T14:03:00.000+0900",
+     3600
+    ]
+   ],
+   "qa_clone": false,
+   "assignee_mismatch": false,
+   "assignee_synced": null,
+   "sprint_unassigned": false,
+   "sprint_planned": null,
+   "in_active_sprint": true,
+   "source": "board",
+   "resolution_pending": false,
+   "resolution_state": {},
+   "worklog_note_pending": false,
+   "status_sync_target": null,
+   "qa_orphan": false,
+   "summary_mismatch": false,
+   "qa_summary": null,
+   "ip_segments": [],
+   "flag": null,
+   "transitions": [
+    {
+     "t": "2026-10-06T14:03:55.161+0900",
+     "from": "Backlog",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-06T14:24:06.779+0900",
+     "from": "개발중",
+     "to": "리뷰중"
+    },
+    {
+     "t": "2026-10-06T14:44:52.550+0900",
+     "from": "리뷰중",
+     "to": "개발중"
+    },
+    {
+     "t": "2026-10-06T14:48:12.610+0900",
+     "from": "개발중",
+     "to": "개발완료"
+    }
+   ]
+  }
+ ],
+ "qa_sync": {
+  "todo_count": 0,
+  "todo_keys": [],
+  "assignee_mismatch": [],
+  "sprint_unassigned": [],
+  "actuals_pending": [
+   {
+    "key": "HDIT-4030",
+    "actual_start": null,
+    "log_started": "2026-10-08T11:23:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[인사관리] 직원정보 본인 삭제 불가 정책 추가 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.0h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.0,
+    "dev_hours": 1.0,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-4031",
+    "actual_start": null,
+    "log_started": "2026-10-08T14:54:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE][공통] autoHeight 그리드에서 세로 스크롤 후 가로 스크롤 시 새로 드러난 열이 늦게 그려지는 현상 개선 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 12.25h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 12.2,
+    "dev_hours": 12.25,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-3117",
+    "actual_start": null,
+    "log_started": "2026-09-16T15:32:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "ERP 고도화 프론트 - PR 리뷰 확인 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 144.22h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 144.2,
+    "dev_hours": 144.22,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-4464",
+    "actual_start": null,
+    "log_started": "2026-10-16T17:22:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE] hub deprecated Select 컴포넌트를 SelectOne으로 이관 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.0h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.0,
+    "dev_hours": 1.0,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-3434",
+    "actual_start": null,
+    "log_started": "2026-10-06T17:01:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE] [2.0 입주] 세대관리 상세 > 사업장 사업자번호 조건부 필수 기준 정의 (상호만 사용하는 단지 저장 허용) · 상세는 티켓 설명 '작업 내역' 참고 · 개발 2.08h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 2.1,
+    "dev_hours": 2.08,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-4230",
+    "actual_start": null,
+    "log_started": "2026-10-13T22:31:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE] [2.0 입주] 세대관리 상세 > 사업장 대표자 주민등록번호를 서버와 같이 숫자 13자리로 받는다 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.0h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.0,
+    "dev_hours": 1.0,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-4022",
+    "actual_start": null,
+    "log_started": "2026-10-08T11:50:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE] 공용 Grid 단일 행 선택 시 포커스 이동으로 행 선택을 기본 동작으로 제공 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.0h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.0,
+    "dev_hours": 1.0,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-4231",
+    "actual_start": null,
+    "log_started": "2026-10-13T22:40:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE][공통] 결재 상세 매핑 테스트가 UTC 환경에서 9시간 어긋나 실패하는 시간대 의존 수정 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.0h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.0,
+    "dev_hours": 1.0,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-3913",
+    "actual_start": null,
+    "log_started": "2026-10-08T15:01:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE] [기본설정] 단지 상세 패널을 수정하지 않아도 닫을 때 이탈 확인창이 뜸 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.0h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.0,
+    "dev_hours": 1.0,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-4459",
+    "actual_start": null,
+    "log_started": "2026-10-16T15:12:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE] hd-ds Select 계열 item 타입 사용처를 컴포넌트에 맞게 정리 (hub, admin) · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.0h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.0,
+    "dev_hours": 1.0,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-3918",
+    "actual_start": null,
+    "log_started": "2026-10-06T15:58:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE] [공통] CODEOWNERS를 파트별 경로로 나눠 PR 리뷰어 자동 요청을 담당 영역으로 좁힘 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.0h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.0,
+    "dev_hours": 1.0,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-4400",
+    "actual_start": null,
+    "log_started": "2026-10-15T17:47:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE] [클라우드 공통] 가로로 넘치는 표의 가로 스크롤바를 화면 하단에 플로팅 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.0h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.0,
+    "dev_hours": 1.0,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-4401",
+    "actual_start": null,
+    "log_started": "2026-10-15T17:49:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE] [클라우드 공통] 홈 퀵메뉴 가로 스크롤바 제거 및 끌어서 이동 지원 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.0h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.0,
+    "dev_hours": 1.0,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-3443",
+    "actual_start": null,
+    "log_started": "2026-10-12T11:22:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE] [클라우드 공통] 전체 스크롤 개선 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 4.32h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 4.3,
+    "dev_hours": 4.32,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-3819",
+    "actual_start": null,
+    "log_started": "2026-10-15T09:56:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE] 편집 그리드 미저장 변경 안내 모달 공통화 및 세대관리 적용 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.5h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.5,
+    "dev_hours": 1.5,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-4229",
+    "actual_start": null,
+    "log_started": "2026-10-14T14:56:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[세대관리 상세] 동/호 이동 시 이전 폼과 다음 폼이 함께 밀리며 교체되도록 슬라이드 효과 복원 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.0h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.0,
+    "dev_hours": 1.0,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-4132",
+    "actual_start": null,
+    "log_started": "2026-10-14T14:24:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE][공통] 공용 Grid의 domLayout 옵션 외부 노출 제거하고 가상 스크롤로 일원화 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 2.07h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 2.1,
+    "dev_hours": 2.07,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-4176",
+    "actual_start": null,
+    "log_started": "2026-10-14T10:15:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE][hd-ds] SelectOne에서 errorMessage, helperText가 렌더링되도록 구현하고 ComboBox에서는 전달을 막음 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.0h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.0,
+    "dev_hours": 1.0,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-4173",
+    "actual_start": null,
+    "log_started": "2026-10-13T11:53:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE][공통] 브랜치 접두어, PR 라벨, PR 템플릿, 커밋 메시지를 IT 워크플로우 런북에 맞추고 it-ci-gates(conventions, typescript) 적용 (hd-cloud-client, hd-cloud-admin) · 상세는 티켓 설명 '작업 내역' 참고 · 개발 2.57h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 2.6,
+    "dev_hours": 2.57,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-4140",
+    "actual_start": null,
+    "log_started": "2026-10-12T15:22:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "DB 개발환경 셋팅 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.87h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.9,
+    "dev_hours": 1.87,
+    "review_hours": 0.0
+   },
+   {
+    "key": "HDIT-3900",
+    "actual_start": null,
+    "log_started": "2026-10-06T13:57:00.000+0900",
+    "actual_end": null,
+    "start_date": null,
+    "end_date": null,
+    "log_comment": "[FE] [공통] 화면 전환 시 모달 닫힘 신호를 하나로 줄이고 사이드패널 closeOnOutsideClick 옵션 제거 · 상세는 티켓 설명 '작업 내역' 참고 · 개발 1.0h + 리뷰 대응 0.0h",
+    "story_points": null,
+    "preserve_estimate_hours": null,
+    "log_work_hours": null,
+    "start_estimate_hours": null,
+    "work_biz_hours": 1.0,
+    "dev_hours": 1.0,
+    "review_hours": 0.0
+   }
+  ],
+  "status_sync": [],
+  "summary_mismatch": [],
+  "qa_orphan": [],
+  "resolution_pending": [],
+  "worklog_note_pending": [],
+  "found_via_qa": [],
+  "applied": [],
+  "failed": []
+ }
+}

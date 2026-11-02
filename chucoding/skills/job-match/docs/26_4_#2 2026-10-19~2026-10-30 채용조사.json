@@ -1,0 +1,4371 @@
+{
+ "스프린트": "26_4_#2",
+ "수집일": "2026-10-30",
+ "묶음_상태": {
+  "잡코리아": "완료",
+  "네이버": "완료(0건)",
+  "카카오": "완료",
+  "라인": "완료(0건)",
+  "쿠팡": "완료",
+  "우아한형제들": "완료(0건)",
+  "당근": "완료",
+  "토스": "완료",
+  "리멤버": "완료",
+  "링크드인": "완료",
+  "사람인": "완료",
+  "원티드": "완료"
+ },
+ "기업정보": {
+  "(주)웹젠": {
+   "사원수": "468명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-30 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=UXNOWEpTWnRXQXhGdWMwem9sSGMrdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)다날": {
+   "사원수": "239명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-09 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RlNYNTYwejlwQmM4UWhTVDg0c0dFQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)디엠씨미디어": {
+   "사원수": "155명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-09-01 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=dHhSYzJPQnJDdDhuVWtGTjYyVld4Zz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)디오": {
+   "사원수": "451명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-20 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=ckw5dmo2THF0ZFJZTXpqUEc1N0o3Zz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)락플레이스": {
+   "사원수": "361명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-07-08 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=VlFhWEVGZUJzM29ZMmRkN3B5YjRwUT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)에스에이티": {
+   "사원수": "80명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-01 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=dVV6ZFkzbnpsK3gzNFYvcXdZUmJrQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)이테크시스템": {
+   "사원수": "466명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-08-21 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=NWJFdDU1L1ZOU0xPMHdVQUhPRGZsUT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)티맥스티베로": {
+   "사원수": "381명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-05-27 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=R3hzYVdZR1AwbWhDamxBY2l3Q1k4dz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)헥토": {
+   "사원수": "94명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-04-09 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=ZFlXM0w5WFdBNUxETjcvSkF4TGVWdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)교원투어": {
+   "사원수": "93명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-07-25 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=UFFVcXBQMHFtSytBMnM2VkpXcWFpZz09",
+   "조회일": "2026-10-30"
+  },
+  "대원씨티에스(주)": {
+   "사원수": "250명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-09-04 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=MndZMVc5RWtRR2E1M2xLNVQ3VGJLQT09",
+   "조회일": "2026-10-30"
+  },
+  "리디(주)": {
+   "사원수": "284명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-08-19 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=c0duSVlLS2lqZWhUenpBQS9MZDYrdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)브이엔티지": {
+   "사원수": "226명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-09-30 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=WG9JbHQ1VU5GK3R3SHpGcnpRK0FRQT09",
+   "조회일": "2026-10-30"
+  },
+  "에이치엘홀딩스(주)": {
+   "사원수": "323명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-30 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=K29uT1FhOXNUU0Z4dVp1dU9GaHhyZz09",
+   "조회일": "2026-10-30"
+  },
+  "에프피티소프트웨어코리아(주)": {
+   "사원수": "320명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-06-30 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=WDNoQ2kzdEVsS0UwWGlxMTRYWEZ4UT09",
+   "조회일": "2026-10-30"
+  },
+  "예스이십사(주)": {
+   "사원수": "445명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-30 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=bHdyUGxOQjVzNlBPbFpCT0YvakRPQT09",
+   "조회일": "2026-10-30"
+  },
+  "유비벨록스(주)": {
+   "사원수": "292명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-09-08 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=cW83c2JUdm4rc0hjR1FKb1RQVXh2Zz09",
+   "조회일": "2026-10-30"
+  },
+  "일렉트로닉아츠코리아유한책임회사": {
+   "사원수": "299명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-01 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=VmdLeDVyZ1RTTGp0WWxldHVqK3VPQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)서로티엔에스": {
+   "사원수": "16명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-30 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=N096ank3ZnhtQUhrZXQ4S3VzMkRzZz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)와일리": {
+   "사원수": "201명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-08-15 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Z3Vyd1JkUkRlWVVMejhzQkRRLzQ3dz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)시원마케팅": {
+   "사원수": "56명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-02 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=NXYzcTJySGJGTDExSWlwYWNIS2tVdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)제르코닉스": {
+   "사원수": "3명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-07-16 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=WU05MXVqNkoyZXFTRWwvYlpMMTZTZz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)한국리서치": {
+   "사원수": "338명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-08-15 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=aklrcUtLMGkvdEJYNkVieUVTKy9aUT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)비상교육": {
+   "사원수": "980명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-09-16 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=MEhYVDN6UTJySkJxUjhjb05uMlJVUT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)세스코": {
+   "사원수": "3,872명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-07-08 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=dXdnbzRLUktMeGZDMWVxMkVIR3dldz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)오케이저축은행": {
+   "사원수": "880명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-17 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=UUwzREFCYWtETWZremNBUVEyYVZIZz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)에이치엔서브": {
+   "사원수": "686명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-03 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=cm5MK3puN2hOUEdEYVB4Z2lPREUxdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)아데코코리아": {
+   "사원수": "2,351명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-09-30 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=S0hPQnFNWTdWS1Q4WjMxaFBDOFJJdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)커넥트웨이브": {
+   "사원수": "1,001 ~ 10,000명 이하",
+   "기준일": "미표기",
+   "출처": "https://www.jobkorea.co.kr/company/1915672",
+   "조회일": "2026-10-30"
+  },
+  "수성엔지니어링": {
+   "사원수": "1,001 ~ 10,000명 이하",
+   "기준일": "미표기",
+   "출처": "https://www.jobkorea.co.kr/Recruit/Co_Read/C/30328730",
+   "조회일": "2026-10-30"
+  },
+  "에스케이렌터카(주)": {
+   "사원수": "529명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-30 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=cytzTG4yRUMxZnVCZlAvOUNyVkM5UT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)넥슨코리아": {
+   "사원수": "4,232명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-09-01 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=eFN2TGwybFErZHBza0Nkb09ld1B6UT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)덴티움": {
+   "사원수": "841명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-30 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=ZVoxSVF0ZEE0ZHA2V3VESkdwNFRkdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)하이브": {
+   "사원수": "978명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-30 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RkRqYjFMRnM0UWEwcHc4a3g3clJ3dz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)카카오페이": {
+   "사원수": "1,261명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-23 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=K1o4KzhpYno3cHcxZFlmNnJ5a01qQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)컴투스": {
+   "사원수": "1,455명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-09-05 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RVU2TTBuclIxUzFYZjcrVGpPTHowQT09",
+   "조회일": "2026-10-30"
+  },
+  "메가존클라우드 주식회사": {
+   "사원수": "1,732명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-09-14 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=NWkzeDdtcWM0M0hWYW1ZRkFpWlU3dz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)모두투어네트워크": {
+   "사원수": "569명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-16 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=bURCejFXM2t5VDBsRFFTTUsyTzRuZz09",
+   "조회일": "2026-10-30"
+  },
+  "극동건설(주)": {
+   "사원수": "610명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-08-21 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=U3JoTU03L25XY0FSMTJ3VWNxYnhrdz09",
+   "조회일": "2026-10-30"
+  },
+  "청오디피케이(주)": {
+   "사원수": "802명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-07-08 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=MzUyK0ZMZ1liaDJPbFJxVWJ1bFlWdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)안랩": {
+   "사원수": "1,276명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-30 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=elI5WWNDRkpkdzcvKzRBaWRSRSt5UT09",
+   "조회일": "2026-10-30"
+  },
+  "도이치모터스(주)": {
+   "사원수": "1,205명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-10-30 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=SERrZ1pUR0JGZTkrL1htVmRPZlJvQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)삼우종합건축사사무소": {
+   "사원수": "813명",
+   "기준일": "미표기 (출처 국민연금, 페이지 2026-09-01 업데이트)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=NHh1YWw2YnBnNkJaNlVqUUlHTGcxdz09",
+   "조회일": "2026-10-30"
+  },
+  "비바리퍼블리카": {
+   "사원수": "2,270 명",
+   "기준일": "미표기 (출처: 국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=N1dNM0tWQ2dRVTBkTHJOSTNYZStpdz09",
+   "조회일": "2026-10-30"
+  },
+  "토스증권": {
+   "사원수": "595 명",
+   "기준일": "미표기 (출처: 국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=VGZJYnNrUGNpcmVhNXgxU1NaUEgydz09",
+   "조회일": "2026-10-30"
+  },
+  "토스플레이스": {
+   "사원수": "255 명",
+   "기준일": "미표기 (출처: 국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=emlQTjRlT25qNGpNRUJmbUJNa2hHUT09",
+   "조회일": "2026-10-30"
+  },
+  "토스인컴": {
+   "사원수": "60 명",
+   "기준일": "미표기 (출처: 국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Y1lpRncxOE9HZ0RNT2hoci9XcUVJdz09",
+   "조회일": "2026-10-30"
+  },
+  "당근마켓": {
+   "사원수": "613 명",
+   "기준일": "미표기 (출처: 국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=ZHk2WG5IOEgydmwzbVBZbWE2dTBYdz09",
+   "조회일": "2026-10-30"
+  },
+  "당근페이": {
+   "사원수": "53 명",
+   "기준일": "미표기 (출처: 국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=d3pJU1VTWFVDdUJXZHdyNTIxWFFKdz09",
+   "조회일": "2026-10-30"
+  },
+  "카카오페이": {
+   "사원수": "1,261 명",
+   "기준일": "미표기 (출처: 국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=K1o4KzhpYno3cHcxZFlmNnJ5a01qQT09",
+   "조회일": "2026-10-30"
+  },
+  "라인페이플러스": {
+   "사원수": "185 명",
+   "기준일": "미표기 (출처: 국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=akN6QVB3d0YwalNUN0h2N2tDQmUrQT09",
+   "조회일": "2026-10-30"
+  },
+  "쿠팡페이": {
+   "사원수": "306 명",
+   "기준일": "미표기 (출처: 국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=T2NhTGNRWnRvWi9EUEhNeTA3MVorQT09",
+   "조회일": "2026-10-30"
+  },
+  "쿠팡": {
+   "사원수": "10,947 명",
+   "기준일": "미표기 (출처: 국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RzBaRnNqKzJuWVdVeHNDLzlFVjcrQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)무신사": {
+   "사원수": "2,164 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=VzFGMHNFb205aWpoSXlLTXo4NnhBQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)미래로시스템": {
+   "사원수": "152 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=dWVLZmRMUTF6azdJbHZXTnN0YWJZZz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)버즈빌": {
+   "사원수": "117 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=eUU2c1ptVjc4WDNoNWJaM2MvanduZz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)비바리퍼블리카": {
+   "사원수": "2,270 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=N1dNM0tWQ2dRVTBkTHJOSTNYZStpdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)스켈터랩스": {
+   "사원수": "23 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=cHNudVdlaUFqQ2U3QURyZEUyaDl5dz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)쏘카": {
+   "사원수": "321 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=bjAxcGdZZG5Cakxmc3ZYRGlXL1pwQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)아이벡스": {
+   "사원수": "92 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=aVdiRHhZcVpIQ0QxSTJDSzhpZGxsdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)카카오페이증권": {
+   "사원수": "460 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RVdGRWRvb0loZy90Q0FOZWUxTCtoQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)컬리": {
+   "사원수": "3,170 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=dE5rT2xDQW56R3hRM3R1dzg4QWhVUT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)한국네트웍스": {
+   "사원수": "190 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=MTJnSmEzcDdkdklpdlE4czFRTDAyUT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)화해글로벌": {
+   "사원수": "47 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=S1N2YzVRckpuMVpwc2UxN3RJQkJYQT09",
+   "조회일": "2026-10-30"
+  },
+  "씨제이올리브영(주)": {
+   "사원수": "5,981 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=T0o3WGQ2MFFUZnNXVFpoMzNUV091Zz09",
+   "조회일": "2026-10-30"
+  },
+  "넥스트증권(주)": {
+   "사원수": "191 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=UEd2WjlZeGRGQ3dCUjEvT250WDlLZz09",
+   "조회일": "2026-10-30"
+  },
+  "인포뱅크(주)": {
+   "사원수": "156 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Y2lCMEZwSUU2b0JFN1Q0cXBkYkl2UT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)케이티밀리의서재": {
+   "사원수": "229 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=NU03cktQZzZaSVhybmtKMEV5WGw3dz09",
+   "조회일": "2026-10-30"
+  },
+  "쿠팡(주)": {
+   "사원수": "10,947 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RzBaRnNqKzJuWVdVeHNDLzlFVjcrQT09",
+   "조회일": "2026-10-30"
+  },
+  "쿠팡페이(주)": {
+   "사원수": "306 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=T2NhTGNRWnRvWi9EUEhNeTA3MVorQT09",
+   "조회일": "2026-10-30"
+  },
+  "토스인컴(주)": {
+   "사원수": "60 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Y1lpRncxOE9HZ0RNT2hoci9XcUVJdz09",
+   "조회일": "2026-10-30"
+  },
+  "토스플레이스(주)": {
+   "사원수": "255 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=emlQTjRlT25qNGpNRUJmbUJNa2hHUT09",
+   "조회일": "2026-10-30"
+  },
+  "토스증권(주)": {
+   "사원수": "595 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=VGZJYnNrUGNpcmVhNXgxU1NaUEgydz09",
+   "조회일": "2026-10-30"
+  },
+  "현대자동차(주)": {
+   "사원수": "66,776 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=M002NXJXZEpOcDVvNWFmMWdxZTVXUT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)트웰브랩스": {
+   "사원수": "63 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=aTRONFlTUUNaYnBicXIzWmNvK3E1dz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)히츠": {
+   "사원수": "32 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=c05VcktENks5SXZaVEsydzZ4RmVRdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)클로버추얼패션": {
+   "사원수": "199 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=a2hZeGcvaDdnL3o1RzlOR1FmZTQ5UT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)프렌들리에이아이": {
+   "사원수": "34 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=dHpFV1RWcGdPUHV6S09TTUg3MTNjZz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)서울로보틱스": {
+   "사원수": "48 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Z1dHY2JaS21FS0pGWm8ydW5GUzJYUT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)주미당": {
+   "사원수": "31 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=S0dBS1JXUHlsSDNpZmhrY0ZSNUk4UT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)크래프톤": {
+   "사원수": "1,895 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=VUJYbGh2aXhrZXhxR2FUZVFRK0pMZz09",
+   "조회일": "2026-10-30"
+  },
+  "엑솔라코리아(유)": {
+   "사원수": "26 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=QkZYY3VEQi9FY1hYcTRIeFpzQ1ROQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)로커스코리아": {
+   "사원수": "3 명",
+   "기준일": "2023.11 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=QUNEVG84VHRkOEdCeTQwN0MyWkxiUT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)채널코퍼레이션": {
+   "사원수": "277 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=TXBYQ1hrYllrN21LZ0VkalFPRXZUQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)달파": {
+   "사원수": "35 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=ZUpDU0lNdmxqOUF6b2FnVjNMeUF5UT09",
+   "조회일": "2026-10-30"
+  },
+  "에이비제트(주)": {
+   "사원수": "17 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Uzh4QkZxc29GUlUvOXNjc2Q1VWZqZz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)페어랩스": {
+   "사원수": "5 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=aTVrZmx1cXFKSElrWUR5SGxma0FzZz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)인핸스": {
+   "사원수": "142 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=aEZWbFQ4RHlVYUU2bjlEMWo2S3oyUT09",
+   "조회일": "2026-10-30"
+  },
+  "아마존웹서비시즈코리아 유한책임회사": {
+   "사원수": "1,009 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=QkQwNEUyTXk4UFp5NzdaQXR1WnZGUT09",
+   "조회일": "2026-10-30"
+  },
+  "팔란티어테크놀로지스코리아(유)": {
+   "사원수": "27 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=dG56QlhGQlNIb3oxQ1hoUDRBVUhmUT09",
+   "조회일": "2026-10-30"
+  },
+  "데이터브릭스코리아(유)": {
+   "사원수": "120 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Wm5oTWNvZTlXTnE1MWJTeFRSdFc5dz09",
+   "조회일": "2026-10-30"
+  },
+  "클라우데라코리아(주)": {
+   "사원수": "16 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=YXQydCsyWlRrdThEKzRFc05MQjJ5UT09",
+   "조회일": "2026-10-30"
+  },
+  "어플라이드인튜이션코리아(유)": {
+   "사원수": "18 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=bWpYV1p1VXB5YS9FbzBMeUhXZGIrZz09",
+   "조회일": "2026-10-30"
+  },
+  "오픈에이아이코리아(유)": {
+   "사원수": "24 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=SzRKVGlJQWY2KzN1UThSTWtXZGg1dz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)크라우드웍스": {
+   "사원수": "159 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=eE52N0dmQ0F2Y0VrcEtHREtZS2xMQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)아이지에이웍스": {
+   "사원수": "69 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=L3A5RzVDelZ5TFlhcDhNdERNNm9Ydz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)버킷플레이스": {
+   "사원수": "500명",
+   "기준일": "미표기",
+   "출처": "https://m.jobkorea.co.kr/company/16154394",
+   "조회일": "2026-10-30"
+  },
+  "(주)루닛": {
+   "사원수": "233명",
+   "기준일": "2026.06.30",
+   "출처": "https://m.jobkorea.co.kr/company/46033799",
+   "조회일": "2026-10-30"
+  },
+  "(주)슈퍼브에이아이": {
+   "사원수": "57명",
+   "기준일": "2025.12.31",
+   "출처": "https://m.jobkorea.co.kr/company/45175031",
+   "조회일": "2026-10-30"
+  },
+  "㈜지에스아이티엠": {
+   "사원수": "622 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=ZmRyMU9neEx0WTN4QmdYT25ibXpyZz09",
+   "조회일": "2026-10-30"
+  },
+  "네이버웹툰(유)": {
+   "사원수": "949 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=L0ZXK0ZVN3JvZWFNUDNyQXRRaHh3dz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)비링커": {
+   "사원수": "4 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=SmdHa1pSTGFNK1dBQ1dVRWJlQmJiUT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)카카오스타일": {
+   "사원수": "469 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=UWhycE5PYno1NXhZaDBWQzlldkVwdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)잉카인터넷": {
+   "사원수": "105 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=UHRaNVg3T3VuL0tORkxaaHBEQVpjQT09",
+   "조회일": "2026-10-30"
+  },
+  "네이버랩스(주)": {
+   "사원수": "221 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=d2lxdmpQWXVNMCt6bmI2eEZ2NWVNQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)미디어윌네트웍스": {
+   "사원수": "117 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=S0Njanp0MXNUNXd3ZUVjUkVNVy9udz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)세나테크놀로지": {
+   "사원수": "135 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=WXBuOXJ5TWd1SlNYN21EdThMemdCQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)팍트라인터내셔널": {
+   "사원수": "108 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=VERsSWpENTlUajZaQmFma2FDaE9iZz09",
+   "조회일": "2026-10-30"
+  },
+  "두산로보틱스(주)": {
+   "사원수": "257 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=cDNlNzFteTM1N1pZTmJMNlh6WUY2UT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)차바이오텍": {
+   "사원수": "19 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=T1pZZFlWMnB5VENhbmtETTMzeEl4QT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)티씨씨아이엔에스": {
+   "사원수": "36 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=SmpRRnVYVGFBQzBCSzM3YW9WaHpCUT09",
+   "조회일": "2026-10-30"
+  },
+  "호전실업(주)": {
+   "사원수": "159 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=VmZGYVc0RGt4b2hXeVZucCs2VTdaZz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)랩투마켓": {
+   "사원수": "44 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=QmVTdStDbU8xNkFmRGVXQ2lNU2dMdz09",
+   "조회일": "2026-10-30"
+  },
+  "메타넷디지털(주)": {
+   "사원수": "389 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Rk03SldzMnhoTUhVazBKa0NtV0pPQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)와이즈버즈": {
+   "사원수": "191 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=WjMveklqU2dyUUM1MU9jaG1oMEhIZz09",
+   "조회일": "2026-10-30"
+  },
+  "알서포트(주)": {
+   "사원수": "261 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=VTNUYVpjMzVncjk0VVc0ZWdjT2JmQT09",
+   "조회일": "2026-10-30"
+  },
+  "케이젯정밀(주)": {
+   "사원수": "188 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=OUU4UWF2NEtXODRrSmF1K0hUMHVZZz09",
+   "조회일": "2026-10-30"
+  },
+  "위프로커넥티드서비시즈인크": {
+   "사원수": "262 명",
+   "기준일": "2026.9 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=cGNkbW5SQjZEd0NndEg0U3Y4RTBaUT09",
+   "조회일": "2026-10-30"
+  },
+  "메타넷글로벌(유)": {
+   "사원수": "200명",
+   "기준일": "미표기",
+   "출처": "https://www.jobkorea.co.kr/Recruit/Co_Read/C/8485",
+   "조회일": "2026-10-30"
+  },
+  "데일리펀딩": {
+   "사원수": "15명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Uk1rWVA5NVhKMFFrQlRtTnMvWWp5UT09",
+   "조회일": "2026-10-30"
+  },
+  "선데이띵커": {
+   "사원수": "6명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=dHR0aVBZWE9INFdTZzdvOXpTSnBsdz09",
+   "조회일": "2026-10-30"
+  },
+  "폴센트": {
+   "사원수": "22명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=ZlhXMmlxMGNpWHlwTmtZdDNPOFZxQT09",
+   "조회일": "2026-10-30"
+  },
+  "미디어로그": {
+   "사원수": "323명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=MTVxRkVZTVJ1bHhNVWlLeFJKRk9EQT09",
+   "조회일": "2026-10-30"
+  },
+  "마인드로직": {
+   "사원수": "31명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=OS8zWnJBRDFEaFFrT1JYWHE1OTJGZz09",
+   "조회일": "2026-10-30"
+  },
+  "버티컬바": {
+   "사원수": "5명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=S3QzU0ZrWXdBbVRGN1V2eW1lMTUrdz09",
+   "조회일": "2026-10-30"
+  },
+  "에이티씨아이": {
+   "사원수": "6명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=V1Z5NURLckExQnNtaE5NMTNjeFN0UT09",
+   "조회일": "2026-10-30"
+  },
+  "카카오페이증권": {
+   "사원수": "460명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RVdGRWRvb0loZy90Q0FOZWUxTCtoQT09",
+   "조회일": "2026-10-30"
+  },
+  "티피씨": {
+   "사원수": "51명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RVQ2MUtvTjNyS0cySGF4R0JwNGU0Zz09",
+   "조회일": "2026-10-30"
+  },
+  "아인잡": {
+   "사원수": "3명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=TWMvWnhJVUVjbmdjZThqNWkweHU4dz09",
+   "조회일": "2026-10-30"
+  },
+  "다키클라우드코리아": {
+   "사원수": "45명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=QkN3c2M0ak12a2c3KzJ0NXV6QndUUT09",
+   "조회일": "2026-10-30"
+  },
+  "캐노피": {
+   "사원수": "8명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=M0VRRE52MW1HOUM0WWJjQ3cxWS9vZz09",
+   "조회일": "2026-10-30"
+  },
+  "씨제이올리브영": {
+   "사원수": "5,981명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=T0o3WGQ2MFFUZnNXVFpoMzNUV091Zz09",
+   "조회일": "2026-10-30"
+  },
+  "컨워스": {
+   "사원수": "10명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=R1pHTllsc0YzTWhPWFpJZDFtUUVaZz09",
+   "조회일": "2026-10-30"
+  },
+  "메디콜": {
+   "사원수": "7명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=UkpCSFlTeTRjaUtjUlFKb0haK2J1QT09",
+   "조회일": "2026-10-30"
+  },
+  "다이버즈": {
+   "사원수": "3명",
+   "기준일": "2026-01 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=K0xPcEhxZ0VKZUxNWXliN1JqUWs4QT09",
+   "조회일": "2026-10-30"
+  },
+  "미리디": {
+   "사원수": "423명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=dUNjZ1lQdHphWlZjbmE5aGZiVm9rdz09",
+   "조회일": "2026-10-30"
+  },
+  "컬리": {
+   "사원수": "3,170명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=dE5rT2xDQW56R3hRM3R1dzg4QWhVUT09",
+   "조회일": "2026-10-30"
+  },
+  "크로스이엔에프": {
+   "사원수": "74명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Rk5BUm84QVY2QVBrampjMFlMQ3Z0UT09",
+   "조회일": "2026-10-30"
+  },
+  "벙커키즈": {
+   "사원수": "26명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=K05aRVUyR0ZyZFIzWnd2dTFPL0pVdz09",
+   "조회일": "2026-10-30"
+  },
+  "블루개러지": {
+   "사원수": "97명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=ZDgyeUcwaEtza2VRZm1MUTUzTXdZZz09",
+   "조회일": "2026-10-30"
+  },
+  "페칭": {
+   "사원수": "6명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=bmppWlRWT1VjdE01RkZUR2dPd1Frdz09",
+   "조회일": "2026-10-30"
+  },
+  "뭉클": {
+   "사원수": "13명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=QnFuNmR5bTJ5TlBxcDJOQTR4NXdKdz09",
+   "조회일": "2026-10-30"
+  },
+  "비스텔리젼스": {
+   "사원수": "60명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=ajQzUDR6UkxxVnVTTGlGVUtOczFYQT09",
+   "조회일": "2026-10-30"
+  },
+  "오픈에이아이코리아": {
+   "사원수": "24명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=SzRKVGlJQWY2KzN1UThSTWtXZGg1dz09",
+   "조회일": "2026-10-30"
+  },
+  "스콘에이아이": {
+   "사원수": "19명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=eUhXdDBkdktGM2FER3ZWQ2c4eVAwQT09",
+   "조회일": "2026-10-30"
+  },
+  "브릭에이아이": {
+   "사원수": "4명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=T2IyUjBOU1ZoYnQvYTg0dkwvRWJlZz09",
+   "조회일": "2026-10-30"
+  },
+  "와트니": {
+   "사원수": "15명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=c1NHOG9PVUVOaU93TG1kbi9IM3d6dz09",
+   "조회일": "2026-10-30"
+  },
+  "흑자": {
+   "사원수": "3명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=R0pDbDVZdjZncVowZWNvN0xzU2ZwUT09",
+   "조회일": "2026-10-30"
+  },
+  "일레븐": {
+   "사원수": "32명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Q3JvTXlvQ1VZbElsQ0FWS2dqN2g1Zz09",
+   "조회일": "2026-10-30"
+  },
+  "에이투디투": {
+   "사원수": "13명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=emJsK0hLYjJUWk9yWGxvRElXQXYydz09",
+   "조회일": "2026-10-30"
+  },
+  "파트리지시스템즈": {
+   "사원수": "34명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=WEFHbjc2NDRMTk41NjI3bWFNL2F6dz09",
+   "조회일": "2026-10-30"
+  },
+  "콩시어지": {
+   "사원수": "4명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=djlvMEJQVExIOGlKSUREY0xhd2s5UT09",
+   "조회일": "2026-10-30"
+  },
+  "렛서": {
+   "사원수": "33명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=YVVkOHBLc0hZYWlkdnV4WXFKeUYyZz09",
+   "조회일": "2026-10-30"
+  },
+  "씨티케이": {
+   "사원수": "131명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=dkJlM3lINWQzT2Jzc2UvdkRqNlNRQT09",
+   "조회일": "2026-10-30"
+  },
+  "클리카": {
+   "사원수": "8명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=eVpCL01VRWhpNU1yRVc4N3BzTTdXQT09",
+   "조회일": "2026-10-30"
+  },
+  "바딧": {
+   "사원수": "15명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=bHBTcUNmSWZjZmVmd2k3SXhPY2FIdz09",
+   "조회일": "2026-10-30"
+  },
+  "동아사이언스": {
+   "사원수": "100명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=QVJiaUdrRW5aTVZUWElHd3gzeXJ6QT09",
+   "조회일": "2026-10-30"
+  },
+  "라이넨스": {
+   "사원수": "19명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=UldvVXZ2TjRGa2dpa1RtdUc4U2pUZz09",
+   "조회일": "2026-10-30"
+  },
+  "반프": {
+   "사원수": "31명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=b2dvazZtb2U3YkVuMFZIaEhzSWY2Zz09",
+   "조회일": "2026-10-30"
+  },
+  "로위랩코리아": {
+   "사원수": "21명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=VzdJSEsrRnBLcHQ5Um5ycy94Ri82dz09",
+   "조회일": "2026-10-30"
+  },
+  "커버링": {
+   "사원수": "27명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=cjFmb3JxTUJ1S0RUUTRUa2pQSlBwQT09",
+   "조회일": "2026-10-30"
+  },
+  "플로버": {
+   "사원수": "4명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Y0dkbmVzaHBTaVBsakRqSExXS3BiQT09",
+   "조회일": "2026-10-30"
+  },
+  "스퀘어스": {
+   "사원수": "23명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=dktvOGFlUkFlRTczU0pIRmhrQlRLQT09",
+   "조회일": "2026-10-30"
+  },
+  "뮤팟": {
+   "사원수": "10명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RjNHaG5uUFdnYU9IQTFRYmpLdDBvQT09",
+   "조회일": "2026-10-30"
+  },
+  "파수에이아이": {
+   "사원수": "285명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=NG5MUnZpcDNJV2FMd1E5cEQvNEtKdz09",
+   "조회일": "2026-10-30"
+  },
+  "위펀": {
+   "사원수": "444명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=UVp1ZmFPdnlna0lEQVkrSTB0TUFhdz09",
+   "조회일": "2026-10-30"
+  },
+  "더크리스피": {
+   "사원수": "8명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=SmEvRG85MUNyN2RkYmd5R25UL3IvZz09",
+   "조회일": "2026-10-30"
+  },
+  "세타원코리아": {
+   "사원수": "9명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=V0k1UVpsNWxjdXVGMHdoWWlJSTZxZz09",
+   "조회일": "2026-10-30"
+  },
+  "다음": {
+   "사원수": "244명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=M3RKaG1Jd0FURDczbXpkOGdTL01yUT09",
+   "조회일": "2026-10-30"
+  },
+  "하이브": {
+   "사원수": "978명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RkRqYjFMRnM0UWEwcHc4a3g3clJ3dz09",
+   "조회일": "2026-10-30"
+  },
+  "위에이알": {
+   "사원수": "12명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=VDBkTDNZMnVmaEcxcXcyRnV0R1l1QT09",
+   "조회일": "2026-10-30"
+  },
+  "휴멜로": {
+   "사원수": "9명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=WE4wTWp3RGFoM1pwNkVmU3FmMzdxZz09",
+   "조회일": "2026-10-30"
+  },
+  "아정네트웍스": {
+   "사원수": "708명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=WVZlYmNvd3NpMUtCZ1BOK3EwUlBuZz09",
+   "조회일": "2026-10-30"
+  },
+  "블라이랩스": {
+   "사원수": "4명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=NmN4K2tGcFJQMFdtY1B2T0JzbyswQT09",
+   "조회일": "2026-10-30"
+  },
+  "파이오링크": {
+   "사원수": "483명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=TDdDMTdnamxZb3k4RUtJRC9MYklPdz09",
+   "조회일": "2026-10-30"
+  },
+  "브랜치앤바운드": {
+   "사원수": "14명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=dFBSajJqdUNyNnU2dGc3Vm96bFJrUT09",
+   "조회일": "2026-10-30"
+  },
+  "현대자동차": {
+   "사원수": "66,776명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=M002NXJXZEpOcDVvNWFmMWdxZTVXUT09",
+   "조회일": "2026-10-30"
+  },
+  "베슬에이아이코리아": {
+   "사원수": "44명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=QlNxQi9TYmtFdzZPZ3RSY3RBR0lwZz09",
+   "조회일": "2026-10-30"
+  },
+  "바이오리서치에이아이": {
+   "사원수": "17명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=c21NbG52WHhJV2RYZU1zSHBwaHBPUT09",
+   "조회일": "2026-10-30"
+  },
+  "도이치모터스": {
+   "사원수": "1,205명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=SERrZ1pUR0JGZTkrL1htVmRPZlJvQT09",
+   "조회일": "2026-10-30"
+  },
+  "트렉시": {
+   "사원수": "45명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=K0pTSHg5UnVuK2ZYelZDV0tLdk9QUT09",
+   "조회일": "2026-10-30"
+  },
+  "서치독": {
+   "사원수": "31명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=SlVDcVhYVTFYMVRuVWNreEFDbjdvUT09",
+   "조회일": "2026-10-30"
+  },
+  "미래엔": {
+   "사원수": "567명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=bFJlQ1JodnpUbnRreHBMV2VxK08rZz09",
+   "조회일": "2026-10-30"
+  },
+  "에이텍": {
+   "사원수": "342명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=TUNIRnZsR2Q0ZG4xb01KMkJDM3FVUT09",
+   "조회일": "2026-10-30"
+  },
+  "비비티에이아이코리아": {
+   "사원수": "12명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=UTNLaEw0WmNGSmdWTlZpaEhvSG0vUT09",
+   "조회일": "2026-10-30"
+  },
+  "에이비제트": {
+   "사원수": "17명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Uzh4QkZxc29GUlUvOXNjc2Q1VWZqZz09",
+   "조회일": "2026-10-30"
+  },
+  "쓰리더블유": {
+   "사원수": "14명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=bHZqVU94SjVCUjUrNThxVnFEcU5idz09",
+   "조회일": "2026-10-30"
+  },
+  "올거나이즈코리아": {
+   "사원수": "46명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=TGF4MElNRjJpWEV5aUxYcDgySUFrQT09",
+   "조회일": "2026-10-30"
+  },
+  "메리츠증권": {
+   "사원수": "1,667명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=U2plRzBKZFBrVEI2TkhJeDFPbjdjUT09",
+   "조회일": "2026-10-30"
+  },
+  "트웰브랩스": {
+   "사원수": "63명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=aTRONFlTUUNaYnBicXIzWmNvK3E1dz09",
+   "조회일": "2026-10-30"
+  },
+  "인딥에이아이": {
+   "사원수": "27명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RTI1VlQwMFZSc1pFTFNyUVEzL2o1Zz09",
+   "조회일": "2026-10-30"
+  },
+  "리디": {
+   "사원수": "284명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=c0duSVlLS2lqZWhUenpBQS9MZDYrdz09",
+   "조회일": "2026-10-30"
+  },
+  "인피니티익스체인지코리아": {
+   "사원수": "26명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=bWJ6RjBjV3VBTm5uRk1mOU4wQ2V2Zz09",
+   "조회일": "2026-10-30"
+  },
+  "브릿지웍스": {
+   "사원수": "5명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=elhybDVCbUdTQzNuOTRuYWYyL3c4Zz09",
+   "조회일": "2026-10-30"
+  },
+  "아이제라": {
+   "사원수": "36명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=MlZlNW5lbW5nNWNoK0dBV0p3YVdydz09",
+   "조회일": "2026-10-30"
+  },
+  "한화시스템": {
+   "사원수": "3,480명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=UGh5Q0R6M1piV1kzcUJRQXgwUmx2dz09",
+   "조회일": "2026-10-30"
+  },
+  "원더라운드": {
+   "사원수": "7명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=ellFS0NJMkJKQWpBNlIyeHN0ekNtQT09",
+   "조회일": "2026-10-30"
+  },
+  "잇올": {
+   "사원수": "507명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=V2tiKzhmVGJBREU3ZU5xR1JmRTZwQT09",
+   "조회일": "2026-10-30"
+  },
+  "카레딧": {
+   "사원수": "3명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Nyt0RytQZGViT3VWa3BOQ1BBaFpkZz09",
+   "조회일": "2026-10-30"
+  },
+  "매드업": {
+   "사원수": "552명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=KzFkR3NMeit6Q05mekViUktDTUhRUT09",
+   "조회일": "2026-10-30"
+  },
+  "리스타": {
+   "사원수": "29명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=SHFXbi9hWVE0ZVo5N2JEa0VmZFZBQT09",
+   "조회일": "2026-10-30"
+  },
+  "문토": {
+   "사원수": "9명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=bDBSRXFpQ0N3emE3NStZRXZwUThBZz09",
+   "조회일": "2026-10-30"
+  },
+  "서치오에스에이아이": {
+   "사원수": "6명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=TlBISDRrT09waHhJeDB4bUtJSjBLQT09",
+   "조회일": "2026-10-30"
+  },
+  "제트": {
+   "사원수": "3명",
+   "기준일": "2026-08 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=V2U4a2VZdDJ6V3l5TGZ0dTFMM1JGQT09",
+   "조회일": "2026-10-30"
+  },
+  "엘리스그룹": {
+   "사원수": "147명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=eGY3eFVXemdqb0x6aG5STHc1TDVMUT09",
+   "조회일": "2026-10-30"
+  },
+  "아마존웹서비시즈코리아": {
+   "사원수": "1,009명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=QkQwNEUyTXk4UFp5NzdaQXR1WnZGUT09",
+   "조회일": "2026-10-30"
+  },
+  "SK주식회사": {
+   "사원수": "255명",
+   "기준일": "2026-09 (국민연금)",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=bVBKSnUydnZWajRpRWJicGd4dE5sdz09",
+   "조회일": "2026-10-30"
+  },
+  "라인페이플러스(주)": {
+   "사원수": "185 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=akN6QVB3d0YwalNUN0h2N2tDQmUrQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)당근마켓": {
+   "사원수": "613 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=ZHk2WG5IOEgydmwzbVBZbWE2dTBYdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)당근페이": {
+   "사원수": "53 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=d3pJU1VTWFVDdUJXZHdyNTIxWFFKdz09",
+   "조회일": "2026-10-30"
+  },
+  "토스인슈어런스(주)": {
+   "사원수": "95 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=M2FZNnIrcHo4UFhSS1RpdlFiUE5jQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)제네시스네스트": {
+   "사원수": "126 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=NGxDVDRrTjB0WmtENWJMTTR4ZGpoUT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)고위드": {
+   "사원수": "89 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=bmo0QVM3SlpJbzR1RkphUnowa0hIdz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)인피니티익스체인지코리아": {
+   "사원수": "26 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=bWJ6RjBjV3VBTm5uRk1mOU4wQ2V2Zz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)인딥에이아이": {
+   "사원수": "27 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RTI1VlQwMFZSc1pFTFNyUVEzL2o1Zz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)피트크루": {
+   "사원수": "7 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=a2V1c1lVbFdIN2U4bkNrNFpuS1c2dz09",
+   "조회일": "2026-10-30"
+  },
+  "(주)씨엔씨네트웍스": {
+   "사원수": "20 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=UkJERHR3bGZ1aWNJeG5NQzhncUwrUT09",
+   "조회일": "2026-10-30"
+  },
+  "스타법무법인": {
+   "사원수": "91 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RFQvbjNTdjlWNFJlNER6MnMweVFhQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)엔에스솔루션": {
+   "사원수": "11 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=RDZJamVncVlxVTkwVnFzUUlsSHdBdz09",
+   "조회일": "2026-10-30"
+  },
+  "예진(주)": {
+   "사원수": "5 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=Y04vYk1RZGhlV1AyTUNYQkJzMCtrQT09",
+   "조회일": "2026-10-30"
+  },
+  "(주)더아머베어러": {
+   "사원수": "14 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=a1FuWFlzbVBlK1NJREhpcHJBcmNQQT09",
+   "조회일": "2026-10-30"
+  },
+  "현대오토에버(주)": {
+   "사원수": "5,931 명",
+   "기준일": "미표기",
+   "출처": "https://www.saramin.co.kr/zf_user/company-info/view?csn=TVUrT2lHWkZvZGZWU1RmQ2N6K1RMQT09",
+   "조회일": "2026-10-30"
+  }
+ },
+ "필터_탈락": {
+  "근무지": 68,
+  "기업_규모": 445,
+  "기업정보_확인_불가": 110
+ },
+ "작업_키워드": [
+  {
+   "키워드": "SSR/Next.js(서버 조판)",
+   "근거": [
+    "HDIT-5441",
+    "print#14",
+    "HDIT-5442",
+    "print#16",
+    "HDIT-5648",
+    "print#17"
+   ]
+  },
+  {
+   "키워드": "런타임 스키마 검증(zod)",
+   "근거": [
+    "HDIT-5648",
+    "print#17",
+    "HDIT-5442",
+    "print#16"
+   ]
+  },
+  {
+   "키워드": "API 계약 설계",
+   "근거": [
+    "HDIT-5648",
+    "print#17",
+    "HDIT-5441",
+    "print#14"
+   ]
+  },
+  {
+   "키워드": "E2E 테스트(Playwright)",
+   "근거": [
+    "HDIT-5440",
+    "print#13",
+    "HDIT-5648",
+    "print#17",
+    "HDIT-5443",
+    "print#19"
+   ]
+  },
+  {
+   "키워드": "Vitest",
+   "근거": [
+    "HDIT-5443",
+    "print#19",
+    "HDIT-5648",
+    "print#17",
+    "HDIT-4480",
+    "#2670"
+   ]
+  },
+  {
+   "키워드": "웹 성능 최적화(content-visibility)",
+   "근거": [
+    "HDIT-5442",
+    "print#16"
+   ]
+  },
+  {
+   "키워드": "레거시 마이그레이션(레거시 리포트 서식 이관)",
+   "근거": [
+    "HDIT-5442",
+    "print#16"
+   ]
+  },
+  {
+   "키워드": "엑셀/HWPX 파일 생성",
+   "근거": [
+    "HDIT-5443",
+    "print#19"
+   ]
+  },
+  {
+   "키워드": "lint 규칙(ESLint 계층 경계)",
+   "근거": [
+    "HDIT-5440",
+    "print#13"
+   ]
+  },
+  {
+   "키워드": "CI/CD(GitHub Actions)",
+   "근거": [
+    "HDIT-4923",
+    "#2581",
+    "HDIT-4104",
+    "#2589",
+    "HDIT-5068",
+    "#2619",
+    "HDIT-4268",
+    "admin#170",
+    "HDIT-5168",
+    "#2661"
+   ]
+  },
+  {
+   "키워드": "개발 환경 개선(CI 시간 단축)",
+   "근거": [
+    "HDIT-4923",
+    "#2581"
+   ]
+  },
+  {
+   "키워드": "AWS(Amplify·S3·Route53)",
+   "근거": [
+    "HDIT-4104",
+    "#2589",
+    "HDIT-5548"
+   ]
+  },
+  {
+   "키워드": "commitlint",
+   "근거": [
+    "HDIT-4268",
+    "admin#170",
+    "HDIT-5440",
+    "print#13"
+   ]
+  },
+  {
+   "키워드": "브랜치 전략",
+   "근거": [
+    "HDIT-4104",
+    "#2589",
+    "HDIT-5168",
+    "#2661",
+    "HDIT-5169",
+    "#2655"
+   ]
+  },
+  {
+   "키워드": "프론트엔드 아키텍처(FSD 의존 방향)",
+   "근거": [
+    "HDIT-4836",
+    "#2700",
+    "HDIT-4837",
+    "#2681",
+    "HDIT-4838",
+    "#2676",
+    "HDIT-4829",
+    "#2665"
+   ]
+  },
+  {
+   "키워드": "대규모 리팩터링",
+   "근거": [
+    "HDIT-4837",
+    "#2681",
+    "HDIT-4836",
+    "#2700"
+   ]
+  },
+  {
+   "키워드": "서버 상태 관리(React Query 무효화)",
+   "근거": [
+    "HDIT-4480",
+    "#2670"
+   ]
+  },
+  {
+   "키워드": "React 커스텀 훅(useListLoading)",
+   "근거": [
+    "HDIT-4480",
+    "#2670"
+   ]
+  },
+  {
+   "키워드": "AG Grid",
+   "근거": [
+    "HDIT-4088",
+    "#2600"
+   ]
+  },
+  {
+   "키워드": "폼 검증",
+   "근거": [
+    "HDIT-4843",
+    "#2556",
+    "HDIT-4839",
+    "#2668",
+    "HDIT-5463",
+    "#2733"
+   ]
+  },
+  {
+   "키워드": "AI 코딩 도구 팀 규칙(AGENTS.md, 스킬, 플러그인)",
+   "근거": [
+    "HDIT-4528",
+    "#2552",
+    "HDIT-5579",
+    "HDIT-5081"
+   ]
+  },
+  {
+   "키워드": "코드 리뷰 기준 수립",
+   "근거": [
+    "HDIT-4528",
+    "#2552"
+   ]
+  },
+  {
+   "키워드": "기술 문서화(위키)",
+   "근거": [
+    "HDIT-5579",
+    "HDIT-4861"
+   ]
+  },
+  {
+   "키워드": "디자인 시스템",
+   "근거": [
+    "HDIT-4967",
+    "hd-ds#143",
+    "HDIT-4968",
+    "hd-ds#144"
+   ]
+  },
+  {
+   "키워드": "공통 유틸 승격(shared/lib)",
+   "근거": [
+    "HDIT-4829",
+    "#2665",
+    "HDIT-4839",
+    "#2668"
+   ]
+  }
+ ],
+ "공고": [
+  {
+   "플랫폼": "잡코리아",
+   "중복_출처": [],
+   "기업": "에스케이렌터카(주)",
+   "제목": "[SK렌터카] Frontend Engineer Jr.",
+   "직군": "프론트엔드",
+   "근무지": "대한민국 서울특별시 강서구 공항대로 165 C동 5층",
+   "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50184689",
+   "마감일": "2026-12-15",
+   "경력_조건": "경력무관 (본문: 프론트엔드 개발 경력 1년 이상 4년 이하 또는 이에 준하는 프로젝트 경험)",
+   "자격요건": [
+    "프론트엔드 개발 경력 1년 이상 4년 이하이거나 이에 준하는 프로젝트 수행 경험이 있는 분",
+    "React 또는 Vue와 TypeScript를 활용한 서비스 화면 개발 경험이 있는 분",
+    "JavaScript(ES6+), HTML·CSS의 기본기를 갖추고 브라우저 렌더링 및 비동기 처리에 대한 이해가 있는 분",
+    "REST API 연동 및 상태관리 라이브러리 활용 경험이 있는 분",
+    "Git 기반 협업 경험이 있는 분",
+    "B2C 또는 B2B 서비스의 개발·배포 경험이 있는 분(인턴십·사이드 프로젝트 포함)"
+   ],
+   "우대사항": [
+    "React·Vue를 모두 활용한 개발 경험 또는 Next.js 기반 서비스 개발 경험이 있는 분",
+    "Jest·Testing Library 등을 활용한 테스트 코드 작성 경험이 있는 분",
+    "Storybook을 활용한 컴포넌트 개발 및 문서화 경험이 있는 분",
+    "업무용 데이터 그리드·복잡한 폼 개발 경험 또는 웹 접근성·웹 표준에 대한 이해가 있는 분",
+    "Figma 등 디자인 도구를 활용한 협업 경험 또는 디자인 시스템 활용 경험이 있는 분",
+    "모빌리티·커머스 등 관련 도메인에 대한 이해 또는 관심이 있는 분",
+    "기술 블로그 작성, 오픈소스 기여 등 지속적인 학습과 기술 공유 경험이 있는 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "Vue",
+     "TypeScript",
+     "JavaScript",
+     "HTML",
+     "CSS",
+     "브라우저 렌더링",
+     "REST API",
+     "상태관리",
+     "Git"
+    ],
+    "우대사항": [
+     "React",
+     "Vue",
+     "Next.js",
+     "Jest",
+     "Testing Library",
+     "Storybook",
+     "데이터 그리드",
+     "접근성",
+     "웹 표준",
+     "Figma",
+     "디자인 시스템",
+     "기술 공유"
+    ]
+   }
+  },
+  {
+   "플랫폼": "잡코리아",
+   "중복_출처": [],
+   "기업": "에스케이렌터카(주)",
+   "제목": "[SK렌터카] Frontend Engineer Sr.",
+   "직군": "프론트엔드",
+   "근무지": "대한민국 서울특별시 강서구 공항대로 165 C동 5층",
+   "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50184712",
+   "마감일": "2026-12-15",
+   "경력_조건": "경력무관 (본문: 프론트엔드 개발 경력 6년 이상, React·TypeScript 4년 이상)",
+   "자격요건": [
+    "프론트엔드 개발 경력 6년 이상이며, React·TypeScript 실무 경험 4년 이상인 분",
+    "Redux·Zustand·TanStack Query 등 상태관리 기술을 활용한 서비스 개발 경험이 있는 분",
+    "대규모 업무 화면 또는 복잡한 프론트엔드 애플리케이션의 구조 설계 및 개발 경험이 있는 분",
+    "JavaScript·HTML·CSS 및 브라우저 렌더링 원리에 대한 깊은 이해와 웹 성능 측정·최적화 경험이 있는 분",
+    "B2C 또는 B2B 서비스의 배포·모니터링·장애 대응 등 운영 경험이 있는 분",
+    "디자인 시스템 또는 공통 컴포넌트 라이브러리를 구축·운영한 경험이 있는 분",
+    "백엔드 개발자와 API 규격을 주도적으로 협의하고 관련 문서를 작성한 경험이 있는 분"
+   ],
+   "우대사항": [
+    "전용 UI 프레임워크·jQuery·서버 템플릿 기반 레거시 화면을 SPA 구조로 전환한 경험이 있는 분",
+    "ERP·백오피스·어드민 등 업무용 데이터 그리드, 복잡한 폼 및 대량 입력 화면 개발 경험이 있는 분",
+    "Next.js 기반 SSR·SEO 최적화, 앱 웹뷰·인앱 브라우저 대응 또는 PWA 개발 경험이 있는 분",
+    "Jest·Testing Library·Playwright 등을 활용한 테스트 자동화 또는 모노레포 운영 경험이 있는 분",
+    "웹 접근성·웹 표준 및 CSP·XSS 등 웹 보안 관련 실무 경험이 있는 분",
+    "Vue 3 기반 서비스 개발 경험이 있는 분",
+    "모빌리티·커머스·금융 등 관련 도메인 경험이 있는 분",
+    "협력사 중심의 개발 환경에서 프론트엔드 표준화 및 기술 내재화를 주도한 경험이 있는 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "TypeScript",
+     "Redux",
+     "Zustand",
+     "React Query",
+     "상태관리",
+     "프론트엔드 아키텍처",
+     "JavaScript",
+     "HTML",
+     "CSS",
+     "브라우저 렌더링",
+     "웹 성능 최적화",
+     "운영/모니터링",
+     "디자인 시스템",
+     "공통 컴포넌트",
+     "API 설계 협업"
+    ],
+    "우대사항": [
+     "레거시 마이그레이션",
+     "jQuery",
+     "SPA",
+     "데이터 그리드",
+     "Next.js",
+     "SSR",
+     "SEO",
+     "웹뷰",
+     "PWA",
+     "Jest",
+     "Testing Library",
+     "Playwright",
+     "테스트 자동화",
+     "모노레포",
+     "접근성",
+     "웹 표준",
+     "웹 보안",
+     "Vue",
+     "프론트엔드 표준화"
+    ]
+   }
+  },
+  {
+   "플랫폼": "잡코리아",
+   "중복_출처": [],
+   "기업": "(주)넥슨코리아",
+   "제목": "[AI본부] 웹 프론트엔드 엔지니어 (인턴)",
+   "직군": "프론트엔드",
+   "근무지": "경기 성남시 분당구 판교로256번길 7 (삼평동) 넥슨코리아",
+   "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50192916",
+   "마감일": "상시",
+   "경력_조건": "신입 (3개월 단기 인턴)",
+   "자격요건": [
+    "HTML5, CSS3, JavaScript(ES6+), TypeScript 활용 경험이 있으신 분",
+    "React 기반 웹 애플리케이션 개발 및 운영 경험이 있으신 분",
+    "Vite 등 현대적인 빌드 시스템 및 상태 관리 라이브러리 활용 경험이 있으신 분"
+   ],
+   "우대사항": [
+    "협업 구성원과 원활하게 소통하며 더 나은 제품 경험을 위해 주도적으로 의견을 내시는 분",
+    "프론트엔드 개발 환경과 AI 기술 트렌드를 학습하고 제품에 적용하는 데 즐거움을 느끼시는 분",
+    "멀티모달 생성형 AI 서비스에 대한 이해와 관심을 바탕으로, 실제 사용자 경험으로 연결해 보고 싶으신 분",
+    "WebSocket, Yjs 등을 활용한 실시간 동시 편집 기능 개발 경험이 있으신 분",
+    "Three.js, WebGL 기반 3D 그래픽스 렌더링 최적화 경험이 있으신 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "TypeScript",
+     "React",
+     "Vite",
+     "빌드 시스템",
+     "상태관리"
+    ],
+    "우대사항": [
+     "커뮤니케이션",
+     "AI 활용",
+     "생성형 AI",
+     "WebSocket",
+     "Yjs",
+     "실시간 협업",
+     "Three.js",
+     "WebGL",
+     "3D 렌더링"
+    ]
+   }
+  },
+  {
+   "플랫폼": "사람인",
+   "기업": "(주)덴티움",
+   "제목": "SW 풀스택 개발(전자차트/클라우드)",
+   "직군": "풀스택",
+   "근무지": "경기 수원시 영통구",
+   "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55164553",
+   "마감일": "상시",
+   "경력_조건": "경력 4~10년",
+   "자격요건": [
+    "React, GraphQL 사용 경험 시 우대",
+    "상용 웹서비스 개발 및 운영 경험",
+    "Database 관련 기본 지식"
+   ],
+   "우대사항": [
+    "프로젝트 전 과정 참여 및 SW개발조직 Project Leader 경험",
+    "클라우드 플랫폼(AWS, GCP, NCP) 활용 경험 및 MSA 도입 및 활용 경험",
+    "3년 이상 Dental or Medical 치과/병원/건강 관련 서비스 개발 경험자",
+    "대용량 데이터 또는 트래픽에 대한 서비스 운영 경험 있는분",
+    "신기술에 대한 관심도가 높으신 분",
+    "소프트웨어, 컴퓨터 공학 등 관련 학과 전공자",
+    "협업 및 커뮤니케이션 능력(Github, JIRA, Slack, Figma)"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "GraphQL",
+     "웹서비스 운영",
+     "Database"
+    ],
+    "우대사항": [
+     "Project Leader",
+     "AWS",
+     "GCP",
+     "NCP",
+     "MSA",
+     "대용량 트래픽",
+     "GitHub",
+     "Jira",
+     "Slack",
+     "Figma"
+    ]
+   },
+   "중복_출처": [
+    "리멤버",
+    "잡코리아"
+   ]
+  },
+  {
+   "플랫폼": "잡코리아",
+   "중복_출처": [],
+   "기업": "(주)커넥트웨이브",
+   "제목": "[CC CTO] Frontend Engineer",
+   "직군": "프론트엔드",
+   "근무지": "대한민국 서울특별시 금천구 벚꽃로 298 대륭포스트타워 6차 17층",
+   "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50040393",
+   "마감일": "2026-11-21",
+   "경력_조건": "경력 3년 이상",
+   "자격요건": [
+    "경력: 프론트엔드 개발 경력이 3년 이상 또는 이에 준하는 역량을 보유하신 분",
+    "HTML, JavaScript(ES6+) 및 브라우저 동작 원리에 대한 탄탄한 이해가 있으신 분",
+    "Next.js, React, TypeScript 기반 웹 서비스를 개발·운영해보신 분",
+    "GraphQL / REST API 연동 및 Apollo Client, TanStack Query, Zustand 등 데이터·상태 관리 기술을 활용해보신 분",
+    "Tailwind CSS를 활용한 UI 개발 경험과 디자인 시스템·컴포넌트 아키텍처에 대한 이해가 있으신 분",
+    "Storybook 기반의 컴포넌트 개발 및 문서화 경험이 있으신 분",
+    "웹 성능 최적화, SEO, 접근성(A11y), 반응형 웹을 고려하여 개발해보신 분",
+    "Git 기반 협업과 코드 리뷰 경험이 있으신 분"
+   ],
+   "우대사항": [
+    "pnpm, Turborepo 기반 Monorepo 환경을 구성하거나 운영해보신 분",
+    "Next.js App Router 기반 개발 또는 레거시 서비스 마이그레이션 경험이 있으신 분",
+    "대규모 트래픽의 B2C 또는 E-commerce 서비스를 개발·운영해보신 분",
+    "Jest, React Testing Library, Playwright 등을 활용한 테스트 자동화 경험이 있으신 분",
+    "Sentry, OpenTelemetry 등 모니터링·Observability 환경을 활용해보신 분",
+    "Docker, Kubernetes, Argo CD, CI/CD 등 인프라 및 네트워크 환경에 대한 이해가 있으신 분",
+    "광고 플랫폼/AdTech 등 광고 비즈니스 도메인에 대한 이해 또는 관련 서비스 개발 경험이 있으신 분",
+    "주니어·미드레벨 개발자 멘토링이나 기술 가이드 경험이 있으신 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "HTML",
+     "JavaScript",
+     "브라우저 동작 원리",
+     "Next.js",
+     "React",
+     "TypeScript",
+     "GraphQL",
+     "REST API",
+     "Apollo Client",
+     "React Query",
+     "Zustand",
+     "상태관리",
+     "Tailwind CSS",
+     "디자인 시스템",
+     "Storybook",
+     "웹 성능 최적화",
+     "SEO",
+     "접근성",
+     "반응형 웹",
+     "Git",
+     "코드 리뷰"
+    ],
+    "우대사항": [
+     "pnpm",
+     "Turborepo",
+     "모노레포",
+     "App Router",
+     "레거시 마이그레이션",
+     "대규모 트래픽",
+     "Jest",
+     "Testing Library",
+     "Playwright",
+     "테스트 자동화",
+     "Sentry",
+     "OpenTelemetry",
+     "모니터링",
+     "Docker",
+     "Kubernetes",
+     "Argo CD",
+     "CI/CD",
+     "AdTech",
+     "멘토링"
+    ]
+   }
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "하이브",
+   "제목": "[HYBE] Full-Stack 개발",
+   "직군": "풀스택",
+   "근무지": "서울시 용산구 한강대로 42",
+   "url": "https://www.wanted.co.kr/wd/384052",
+   "마감일": "상시",
+   "경력_조건": "5년 이상",
+   "자격요건": [
+    "학력 및 전공 무관",
+    "5년 이상 개발 경력",
+    "웹 서비스의 프론트엔드와 백엔드를 모두 직접 개발하고 운영해 본 분",
+    "Python(FastAPI 등) 또는 Java/Spring을 활용한 백엔드 개발에 능숙하신 분",
+    "React 계열 프론트엔드(Next.js 등) 개발 경험이 있는 분 — 상태 관리, 그리드/차트 컴포넌트, 다국어 처리",
+    "SQL 및 데이터 모델링 역량을 보유하고, BigQuery 등 분석용 DW 또는 대용량 데이터 처리 경험이 있는 분",
+    "GCP 또는 AWS 환경에서 직접 배포·운영해 본 분 — 컨테이너, CI/CD, 배치·스케줄러 운영 포함",
+    "요구사항이 확정되지 않은 상태에서 현업과 직접 대화하며 스스로 범위를 정의하고 완료까지 이끌어 본 분",
+    "Git 기반 협업 개발 및 코드 리뷰 경험이 있는 분"
+   ],
+   "우대사항": [
+    "MCP 서버 또는 에이전트 프레임워크(LangGraph, LangChain, CrewAI, Dify 등) 실사용 경험이 있는 분",
+    "LLM API를 실제 제품 기능으로 구현해 본 분 — 프롬프트 활용 수준이 아니라, RAG·에이전트·함수 호출 등을 코드로 구현하고 품질·비용·지연을 관리해 본 경험",
+    "대규모 데이터 수집 시스템 설계·운영 경험이 있는 분 (인증·세션, 차단 대응, 재시도, 데이터 정합성 검증)",
+    "시큐어코딩 및 취약점 분석에 따른 소스 수정이 가능한 분",
+    "음악·엔터테인먼트 산업 데이터에 대한 관심 또는 이해가 있는 분",
+    "직무 경계를 스스로 넘어, 필요하면 현업 인터뷰·권한 협의·보안 문서 작성까지 직접 수행하는 주도성",
+    "AI 기술 변화를 빠르게 검증하고, 품질을 지표로 측정하여 효과 없는 접근은 신속히 폐기할 수 있는 판단력",
+    "배치 실패나 데이터 누락을 누가 어떻게 알게 될지까지 기능의 일부로 설계하는 운영 감각",
+    "신규 구축뿐 아니라 오래된 시스템의 문제도 회피하지 않고 끝까지 해결하는 태도",
+    "현업의 업무 언어와 개발 언어를 오가며, 상대방의 전문 분야를 존중하고 눈높이에 맞춰 소통하는 능력",
+    "개발 산출물과 의사결정 근거를 체계적으로 문서화하여 팀의 자산으로 남기는 습관",
+    "완성도와 납기 사이에서 현실적인 구현 범위를 스스로 판단하고 합의해 나가는 능력"
+   ],
+   "키워드": {
+    "자격요건": [
+     "Python",
+     "FastAPI",
+     "Java",
+     "Spring",
+     "React",
+     "Next.js",
+     "상태 관리",
+     "다국어",
+     "SQL",
+     "데이터 모델링",
+     "BigQuery",
+     "GCP",
+     "AWS",
+     "컨테이너",
+     "CI/CD",
+     "Git",
+     "코드 리뷰"
+    ],
+    "우대사항": [
+     "MCP",
+     "LangGraph",
+     "LangChain",
+     "LLM",
+     "RAG",
+     "AI 에이전트",
+     "시큐어 코딩"
+    ]
+   },
+   "중복_출처": [
+    "사람인",
+    "잡코리아"
+   ]
+  },
+  {
+   "플랫폼": "잡코리아",
+   "중복_출처": [],
+   "기업": "수성엔지니어링",
+   "제목": "드론 기반 3D 지도 플랫폼 프론트엔드 개발자 채용",
+   "직군": "프론트엔드",
+   "근무지": "서울 송파구 정의로8길 13 (문정동, 수성위너스) 수성",
+   "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50055254",
+   "마감일": "상시",
+   "경력_조건": "경력 2년 이상",
+   "자격요건": [
+    "학력 : 학력무관",
+    "경력 : 경력2년↑",
+    "스킬: React, TypeScript, Next.js, WebGL, three.js"
+   ],
+   "우대사항": [
+    "OpenLayers, Cesium, Three.js 등 지도·3D 그래픽스 라이브러리 개발 경험이 있으신 분",
+    "WebGL, Canvas 렌더링 또는 대용량 데이터 시각화(차트·그래프) 경험이 있으신 분",
+    "Web Worker·WASM을 활용한 클라이언트 연산 최적화 경험이 있으신 분",
+    "좌표계(EPSG)·GIS 데이터 등 공간정보를 다뤄 본 경험이 있으신 분",
+    "프론트엔드에서 백엔드로 이어지는 요청·응답 라이프사이클(API·인증·데이터 흐름)의 기본을 이해하고 계신 분",
+    "Playwright 등 E2E 테스트 자동화, Storybook 기반 디자인 시스템 운영 경험이 있으신 분",
+    "NPM 라이브러리 배포 또는 오픈소스 기여 경험이 있으신 분",
+    "드론·측량·건설·GIS 도메인에 대한 이해가 있으신 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "TypeScript",
+     "Next.js",
+     "WebGL",
+     "Three.js"
+    ],
+    "우대사항": [
+     "OpenLayers",
+     "Cesium",
+     "Three.js",
+     "WebGL",
+     "Canvas",
+     "데이터 시각화",
+     "Web Worker",
+     "WASM",
+     "GIS",
+     "API 연동",
+     "Playwright",
+     "E2E 테스트",
+     "Storybook",
+     "디자인 시스템",
+     "npm 배포",
+     "오픈소스"
+    ]
+   }
+  },
+  {
+   "플랫폼": "카카오",
+   "기업": "카카오페이",
+   "제목": "[공동체] 카카오페이 프론트엔드 개발자 - 자산 서비스",
+   "직군": "프론트엔드",
+   "근무지": "경기도 성남시 분당구 판교역로 166, 카카오판교아지트 B동",
+   "url": "https://careers.kakao.com/jobs/S-4743",
+   "마감일": "상시",
+   "경력_조건": "경력 3년 이상",
+   "자격요건": [
+    "3년 이상의 프론트엔드 개발 경험 혹은 그에 준하는 깊이 있는 지식",
+    "React, Jotai/Zustand, React Query 등 최신 라이브러리 활용 역량",
+    "HTML, CSS, W3C 웹 표준 및 웹 접근성에 대한 높은 이해도",
+    "기획/디자인/서버 등 다양한 직군과 원활하게 소통하며 문제를 해결하는 능력"
+   ],
+   "우대사항": [
+    "서비스 운영 중 발생할 수 있는 예외 케이스를 미리 파악하고 선제적으로 대응하여 안정성을 확보할 수 있는 역량",
+    "데이터를 기반으로 명확한 목표를 설정하고, 이를 바탕으로 동료들과 논리적으로 소통하며 서비스를 고도화할 수 있는 능력",
+    "Next.js 등을 활용한 SSR(Server-Side Rendering) 환경 구축 및 운영 경험으로 SEO 및 초기 로딩 성능 개선 능력",
+    "AI(Copilot, Claude 등)를 개발 프로세스에 적극적으로 활용하여 생산성을 높이고 효율적으로 문제를 해결한 경험",
+    "디자이너와의 원활한 협업 경험 및 사용성(Usability)과 심미성을 모두 고려한 개발 능력",
+    "스크린 리더 사용자 등 다양한 환경의 사용자를 고려하여 서비스를 개선한 경험",
+    "모바일 웹뷰 환경에서 네이티브 앱과 유사한 부드러운 사용성을 구현한 경험"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "Jotai",
+     "Zustand",
+     "React Query",
+     "HTML",
+     "CSS",
+     "웹 표준",
+     "접근성",
+     "협업"
+    ],
+    "우대사항": [
+     "안정성",
+     "데이터 기반 의사결정",
+     "Next.js",
+     "SSR",
+     "SEO",
+     "성능 최적화",
+     "AI 코딩 도구",
+     "Copilot",
+     "Claude",
+     "디자이너 협업",
+     "접근성",
+     "웹뷰"
+    ]
+   },
+   "중복_출처": [
+    "잡코리아"
+   ]
+  },
+  {
+   "플랫폼": "잡코리아",
+   "중복_출처": [],
+   "기업": "(주)컴투스",
+   "제목": "[컴투스] 웹 프론트엔드 개발자 (계약직/3년 이상)",
+   "직군": "프론트엔드",
+   "근무지": "서울 금천구 가산디지털1로 131 (가산동, BYC HIGHCITY)",
+   "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50120542",
+   "마감일": "2026-12-06",
+   "경력_조건": "경력 3년 이상 (계약직 6개월)",
+   "자격요건": [
+    "프론트엔드 개발 경력 3년 이상",
+    "JavaScript 및 TypeScript 활용 능력",
+    "React / Next.js 기반 서비스 개발 경험",
+    "브라우저 렌더링, HTTP 통신, CORS, 캐싱 등 웹 애플리케이션 동작 원리에 대한 이해",
+    "CDN, 브라우저 캐시 및 정적 리소스 배포 구조에 대한 이해 및 경험",
+    "SSR / SSG / ISR 등 Next.js 렌더링 전략에 대한 이해",
+    "유관 부서 및 팀 구성원과 원활하게 협업할 수 있는 커뮤니케이션 역량",
+    "AI 기반 개발 도구 활용 경험",
+    "병역필 또는 면제자로 해외 출장에 결격 사유가 없으신 분"
+   ],
+   "우대사항": [
+    "게임및 온라인 서비스의 티징/브랜드 사이트 개발및 운영에 경험이 있으신 분",
+    "온라인 커뮤니티 서비스의 개발/운영에 경험이 있으신분",
+    "AI 도구를 활용한 개발 생산성 향상에 관심이 있거나 관련 경험이 있으신 분",
+    "UI/UX에 대한 관심과 이해도가 높은 분",
+    "웹 성능 최적화 및 렌더링 성능 개선 경험이 있으신 분",
+    "재사용성과 유지보수성을 고려한 컴포넌트 설계 및 프론트엔드 아키텍처 경험이 있으신 분",
+    "CI/CD 파이프라인 구축 및 운영 경험이 있으신 분",
+    "기술적 문제를 논리적으로 분석하고 주도적으로 해결한 경험이 있으신 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "JavaScript",
+     "TypeScript",
+     "React",
+     "Next.js",
+     "브라우저 렌더링",
+     "HTTP",
+     "CORS",
+     "캐싱",
+     "CDN",
+     "SSR",
+     "SSG",
+     "ISR",
+     "커뮤니케이션",
+     "AI 활용"
+    ],
+    "우대사항": [
+     "브랜드 사이트",
+     "커뮤니티 서비스",
+     "AI 활용",
+     "UI/UX",
+     "웹 성능 최적화",
+     "컴포넌트 설계",
+     "프론트엔드 아키텍처",
+     "CI/CD",
+     "문제 해결"
+    ]
+   }
+  },
+  {
+   "플랫폼": "잡코리아",
+   "중복_출처": [],
+   "기업": "메가존클라우드 주식회사",
+   "제목": "Back-end / Full-Stack Developer 채용",
+   "직군": "풀스택",
+   "근무지": "경기 과천시 과천대로7길 74 (갈현동, 메가존산학연센터)",
+   "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50030761",
+   "마감일": "2026-11-20",
+   "경력_조건": "Full-Stack Developer 경력 5 ~ 20년",
+   "자격요건": [
+    "5년 이상의 IT 개발(백엔드/풀스택) 경력",
+    "백엔드 개발(Java/Spring, Node.js, TypeScript) 경험",
+    "RESTful API 설계 및 데이터베이스 설계·구현 경험",
+    "실시간 데이터 처리 및 대용량 트래픽 환경에서의 개발 실무 경험"
+   ],
+   "우대사항": [
+    "AWS 클라우드 환경에서 설계·개발 가능한 분",
+    "AWS 클라우드 환경에서 서비스 배포 및 운영 경험",
+    "IoT 인프라 설계 및 구축 경험 (AWS IoT Core, Greengrass 등)",
+    "제조·산업 도메인 프로젝트 수행 경험",
+    "프론트엔드 개발 경험(React, Vue)",
+    "특정 기술에 국한되지 않고 프로젝트 요구사항에 맞춰 최적의 기술 스택을 선택/적용 가능한 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "풀스택",
+     "Java",
+     "Spring",
+     "Node.js",
+     "TypeScript",
+     "REST API",
+     "데이터베이스 설계",
+     "실시간 데이터 처리",
+     "대용량 트래픽"
+    ],
+    "우대사항": [
+     "AWS",
+     "IoT",
+     "React",
+     "Vue",
+     "기술 스택 선정"
+    ]
+   }
+  },
+  {
+   "플랫폼": "잡코리아",
+   "중복_출처": [],
+   "기업": "(주)모두투어네트워크",
+   "제목": "[모두투어] IT 직군 경력 채용",
+   "직군": "프론트엔드",
+   "근무지": "대한민국 서울특별시 중구 을지로 16 6층",
+   "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50118549",
+   "마감일": "2026-12-05",
+   "경력_조건": "경력 3년 이상 (기간제 근로자)",
+   "자격요건": [
+    "모집 분야별 관련 경력 보유자",
+    "직무 수행에 필요한 전문 역량 보유자",
+    "원활한 협업 및 커뮤니케이션 역량 보유자",
+    "해외여행에 결격사유가 없는 자"
+   ],
+   "우대사항": [
+    "여행 · 항공 · 호텔 · 커머스 서비스 경험자",
+    "대규모 서비스 운영 경험자",
+    "API 연동 및 플랫폼 개발 경험자",
+    "클라우드 및 DevOps 환경 경험자"
+   ],
+   "키워드": {
+    "자격요건": [
+     "커뮤니케이션"
+    ],
+    "우대사항": [
+     "여행 도메인",
+     "커머스",
+     "대규모 서비스 운영",
+     "API 연동",
+     "클라우드",
+     "DevOps"
+    ]
+   }
+  },
+  {
+   "플랫폼": "잡코리아",
+   "중복_출처": [],
+   "기업": "극동건설(주)",
+   "제목": "2026년 3분기 분야별 공개채용 (스마트 기술팀 프론트 엔드 개발자)",
+   "직군": "프론트엔드",
+   "근무지": "본사 (서울 서대문구)",
+   "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50127615",
+   "마감일": "2026-10-31",
+   "경력_조건": "주임 ~ 과장, 정규직 (React 또는 Vue.js 기반 SPA 개발 실무 경력 3년 이상)",
+   "자격요건": [
+    "React 또는 Vue.js 기반 SPA 개발 실무 경력 3년 이상"
+   ],
+   "우대사항": [
+    "스마트건설 플렛폼 유지보수 및 지도 API 활용 경험",
+    "CCTV 영상 스트리밍 처리 및 디바이스 연동 경험",
+    "현장 네트워크 H/W 구성 이해도 가능"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "Vue",
+     "SPA"
+    ],
+    "우대사항": [
+     "지도 API",
+     "영상 스트리밍",
+     "디바이스 연동",
+     "네트워크"
+    ]
+   }
+  },
+  {
+   "플랫폼": "잡코리아",
+   "중복_출처": [],
+   "기업": "청오디피케이(주)",
+   "제목": "도미노피자 각 부문(자회사 포함) 공개 채용 (플랫폼개선팀 ReactJS 프론트엔드개발)",
+   "직군": "프론트엔드",
+   "근무지": "서울 강남구 역삼로25길 35 (역삼동, 케이큐브타워) 청오큐브타워",
+   "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50081516",
+   "마감일": "2026-11-06",
+   "경력_조건": "과장급, 관련 업무 경력 8년 이상",
+   "자격요건": [
+    "관련 업무 경력 8년 이상 보유자",
+    "React 프로젝트 설계 및 개발 가능",
+    "React 디자인패턴에 대한 이해와 개발경험",
+    "NextJS를 활용한 개발 가능",
+    "Git을 이용한 형상 관리 경험",
+    "WebSocket 기술에 대한 이해 및 개발 경험",
+    "남성의 경우 병역필 또는 면제자",
+    "해외여행에 결격사유가 없는 자"
+   ],
+   "우대사항": [
+    "E-Commerce 서비스 개발 경험",
+    "Jira, Confluence를 활용한 프로젝트 경험",
+    "CI/CD에 대한 이해가 있는 분",
+    "도메인 기반 서비스 개발 경험"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "디자인 패턴",
+     "Next.js",
+     "Git",
+     "WebSocket"
+    ],
+    "우대사항": [
+     "이커머스",
+     "Jira",
+     "Confluence",
+     "CI/CD",
+     "도메인 주도 개발"
+    ]
+   }
+  },
+  {
+   "플랫폼": "잡코리아",
+   "중복_출처": [],
+   "기업": "(주)안랩",
+   "제목": "[안랩] 2026년 연구소 상시채용 (Web 개발)",
+   "직군": "풀스택",
+   "근무지": "경기 성남시 분당구 판교역로 220 (삼평동, 안랩,쏠리드) 안랩",
+   "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/49074852",
+   "마감일": "2026-12-31",
+   "경력_조건": "신입/경력 (유관 경력 2년 이상)",
+   "자격요건": [
+    "RDBMS 사용 경험",
+    "유관 경력 2년 이상"
+   ],
+   "우대사항": [
+    "AI 에이전트(Agentic) 구성 경험",
+    "바이브코딩(Vibe Coding) 기반 개발 경험",
+    "git, svn 등 형상관리도구 사용 경험"
+   ],
+   "키워드": {
+    "자격요건": [
+     "RDBMS"
+    ],
+    "우대사항": [
+     "AI 에이전트",
+     "바이브코딩",
+     "Git",
+     "SVN"
+    ]
+   }
+  },
+  {
+   "플랫폼": "사람인",
+   "기업": "도이치모터스(주)",
+   "제목": "[도이치모터스㈜] AX실 풀스택 개발자 경력",
+   "직군": "풀스택",
+   "근무지": "서울 동대문구",
+   "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55357273",
+   "마감일": "2026-11-20",
+   "경력_조건": "경력3년↑",
+   "자격요건": [
+    "소프트웨어 개발 경력 5년 이상 또는 그에 준하는 역량을 보유하신 분",
+    "Spring Boot 프레임워크 능숙자",
+    "NextJS, React 프레임워크 능숙자",
+    "AWS/GCP 등 클라우드 인프라 설계 및 운영 경험",
+    "Opus, Fable, 등의 LLM 모델을 능숙하게 다루며, 팀 전체의 개발 생산성 향상을 리딩할 수 있는 분"
+   ],
+   "우대사항": [
+    "기술 리드 경험",
+    "MSA 전환 및 대용량 트래픽 처리 경험"
+   ],
+   "키워드": {
+    "자격요건": [
+     "Spring Boot",
+     "Next.js",
+     "React",
+     "AWS",
+     "GCP",
+     "클라우드",
+     "LLM",
+     "개발 생산성"
+    ],
+    "우대사항": [
+     "기술 리드",
+     "MSA",
+     "대용량 트래픽"
+    ]
+   },
+   "중복_출처": [
+    "잡코리아"
+   ]
+  },
+  {
+   "플랫폼": "잡코리아",
+   "중복_출처": [],
+   "기업": "(주)삼우종합건축사사무소",
+   "제목": "[정규직] 2026년 경력사원 채용(하이테크 DT(FDE))",
+   "직군": "FDE",
+   "근무지": "경기 평택시 고덕여염9길 18 (고덕동, 고덕CN스퀘어)",
+   "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50221974",
+   "마감일": "2026-11-04",
+   "경력_조건": "경력 7년 이상",
+   "자격요건": [
+    "관련 분야 총 경력 7년 이상",
+    "AI/소프트웨어 개발 및 PoC 직접 수행 경험",
+    "On-Premise 기반 LLM/RAG/AI Agent 구축·배포·운영 경험",
+    "BIM/CAD 등 설계 저작도구/데이터 활용 역량",
+    "해당분야 관련학과 전공자(학사 이상)",
+    "해외 근무에 결격사유가 없는 분, 남성의 경우 병역필 또는 면제자(성별무관)"
+   ],
+   "우대사항": [
+    "대규모 조직 업무 프로세스 경험(우대)",
+    "SQL/NoSQL/Graph DB 구축 경험(우대)",
+    "MCP/Agent 등 신규 AI 기술 탐색·적용 경험(우대)"
+   ],
+   "키워드": {
+    "자격요건": [
+     "PoC",
+     "LLM",
+     "RAG",
+     "AI 에이전트",
+     "On-Premise",
+     "BIM",
+     "CAD"
+    ],
+    "우대사항": [
+     "업무 프로세스",
+     "SQL",
+     "NoSQL",
+     "Graph DB",
+     "MCP",
+     "AI 에이전트"
+    ]
+   }
+  },
+  {
+   "플랫폼": "토스",
+   "기업": "토스증권",
+   "제목": "Frontend Developer",
+   "직군": "프론트엔드",
+   "근무지": "Seoul",
+   "url": "https://toss.im/career/job-detail?gh_jid=4076141003",
+   "마감일": "상시",
+   "경력_조건": "명시 없음",
+   "자격요건": [
+    "React 기반의 웹 서비스를 개발하고 운영해본 경험이 있으신 분을 찾고 있어요.",
+    "복잡하고 어려운 요구사항을 단순한 문제로 추상화하고, 변경에 유연한 아키텍처에 대해 고민하는 분을 찾고 있어요.",
+    "브라우저 렌더링 성능을 고려해서 개발하고 최적화하신 경험이 있는 분을 찾고 있어요.",
+    "단순히 주어진 업무를 해내는 것보다, 문제를 주도적으로 정의하고 기술적으로 해결한 경험이 있는 분을 찾고 있어요."
+   ],
+   "우대사항": [],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "아키텍처 설계",
+     "렌더링 성능 최적화",
+     "문제 해결"
+    ],
+    "우대사항": []
+   },
+   "중복_출처": [
+    "링크드인"
+   ]
+  },
+  {
+   "플랫폼": "토스",
+   "기업": "토스증권",
+   "제목": "Frontend Platform Engineer",
+   "직군": "프론트엔드",
+   "근무지": "Seoul",
+   "url": "https://toss.im/career/job-detail?gh_jid=5130165003",
+   "마감일": "상시",
+   "경력_조건": "명시 없음",
+   "자격요건": [
+    "문제를 단순히 해결하는 것을 넘어, 근본적인 원인을 정확하게 분석하고 해결하시는 분을 찾아요.",
+    "프론트엔드 개발 및 배포 환경을 깊이 이해하며 주도적으로 문제점을 찾아내고 개선한 경험이 있는 분을 찾아요.",
+    "반복적으로 발생하는 운영 업무를 효율화하고 자동화해 보신 경험이 있는 분이면 좋아요.",
+    "프론트엔드 환경에서의 테스트에 관심이 많으신 분이면 좋아요."
+   ],
+   "우대사항": [],
+   "키워드": {
+    "자격요건": [
+     "근본 원인 분석",
+     "개발 환경 개선",
+     "배포 환경",
+     "자동화",
+     "테스트"
+    ],
+    "우대사항": []
+   },
+   "중복_출처": [
+    "링크드인"
+   ]
+  },
+  {
+   "플랫폼": "토스",
+   "기업": "토스증권",
+   "제목": "Frontend Developer (보훈특별채용)",
+   "직군": "프론트엔드",
+   "근무지": "Seoul",
+   "url": "https://toss.im/career/job-detail?gh_jid=6615122003",
+   "마감일": "상시",
+   "경력_조건": "명시 없음 (국가보훈대상자만 지원 가능)",
+   "자격요건": [
+    "웹 기반의 서비스를 운영한 경험이 있으신 분을 찾고 있어요.",
+    "투자에 대해 관심만 있어도 괜찮아요. 개발을 좋아하고 성장에 대한 열정이 강하신 분을 원해요.",
+    "예측가능한 코드의 중요성에 대해 공감하고 실행하는 분이라면 더 좋아요. 변경에 유연한 아키텍처에 대해 고민하는 동료를 기다리고 있어요.",
+    "증권 FE 챕터가 풀어야 할 문제를 같이 고민하고 해결할 수 있는 분을 찾고 있어요.",
+    "브라우저 렌더링 성능을 고려해서 개발하고 최적화하신 경험이 있는 분이면 좋아요.",
+    "빠르고 안전하게 배포할 수 있는 서비스 구조를 고민하고 있어요.",
+    "어드민, 백오피스 제품을 플랫폼화 해서 개발 효율을 높이고 싶어요."
+   ],
+   "우대사항": [],
+   "키워드": {
+    "자격요건": [
+     "웹 서비스 운영",
+     "아키텍처 설계",
+     "렌더링 성능 최적화",
+     "배포",
+     "어드민/백오피스"
+    ],
+    "우대사항": []
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "토스",
+   "기업": "비바리퍼블리카",
+   "제목": "Frontend Platform Engineer",
+   "직군": "프론트엔드",
+   "근무지": "Seoul",
+   "url": "https://toss.im/career/job-detail?gh_jid=7545902003",
+   "마감일": "상시",
+   "경력_조건": "명시 없음",
+   "자격요건": [
+    "생산성을 개선하고, 서비스 성능을 최적화하는 데에 재미를 느끼시는 분과 함께하고 싶어요.",
+    "프론트엔드 개발환경이 동작하는 내부 구조와 원리에 대해서 궁금하고 배우고 싶은 분을 찾고 있어요.",
+    "문제를 예민하게 감지하고, 본질에 대해서 깊이 있게 이해하고, 적합한 기술적 해결책을 생각해내는 과정에 익숙하신 분들을 찾고 있어요.",
+    "프론트엔드 플랫폼이 다루는 기술은 다양하고 계속 변화하고 있어요. 그래서 지식보다는, 기술을 빠르게 배우고 적용하는 능력을 가지신 분을 찾고 있어요.",
+    "기술적인 시도를 하는 데에서 끝내는 것이 아닌, 실제 개발환경의 변화까지를 완수하신 경험이 있으면 좋아요."
+   ],
+   "우대사항": [],
+   "키워드": {
+    "자격요건": [
+     "생산성 개선",
+     "성능 최적화",
+     "개발 환경 개선",
+     "문제 해결"
+    ],
+    "우대사항": []
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "토스",
+   "기업": "비바리퍼블리카",
+   "제목": "Forward Deployed Engineer",
+   "직군": "FDE",
+   "근무지": "Seoul",
+   "url": "https://toss.im/career/job-detail?gh_jid=7996773003",
+   "마감일": "상시",
+   "경력_조건": "명시 없음",
+   "자격요건": [
+    "백엔드 서버 개발과 데이터 연동을 안정적으로 해내실 수 있는 분이 필요해요.",
+    "처음 보는 업무와 시스템을 빠르게 이해하고, 복잡한 AI 개념을 상대의 언어로 풀어 설득하실 수 있는 분을 찾아요.",
+    "ASR, TTS, LLM, RAG, Agentic Workflow에 대한 전반적인 이해와 함께, 이를 실제 운영 환경에 이식해 동작하게 만드는 데 관심이 있는 분을 찾아요.",
+    "완벽을 기다리기보다 빠르게 적용하고, 실제 데이터와 피드백으로 시스템을 고도화하는 과정을 즐기시는 분이면 좋겠어요.",
+    "기술 그 자체보다 \"이 기술로 어떤 비즈니스 임팩트를 낼 것인가\"를 먼저 고민하고 끝내 결과를 만들어보신 분이 필요해요."
+   ],
+   "우대사항": [
+    "통화, 채팅, 게임, 실시간 거래처럼 연결이 유지되는 동안 상태를 관리하며 실시간으로 동작하는 시스템(WebSocket, gRPC streaming, WebRTC 등)을 개발하고 운영해보셨다면 좋아요.",
+    "여러 조직이나 고객사에 비슷한 연동을 반복 구축하다가, 공통 모듈이나 설정 기반 구조로 바꿔 다음 구축 시간을 줄여보셨다면 좋아요.",
+    "사내 다른 조직이나 외부 고객사의 담당자와 직접 소통하며 요구사항을 조율해보셨다면 좋아요.",
+    "B2B 솔루션 회사나 글로벌 SaaS에서 고객사 구축이나 연동을 해보셨다면 좋아요.",
+    "프론트엔드까지 직접 구현해보신 경험이 있으면 좋아요.",
+    "상담, 고객 응대, 아웃바운드 TM처럼 통화 기반 업무 도메인을 알고 계시면 좋아요."
+   ],
+   "키워드": {
+    "자격요건": [
+     "백엔드",
+     "데이터 연동",
+     "ASR",
+     "TTS",
+     "LLM",
+     "RAG",
+     "에이전트 워크플로우",
+     "비즈니스 임팩트"
+    ],
+    "우대사항": [
+     "WebSocket",
+     "gRPC",
+     "WebRTC",
+     "실시간 시스템",
+     "공통 모듈화",
+     "요구사항 조율",
+     "B2B",
+     "SaaS",
+     "프론트엔드"
+    ]
+   },
+   "중복_출처": [
+    "링크드인"
+   ]
+  },
+  {
+   "플랫폼": "당근",
+   "기업": "당근마켓",
+   "제목": "[산업기능요원 집중 채용 캠페인] Software Engineer, Frontend",
+   "직군": "프론트엔드",
+   "근무지": "SEOUL",
+   "url": "https://careers.daangn.com/jobs/role/8043875003/",
+   "마감일": "2026-11-13",
+   "경력_조건": "기간 무관(웹 제품 개발·운영 경험), 산업기능요원(보충역 신규 편입·보충역 전직·현역 전직)",
+   "자격요건": [
+    "실제 사용자가 있는 웹 제품을 개발, 운영해 본 경험이 있는 분 (기간은 무관해요)",
+    "JavaScript, TypeScript와 웹 플랫폼의 동작 원리를 이해하고, 특정 프레임워크에 국한되지 않고 문제에 맞는 기술을 선택해 빠르게 익혀 쓸 수 있는 분",
+    "사용자 흐름과 인터랙션 품질에 높은 기준을 가지고, UI 너머의 사용자 경험을 고민하며 일하는 분",
+    "요구사항을 구현하는 데서 멈추지 않고, 문제를 스스로 정의하고 출시와 운영까지 끌고 가 본 분",
+    "AI 코딩 도구를 개발 흐름에 녹여 생산성을 높이고, 빠르게 프로토타입을 만들어 검증해 본 분",
+    "다양한 직군과 열린 커뮤니케이션으로 협업하는 분"
+   ],
+   "우대사항": [
+    "React 기반 SSR 웹 서비스나 모바일 앱 내 웹뷰를 다뤄 본 분",
+    "A/B 테스트를 설계하고 분석 결과를 근거로 제품을 개선해 본 분",
+    "대규모 사용자 환경에서 성능 최적화나 상태 관리 문제를 해결해 본 분",
+    "GraphQL 클라이언트(Relay, Apollo, urql 등)로 제품을 만들어 본 분",
+    "Interaction, Motion, UX 디테일에 관심이 많은 분",
+    "당근 앱을 써보면서 개선 포인트를 발견하신 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "JavaScript",
+     "TypeScript",
+     "웹 플랫폼",
+     "인터랙션",
+     "사용자 경험",
+     "문제 정의",
+     "AI 코딩 도구",
+     "프로토타이핑",
+     "협업"
+    ],
+    "우대사항": [
+     "React",
+     "SSR",
+     "웹뷰",
+     "A/B 테스트",
+     "성능 최적화",
+     "상태 관리",
+     "GraphQL",
+     "Relay",
+     "Apollo",
+     "urql",
+     "인터랙션",
+     "모션"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "당근",
+   "기업": "당근마켓",
+   "제목": "Software Engineer, Frontend - Cross Product Growth (Engagement Part)",
+   "직군": "프론트엔드",
+   "근무지": "SEOUL",
+   "url": "https://careers.daangn.com/jobs/role/7668837003/",
+   "마감일": "상시",
+   "경력_조건": "3년 이상",
+   "자격요건": [
+    "3년 이상의 프론트엔드 개발 경험이 있는 분",
+    "사용자 흐름과 인터랙션 품질에 높은 기준을 가진 분",
+    "구현을 넘어 제품의 목표와 사용자 맥락을 함께 고민할 수 있는 분",
+    "빠른 실험과 반복 속에서도 구조와 품질의 균형을 만들 수 있는 분",
+    "다양한 직군과 열린 커뮤니케이션으로 협업할 수 있는 분",
+    "복잡한 상태와 흐름을 단순한 사용자 경험으로 풀어내는 데 관심이 있는 분"
+   ],
+   "우대사항": [
+    "Push Notification, Chat, Feed, CRM 등 Engagement 성격의 제품을 개발해본 경험이 있는 분",
+    "A/B 테스트나 실험 기반 개발 문화에 익숙한 분",
+    "다양한 서비스가 연결되는 플랫폼성 프론트엔드를 개발해본 경험이 있는 분",
+    "대규모 사용자 환경에서 성능 최적화나 상태 관리 문제를 해결해본 경험이 있는 분",
+    "Interaction, Motion, UX 디테일에 관심이 많은 분",
+    "빠른 실행과 높은 완성도 사이의 균형을 즐기는 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "인터랙션",
+     "제품 사고",
+     "협업",
+     "상태 관리"
+    ],
+    "우대사항": [
+     "푸시 알림",
+     "채팅",
+     "피드",
+     "CRM",
+     "A/B 테스트",
+     "플랫폼",
+     "성능 최적화",
+     "상태 관리",
+     "인터랙션",
+     "모션"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "당근",
+   "기업": "당근마켓",
+   "제목": "Software Engineer, Frontend - 로컬 잡스",
+   "직군": "프론트엔드",
+   "근무지": "SEOUL",
+   "url": "https://careers.daangn.com/jobs/role/6081125003/",
+   "마감일": "상시",
+   "경력_조건": "3년 이상(또는 그에 준하는 역량)",
+   "자격요건": [
+    "React 기반으로 실제 사용자가 쓰는 제품과 서비스들을 3년 이상 만들어본 분(또는 그에 준하는 역량을 가지신 분)과 함께하고 싶어요. UI 너머에 있는 다양한 사용자들을 감각하며 일하는 분이었으면 해요",
+    "에이전트가 일하기 쉬운 하네스에 대한 고민이 깊은 분과 함께하고 싶어요. es-toolkit, ts-pattern, 함수형 프로그래밍 등 선언적 개발이 손에 익은 분이었으면 해요",
+    "데이터 기반의 실험을 많이 해본 분과 함께하고 싶어요. 배포를 끝이 아니라 시작으로 여기고, 제품이나 기능의 성공을 주도해 본 분이었으면 해요",
+    "LLM, MCP, 에이전트 등 AI 도구를 개발만이 아니라 업무 전반에 활용하는 분과 함께하고 싶어요. 개인이나 팀의 일하는 방식을 바꿔본 분이었으면 해요"
+   ],
+   "우대사항": [
+    "0에서 1을 만드는 초기 제품이나 신규 시장을 경험해 본 분이면 더 좋아요",
+    "결제, 구독, 광고처럼 사용자가 지불하는 제품을 만들어본 분이면 더 좋아요",
+    "Relay, Apollo, urql 같은 GraphQL 클라이언트로 제품을 만들어본 분이면 더 좋아요",
+    "다양한 lint 룰과 CI 워크플로우를 직접 만들어본 분이면 좋아요. 많이 만들어본 분이면 더 좋아요"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "에이전트 하네스",
+     "es-toolkit",
+     "ts-pattern",
+     "함수형 프로그래밍",
+     "선언적 프로그래밍",
+     "데이터 기반 실험",
+     "LLM",
+     "MCP",
+     "AI 에이전트"
+    ],
+    "우대사항": [
+     "0to1",
+     "결제",
+     "구독",
+     "광고",
+     "GraphQL",
+     "Relay",
+     "Apollo",
+     "urql",
+     "Lint",
+     "CI"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "당근",
+   "기업": "당근마켓",
+   "제목": "Software Engineer, Frontend - 로컬 잡스 (레슨/과외 팀)",
+   "직군": "프론트엔드",
+   "근무지": "SEOUL",
+   "url": "https://careers.daangn.com/jobs/role/7774455003/",
+   "마감일": "상시",
+   "경력_조건": "3년 이상",
+   "자격요건": [
+    "React와 TypeScript로 실제 사용자가 쓰는 제품을 3년 이상 만들고 운영해 본 분",
+    "복잡한 비즈니스 요구사항을 빠르게 이해하고 구현하기 위한 적절한 기술적 의사결정을 하시는 분",
+    "스스로 문제를 찾아 정의하고, 해결까지 밀고 나가 본 분",
+    "맡은 자리에서 동료가 믿을 수 있는 결과를 먼저 만들고, 필요할 때 그 범위를 넓혀 본 분",
+    "정답이 정해지지 않은 문제에서 첫 구조를 잡고 기술적 의사결정을 주도해 본 분",
+    "데이터를 바탕으로 가설을 세우고 실험과 개선을 주도해 본 경험이 있는 분",
+    "사용자 경험과 비즈니스 임팩트를 함께 고민하고, 제품 완성도에 높은 기준을 가진 분"
+   ],
+   "우대사항": [
+    "0 to 1을 만드는 초기 제품이나 창업을 경험해 보신 분",
+    "공급과 수요 양쪽을 함께 설계하는 마켓플레이스를 만들어 본 경험이 있는 분",
+    "결제, 구독처럼 사용자가 직접 비용을 지불하는 제품을 만들어 본 경험이 있는 분",
+    "GraphQL 클라이언트(Relay, Apollo, urql 등)로 제품을 만들어 본 경험이 있는 분",
+    "인앱 웹뷰 환경(권한, 버전 호환, 네이티브 연동)을 다뤄 보거나 브릿지를 직접 설계해 본 분",
+    "프론트엔드에 머무르지 않고 서버, 데이터, 운영 도구까지 손을 뻗어 제품을 완성해 본 경험이 있는 분",
+    "A/B 테스트를 설계하고 분석 결과를 근거로 프로덕트를 개선해 본 경험이 있는 분",
+    "먼저 의견을 제시하고 주도적으로 일하기를 즐기는 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "TypeScript",
+     "기술적 의사결정",
+     "문제 정의",
+     "데이터 기반 실험",
+     "사용자 경험"
+    ],
+    "우대사항": [
+     "0to1",
+     "마켓플레이스",
+     "결제",
+     "구독",
+     "GraphQL",
+     "Relay",
+     "Apollo",
+     "urql",
+     "웹뷰",
+     "네이티브 브릿지",
+     "서버",
+     "A/B 테스트"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "당근",
+   "기업": "당근마켓",
+   "제목": "Software Engineer, Frontend - 커뮤니티",
+   "직군": "프론트엔드",
+   "근무지": "SEOUL",
+   "url": "https://careers.daangn.com/jobs/role/7689088003/",
+   "마감일": "상시",
+   "경력_조건": "3년 이상 또는 이에 준하는 실력",
+   "자격요건": [
+    "개발 경험 3년 이상 또는 이에 준하는 실력을 가지고 계신 분",
+    "React를 활용하는 SSR 웹 서비스의 개발 경험이 있으신 분",
+    "JavaScript, TypeScript에 이해가 깊으신 분",
+    "문제의 본질을 파악하기 위해 질문하고, 문제를 끝까지 해결한 경험이 있으신 분",
+    "사용자 중심으로 사고하며, 사용자 경험을 우선으로 프로덕트를 개발하시는 분"
+   ],
+   "우대사항": [
+    "모바일 앱 내 웹뷰 개발 경험이 있으신 분",
+    "Claude Code, Codex 같은 코딩 에이전트로 본인만의 AI 워크플로우를 만들어 일하시는 분",
+    "A/B 테스트 설계 및 분석 결과를 근거로 프로덕트를 개선한 경험이 있으신 분",
+    "모니터링 등 중요한 지표들을 측정하고 개선한 경험이 있으신 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "SSR",
+     "JavaScript",
+     "TypeScript",
+     "문제 해결",
+     "사용자 경험"
+    ],
+    "우대사항": [
+     "웹뷰",
+     "Claude Code",
+     "Codex",
+     "AI 코딩 도구",
+     "A/B 테스트",
+     "모니터링"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "카카오",
+   "기업": "카카오페이",
+   "제목": "[공동체] 카카오페이 프로덕트 엔지니어 - 사내 생산성 플랫폼",
+   "직군": "풀스택",
+   "근무지": "경기도 성남시 분당구 판교역로 166, 카카오판교아지트 B동",
+   "url": "https://careers.kakao.com/jobs/S-4754",
+   "마감일": "상시",
+   "경력_조건": "경력 7년 이상",
+   "자격요건": [
+    "FE, BE, iOS, Android 중 한 영역 이상에서 7년 이상의 개발 경험",
+    "주 개발영역을 넘어 다른 영역까지 다뤄본 경험",
+    "사용자의 문제를 직접 정의하고, 해결 방안을 설계해 프로덕트로 만들어낸 경험",
+    "우선순위를 스스로 판단하고, 만든 기능의 효과를 지표로 검증하며 개선해 나가는 태도",
+    "컴퓨터 공학 기초 지식(자료구조, 네트워크, OS, 프로세스 등)을 바탕으로 한 문제 해결 능력",
+    "코드 리뷰와 능동적인 소통을 통해 동료와 함께 성장하려는 자세"
+   ],
+   "우대사항": [
+    "Swift 기반의 앱 개발 경험",
+    "React 기반의 프론트엔드 개발 경험",
+    "서버 개발 및 데이터 모델링 경험",
+    "개발자 생산성 도구, 사내 플랫폼, 테스트 자동화 영역의 개발 경험",
+    "신규 프로덕트를 초기 기획부터 설계, 구축, 런칭까지 주도한 전체 사이클 경험",
+    "adb, xcrun simctl등 CLI 도구를 활용해 iOS·Android 개발 환경을 다뤄본 경험",
+    "앱 빌드·배포 환경에 대한 이해",
+    "로그 수집·파싱, 네트워크 프록시 등 시스템 레벨 기능 구현 경험"
+   ],
+   "키워드": {
+    "자격요건": [
+     "프론트엔드",
+     "백엔드",
+     "iOS",
+     "Android",
+     "문제 정의",
+     "지표 기반 개선",
+     "CS 기초",
+     "코드 리뷰"
+    ],
+    "우대사항": [
+     "Swift",
+     "React",
+     "서버",
+     "데이터 모델링",
+     "개발자 생산성 도구",
+     "사내 플랫폼",
+     "테스트 자동화",
+     "0to1",
+     "adb",
+     "xcrun simctl",
+     "빌드/배포",
+     "로그 수집",
+     "네트워크 프록시"
+    ]
+   },
+   "중복_출처": [
+    "사람인"
+   ]
+  },
+  {
+   "플랫폼": "쿠팡",
+   "기업": "쿠팡",
+   "제목": "Sr. Staff Front-end Engineer (Global Operations Technology)",
+   "직군": "프론트엔드",
+   "근무지": "Seoul, South Korea",
+   "url": "https://www.coupang.jobs/kr/jobs/5868936/sr-staff-front-end-engineer-global-operations-technology/",
+   "마감일": "상시",
+   "경력_조건": "12+ years of professional coding experience",
+   "자격요건": [
+    "10+ years of experience working in basic algorithms, system design, and large-scale distributed systems.",
+    "12+ years of professional coding experience using modern programming languages such as JavaScript, Typescript, etc.",
+    "Bachelor's degree in Computer Science, Software Engineering, or related field.",
+    "Strong problem-solving skills and attention to detail Ability to work in an agile development environment and meet tight deadlines."
+   ],
+   "우대사항": [
+    "Experience working in building complex software systems that have been successfully delivered to customers.",
+    "Experience communicating with users, other technical teams, and senior management to collect requirements, and describe software product features, technical designs, and product strategy.",
+    "Experience influencing software engineering best practices within your team Hands-on expertise in many disparate technologies, ranging from front-end user interfaces and all points in between Experience working backward from the customer and delivering innovative, simple solutions"
+   ],
+   "키워드": {
+    "자격요건": [
+     "알고리즘",
+     "시스템 설계",
+     "분산 시스템",
+     "JavaScript",
+     "TypeScript",
+     "컴퓨터공학 학위",
+     "애자일"
+    ],
+    "우대사항": [
+     "복잡한 소프트웨어 시스템",
+     "요구사항 수집",
+     "기술 설계",
+     "엔지니어링 베스트 프랙티스",
+     "프론트엔드"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "쿠팡",
+   "기업": "쿠팡",
+   "제목": "Staff, Front-end Engineer (Global Operations Technology)",
+   "직군": "프론트엔드",
+   "근무지": "Seoul, South Korea",
+   "url": "https://www.coupang.jobs/kr/jobs/6412588/staff-front-end-engineer-global-operations-technology/",
+   "마감일": "상시",
+   "경력_조건": "명시 없음",
+   "자격요건": [
+    "Java/JS 기반의 분산 시스템을 경험하신 분",
+    "MVC web application 기반의 대규모 서비스 개발을 경험 하신 분",
+    "JS/Web application 성능 최적화, 유지보수 그리고 트러블 슈팅 경험 있으신 분",
+    "문제를 해결하고자 하는 의지가 강하고, 실제 해결 하실 수 있는 분",
+    "커뮤니케이션 스킬이 뛰어나고, 본인의 경험과 배움을 동료들과 나누는 것이 즐거우신 분"
+   ],
+   "우대사항": [
+    "E-commerce 도메인에서 근무 경력",
+    "AWS등 클라우드 컴퓨팅 관련 직접 경험",
+    "MSA에 대한 이해도가 높으신 분",
+    "ES6, Node.js, React, Mongo.js or Elasticsearch 경험"
+   ],
+   "키워드": {
+    "자격요건": [
+     "Java",
+     "JavaScript",
+     "분산 시스템",
+     "MVC",
+     "대규모 서비스",
+     "성능 최적화",
+     "트러블슈팅",
+     "커뮤니케이션"
+    ],
+    "우대사항": [
+     "이커머스",
+     "AWS",
+     "클라우드",
+     "MSA",
+     "ES6",
+     "Node.js",
+     "React",
+     "MongoDB",
+     "Elasticsearch"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "사람인",
+   "기업": "(주)덴티움",
+   "제목": "SW팀 Web 기반 3D Viewer 개발 (웹 풀스택 개발)",
+   "직군": "풀스택",
+   "근무지": "경기 수원시 영통구",
+   "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55333640",
+   "마감일": "2026-11-18",
+   "경력_조건": "경력3년↑",
+   "자격요건": [
+    "컴퓨터 공학, 전자공학, SW학과 전공자 (또는 그에 준하는 실무 경험자)",
+    "WebGL 기반의 3D 그래픽 렌더링 이해 및 구현 가능자",
+    "AWS 클라우드 환경(EC2, S3, RDS 등) 구축 및 운영 경험자",
+    "RDBMS 또는 NoSQL 등 데이터베이스 활용 능력"
+   ],
+   "우대사항": [
+    "Three.js, VTK.js 등 웹 3D 그래픽스 라이브러리 활용 경험자 우대",
+    "React, Vue 등 프론트엔드 프레임워크 사용 경험자",
+    "의료영상(DICOM) 데이터 처리 및 클라우드 연동 경험자",
+    "서버 성능 최적화 및 CI/CD 파이프라인 구축 경험자"
+   ],
+   "키워드": {
+    "자격요건": [
+     "WebGL",
+     "3D 렌더링",
+     "AWS",
+     "RDBMS",
+     "NoSQL"
+    ],
+    "우대사항": [
+     "Three.js",
+     "VTK.js",
+     "React",
+     "Vue",
+     "DICOM",
+     "서버 성능 최적화",
+     "CI/CD"
+    ]
+   },
+   "중복_출처": [
+    "리멤버",
+    "잡코리아"
+   ]
+  },
+  {
+   "플랫폼": "리멤버",
+   "기업": "(주)무신사",
+   "제목": "Frontend Engineer (Core Engineering)",
+   "직군": "프론트엔드",
+   "근무지": "서울특별시 전체",
+   "url": "https://career.rememberapp.co.kr/job/posting/302789",
+   "마감일": "상시",
+   "경력_조건": "10년 이상",
+   "자격요건": [
+    "10년 이상 서비스를 구축하고 운영한 경험이 있으신 분 혹은 그에 준하는 역량을 갖추신 분",
+    "소프트웨어 엔지니어 팀의 엔지니어 성장을 이끌어 본 경험이 있으신 분",
+    "HTML, CSS, JavaScript 생태계에 익숙하신 분",
+    "React.js, Typescript 기반의 Web Application 개발 경험이 있으신 분",
+    "Git과 같은 버전 관리 시스템을 통한 협업 경험이 있으신 분",
+    "다양한 직군의 동료들과 의사소통하며 협업하기를 즐기시는 분",
+    "[주요 기술스택 및 도구]",
+    "언어: Typescript",
+    "주요 프레임워크 및 라이브러리: React.js, NEXT.js, Tanstack Query, Storybook, Ant Design",
+    "패키지 매니저 및 빌드 도구: PNPM, Turborepo, Vite",
+    "배포 및 자동화: Github Actions, EKS, ArgoCD",
+    "데이터 마케팅 및 개발 도구: Google Analytics, Amplitude",
+    "서비스 모니터링 및 로깅: Datadog, Kibana, Grafana",
+    "협업 및 업무 관리: Slack, Figma, Github, Jira, Confluence"
+   ],
+   "우대사항": [
+    "서로 다른 플랫폼의 시스템, 도구를 통합한 경험이 있으신 분",
+    "파트너, 어드민 시스템 개발 경험이 있으신 분",
+    "요구사항을 먼저 제안하고 UX(User Experience)를 개선한 경험이 있으신 분",
+    "개발 과정에서 DX(Developer Experience)를 개선한 경험이 있으신 분",
+    "BFF, Server Driven UI등 서버사이드 경험이 있으신 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "TypeScript",
+     "JavaScript",
+     "Next.js",
+     "HTML",
+     "CSS",
+     "React Query",
+     "Storybook",
+     "Vite",
+     "PNPM",
+     "Turborepo",
+     "CI/CD",
+     "모니터링"
+    ],
+    "우대사항": []
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "컬리",
+   "제목": "커머스 시니어 프론트엔드 개발자",
+   "직군": "프론트엔드",
+   "근무지": "서울특별시 강남구 테헤란로 133",
+   "url": "https://www.wanted.co.kr/wd/361793",
+   "마감일": "상시",
+   "경력_조건": "8년 이상",
+   "자격요건": [
+    "프론트엔드 개발 경력 8년 이상 또는 그에 준하는 실력을 갖춘 분",
+    "React, TypeScript에 대한 이해와 개발 경험이 있는 분",
+    "Zustand, Redux, React Query 등 상태 관리 라이브러리를 이용한 개발 경험이 있는 분",
+    "Javascript, CSS, HTML에 대한 이해가 깊은 분",
+    "다양한 이해 관계자와의 커뮤니케이션을 통해 요구사항을 도출하고 코드로 구현할 수 있는 분",
+    "복잡하고 예측불가한 상황에서, 문제를 정의하고 구조적 설계 및 구현을 통해 해결할 수 있는 분"
+   ],
+   "우대사항": [
+    "Claude, Copilot과 같은 AI 활용에 익숙한 분",
+    "테스트 및 배포 자동화 경험이 있으신 분",
+    "웹서비스의 정량적 성능 평가 및 최적화 경험이 있으신 분",
+    "반응형 디자인, 웹 접근성, 웹 표준을 고려한 개발 경험이 있으신 분",
+    "트래픽이 많은 웹서비스 개발 경험이 있으신 분",
+    "웹서비스 보안에 대한 이해가 있으신 분",
+    "창업이나 스타트업 경험이 있으신 분",
+    "기술적 의사결정 및 팀 리딩 경험이 있으신 분",
+    "개발환경",
+    "주요 기술 : React, TypeScript, Next.js, Zustand, Redux, React Query",
+    "스타일링 : Emotion, Tailwind CSS",
+    "빌드/배포 : Webpack, Vite, AWS, Docker, GitHub Actions",
+    "테스트 : Jest, Storybook",
+    "개발 생산성 : GitHub Copilot, Claude",
+    "모니터링 : Datadog, Sentry"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "TypeScript",
+     "Zustand",
+     "Redux",
+     "React Query",
+     "상태 관리",
+     "JavaScript",
+     "CSS",
+     "HTML"
+    ],
+    "우대사항": [
+     "AI 활용",
+     "테스트",
+     "배포 자동화",
+     "성능 최적화",
+     "반응형",
+     "접근성",
+     "웹 표준",
+     "대규모 트래픽",
+     "웹 보안",
+     "리딩",
+     "Next.js",
+     "Emotion",
+     "Tailwind CSS",
+     "Webpack",
+     "Vite",
+     "AWS",
+     "Docker",
+     "GitHub Actions",
+     "Jest",
+     "Storybook",
+     "Datadog",
+     "Sentry"
+    ]
+   },
+   "중복_출처": [
+    "리멤버"
+   ]
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "컬리",
+   "제목": "커머스 주니어 프론트엔드 개발자",
+   "직군": "프론트엔드",
+   "근무지": "서울특별시 강남구 테헤란로 133",
+   "url": "https://www.wanted.co.kr/wd/361794",
+   "마감일": "상시",
+   "경력_조건": "4년 이상",
+   "자격요건": [
+    "프론트엔드 개발 경력 4년 이상 또는 그에 준하는 실력을 갖춘 분",
+    "React, TypeScript에 대한 이해와 개발 경험이 있는 분",
+    "Zustand, Redux, React Query 등 상태 관리 라이브러리를 이용한 개발 경험이 있는 분",
+    "Javascript, CSS, HTML에 대한 이해가 깊은 분",
+    "다양한 이해 관계자와의 커뮤니케이션을 통해 요구사항을 도출하고 코드로 구현할 수 있는 분",
+    "시스템 및 컴포넌트 설계 능력을 기반으로, 문제를 이해하고 해결할 수 있는 분"
+   ],
+   "우대사항": [
+    "Claude, Copilot과 같은 AI 활용에 익숙한 분",
+    "테스트 및 배포 자동화 경험이 있으신 분",
+    "웹서비스의 정량적 성능 평가 및 최적화 경험이 있으신 분",
+    "반응형 디자인, 웹 접근성, 웹 표준을 고려한 개발 경험이 있으신 분",
+    "트래픽이 많은 웹서비스 개발 경험이 있으신 분",
+    "웹서비스 보안에 대한 이해가 있으신 분",
+    "창업이나 스타트업 경험이 있으신 분",
+    "개발환경",
+    "주요 기술 : React, TypeScript, Next.js, Zustand, Redux, React Query",
+    "스타일링 : Emotion, Tailwind CSS",
+    "빌드/배포 : Webpack, Vite, AWS, Docker, GitHub Actions",
+    "테스트 : Jest, Storybook",
+    "개발 생산성 : GitHub Copilot, Claude",
+    "모니터링 : Datadog, Sentry"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "TypeScript",
+     "Zustand",
+     "Redux",
+     "React Query",
+     "상태 관리",
+     "JavaScript",
+     "CSS",
+     "HTML",
+     "컴포넌트 설계"
+    ],
+    "우대사항": [
+     "AI 활용",
+     "테스트",
+     "배포 자동화",
+     "성능 최적화",
+     "반응형",
+     "접근성",
+     "웹 표준",
+     "대규모 트래픽",
+     "웹 보안",
+     "Next.js",
+     "Emotion",
+     "Tailwind CSS",
+     "Webpack",
+     "Vite",
+     "AWS",
+     "Docker",
+     "GitHub Actions",
+     "Jest",
+     "Storybook",
+     "Datadog",
+     "Sentry"
+    ]
+   },
+   "중복_출처": [
+    "리멤버"
+   ]
+  },
+  {
+   "플랫폼": "리멤버",
+   "기업": "쿠팡(주)",
+   "제목": "[쿠팡] Senior, Frontend Engineer (Coupang Ads-ACI Intelligence) [네카라쿠배당토]",
+   "직군": "프론트엔드",
+   "근무지": "서울특별시 광진구",
+   "url": "https://career.rememberapp.co.kr/job/posting/339420",
+   "마감일": "상시",
+   "경력_조건": "5년 이상",
+   "자격요건": [
+    "Computer Science/Engineering 관련 전공분야의 BA/BS 학위가 있는 분",
+    "장애 허용 및 모니터링 기능이 있는 프론트 엔드, 대규모 운영시스템 개발 및 설계 경험이 5년 이상인 분",
+    "WebKit, HTML5, CSS3, Javascript (한 개 이상의 node.js, react,js, 또는 express.js, Next.js), Typescript 에 능숙한 분",
+    "RESTful, GraphQL 및 마이크로 서비스 아키텍처 설계 및 개발에 대한 전문 지식이 있는 분",
+    "React 등 JS 프레임워크를 이용하여 사용자 서비스 개발 경험이 있는 분",
+    "Babel, Webpack, NPM 등 일반적인 프론트 엔드 개발 도구 사용 경험이 있는 분",
+    "사용성, Lean UX 설계, 개념적 모델링, 트렌드에 대한 뛰어난 지식이 있는 분",
+    "비즈니스 요구 사항을 명확하게 이해하고 이를 구현하는 능력이 있는 분",
+    "단위/사용자 테스트 및 반복설계/인터랙션 설계 경험이 있는 분"
+   ],
+   "우대사항": [
+    "광고 및 이커머스 도메인 경험이 있는 분",
+    "데이터베이스 시스템, 데이터 웨어하우징 개념에 대한 높은 이해가 있는 분",
+    "확장성이 매우 높은 클라우드 기반 소프트웨어 및 배포 경험이 있는 분",
+    "웹서비스/ API 설계 능숙한 분",
+    "애자일 소프트웨어 개발 경험이 있는 분",
+    "마이크로 서비스 아키텍쳐 경험이 있는 분",
+    "아마존 웹 서비스, 분산 시스템, 서비스 기반/메시지 기반 아키텍쳐 경험이 있는 분",
+    "SQL, NoSQL, Kafka, Redis, Hive, Hadoop, Spark",
+    "WebKit, HTML5, CSS3, Javascript, Node.js, React,js, Express.js, Vue"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "TypeScript",
+     "JavaScript",
+     "Next.js",
+     "Node.js",
+     "HTML",
+     "CSS",
+     "Webpack",
+     "Babel",
+     "GraphQL",
+     "REST API",
+     "MSA",
+     "테스트 자동화",
+     "모니터링"
+    ],
+    "우대사항": [
+     "React",
+     "JavaScript",
+     "Vue",
+     "Node.js",
+     "HTML",
+     "CSS",
+     "MSA",
+     "NoSQL",
+     "Kafka",
+     "Redis",
+     "AWS",
+     "애자일",
+     "이커머스"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "씨제이올리브영",
+   "제목": "Forward Deployed AI Engineer",
+   "직군": "FDE",
+   "근무지": "서울특별시 용산구 한강대로 372, 24층",
+   "url": "https://www.wanted.co.kr/wd/388977",
+   "마감일": "상시",
+   "경력_조건": "4년 이상",
+   "자격요건": [
+    "4년 이상의 개발 경력 또는 이에 준하는 역량",
+    "Java / Kotlin / Go / Python 등 하나 이상의 언어에 대한 높은 숙련도",
+    "데이터베이스 설계 및 활용 역량",
+    "AWS / GCP / Azure 등 클라우드 환경에서의 개발 경험",
+    "불확실한 상황에서도 빠르게 가설을 세우고 실행하며 답을 찾아가는 태도",
+    "다양한 직군과 함께 문제를 정의하고 관점을 조율할 수 있는 협업 역량"
+   ],
+   "우대사항": [
+    "백엔드·프론트엔드·인프라 전반을 아우르는 End-to-End 개발 역량",
+    "AI Agent, RAG 등 생성형 AI 기술 활용 경험",
+    "Kubernetes 기반 환경에 대한 이해 및 개발 경험",
+    "리테일 또는 커머스 도메인 경험",
+    "Kafka, Redis, Airflow 등 데이터 파이프라인 경험"
+   ],
+   "키워드": {
+    "자격요건": [
+     "Java",
+     "Kotlin",
+     "Go",
+     "Python",
+     "DB 설계",
+     "AWS",
+     "GCP",
+     "Azure"
+    ],
+    "우대사항": [
+     "풀스택",
+     "AI 에이전트",
+     "RAG",
+     "Kubernetes",
+     "Kafka",
+     "Redis",
+     "Airflow"
+    ]
+   },
+   "중복_출처": [
+    "리멤버",
+    "링크드인: https://www.linkedin.com/jobs/view/4470693975/"
+   ]
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "씨제이올리브영",
+   "제목": "검색 플랫폼 개발자 (Front-end)",
+   "직군": "프론트엔드",
+   "근무지": "서울특별시 용산구 한강대로 372, 24층",
+   "url": "https://www.wanted.co.kr/wd/366991",
+   "마감일": "상시",
+   "경력_조건": "5년 이상",
+   "자격요건": [
+    "5년 이상의 Front-end 개발 경험을 보유하신 분",
+    "Javascript와 React 같은 Front-end Framework 개발 경험 보유",
+    "WEB 환경에 대한 기본적인 이해 및 지식이 있으신 분",
+    "다양한 컴포넌트 설계 경험"
+   ],
+   "우대사항": [
+    "검색/추천/탐색 서비스 UI/UX 개발 경험",
+    "대규모 트래픽 서비스의 Front-end 성능 최적화 경험",
+    "데이터 기반 차트 및 지표 시각화 경험",
+    "기술 부채를 보면 잠 못 이루시는 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "JavaScript",
+     "React",
+     "컴포넌트 설계"
+    ],
+    "우대사항": [
+     "성능 최적화",
+     "대규모 트래픽",
+     "데이터 시각화"
+    ]
+   },
+   "중복_출처": [
+    "링크드인"
+   ]
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "씨제이올리브영",
+   "제목": "엔터프라이즈플랫폼유닛 Front-end",
+   "직군": "프론트엔드",
+   "근무지": "서울특별시 용산구 한강대로 372, 24층",
+   "url": "https://www.wanted.co.kr/wd/337446",
+   "마감일": "상시",
+   "경력_조건": "5년 이상",
+   "자격요건": [
+    "5년 이상의 Front-end 개발 경력이나 그에 준하는 역량이 있으신 분",
+    "JavaScript와 React 같은 Front-end Framework 개발 경험이 있으신 분",
+    "WEB 환경에 대한 기본적인 이해 및 지식이 있으신 분",
+    "잠재적인 문제를 해결을 위해 가설을 수립하고 수행한 경험이 있으신 분",
+    "올리브영의 성장과 함께 성공 경험을 만들어 가고 싶으신 분"
+   ],
+   "우대사항": [
+    "Typescript/React.js/Node.js 를 활용한 프로젝트 경험이 있으신 분",
+    "모바일 웹 및 Single Page Application에 대한 이해가 높으신 분",
+    "대규모 서비스 개발 프로젝트에서 Front-end 성능 최적화 경험이 있으신 분",
+    "Agile 개발 방식 / Scrum 경험이 있으신 분",
+    "하이브리드 앱 환경에서 개발 경험이 있으신분",
+    "직군과 관계없이 어울릴 수 있고, 적극적인 커뮤니케이션을 하려고 노력하는 분",
+    "나와 나의 팀만을 위한 의사결정이 아닌 조직 전체를 위한 의사결정을 할 수 있는 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "JavaScript"
+    ],
+    "우대사항": [
+     "TypeScript",
+     "React",
+     "Node.js",
+     "모바일 웹",
+     "SPA"
+    ]
+   },
+   "중복_출처": [
+    "링크드인"
+   ]
+  },
+  {
+   "플랫폼": "링크드인",
+   "기업": "씨제이올리브영(주)",
+   "제목": "Global Software Engineer-Frontend (글로벌 개발)",
+   "직군": "프론트엔드",
+   "근무지": "대한민국 서울 서울",
+   "url": "https://www.linkedin.com/jobs/view/4421355622/",
+   "마감일": "확인 불가",
+   "경력_조건": "3년 이상(시니어 7년 이상)",
+   "자격요건": [
+    "3+년(시니어는 7+년)의 전문적인 소프트웨어 개발 경험.",
+    "현대의 프로그래밍 언어 중 하나에 대한 전문성.",
+    "클라우드 환경에서의 개발 경험 혹은 클라우드 환경으로의 마이그레이션 경험.",
+    "현대의 웹 서비스 아키텍쳐에 대한 충분한 이해.",
+    "기술적 도전을 즐기는 자기주도적인 자세.",
+    "논리적 사고력과 효과적인 커뮤니케이션 능력.",
+    "(시니어 레벨) 다양한 직무의 동료들과 긴 호흡으로 일해본 경험.",
+    "※ 외국인 지원자의 경우, 본사 구성원과의 원활한 협업 가능 여부 확인을 위해 유효기간이 남아 있는 TOPIK 5급 이상(또는 이에 준하는 한국어 자격증) 제출이 필수입니다. 또한 HR Call에서 한국어 인터뷰가 추가로 진행될 수 있습니다.",
+    "3+ (7+ for senior) years of professional software development experiences.",
+    "Proficiency in one modern programming language.",
+    "Experience in cloud native development or cloud migration.",
+    "Good understanding of modern web service architectures.",
+    "Love to face technical challenges with self-motivation.",
+    "Possession of logical thinking and effective communication skills.",
+    "(Senior) Experience in intensive collaboration with cross-functional teams.",
+    "※ For foreigner candidates, to assess the ability to collaborate effectively with our HQ teams, submission of a valid TOPIK Level 5 or higher (or an equivalent Korean language certification) is required. Please note that an additional Korean-language interview may be conducted during the HR call."
+   ],
+   "우대사항": [
+    "모바일 앱 개발 경험.",
+    "이커머스 기능 (주문/결제/배송 등) 개발 경험.",
+    "다중 언어 및 다중 지역에 서비스한 경험.",
+    "컴퓨터 과학/공학 혹은 관련 전공의 학사 학위.",
+    "(시니어 레벨) 높은 트래픽 안에서 operational excellence를 이룩해 본 실질적인 경험.",
+    "Good understanding of mobile application architectures.",
+    "Experience in e-commerce services (checkout/order/payment/shipment) development.",
+    "Experience in multi-language and multi-region services development.",
+    "Bachelor's degree in computer science or equivalent.",
+    "(Senior) Proven achievement in operational excellence for high-volume traffic."
+   ],
+   "키워드": {
+    "자격요건": [],
+    "우대사항": [
+     "i18n",
+     "대규모 트래픽",
+     "이커머스",
+     "결제"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "씨제이올리브영",
+   "제목": "커머스플랫폼유닛 Front-end",
+   "직군": "프론트엔드",
+   "근무지": "서울특별시 용산구 한강대로 372, 24층",
+   "url": "https://www.wanted.co.kr/wd/337438",
+   "마감일": "상시",
+   "경력_조건": "5년 이상",
+   "자격요건": [
+    "5년 이상의 Front-end 개발 경력이나 그에 준하는 역량이 있으신 분",
+    "JavaScript와 React 같은 Front-end Framework 개발 경험이 있으신 분",
+    "WEB 환경에 대한 기본적인 이해 및 지식이 있으신 분",
+    "잠재적인 문제를 해결을 위해 가설을 수립하고 수행한 경험이 있으신 분",
+    "학습과 성장에 관심이 많고, 자기 개발을 위해 노력하시는 분",
+    "올리브영의 성장과 함께 성공 경험을 만들어 가고 싶으신 분"
+   ],
+   "우대사항": [
+    "Typescript/React.js/Node.js 를 활용한 프로젝트 경험이 있으신 분",
+    "모바일 웹 및 Single Page Application에 대한 이해가 높으신 분",
+    "대규모 서비스 개발 프로젝트에서 Front-end 성능 최적화 경험이 있으신 분",
+    "하이브리드 앱 환경에서 개발 경험이 있으신 분",
+    "기술 부채를 보면 잠 못 이루시는 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "JavaScript"
+    ],
+    "우대사항": [
+     "TypeScript",
+     "React",
+     "Node.js",
+     "모바일 웹",
+     "SPA",
+     "성능 최적화",
+     "하이브리드 앱"
+    ]
+   },
+   "중복_출처": [
+    "링크드인"
+   ]
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "현대자동차",
+   "제목": "[AVP] 모빌리티 서비스 Frontend Engineer",
+   "직군": "프론트엔드",
+   "근무지": "서울시 서초구 헌릉로 12 (양재동, 현대기아자동차빌딩)",
+   "url": "https://www.wanted.co.kr/wd/387544",
+   "마감일": "2026-12-31",
+   "경력_조건": "8년 이상",
+   "자격요건": [
+    "학사 이상의 학위를 보유하신 분",
+    "8년 이상의 Frontend 개발 경력을 보유하신분",
+    "웹 개발 및 운영 경험을 보유하신 분",
+    "Javascript Framework 사용 경험을 보유하신 분 (React, Angular, Vue 등)",
+    "Frontend 개발에 대한 전문성을 보유하신 분 (Javascript, Typescript, ES, CSS 등)"
+   ],
+   "우대사항": [
+    "컴퓨터 공학 분야에서 학사 이상의 학위를 보유하신 분",
+    "대규모 서비스 웹 개발 및 운영 경험을 보유하신 분",
+    "Map, Chart, Animation 등의 다양한 웹 UI 및 인터랙션 개발 경험을 보유하신 분",
+    "Node.js, Go 등을 이용한 백엔드 서버 개발 경험을 보유하신 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "JavaScript",
+     "TypeScript",
+     "React",
+     "Angular",
+     "Vue",
+     "CSS"
+    ],
+    "우대사항": [
+     "대규모 서비스",
+     "지도",
+     "차트",
+     "애니메이션",
+     "Node.js",
+     "Go"
+    ]
+   },
+   "중복_출처": [
+    "링크드인"
+   ]
+  },
+  {
+   "플랫폼": "링크드인",
+   "기업": "(주)크래프톤",
+   "제목": "[AI Frontier Div.] AI Native Full Stack Engineer (5년 이상)",
+   "직군": "풀스택",
+   "근무지": "대한민국 서울 서울",
+   "url": "https://www.linkedin.com/jobs/view/4468603930/",
+   "마감일": "확인 불가",
+   "경력_조건": "5년 이상",
+   "자격요건": [
+    "5년 이상의 소프트웨어 개발 경력 또는 그에 준하는 실력을 보유한 분",
+    "Backend(Node.js/Python/Kotlin/Go 중 하나 이상)를 활용한 서비스 개발 경험이 있는 분",
+    "API, 데이터베이스, 서버 등 백엔드 서비스의 기본적인 구조를 이해하고 개발할 수 있는 분",
+    "RDBMS 또는 NoSQL 데이터베이스를 활용한 경험이 있는 분",
+    "개발한 기능을 테스트하고 실제 서비스에 배포해본 경험이 있는 분",
+    "실제 사용자가 사용하는 서비스를 개발하거나 운영해본 경험이 있는 분",
+    "로그, 모니터링 도구 등을 활용하여 서비스 문제를 확인하고 해결해본 경험이 있는 분",
+    "GitHub Actions, Jenkins 등 CI/CD 환경을 사용해본 경험이 있는 분",
+    "AWS, GCP 등 클라우드 환경에서 서비스를 개발하거나 운영해본 경험이 있으면 더욱 좋습니다",
+    "Claude Code, OpenAI Codex, Google Antigravity, Cursor 등 AI 코딩 도구를 개발 과정에서 적극적으로 활용하고 있는 분",
+    "AI 코딩 도구의 결과물을 그대로 사용하는 것이 아니라, 직접 검토하고 수정하며 개발할 수 있는 분",
+    "새로운 AI 개발 도구와 개발 방식을 빠르게 학습하고 적용하는 데 관심이 많은 분",
+    "CLAUDE.md, AGENTS.md, Rules 등 프로젝트 컨텍스트를 활용해본 경험이 있으면 좋습니다",
+    "MCP, 플러그인, 스킬 시스템 등 에이전트 도구 생태계에 대한 관심이나 활용 경험이 있으면 더욱 좋습니다",
+    "멀티 에이전트 또는 에이전트 오케스트레이션 경험이 있으면 더욱 좋습니다",
+    "주어진 요구사항을 이해하고 기능 단위로 구현할 수 있는 분",
+    "개발 과정에서 발생하는 문제를 스스로 분석하고 해결하려는 분",
+    "필요한 내용을 문서화하고 동료와 공유할 수 있는 분",
+    "다양한 직군과 협업하는 데 어려움이 없는 분",
+    "새로운 기술을 배우고 실제 개발에 적용하는 것을 즐기는 분",
+    "해외 출장에 결격 사유가 없는 분"
+   ],
+   "우대사항": [
+    "AWS, GCP, Azure 등 클라우드 환경에서 서비스를 개발·배포·운영해본 경험이 있는 분",
+    "Docker 등 컨테이너 환경을 활용해본 경험이 있거나, Kubernetes(k8s), IaC(Infrastructure as Code)에 대한 이해 또는 활용 경험이 있으면 더욱 좋습니다",
+    "GPU 기반 모델 서빙 환경을 활용해본 경험이 있거나, vLLM, Triton 등 모델 서빙 도구에 대한 이해가 있는 분",
+    "또는 오픈소스 모델을 활용하여 실제 서비스 기능을 구현해본 경험이 있는 분",
+    "실제 사용자가 사용하는 AI 서비스나 기능을 개발·운영해본 경험이 있는 분",
+    "서비스 규모 자체보다는 운영 과정에서 성능, 안정성, 비용 등의 문제를 고민해본 경험을 중요하게 봅니다",
+    "Backend를 중심으로 개발하되, React, TypeScript 등 Frontend 개발 경험이 있어 필요한 경우 직접 기능을 구현할 수 있는 분",
+    "AI 도구를 활용해 아이디어부터 개발, 배포까지 작은 서비스나 프로젝트를 직접 완성해본 경험이 있는 분",
+    "단순히 프롬프트를 작성하는 것을 넘어, 에이전트가 안정적으로 작업할 수 있도록 컨텍스트, 도구, 검증 방식을 고민해본 분",
+    "새로운 기술을 사용하는 것에 그치지 않고, 이 기술이 실제 사용자나 사업에 어떤 가치를 만들 수 있는지 고민하는 분",
+    "서비스 운영 과정에서 장애나 예상하지 못한 문제를 경험하고, 원인을 분석하고 개선해본 경험이 있는 분",
+    "새로운 AI 모델이나 개발 도구가 나오면 직접 사용해보고, 기존 서비스나 개발 과정에 적용할 방법을 찾아보는 것을 즐기는 분",
+    "코드뿐 아니라 아키텍처, 실험 결과, 개발 과정에서의 주요 의사결정을 문서로 정리하고 공유하는 습관이 있는 분",
+    "서비스의 응답 속도, 비용, 리소스 사용량 등 성능상의 문제를 발견하고 개선하는 데 관심이 많은 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "Node.js",
+     "Kotlin",
+     "Python",
+     "Go",
+     "RDBMS",
+     "NoSQL",
+     "AWS",
+     "GCP",
+     "CI/CD",
+     "모니터링",
+     "AI 에이전트",
+     "MCP",
+     "AI 코딩 도구"
+    ],
+    "우대사항": [
+     "React",
+     "TypeScript",
+     "AWS",
+     "GCP",
+     "Azure",
+     "Docker",
+     "Kubernetes",
+     "IaC",
+     "AI 에이전트",
+     "프롬프트 엔지니어링"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "링크드인",
+   "기업": "(주)크래프톤",
+   "제목": "[AI Frontier Div.] AI Native Full Stack Engineer (10년 이상)",
+   "직군": "풀스택",
+   "근무지": "대한민국 서울 서울",
+   "url": "https://www.linkedin.com/jobs/view/4411439066/",
+   "마감일": "확인 불가",
+   "경력_조건": "10년 이상",
+   "자격요건": [
+    "10년 이상의 소프트웨어 개발 경력 또는 그에 준하는 전문성과 실력을 보유한 분",
+    "Backend(Node.js/Python/Kotlin/Go 중 하나 이상) 중심의 서비스 개발 경험. 서비스의 전체 흐름을 이해하고, 복잡한 요구사항을 구조화해 해결할 수 있는 분",
+    "제품 요구사항을 기술 구조로 구체화하고, 서비스 아키텍처를 독립적으로 설계·검토·개선할 수 있는 분",
+    "기획부터 설계, 개발, 테스트, 배포, 서빙까지 End-to-End로 책임지고, 필요에 따라 직접 구현하며 완성도를 높일 수 있는 분",
+    "RDBMS 및 NoSQL 데이터베이스의 특성과 트레이드오프를 이해하고, 서비스 요구사항에 맞는 데이터 구조와 접근 방식을 설계할 수 있는 분",
+    "성능, 보안, 안정성, 확장성과 비용을 종합적으로 고려해 기술적 선택을 하고 그 근거를 설명할 수 있는 분",
+    "기술적 위험과 의존성을 사전에 파악하고, 서비스의 중장기 기술 방향과 개선 과제를 제안할 수 있는 분",
+    "실서비스 운영 경험을 바탕으로 대규모 트래픽 환경의 아키텍처와 운영 방식을 설계하고 개선한 분",
+    "Datadog, Grafana 등 모니터링·관측 체계를 설계하고, 장애의 원인 분석부터 복구 및 재발 방지까지 주도한 분",
+    "CI/CD와 인프라 운영 체계를 설계·개선하고, 배포 안정성과 개발 생산성을 높인 분",
+    "서비스 수준 목표와 운영 지표를 정의하고, 용량·성능·장애 대응을 포함한 운영 기준을 수립할 수 있는 분",
+    "운영 과정에서 확인한 문제를 구조적 개선 과제로 연결하고, 우선순위와 실행 방안을 제시할 수 있는 분",
+    "Claude Code, OpenAI Codex, Cursor 등 코딩 에이전트를 일상적인 개발 도구로 활용하고, 각 도구의 강점과 한계를 고려해 업무에 적용할 수 있는 분",
+    "CLAUDE.md, AGENTS.md, Rules 등 프로젝트 컨텍스트를 설계해 에이전트의 출력 품질과 일관성을 관리한 경험이 있는 분",
+    "도구 권한, 안전 제약, 검증 루프 등 에이전트의 실행 환경과 품질 관리 체계를 설계·운영한 경험이 있는 분",
+    "플러그인, 스킬 시스템, MCP(Model Context Protocol) 등 에이전트 도구 생태계를 이해하고, 필요에 따라 커스텀 도구나 플러그인을 설계·개발할 수 있는 분",
+    "멀티 에이전트 시스템 또는 에이전트 오케스트레이션 구조를 설계하고, 실제 개발 흐름에 적용한 경험이 있는 분",
+    "모호하거나 복잡한 문제를 독립적으로 정의하고, 기술 방향과 해결 방안을 결정해 구현까지 이끌 수 있는 분",
+    "주요 기술 의사결정의 배경, 대안, 트레이드오프를 문서화하고 팀의 기술 기준으로 정착시킬 수 있는 분",
+    "프로젝트의 기술 리스크와 일정·품질 간 우선순위를 조율하고, 유관 부서 및 비개발 직군과 합의점을 만들 수 있는 분",
+    "동료의 설계와 구현에 기술적 피드백을 제공하고, 팀의 개발 역량과 실행 품질을 높일 수 있는 분",
+    "빠르게 변화하는 AI 기술을 주도적으로 학습하고, 실제 제품과 개발 체계에 적합한지 검증해 적용할 수 있는 분",
+    "해외 출장에 결격 사유가 없는 분"
+   ],
+   "우대사항": [
+    "클라우드 환경(AWS, GCP, Azure) 활용 및 프로덕션 수준의 아키텍처 설계 경험. Kubernetes(k8s), Docker 등 컨테이너 기반 배포 및 IaC(Infrastructure as Code) 경험 포함",
+    "GPU 기반 모델 서빙 인프라 구축 경험 (vLLM, Triton 등) 또는 오픈소스 모델을 활용한 서비스 기능 구현 경험",
+    "실제 유저들이 사용하는 AI 서비스 운영 경험 (DAU 10만 이상 또는 이에 준하는 규모)",
+    "게임 또는 콘텐츠 및 사용자 중심 서비스에 대한 도메인 이해 또는 새로운 도메인을 빠르게 학습할 수 있는 역량",
+    "Frontend(React, TypeScript 등) 개발 경험을 함께 보유한 풀스택 역량",
+    "테크 리드 또는 소규모 팀 리딩 경험",
+    "AI 도구를 활용해 혼자서 하나의 서비스를 처음부터 끝까지 만들어본 경험이 있는 분",
+    "프롬프트 한 줄이 아니라, 에이전트가 동작하는 환경 전체를 설계하는 관점을 가진 분",
+    "'이 기술이 사업에 어떤 가치를 만드는가'를 항상 고민하는 분",
+    "서비스 장애를 겪어봤고, 그 경험에서 시스템을 더 견고하게 만든 경험이 있는 분",
+    "새로운 AI 모델이 나오면 바로 써보고, 프로덕션에 적용할 방법을 찾는 분",
+    "코드뿐 아니라 아키텍처, 실험 결과, 의사결정 과정을 문서로 남기는 습관이 있는 분",
+    "성능 병목을 찾고 해결하는 것에 즐거움을 느끼는 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "Node.js",
+     "Kotlin",
+     "Python",
+     "Go",
+     "RDBMS",
+     "NoSQL",
+     "CI/CD",
+     "모니터링",
+     "AI 에이전트",
+     "MCP",
+     "AI 코딩 도구",
+     "대규모 트래픽",
+     "풀스택"
+    ],
+    "우대사항": [
+     "React",
+     "TypeScript",
+     "AWS",
+     "GCP",
+     "Azure",
+     "Docker",
+     "Kubernetes",
+     "IaC",
+     "AI 에이전트",
+     "프롬프트 엔지니어링",
+     "팀 리딩",
+     "풀스택"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "링크드인",
+   "기업": "(주)크래프톤",
+   "제목": "[AI Transformation Dept.] Sr. AI Transformation Specialist (FDE) (7년 이상)",
+   "직군": "FDE",
+   "근무지": "대한민국 서울 서울",
+   "url": "https://www.linkedin.com/jobs/view/4432950426/",
+   "마감일": "확인 불가",
+   "경력_조건": "7년 이상",
+   "자격요건": [
+    "관련 분야 7년 이상의 전문 경력을 보유하신 분",
+    "소프트웨어 엔지니어링 실무 경력을 바탕으로, 개발 팀이나 목적 조직(TF)을 리딩하여 프로젝트를 성공적으로 완수한 경험이 있으신 분",
+    "프론트엔드부터 백엔드까지 (Full-stack) 폭넓은 개발 이해도를 바탕으로, 요구사항 분석부터 프로토타입 런칭까지의 전체 사이클을 독자적으로 기획·설계하고 빠르게 실행할 수 있는 분",
+    "비개발 직군(C-레벨, 현업 리더 등)과 비즈니스 언어로 원활하게 소통하고, 기술 전략에 대한 전문적 자문을 제공할 수 있는 뛰어난 커뮤니케이션 역량을 갖추신 분",
+    "불확실성이 높은 환경에서도 주도적으로 문제를 정의하고 전략적 돌파구를 기획하는 야성(Hands-on 마인드)을 보유하신 분",
+    "해외 출장에 결격 사유가 없는 분"
+   ],
+   "우대사항": [
+    "[강력 우대] B2B SaaS 기업이나 팔란티어(Palantir) 등에서 FDE(Forward Deployed Engineer) 역할을 수행해 보신 분",
+    "스타트업 창업(CTO 등) 경험이 있거나, 극초기 팀에서 0에서 1을 만들어내는(Zero to One) 과정을 즐기시는 분",
+    "GenAI (LLM, RAG, AI Agent, Prompt Engineering 등) 기술 생태계에 대한 높은 이해도와 실제 프로덕트 적용 경험이 있으신 분",
+    "해커톤 등 단기간에 극도로 몰입하여 산출물을 만들어내는 애자일(Agile)한 업무 방식을 선호하시는 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "팀 리딩",
+     "풀스택"
+    ],
+    "우대사항": [
+     "LLM",
+     "RAG",
+     "AI 에이전트",
+     "프롬프트 엔지니어링",
+     "애자일"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "아마존웹서비시즈코리아",
+   "제목": "Forward Deployed Engineer, AWS Forward Deployed Engineering",
+   "직군": "FDE",
+   "근무지": "서울특별시 강남구 테헤란로 231 (역삼동, 센터필드 서관 12층)",
+   "url": "https://www.wanted.co.kr/wd/394766",
+   "마감일": "상시",
+   "경력_조건": "3년 이상",
+   "자격요건": [
+    "3+ years of non-internship professional software development experience",
+    "2+ years of experience working in an Agile, startup, or rapidly scaling environment",
+    "Experience communicating technical concepts to both technical and non-technical audiences",
+    "Degree in Computer Science or related field, or equivalent professional experience",
+    "Experience with agentic and spec-driven development (developing AI agents a plus)",
+    "Experience with AI tools: eval frameworks, agent tooling, RAG pipelines, and prompt engineering"
+   ],
+   "우대사항": [
+    "3+ years of full software development life cycle, including coding standards, code reviews, source control management, build processes, testing, and operations experience",
+    "Experience working in customer production environments",
+    "Experience building or deploying AI/ML applications in production environments",
+    "Background as a founder, engineering lead, or startup builder with high ownership and urgency",
+    "Prior experience with React, TypeScript, Python, and/or Go",
+    "Experience interfacing with customers or leading technical projects with external stakeholders",
+    "Experience working with teams that build and scale end-to-end production systems",
+    "Experience with AWS services"
+   ],
+   "키워드": {
+    "자격요건": [
+     "AI 에이전트",
+     "Spec-driven development",
+     "RAG",
+     "프롬프트 엔지니어링",
+     "Agile"
+    ],
+    "우대사항": [
+     "코드 리뷰",
+     "AI/ML",
+     "React",
+     "TypeScript",
+     "Python",
+     "Go",
+     "AWS"
+    ]
+   },
+   "중복_출처": [
+    "링크드인"
+   ]
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "아마존웹서비시즈코리아",
+   "제목": "Sr Forward Deployed Engineer, AWS Forward Deployed Engineering",
+   "직군": "FDE",
+   "근무지": "서울특별시 강남구 테헤란로 231 (역삼동, 센터필드 서관 12층)",
+   "url": "https://www.wanted.co.kr/wd/395451",
+   "마감일": "상시",
+   "경력_조건": "5년 이상",
+   "자격요건": [
+    "5+ years of non-internship professional software development experience",
+    "5+ years of programming with at least one software programming language experience",
+    "5+ years of leading design or architecture (design patterns, reliability and scaling) of new and existing systems experience",
+    "Experience as a mentor, tech lead or leading an engineering team and/or Experience communicating technical concepts to both technical and non-technical audiences, including senior stakeholders",
+    "Experience leading agentic and spec-driven development at production scale (developing AI agents a plus) and experience with AI tools: eval frameworks, agent tooling, RAG pipelines, and prompt engineering",
+    "Full working proficiency in Korean"
+   ],
+   "우대사항": [
+    "Bachelor's degree in computer science or equivalent",
+    "Experience working with AWS Services",
+    "Experience building or deploying AI/ML applications at enterprise production scale",
+    "Background as a founder, engineering lead, or startup builder with high ownership and urgency",
+    "Experience architecting and delivering complex, multi-component systems in customer production environments",
+    "Experience with React, TypeScript, Python, and/or Go",
+    "Experience leading customer-facing technical projects or managing external stakeholder relationships",
+    "3+ years of experience working in an Agile, startup, or rapidly scaling environment"
+   ],
+   "키워드": {
+    "자격요건": [
+     "아키텍처 설계",
+     "리딩",
+     "AI 에이전트",
+     "Spec-driven development",
+     "RAG",
+     "프롬프트 엔지니어링",
+     "한국어"
+    ],
+    "우대사항": [
+     "AWS",
+     "AI/ML",
+     "React",
+     "TypeScript",
+     "Python",
+     "Go",
+     "Agile"
+    ]
+   },
+   "중복_출처": [
+    "링크드인"
+   ]
+  },
+  {
+   "플랫폼": "링크드인",
+   "기업": "(주)버킷플레이스",
+   "제목": "Fullstack Engineer, Payment",
+   "직군": "풀스택",
+   "근무지": "대한민국 서울",
+   "url": "https://www.linkedin.com/jobs/view/4342910335/",
+   "마감일": "확인 불가",
+   "경력_조건": "프론트엔드 1년 이상, 백엔드 2년 이상",
+   "자격요건": [
+    "컴퓨터공학 전공 혹은 그에 준하는 지식을 갖춘 분",
+    "만 1년 이상의 프론트엔드 개발 경험(React, TypeScript 등)을 보유한 분",
+    "만 2년 이상의 백엔드 개발 (Spring Framework, RDBMS 등) 및 운영 경험을 보유한 분",
+    "백엔드 기술(Spring Framework, RDBMS 등)에 대한 이해 및 풀스택 개발 경험이 있는 분",
+    "웹 성능 최적화 경험이 있는 분 (SSR, CSR, 번들 최적화, 캐싱 전략 등)",
+    "GPT, Claude 등 LLM 기반 도구를 실제 업무에 활용해본 경험을 토대로 인사이트, 한계를 설명할 수 있는 분",
+    "협업 툴(Slack, Notion 등)을 능숙히 사용하고, 자신의 생각을 정리해 공유할 수 있는 분"
+   ],
+   "우대사항": [
+    "대용량 트래픽 처리 시스템 개발 및 운영 경험 을 보유한 분",
+    "레거시 시스템을 이해하고 점진적으로 개선해나간 경험 을 보유한 분",
+    "반응형 웹 및 모바일 웹 개발 경험 을 보유한 분",
+    "애자일 기반 개발, MVP 단위 기능 개선 경험 을 보유한 분",
+    "프로젝트 또는 기능 단위 리딩 경험 을 보유한 분",
+    "인테리어 및 주거 라이프스타일 산업 경험 을 보유한 분",
+    "간편결제 개발 및 운영 경험(전자금융업 근무 경험) 을 보유한 분",
+    "n8n, Langchain, LlamaIndex 등 AI 연동 및 자동화 도구 사용 경험 을 보유한 분",
+    "AI 기반 프로토타입을 빠르게 구현/실험한 경험 을 보유한 분",
+    "코드 작성, 리뷰, 테스팅, 문서화 등 개발 전 과정에 AI를 도입해 실질적 효율을 개선한 경험을 보유한 분",
+    "오픈소스 AI 프로젝트 참여 또는 개인 프로젝트 운영 경험 을 보유한 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "TypeScript",
+     "웹 성능 최적화",
+     "SSR",
+     "Spring",
+     "RDBMS",
+     "LLM",
+     "AI 코딩 도구",
+     "풀스택"
+    ],
+    "우대사항": [
+     "모바일 웹",
+     "반응형 웹",
+     "대규모 트래픽",
+     "애자일",
+     "결제",
+     "팀 리딩"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "사람인",
+   "기업": "㈜지에스아이티엠",
+   "제목": "프론트엔드 개발자 (Vue 3/Nuxt 3) 모집",
+   "직군": "프론트엔드",
+   "근무지": "서울 강남구",
+   "url": "https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55437578",
+   "마감일": "2026-11-29",
+   "경력_조건": "경력 4~10년",
+   "자격요건": [
+    "Vue 3/Nuxt 3, JavaScript/TypeScript 기반 프론트엔드 개발 경력 4년 이상~10년 이하",
+    "Composition API 기반 컴포넌트 설계 및 상태 관리 경험",
+    "REST API 연동, 비동기 데이터 처리 및 예외 처리 구현 경험",
+    "HTML5, CSS3 기반 반응형 웹 UI 구현 경험",
+    "Git 기반 협업 및 디자인·백엔드·QA 직무와의 협업 경험"
+   ],
+   "우대사항": [
+    "WebView 기반 하이브리드 앱 및 네이티브 Bridge 연동 경험",
+    "Core Web Vitals, Lighthouse 기반 웹 성능 분석 및 최적화 경험",
+    "GitOps 기반 CI/CD 파이프라인 및 Agile/Sprint 개발 경험",
+    "React, Flutter 등 다양한 프론트엔드 기술 스택 활용 경험"
+   ],
+   "키워드": {
+    "자격요건": [
+     "Vue",
+     "Nuxt",
+     "JavaScript",
+     "TypeScript",
+     "Composition API",
+     "상태 관리",
+     "REST API",
+     "HTML5",
+     "CSS3",
+     "반응형 웹",
+     "Git"
+    ],
+    "우대사항": [
+     "WebView",
+     "하이브리드 앱",
+     "Core Web Vitals",
+     "Lighthouse",
+     "웹 성능 최적화",
+     "GitOps",
+     "CI/CD",
+     "Agile",
+     "React",
+     "Flutter"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "컬리",
+   "제목": "핀테크 프론트엔드 개발자 (결제)",
+   "직군": "프론트엔드",
+   "근무지": "서울특별시 강남구 테헤란로 133",
+   "url": "https://www.wanted.co.kr/wd/356194",
+   "마감일": "상시",
+   "경력_조건": "3년 이상",
+   "자격요건": [
+    "3년 이상 프론트엔드 개발 경력을 가졌거나, 이에 준하는 실력을 가진 분",
+    "React, Angular, Vue와 같은 SPA 프레임워크 기반 개발 실무 경험이 있으신 분",
+    "반복되는 업무·코드·장애 요소를 스스로 인지하고, 자동화 도구·공통 모듈·개발 프로세스 개선 등으로 구조적으로 해결한 경험",
+    "외부 결제/금융 솔루션 연동 및 API 통합 개발 능력",
+    "TypeScript 및 React 생태계에 대한 깊이 있는 이해",
+    "웹 표준, 브라우저 렌더링 파이프라인, Core Web Vitals에 대한 깊이 있는 이해",
+    "프론트엔드 보안(XSS, CSRF, CSP, 시큐어 코딩 원칙)에 대한 깊이 있는 이해",
+    "앱 내 웹뷰(WebView) 환경에서의 프론트엔드 개발 특성에 대한 이해",
+    "정보보안 관련 기본 지식",
+    "TypeScript, React 기반 대규모 서비스 개발 능력",
+    "Nx / Turborepo 등 모노레포 환경에서의 빌드·의존성 관리 능력",
+    "AWS Docker, Kubernetes 등 컨테이너 환경 핵심 서비스의 숙련된 활용 능력",
+    "MSA 환경에서의 서비스 개발, 배포 자동화, 모니터링 및 트러블슈팅 능력",
+    "Git Flow 등 버전 관리 시스템을 활용한 효율적인 코드 관리 능력"
+   ],
+   "우대사항": [
+    "핀테크(결제,정산,포인트,선불) 업무 경험이 있는 분",
+    "디자인 시스템 구축 및 운영 경험이 있으신 분",
+    "NestJS 기반 BFF 개발 경험이 있으신 분",
+    "프로젝트의 독자적인 리딩이 가능 하신 분",
+    "AI 기술에 대한 높은 관심을 갖고 있으며 업무에 활용할 수 있는 능력을 보유하신 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "Angular",
+     "Vue",
+     "SPA",
+     "API 연동",
+     "TypeScript",
+     "웹 표준",
+     "브라우저 렌더링",
+     "Core Web Vitals",
+     "프론트엔드 보안",
+     "WebView",
+     "모노레포",
+     "Nx",
+     "Turborepo",
+     "Docker",
+     "Kubernetes",
+     "AWS",
+     "MSA",
+     "배포 자동화",
+     "Git"
+    ],
+    "우대사항": [
+     "결제",
+     "디자인 시스템",
+     "NestJS",
+     "BFF",
+     "AI 활용"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "컬리",
+   "제목": "풀필먼트 주니어 프론트엔드 개발자",
+   "직군": "프론트엔드",
+   "근무지": "서울특별시 강남구 테헤란로 133",
+   "url": "https://www.wanted.co.kr/wd/359779",
+   "마감일": "상시",
+   "경력_조건": "4년 이상",
+   "자격요건": [
+    "프론트엔드 개발 경력 4년 이상이신 분",
+    "React, TypeScript 기반 서비스 개발 및 운영 경험이 있으신 분",
+    "상태 관리 라이브러리 실무 경험이 있으신 분 (Zustand, Redux, React Query 등)",
+    "RESTful API 연동 및 비동기 데이터 처리 경험이 있으신 분",
+    "Git 기반 브랜치 전략 및 코드 리뷰 경험이 있으신 분",
+    "단위 테스트 및 컴포넌트 테스트 작성 경험이 있으신 분",
+    "새로운 기술 습득에 대한 적극적인 자세가 있으신 분"
+   ],
+   "우대사항": [
+    "Webpack 또는 Vite 빌드 환경에 대한 이해 및 설정 경험이 있으신 분",
+    "모노레포 환경에서의 개발 경험이 있으신 분",
+    "디자인 시스템 기반 컴포넌트 활용 경험이 있으신 분 (MUI, Ant Design 등)",
+    "CI/CD 환경에 대한 이해가 있으신 분",
+    "물류/이커머스 도메인 경험이 있으신 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "TypeScript",
+     "상태 관리",
+     "Zustand",
+     "Redux",
+     "React Query",
+     "REST API",
+     "Git",
+     "코드 리뷰",
+     "테스트"
+    ],
+    "우대사항": [
+     "Webpack",
+     "Vite",
+     "모노레포",
+     "디자인 시스템",
+     "MUI",
+     "Ant Design",
+     "CI/CD"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "컬리",
+   "제목": "풀필먼트 시니어 프론트엔드 개발자",
+   "직군": "프론트엔드",
+   "근무지": "서울특별시 강남구 테헤란로 133",
+   "url": "https://www.wanted.co.kr/wd/359782",
+   "마감일": "상시",
+   "경력_조건": "8년 이상",
+   "자격요건": [
+    "프론트엔드 개발 경력 8년 이상이신 분",
+    "React, TypeScript 기반 대규모 서비스 설계 및 개발 경험이 있으신 분",
+    "상태 관리 설계 경험이 있으신 분 (Zustand, Redux, React Query 등)",
+    "모노레포 및 Micro-Frontend 아키텍처 설계 및 운영 경험이 있으신 분",
+    "Webpack, Vite 등 빌드 환경 구성 및 최적화 경험이 있으신 분",
+    "테스트 전략 수립 및 자동화 경험이 있으신 분 (Jest, React Testing Library, Playwright 등)",
+    "CI/CD 파이프라인 구축 및 운영 경험이 있으신 분",
+    "기술적 의사결정 및 팀 리딩 경험이 있으신 분"
+   ],
+   "우대사항": [
+    "Webpack 또는 Vite 빌드 환경에 대한 이해 및 설정 경험이 있으신 분",
+    "모노레포 환경에서의 개발 경험이 있으신 분",
+    "디자인 시스템 기반 컴포넌트 활용 경험이 있으신 분 (MUI, Ant Design 등)",
+    "CI/CD 환경에 대한 이해이 있으신 분",
+    "물류/이커머스 도메인 경험이 있으신 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "React",
+     "TypeScript",
+     "상태 관리",
+     "Zustand",
+     "Redux",
+     "React Query",
+     "모노레포",
+     "마이크로 프론트엔드",
+     "Webpack",
+     "Vite",
+     "테스트",
+     "Jest",
+     "React Testing Library",
+     "Playwright",
+     "CI/CD",
+     "리딩"
+    ],
+    "우대사항": [
+     "Webpack",
+     "Vite",
+     "모노레포",
+     "디자인 시스템",
+     "MUI",
+     "Ant Design",
+     "CI/CD"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "아정네트웍스",
+   "제목": "[아정당] AI Builder (서울)",
+   "직군": "프론트엔드",
+   "근무지": "서울특별시 강남구 역삼1동 테헤란로 124 삼원타워 19층, 아정네트웍스",
+   "url": "https://www.wanted.co.kr/wd/385009",
+   "마감일": "상시",
+   "경력_조건": "3년 이상",
+   "자격요건": [
+    "3~8년차로, 제품을 기획하고 실행, 결과 확인, 보완까지 반복해 본 분",
+    "PM, PO, 서비스 기획, 개발, 디자인, 창업 등 배경은 상관없어요.",
+    "직접 개발하지 않고 팀과 함께 만든 경험이어도 괜찮아요.",
+    "화면 기획에 머무르지 않고, 문제 정의부터 비즈니스 성과 창출까지 책임져 본 분",
+    "성과는 팀이나 회사 전체가 아닌, 본인이 기획하고 기여한 부분 기준으로 적어 주세요.",
+    "Claude Code 등 AI 코딩 도구로 직접 만들어 배포까지 완성해 본 분",
+    "회사 업무가 아니어도 괜찮아요. 사이드 프로젝트로 직접 만들어 실제 사용자가 써 본 경험도 똑같이 봐요.",
+    "DB, API, 인증, 배포 등 개발의 기본 구조를 이해하고, AI가 만든 결과물을 잘 다룰 수 있는 분",
+    "여러 정책과 예외 케이스, 운영 프로세스가 얽힌 복잡한 서비스를 구조화할 수 있는 분",
+    "Mixpanel, Amplitude, GA, SQL 등으로 데이터를 직접 분석해 판단이나 방향을 바꿔 본 분"
+   ],
+   "우대사항": [
+    "유입부터 전환까지 고객 쪽 개선과, 어드민, 내부 운영 도구, 업무 자동화 같은 뒷단 운영 효율화를 함께 챙겨 본 분",
+    "직접 만들지 않고 기획으로 이끈 경험이어도 좋아요.",
+    "지금도 꾸준히 AI로 무언가를 만들고 있고, AI에게 맡길 일과 직접 판단할 일을 나눠 결과를 검증하는 기준이 있는 분",
+    "1인 또는 소수 인원으로 서비스를 런칭하고 운영한 경험이 있는 분",
+    "통신, 렌탈, 구독, 커머스, O2O 등 상담·영업·개통 프로세스가 연결된 서비스를 기획해본 분",
+    "A/B 테스트를 직접 설계하고 결과를 해석해 다음 개선으로 연결해본 분",
+    "본인이 만든 서비스에 LLM API, AI 에이전트를 붙여 실제로 운영해본 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "AI 코딩 도구",
+     "Claude Code",
+     "API",
+     "인증",
+     "배포",
+     "데이터 분석",
+     "SQL",
+     "Mixpanel",
+     "Amplitude",
+     "GA"
+    ],
+    "우대사항": [
+     "A/B 테스트",
+     "LLM",
+     "AI 에이전트"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "도이치모터스",
+   "제목": "풀스택 개발자",
+   "직군": "풀스택",
+   "근무지": "서울 동대문구 천호대로 329, 도이치모터스빌딩 12층",
+   "url": "https://www.wanted.co.kr/wd/388741",
+   "마감일": "상시",
+   "경력_조건": "5년 이상",
+   "자격요건": [
+    "소프트웨어 개발 경력 5년 이상 또는 그에 준하는 역량을 보유하신 분",
+    "Spring Boot 프레임워크 능숙자",
+    "NextJS, React 프레임워크 능숙자",
+    "AWS/GCP 등 클라우드 인프라 설계 및 운영 경험",
+    "Opus, Fable, 등의 LLM 모델을 능숙하게 다루며, 팀 전체의 개발 생산성 향상을 리딩할 수 있는 분"
+   ],
+   "우대사항": [
+    "기술 리드 경험",
+    "MSA 전환 및 대용량 트래픽 처리 경험"
+   ],
+   "키워드": {
+    "자격요건": [
+     "Spring Boot",
+     "Next.js",
+     "React",
+     "AWS",
+     "GCP",
+     "LLM"
+    ],
+    "우대사항": [
+     "리딩",
+     "MSA",
+     "대용량 트래픽"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "메리츠증권",
+   "제목": "IT부문 - MTS/WTS 개발",
+   "직군": "프론트엔드",
+   "근무지": "서울 영등포구 국제금융로 10, Three IFC",
+   "url": "https://www.wanted.co.kr/wd/392649",
+   "마감일": "2026-11-06",
+   "경력_조건": "3년 이상",
+   "자격요건": [
+    "전산 및 웹 개발 관련 전공 또는 실무 경험 보유자",
+    "남자의 경우 병역필 또는 면제자",
+    "해외여행 및 금융거래에 결격 사유가 없는 자",
+    "금융관련 규정 상 채용에 결격 사유가 없는 자"
+   ],
+   "우대사항": [
+    "하이브리드 앱(WebView) 및 앱 브릿지 연동 경험자",
+    "HTS/MTS 등 트레이딩 시스템 개발 경험",
+    "React Native, Flutter 등 크로스플랫폼 개발 경험",
+    "Next.js App Router, Server Component/Action 실무 경험",
+    "모노레포 환경 설계·운영 경험",
+    "디자인시스템 설계 경험(토큰 체계, 컴포넌트 API 설계 경험 우대)",
+    "WebSocket 등 실시간 데이터 처리 경험",
+    "CI/CD, 앱 배포·운영 자동화 경험",
+    "AWS 클라우드 인프라 운영 경험자",
+    "금융/증권 도메인 경험자"
+   ],
+   "키워드": {
+    "자격요건": [],
+    "우대사항": [
+     "하이브리드 앱",
+     "WebView",
+     "React Native",
+     "Flutter",
+     "Next.js",
+     "App Router",
+     "Server Component",
+     "모노레포",
+     "디자인 시스템",
+     "WebSocket",
+     "실시간 데이터",
+     "CI/CD",
+     "AWS"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "한화시스템",
+   "제목": "[한화시스템/방산] 다중센서 분석/판독 Front-End 개발",
+   "직군": "프론트엔드",
+   "근무지": "경기도 성남시 분당구 판교역로 188 (삼평동, 에프엔타워판교)",
+   "url": "https://www.wanted.co.kr/wd/393809",
+   "마감일": "2026-11-08",
+   "경력_조건": "5년 이상",
+   "자격요건": [
+    "컴퓨터공학/전산/소프트웨어공학/응용소프트웨어공학/정보통신공학/통신공학/IT융합/GIS 관련 전공 분야 학사 이상",
+    "경력 : 5년 이상 (석사+3년실무경력)",
+    "C++ 기반 3D 그래픽스 개발 경력 5년 이상",
+    "GDAL, OpenCV, Cesium 등 또는 유사 라이브러리 활용 실무 개발 경험",
+    "WebGL 또는 WebGPU 기반 대용량 시각화 구현 경험",
+    "GUI 프로그래밍 능통자"
+   ],
+   "우대사항": [
+    "항공우주 또는 방산분야, 국방분야 사업 경험자",
+    "MIL-STD-2525/APP-6 심볼 구현, 지휘통제·전장가시화 체계 개발 경험",
+    "대용량 위성영상/항공사진/DEM/벡터/래스터 등 다양한 데이터셋 처리 경험",
+    "실시간 데이터 스트리밍 및 가시화 시스템 개발 경험",
+    "영어 중급 능력 보유"
+   ],
+   "키워드": {
+    "자격요건": [
+     "C++",
+     "3D 그래픽스",
+     "GDAL",
+     "OpenCV",
+     "Cesium",
+     "WebGL",
+     "WebGPU",
+     "데이터 시각화",
+     "GUI"
+    ],
+    "우대사항": [
+     "실시간 데이터",
+     "데이터 시각화"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "잇올",
+   "제목": "풀스택 개발자",
+   "직군": "풀스택",
+   "근무지": "서울시 서초구 사임당로143 크로스타워 5층 (주)잇올",
+   "url": "https://www.wanted.co.kr/wd/394251",
+   "마감일": "상시",
+   "경력_조건": "5년 이상",
+   "자격요건": [
+    "웹 서비스 개발 경력 5년 이상인 분",
+    "TypeScript 및 React/Next.js 실무 경험이 있는 분",
+    "Python 또는 Node.js 기반 API 개발 경험이 있는 분",
+    "PostgreSQL 등 관계형 데이터베이스(RDB) 설계 경험이 있는 분",
+    "Git 기반 협업 및 코드 리뷰 경험이 있는"
+   ],
+   "우대사항": [
+    "React Native(Expo) 기반 앱 출시 경험이 있는 분",
+    "AWS ECS·S3·CloudFront 운영 경험이 있는 분",
+    "레거시 시스템 마이그레이션 경험이 있는 분",
+    "Claude Code 등 AI 코딩 도구 활용 경험이 있는 분",
+    "에듀테크 서비스 개발 경험이 있는 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "TypeScript",
+     "React",
+     "Next.js",
+     "Python",
+     "Node.js",
+     "PostgreSQL",
+     "RDB",
+     "Git",
+     "코드 리뷰"
+    ],
+    "우대사항": [
+     "React Native",
+     "Expo",
+     "AWS",
+     "레거시 마이그레이션",
+     "Claude Code",
+     "AI 코딩 도구"
+    ]
+   },
+   "중복_출처": []
+  },
+  {
+   "플랫폼": "원티드",
+   "기업": "매드업",
+   "제목": "[AI 마케팅 개발실] Forward Deployed Engineer (FDE)",
+   "직군": "FDE",
+   "근무지": "서울특별시 서초구 서초대로 74길 4 삼성생명 서초타워 20층",
+   "url": "https://www.wanted.co.kr/wd/394698",
+   "마감일": "2026-11-30",
+   "경력_조건": "4~8년",
+   "자격요건": [
+    "4년 이상의 Python·FastAPI 기반 백엔드·데이터 시스템을 개발 및 운영 경험을 보유하신 분",
+    "REST API·DB·외부 시스템 연동을 포함한 서버 애플리케이션을 설계하고 구현하실 수 있는 분",
+    "LLM·AI Agent의 동작 방식을 이해하고, Tool/Function Calling을 포함해 실제 서비스에 적용해보신 분",
+    "배포·운영 환경을 이해하고, 프로덕션에서 발생한 문제를 빠르게 해결하고 개선해보신 분",
+    "요구사항이 명확하지 않은 상황에서도 현장을 이해하고, 스스로 문제를 정의하여 해결책을 구체화해나가시는 분"
+   ],
+   "우대사항": [
+    "LangGraph 등 에이전트 프레임워크로 워크플로우·상태관리·Human-in-the-loop를 서비스에 적용해보신 분",
+    "AI Agent 성능 평가·모니터링·Guardrail 설계 및 운영 경험이 있으신 분",
+    "Meta·Google Ads·네이버·카카오모먼트·TikTok 등 매체 API를 직접 연동해보신 분",
+    "BigQuery·Airflow 등으로 데이터 파이프라인을 구축하고 운영해보신 분",
+    "광고 운영 또는 마케팅 자동화 제품 개발 경험이 있으신 분"
+   ],
+   "키워드": {
+    "자격요건": [
+     "Python",
+     "FastAPI",
+     "REST API",
+     "DB",
+     "LLM",
+     "AI 에이전트",
+     "Function Calling"
+    ],
+    "우대사항": [
+     "LangGraph",
+     "AI 에이전트",
+     "BigQuery",
+     "Airflow"
+    ]
+   },
+   "중복_출처": []
+  }
+ ]
+}
