@@ -38,12 +38,12 @@ description: 지금 작업 중인 저장소와 다른 저장소에 속하는 작
 
 ## 3. 맥락 전달 방식
 
-맥락은 항상 브리핑 파일(`5. 브리핑 파일로 넘기기`)로 넘긴다. 세션 fork(`claude --resume <세션id> --fork-session`)는 쓰지 않는다.
+맥락은 브리핑 파일(`5. 브리핑 파일로 넘기기`)로 넘긴다. 이 스킬은 세션 fork(`claude --resume <세션id> --fork-session`)를 띄우지 않는다. 사용자가 fork를 직접 요구할 때만 아래 마지막 항목대로 명령을 알려 주고 끝낸다.
 
 - 이번 대화에서 조사하거나 판단한 내용이 결과물의 근거인 경우(이번 세션에서 디버깅한 내용을 TIL로 남기거나, 방금 정한 규칙을 AGENTS.md에 반영하는 경우)에도 fork하지 않고, 그 결론과 근거를 브리핑에 빠짐없이 적는다.
 - fork는 원래 대화 전체를 새 세션이 호출마다 다시 읽는다. 2026-11-03 실측에서 fork한 TIL 세션은 TIL 하나에 37회 호출, 호출당 평균 56만 토큰이 들었고, 브리핑 파일로 넘긴 위키 세션 8개는 첫 호출 7만에서 9만, 호출당 평균 19만에서 30만이었다.
 - 컨텍스트가 작을 때만 fork를 허용하는 예외도 두지 않는다. 브리핑 세션의 첫 호출(7만에서 9만)이 곧 기본 컨텍스트(약 8만)라, 컨텍스트가 10만 미만인 대화는 fork해도 브리핑보다 더 넘겨 주는 것이 거의 없다. fork가 누락 없이 넘겨 주는 이점은 컨텍스트가 클 때만 생기는데, 바로 그때 비용이 가장 크다.
-- 사용자가 fork를 직접 요구하면 위 수치를 알리고, 그래도 원하면 사용자가 직접 실행하도록 명령(`claude --resume <세션id> --fork-session`)과 `8. 세션 id와 컨텍스트 크기`로 읽은 세션 id를 알려 준다. 이 스킬이 대신 띄우지 않는다.
+- 사용자가 fork를 직접 요구하면 위 수치를 알리고, 그래도 원하면 사용자가 직접 실행하도록 명령(`claude --resume <세션id> --fork-session`)과 `8. 세션 id와 컨텍스트 크기`로 읽은 세션 id를 알려 주고 이 스킬을 끝낸다. 이 경우 4절부터 6절은 하지 않고, 에이전트는 워크트리도 만들지 않는다. 명령은 fork된 세션이 작업할 디렉터리에서 실행해야 하므로, 새 워크트리가 필요하면 사용자가 직접 `orca worktree create --repo id:<repoId> --name <작업이름> --no-parent --json`으로 만들고 그 경로에서 실행하라고 명령 문자열만 알린다. `--fork-session`을 빼면 원래 세션에 턴이 덧붙는다는 점도 알린다. 다른 저장소 워크트리에서 다른 저장소 세션을 fork한 사례가 있다(2026-11-03 실측의 today-i-learned 워크스페이스 `til-html-to-pdf-chromium` 세션). 그래도 실행이 실패하면 이 스킬의 브리핑 파일 방식으로 다시 요청하라고 함께 알린다. 세션 id를 읽지 못했으면 짐작해 채우지 않고, 명령을 완성하지 못했다고 밝힌 뒤 `claude --resume --fork-session`의 세션 선택 화면에서 직접 고르거나 브리핑 파일 방식으로 돌아가라고 알린다.
 
 ## 4. 확인 받기
 
@@ -175,18 +175,19 @@ Windows  C:\Users\<사용자>\AppData\Local\Temp\claude\<프로젝트슬러그>\
 
 ### 현재 컨텍스트 크기
 
-transcript의 마지막 메인 스레드 assistant 메시지에 기록된 입력 토큰 합계(`input_tokens + cache_read_input_tokens + cache_creation_input_tokens`)를 현재 컨텍스트 크기로 본다. 출력 토큰은 넣지 않는다. 세션 분리 기준(25만)이 호출마다 다시 읽는 입력 크기에서 나온 값이기 때문이다.
+transcript의 마지막 메인 스레드 assistant 메시지에 기록된 입력 토큰 합계(`input_tokens + cache_read_input_tokens + cache_creation_input_tokens`)를 현재 컨텍스트 크기로 본다. 출력 토큰은 넣지 않는다. 호출마다 다시 읽는 것이 입력 쪽이고, `chucoding:commit-pr`의 세션 분리 기준(25만)도 이 입력 크기와 비교하기 때문이다.
 
 ```bash
 f=$(find ~/.claude/projects -name "<세션id>.jsonl" | head -1)
 jq -s -r '[.[] | select(.type=="assistant" and ((.isSidechain // false) | not))
   | .message.usage | select(. != null)
-  | ([.iterations[]? | select(.type=="message")] | last) // .]
-  | last | .input_tokens + (.cache_read_input_tokens // 0) + (.cache_creation_input_tokens // 0)' "$f"
+  | ([.iterations[]? | select(.type=="message")] | last) // .
+  | (.input_tokens // 0) + (.cache_read_input_tokens // 0) + (.cache_creation_input_tokens // 0)
+  | select(. > 0)] | last // empty' "$f"
 ```
 
 - transcript는 슬러그를 계산하지 않고 세션 id 파일명으로 `~/.claude/projects` 전체에서 찾는다.
 - `isSidechain`이 참인 줄은 하위 에이전트의 호출이라 뺀다.
 - `usage.iterations`가 있으면 그 안의 마지막 `type: "message"` 항목을 쓴다. advisor처럼 한 메시지 안에서 다른 모델을 부른 호출은 최상위 `usage`가 여러 호출의 합이라 실제보다 크게 나온다. 2026-11-03 확인에서 advisor 호출이 든 메시지의 최상위 합은 약 19만, 마지막 `message` 항목은 약 10만이었다.
 - 값은 마지막으로 끝난 호출 기준이다. 지금 턴에서 읽은 도구 결과만큼 실제 크기는 조금 더 크다.
-- 세션 id를 모르거나, transcript를 찾지 못하거나, `jq`가 없거나 결과가 숫자가 아니면 크기를 짐작하지 않는다. 확인하지 못했다는 사실을 밝히고, 사용자에게 상태 표시줄이나 `/context`로 확인해 달라고 한다.
+- 세션 id를 모르거나, transcript를 찾지 못하거나, `jq`가 없거나, 출력이 비었거나(입력 합계가 0보다 큰 메인 스레드 assistant 메시지가 하나도 없으면 아무것도 내지 않는다) 숫자가 아니면 크기를 짐작하지 않는다. 확인하지 못했다는 사실을 밝히고, 사용자에게 상태 표시줄이나 `/context`로 확인해 달라고 한다.
