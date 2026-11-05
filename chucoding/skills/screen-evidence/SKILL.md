@@ -55,7 +55,7 @@ description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE
 | 개발완료 처리 | 같은 파일을 HDIT 티켓과 원본(HOM) 티켓 댓글에 넣는다. `QA_Bug` HDIT는 완료 댓글과 합친 한 댓글에 넣는다 | `chucoding:jira` |
 
 - 녹화와 캡처는 PR 초안을 제시하기 전에 한 번 한다. 개발완료 때 다시 하지 않는다.
-- PR 생성 뒤 리뷰 반영으로 화면이 다시 바뀌었으면, Jira 댓글을 쓰기 전에 TO-BE만 다시 남긴다. 이때 `gh pr edit --attach`로 PR 본문의 TO-BE도 함께 바꾼다.
+- PR 생성 뒤 리뷰 반영으로 화면이 다시 바뀌었으면, Jira 댓글을 쓰기 전에 TO-BE만 다시 남긴다. 판정이 바뀌어 다이어그램이 달라졌으면 다이어그램 TO-BE도 다시 그린다. 이때 `gh pr edit --attach`로 PR 본문의 해당 TO-BE도 함께 바꾼다.
 - GitHub 이슈로 착수한 작업(`chucoding:github-issue`)은 PR 절만 따른다. Jira 절은 수행하지 않는다.
 
 ### 보관 위치
@@ -74,14 +74,15 @@ description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE
 ```
 
 - `meta.txt`에는 정한 형식과 AS-IS 출처, PR 본문과 Jira 댓글에 쓴 문구를 그대로 남긴다. 개발완료 때 같은 문구를 다시 쓰기 위해서다.
-- `meta.txt`에는 `diagram: yes` 또는 `diagram: no`를 남긴다. 화면 증빙 없이 다이어그램만 남겼으면 `format: none`으로 적는다. 개발완료 때 `format: none`이면 화면 증빙이 없는 작업으로 본다.
+- `meta.txt`의 `format`은 `gif`, `png`, `none` 중 하나다. 화면마다 형식이 다르면 `gif,png`처럼 화면 순서대로 쉼표로 잇는다. `diagram`은 `yes`나 `no`이고, 줄이 없으면 `no`로 본다. 화면 증빙 없이 다이어그램만 남겼으면 `format: none`으로 적는다. 두 증빙을 함께 남기면 각자 끝날 때 자기 줄만 고쳐 쓴다. 다이어그램을 먼저 만들며 `format: none`을 적었더라도 화면 증빙을 남기면 실제 형식으로 바꾼다. 개발완료 때 `format: none`이면 화면 증빙이 없는 작업으로 보고, `format` 줄이 없으면(이 규칙 전의 폴더) 화면 증빙이 있는 것으로 본다. `meta.txt` 없이 PR에서 다시 받았으면 `<키>-as-is*`, `<키>-to-be*` alt의 파일이 있을 때만 화면 증빙이 있는 것으로 본다.
 - `meta.txt` 첫 줄에는 `branch: <작업 브랜치>`를 적는다. 같은 티켓 키 폴더에 예전 작업의 파일이 남아 있어도, 개발완료 때 브랜치가 다르면 이번 증빙으로 쓰지 않게 하려는 것이다.
-- 새로 녹화하거나 캡처하기 전에는 그 폴더의 기존 증빙 파일(`<키>-as-is*`, `<키>-to-be*`, `<키>-diagram-*`, `meta.txt`, `pr-body.md`)을 지운다. AS-IS가 없어진 재녹화에서 옛 AS-IS가 남지 않게 하려는 것이다. 화면 증빙과 다이어그램을 함께 남기는 PR이면 둘 중 먼저 시작하는 쪽 전에 한 번만 지운다. 나중에 시작하는 쪽에서 다시 지우면 먼저 만든 파일이 사라진다. 이번 작업을 건너뛰기로 했을 때도 같은 폴더의 파일을 지운다.
-- `pr-body.md`에는 `--attach`로 생성하기 전의 PR 본문을 그대로 남긴다. 생성 뒤 PR 본문의 `./파일` 참조는 업로드 주소로 바뀌어, 리뷰 반영으로 TO-BE를 다시 넣을 때 `gh pr edit --body-file`에 쓸 원본이 없어지기 때문이다. 다시 넣을 때는 현재 PR 본문에서 증빙 블록만 `pr-body.md`의 블록으로 바꿔 쓴다. 그사이 고친 다른 섹션을 되돌리지 않기 위해서다. 다이어그램 표도 있는 본문에서 화면 TO-BE만 다시 남겼으면 화면 증빙 블록만 바꾸고, 다이어그램 표는 현재 본문(이미 업로드 주소)을 그대로 두며 `--attach`에도 화면 파일만 넘긴다. 리뷰 반영으로 판정이 바뀌어 다이어그램도 고쳤으면 같은 방식으로 다이어그램 TO-BE 칸만 더 바꾸고 그 PNG를 함께 넘긴다.
+- PR 초안을 위해 증빙을 처음 만들 때와, 이미 열린 PR에 증빙을 넣어 달라는 직접 요청(아래 `GitHub PR에 넣기`의 예외)으로 만들 때는, 화면 증빙과 다이어그램 중 먼저 시작하는 쪽 전에 그 폴더의 기존 증빙 파일(`<키>-as-is*`, `<키>-to-be*`, `<키>-diagram-*`, `meta.txt`, `pr-body.md`)을 한 번 지운다. 예전 작업의 파일이나 AS-IS가 없어진 재작업의 옛 AS-IS가 남지 않게 하려는 것이다. 나중에 시작하는 쪽에서 다시 지우면 먼저 만든 파일이 사라지므로 한 번만 지운다. 두 증빙을 모두 건너뛰기로 했을 때도 같은 파일을 지운다.
+- PR 생성 뒤 리뷰 반영으로 한쪽만 다시 만들 때는 그쪽 파일만 지운다. 화면 TO-BE를 다시 남기면 `<키>-to-be*`만, 다이어그램 TO-BE를 다시 그리면 `<키>-diagram-to-be*`만 지우고 `meta.txt`와 `pr-body.md`는 남겨 해당 줄과 블록만 고친다. AS-IS는 base 기준이라 리뷰 반영으로 바뀌지 않는다.
+- `pr-body.md`에는 `--attach`로 생성하기 전의 PR 본문을 그대로 남긴다. 생성 뒤 PR 본문의 `./파일` 참조는 업로드 주소로 바뀌어, 리뷰 반영으로 TO-BE를 다시 넣을 때 `gh pr edit --body-file`에 쓸 원본이 없어지기 때문이다. 다시 넣을 때는 현재 PR 본문에서 증빙 블록만 `pr-body.md`의 블록으로 바꿔 쓴다. 그사이 고친 다른 섹션을 되돌리지 않기 위해서다. 다이어그램 표도 있는 본문에서 화면 TO-BE만 다시 남겼으면 화면 증빙 블록만 바꾸고, 다이어그램 표는 현재 본문(이미 업로드 주소)을 그대로 두며 `--attach`에도 화면 파일만 넘긴다. 리뷰 반영으로 판정이 바뀌어 다이어그램을 고쳤으면 같은 방식으로 다이어그램 TO-BE 칸만 바꾸고 그 PNG를 `--attach`로 넘긴다. 화면은 그대로이고 다이어그램만 고쳤으면 화면 증빙 블록과 화면 파일은 건드리지 않는다.
 - 화면이 여럿이면 파일 이름 끝에 화면 번호를 붙인다. 예: `<키>-to-be-1.png`, `<키>-to-be-2.gif`.
 - 폴더와 파일 이름의 티켓 키는 브랜치 이름의 키다. `chucoding:jira`의 `착수 브랜치 이름`에 따라 QA 클론은 HOM 키를 쓰므로, 개발완료 때는 HDIT 키 폴더가 없으면 Cloners로 연결된 HOM 키 폴더를 찾는다.
 - 티켓 키가 없는 GitHub 이슈 경로면 `<저장소>-<이슈번호>`를 키 대신 쓴다.
-- 개발완료 때 폴더에 파일이 없으면 PR에서 다시 받는다. `gh api repos/<o>/<r>/pulls/<n> -H "Accept: application/vnd.github.html+json" --jq .body_html`에서 `<img src="https://private-user-images…?jwt=…">`를 뽑아(`&amp;`는 `&`로) `curl -o`로 받는다. 주소가 `https://private-user-images.githubusercontent.com/`로 시작하고 `alt`가 보관 파일 이름(`<키>-as-is`, `<키>-to-be`, `<키>-diagram-as-is`, `<키>-diagram-to-be` 등, 아래 PR 본문 템플릿의 alt)과 맞는 것만 받는다. PR 본문은 다른 사람도 고칠 수 있어서다. 주소의 jwt는 보고나 로그에 그대로 남기지 않는다. jwt는 몇 분 안에 만료되므로 받기 직전에 조회한다. 받은 파일의 형식과 크기를 `file`과 `sips`로 확인한다. 받은 파일은 PR 생성 뒤 바뀌었을 수 있으므로 Read로 내용을 다시 보고 아래 `민감정보 확인`을 다시 한다. 그리고 Jira에 올리기 전에 PR에서 다시 받은 파일이라는 사실과 파일 목록을 보여 주고 게시 여부를 묻는다. 개발완료 전환의 게시 승인은 보관 폴더의 파일에만 적용한다.
+- 개발완료 때 폴더에 파일이 없으면 PR에서 다시 받는다. `gh api repos/<o>/<r>/pulls/<n> -H "Accept: application/vnd.github.html+json" --jq .body_html`에서 `<img src="https://private-user-images…?jwt=…">`를 뽑아(`&amp;`는 `&`로) `curl -o`로 받는다. 주소가 `https://private-user-images.githubusercontent.com/`로 시작하고 `alt`가 보관 파일 이름(`<키>-as-is`, `<키>-to-be`, `<키>-diagram-as-is`, `<키>-diagram-to-be` 등, 아래 PR 본문 템플릿의 alt)과 맞는 것만 받는다. PR 본문은 다른 사람도 고칠 수 있어서다. 주소의 jwt는 보고나 로그에 그대로 남기지 않는다. jwt는 몇 분 안에 만료되므로 받기 직전에 조회한다. 받은 파일의 형식과 크기를 `file`과 `sips`로 확인한다. 받은 파일은 PR 생성 뒤 바뀌었을 수 있으므로 Read로 내용을 다시 보고 아래 `민감정보 확인`을 다시 한다. 다이어그램 PNG를 PR에서 다시 받았으면 `.mmd` 원본이 없으므로, 아래 `다이어그램을 넣는 범위`의 설명 중복 판정과 댓글의 `Mermaid 원본` `expand`를 생략하고 그 사실을 게시 전 출력에 밝힌다. 그리고 Jira에 올리기 전에 PR에서 다시 받은 파일이라는 사실과 파일 목록을 보여 주고 게시 여부를 묻는다. 개발완료 전환의 게시 승인은 보관 폴더의 파일에만 적용한다.
 
 ## 건너뛰는 조건
 
@@ -209,6 +210,8 @@ bash <이 스킬 디렉토리>/scripts/encode.sh "$FF" ~/.cache/chucoding/screen
 - 화면 결과만 보면 무엇이 왜 달라졌는지 드러나지 않는 변경. 예: HDIT-6070은 FE 사전검증 기준을 BE 발송 필터와 맞췄고, 화면 캡처는 '실패' 표시만 보여 줬다
 - BE 전용 변경이어도 해당한다. 화면 증빙의 건너뛰는 조건과 따로 판정한다
 
+AS-IS 다이어그램은 base 커밋의 코드에서 확인한 흐름만 그린다. 레거시 이관과 벤치마킹처럼 이 저장소의 base 코드로 이전 흐름을 확인할 수 없으면 AS-IS 다이어그램은 만들지 않고 TO-BE만 남긴다. 신규 흐름도 TO-BE만 남긴다.
+
 아래면 만들지 않고, 건너뛴 사실과 이유를 PR 초안 제시에 한 줄로 남긴다. 화면 증빙도 함께 건너뛰면 두 사실을 한 줄로 합친다.
 
 - 흐름이나 판정이 바뀌지 않는다. 레이아웃, 문구, 색상, 리팩터링, 문서, 설정, 테스트만 바뀐 경우다.
@@ -271,7 +274,7 @@ sips -g pixelWidth -g pixelHeight $KEY-diagram-*.png
 
 - `gh --version`이 2.99.0 이상이어야 `--attach`가 있다. 낮으면 직접 업그레이드하지 않고 `brew upgrade gh`를 실행할지 사용자에게 묻는다. `gh image`라는 명령은 없다.
 - **증빙은 PR을 만들 때 함께 넣는다.** 리뷰어가 PR을 처음 열 때부터 변경 전후를 보게 하려는 것이다. PR을 먼저 만들고 나중에 붙이지 않는다. 그래서 녹화와 캡처는 PR 초안을 제시하기 전에 끝낸다.
-- 예외로 사용자가 이미 열린 PR에 증빙을 넣어 달라고 직접 요청하면, 현재 PR 본문(`gh pr view <번호> --json body`)의 테스트 섹션에 증빙 블록을 넣은 본문을 `pr-body.md`로 저장한다. 변경된 본문을 보여 주고 승인을 받은 뒤 `gh pr edit --body-file pr-body.md --attach …`로 올린다. 이 경우에도 녹화 전 `무엇을 남길지 정하기`와 `민감정보 확인`은 같다.
+- 예외로 사용자가 이미 열린 PR에 증빙을 넣어 달라고 직접 요청하면, 현재 PR 본문(`gh pr view <번호> --json body`)의 테스트 섹션에 화면 증빙 블록을, 변경 이유의 문제 서술 아래에 다이어그램 표를 넣은 본문을 `pr-body.md`로 저장한다. 변경된 본문을 보여 주고 승인을 받은 뒤 `gh pr edit --body-file pr-body.md --attach …`로 올린다. 이 경우에도 녹화 전 `무엇을 남길지 정하기`와 `민감정보 확인`은 같다.
 - 화면 증빙 블록은 저장소 PR 템플릿의 테스트 섹션(템플릿이 없으면 `chucoding:commit-pr` 3항목의 `테스트 방법`) 안에 둔다. 녹화와 캡처는 증빙 수집이라 테스트 실행 기록이 아니다. 테스트 섹션의 다른 항목은 `chucoding:commit-pr` 규칙대로 실제 실행한 테스트만 적는다.
 - AS-IS가 있으면 2칸 표로 좌우 배치한다. GIF면 첫 줄 괄호에 `실제 속도, 반복 재생`을 붙이고, 이미지면 붙이지 않는다.
 
@@ -306,7 +309,7 @@ sips -g pixelWidth -g pixelHeight $KEY-diagram-*.png
   cd ~/.cache/chucoding/screen-evidence/<키>
   gh pr create -R <owner>/<repo> --head <브랜치> --base <base> --title "…" --body-file <본문 파일> \
     --attach ./<키>-as-is.gif --attach ./<키>-to-be.gif --assignee @me
-  # 리뷰 반영으로 TO-BE를 다시 남겼을 때만. 이미 열린 PR의 본문 교체
+  # 리뷰 반영으로 화면 TO-BE나 다이어그램 TO-BE를 다시 남겼을 때만. 이미 열린 PR의 본문 교체(다시 남긴 파일만 넘김)
   gh pr edit <번호> -R <owner>/<repo> --body-file <본문 파일> --attach ./<키>-as-is.gif --attach ./<키>-to-be.gif
   ```
 
@@ -323,7 +326,7 @@ sips -g pixelWidth -g pixelHeight $KEY-diagram-*.png
 - 다이어그램은 화면 증빙에 딸려 간다. 화면 증빙이 있는 HDIT 증빙 댓글과 `QA_Bug` HDIT의 합친 댓글에만 넣는다. 자리는 화면 미디어 블록 아래다.
 - 원본(HOM) 완료 댓글에는 넣지 않는다. QA는 화면으로 검증하고, 흐름도는 개발 근거라 HDIT와 PR에 있으면 충분하다.
 - 화면 증빙 없이 다이어그램만 남긴 작업(`meta.txt`의 `format: none`)은 Jira에 넣지 않고 PR에만 둔다. `[개발완료]`와 `테스트방법 :` 머리가 맞지 않기 때문이다.
-- 티켓 설명에 같은 다이어그램이 이미 있으면 넣지 않는다. 판정은 `GET /rest/api/3/issue/<키>?fields=description`의 ADF에서 `expand`(`attrs.title`이 `Mermaid 원본`) 안 `codeBlock` 텍스트를 모아, 보관 폴더의 `.mmd`와 공백을 정규화해 비교한다. AS-IS와 TO-BE 둘 다 일치하면 건너뛰고 그 사실을 완료 보고에 한 줄로 남긴다. 첨부 파일 이름으로는 판정하지 않는다. 설명에 붙인 다이어그램은 이름 규칙이 다를 수 있다(HDIT-6070은 `HDIT-voter-phone-*`).
+- 티켓 설명에 같은 다이어그램이 이미 있으면 넣지 않는다. 판정 대상은 댓글을 다는 HDIT 티켓의 설명이다. `GET /rest/api/3/issue/<HDIT키>?fields=description`의 ADF에서 `expand`(`attrs.title`이 `Mermaid 원본`) 안 `codeBlock` 텍스트를 모아, 보관 폴더의 `.mmd`와 공백을 정규화해 비교한다. 남긴 `.mmd`가 모두(AS-IS가 없으면 TO-BE 하나) 일치할 때만 건너뛰고 그 사실을 완료 보고에 한 줄로 남긴다. 하나라도 다르면 남긴 다이어그램을 모두 넣는다. 첨부 파일 이름으로는 판정하지 않는다. 설명에 붙인 다이어그램은 이름 규칙이 다를 수 있다(HDIT-6070은 `HDIT-voter-phone-*`).
 
 ### HDIT 댓글 형식
 
@@ -368,7 +371,7 @@ AS-IS가 있으면 `layoutSection`으로 좌우 배치한다.
 
 AS-IS가 없으면 `layoutSection` 없이 캡션 paragraph와 `mediaSingle`(`layout: center`, `width: 100`, `widthType: percentage`)만 둔다. 화면이 여럿이면 화면마다 위 블록을 이어 붙인다.
 
-다이어그램을 넣으면 화면 미디어 블록 뒤에 같은 `layoutSection`을 하나 더 두고 캡션을 `AS-IS 흐름`, `TO-BE 흐름`으로 쓴다. media `width`와 `height`는 `sips`로 잰 PNG 크기다. 그 뒤 최상위에 `expand`(`attrs.title`은 `Mermaid 원본`) 하나를 두고 AS-IS, TO-BE 원본을 그 순서로 `codeBlock`에 넣는다. `layoutColumn` 안에 넣지 않는 것은 `chucoding:jira` `다이어그램`과 같다. 1단계 첨부와 2단계 v2 파일 마크업에 다이어그램 PNG도 화면 파일 뒤에 넣어, 3단계에서 읽는 media id 순서가 화면, 다이어그램 순이 되게 한다.
+다이어그램을 넣으면 화면 미디어 블록 뒤에 같은 `layoutSection`을 하나 더 두고 캡션을 `AS-IS 흐름`, `TO-BE 흐름`으로 쓴다. AS-IS 다이어그램이 없으면 `layoutSection` 없이 `TO-BE 흐름` 캡션과 `mediaSingle` 하나만 둔다. media `width`와 `height`는 `sips`로 잰 PNG 크기다. 그 뒤 최상위에 `expand`(`attrs.title`은 `Mermaid 원본`) 하나를 두고 AS-IS, TO-BE 원본을 그 순서로 `codeBlock`에 넣는다. `layoutColumn` 안에 넣지 않는 것은 `chucoding:jira` `다이어그램`과 같다. 1단계 첨부와 2단계 v2 파일 마크업에 다이어그램 PNG도 화면 파일 뒤에 넣어, 3단계에서 읽는 media id 순서가 화면, 다이어그램 순이 되게 한다.
 
 - HDIT 댓글이면 머리 문단은 `[개발완료]`, `hardBreak`, `테스트방법 : …`이다.
 - `QA_Bug` HDIT의 합친 댓글이면 머리는 멘션 문단, 본문 제목, 목록, `[개발완료]`와 `테스트방법 :` 문단 순이다. 2단계의 멘션 삽입, 3단계의 멘션 확인, 4단계의 mention 노드 재사용은 아래 원본 댓글과 같이 한다.
