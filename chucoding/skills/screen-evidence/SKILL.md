@@ -1,6 +1,6 @@
 ---
 name: screen-evidence
-description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE)를 GIF나 이미지로 남겨 GitHub PR 본문과 Jira 댓글(원장이 없으면 HDIT, 원본 HOM, PM이나 운영의 스토리 원장)에 넣는 절차. 원장 댓글에 함께 넣는 기획 외 추가 적용 화면 캡처를 포함한다. 동작이 필요한지로 GIF와 이미지를 고르는 기준, 기존 기능 수정과 신규 기능, 레거시 이관, 벤치마킹에 따라 AS-IS 출처를 정하는 기준, ego-browser 녹화와 캡처, base 커밋으로 되돌린 AS-IS 녹화, ffmpeg GIF 인코딩, 동작 흐름이나 판정 기준이 바뀐 변경의 AS-IS와 TO-BE 시퀀스 다이어그램 PNG를 drawio로 렌더해 PR `변경 이유`에 넣는 절차, `gh pr create --attach` 업로드, Jira 첨부와 v2에서 v3로 이어지는 미디어 댓글 작성, 건너뛰는 조건을 포함한다. `chucoding:commit-pr`의 PR 생성 단계와 `chucoding:jira`의 개발완료 처리에서 호출한다. 사용자가 "GIF 녹화", "스크린샷 첨부", "AS-IS TO-BE", "변경 전후 영상", "PR에 GIF 넣어줘", "시퀀스 다이어그램", "흐름도 PR에 넣어줘"를 요청할 때도 사용한다.
+description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE)를 GIF나 이미지로 남겨 GitHub PR 본문과 Jira 댓글(원장이 없으면 HDIT, `QA_Bug` HDIT, PM이나 운영의 스토리 원장)에 넣는 절차. 원장 댓글에 함께 넣는 기획 외 추가 적용 화면 캡처를 포함한다. 동작이 필요한지로 GIF와 이미지를 고르는 기준, 기존 기능 수정과 신규 기능, 레거시 이관, 벤치마킹에 따라 AS-IS 출처를 정하는 기준, ego-browser 녹화와 캡처, base 커밋으로 되돌린 AS-IS 녹화, ffmpeg GIF 인코딩, 동작 흐름이나 판정 기준이 바뀐 변경의 AS-IS와 TO-BE 시퀀스 다이어그램 PNG를 drawio로 렌더해 PR `변경 이유`에 넣는 절차, `gh pr create --attach` 업로드, Jira 첨부와 v2에서 v3로 이어지는 미디어 댓글 작성, 건너뛰는 조건을 포함한다. `chucoding:commit-pr`의 PR 생성 단계와 `chucoding:jira`의 개발완료 처리에서 호출한다. 사용자가 "GIF 녹화", "스크린샷 첨부", "AS-IS TO-BE", "변경 전후 영상", "PR에 GIF 넣어줘", "시퀀스 다이어그램", "흐름도 PR에 넣어줘"를 요청할 때도 사용한다.
 ---
 
 # AS-IS와 TO-BE 화면 증빙
@@ -52,7 +52,7 @@ description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE
 | 시점 | 하는 일 | 호출하는 스킬 |
 |------|------|------|
 | PR 초안 제시 전 | GIF나 이미지를 만들어 PR 본문에 `--attach`로 넣는다 | `chucoding:commit-pr` |
-| 개발완료 처리 | 같은 파일을 원본(HOM, 원장) 티켓 댓글에 넣는다. 원장이 없으면 HDIT 티켓 댓글에도 넣고, 원장이 있으면 HDIT 댓글은 남기지 않는다. `QA_Bug` HDIT는 완료 댓글과 합친 한 댓글에 넣는다. 원장 판정과 댓글 형식의 정본은 `chucoding:jira`의 `원본 티켓 완료 댓글`이다 | `chucoding:jira` |
+| 개발완료 처리 | 같은 파일을 원장 티켓 댓글에 넣는다. 원장이 없으면 HDIT 티켓 댓글에도 넣고, 원장이 있으면 HDIT 댓글은 남기지 않는다. `QA_Bug` HDIT는 완료 댓글과 합친 한 댓글에 넣는다. 원장 판정과 댓글 형식의 정본은 `chucoding:jira`의 `원본 티켓 완료 댓글`이다 | `chucoding:jira` |
 
 - 녹화와 캡처는 PR 초안을 제시하기 전에 한 번 한다. 개발완료 때 다시 하지 않는다.
 - 작업 티켓이 원장(`chucoding:jira`의 `원장 판정`)에서 나온 개발 티켓이고 기획에 없던 동작을 따로 정해 적용했으면, 그 항목마다 화면을 하나씩 더 남긴다. 아래 `원장 댓글의 미디어`가 쓴다. 파일은 `<키>-extra-<번호>`로 두고 `meta.txt`에 `extra-<번호>: <항목 요약>` 줄을 항목 순서대로 남긴다. PR 본문에는 화면 증빙 블록 끝에 `**추가: <항목 요약>**` 줄과 `![<키>-extra-<번호>](./<키>-extra-<번호>.png)`를 같은 순서로 넣고, 그 파일도 `--attach`로 넘긴다. 원장 여부를 PR 시점에 알 수 없으면 티켓 설명의 `요청 출처:`나 연결된 스토리 티켓으로 보고, 애매하면 되묻는다.
@@ -82,7 +82,7 @@ description: 화면이 바뀌는 작업의 변경 전(AS-IS)과 변경 후(TO-BE
 - PR 생성 뒤 리뷰 반영으로 한쪽만 다시 만들 때는 그쪽 파일만 지운다. 화면 TO-BE를 다시 남기면 `<키>-to-be*`만, 다이어그램 TO-BE를 다시 그리면 `<키>-diagram-to-be*`만 지우고 `meta.txt`와 `pr-body.md`는 남겨 해당 줄과 블록만 고친다. AS-IS는 base 기준이라 리뷰 반영으로 바뀌지 않는다.
 - `pr-body.md`에는 `--attach`로 생성하기 전의 PR 본문을 그대로 남긴다. 생성 뒤 PR 본문의 `./파일` 참조는 업로드 주소로 바뀌어, 리뷰 반영으로 TO-BE를 다시 넣을 때 `gh pr edit --body-file`에 쓸 원본이 없어지기 때문이다. 다시 넣을 때는 현재 PR 본문에서 증빙 블록만 `pr-body.md`의 블록으로 바꿔 쓴다. 그사이 고친 다른 섹션을 되돌리지 않기 위해서다. 다이어그램 표도 있는 본문에서 화면 TO-BE만 다시 남겼으면 화면 증빙 블록만 바꾸고, 다이어그램 표는 현재 본문(이미 업로드 주소)을 그대로 두며 `--attach`에도 화면 파일만 넘긴다. 리뷰 반영으로 판정이 바뀌어 다이어그램을 고쳤으면 같은 방식으로 다이어그램 TO-BE 칸만 바꾸고 그 PNG를 `--attach`로 넘긴다. 화면은 그대로이고 다이어그램만 고쳤으면 화면 증빙 블록과 화면 파일은 건드리지 않는다.
 - 화면이 여럿이면 파일 이름 끝에 화면 번호를 붙인다. 예: `<키>-to-be-1.png`, `<키>-to-be-2.gif`.
-- 폴더와 파일 이름의 티켓 키는 브랜치 이름의 키다. `chucoding:jira`의 `착수 브랜치 이름`에 따라 QA 클론은 HOM 키를 쓰므로, 개발완료 때는 HDIT 키 폴더가 없으면 Cloners로 연결된 HOM 키 폴더를 찾는다.
+- 폴더와 파일 이름의 티켓 키는 브랜치 이름의 키다.
 - 티켓 키가 없는 GitHub 이슈 경로면 `<저장소>-<이슈번호>`를 키 대신 쓴다.
 - 개발완료 때 폴더에 파일이 없으면 PR에서 다시 받는다. `gh api repos/<o>/<r>/pulls/<n> -H "Accept: application/vnd.github.html+json" --jq .body_html`에서 `<img src="https://private-user-images…?jwt=…">`를 뽑아(`&amp;`는 `&`로) `curl -o`로 받는다. 주소가 `https://private-user-images.githubusercontent.com/`로 시작하고 `alt`가 보관 파일 이름(`<키>-as-is`, `<키>-to-be`, `<키>-extra-<번호>`, `<키>-diagram-as-is`, `<키>-diagram-to-be` 등, 아래 PR 본문 템플릿의 alt)과 맞는 것만 받는다. PR 본문은 다른 사람도 고칠 수 있어서다. 주소의 jwt는 보고나 로그에 그대로 남기지 않는다. jwt는 몇 분 안에 만료되므로 받기 직전에 조회한다. 받은 파일의 형식과 크기를 `file`과 `sips`로 확인한다. 받은 파일은 PR 생성 뒤 바뀌었을 수 있으므로 Read로 내용을 다시 보고 아래 `민감정보 확인`을 다시 한다. 다이어그램 PNG를 PR에서 다시 받았으면 `.mmd` 원본이 없으므로, 아래 `다이어그램을 넣는 범위`의 설명 중복 판정과 댓글의 `Mermaid 원본` `expand`를 생략하고 그 사실을 게시 전 출력에 밝힌다. 그리고 Jira에 올리기 전에 PR에서 다시 받은 파일이라는 사실과 파일 목록을 보여 주고 게시 여부를 묻는다. 개발완료 전환의 게시 승인은 보관 폴더의 파일에만 적용한다.
 
@@ -194,7 +194,7 @@ bash <이 스킬 디렉토리>/scripts/encode.sh "$FF" ~/.cache/chucoding/screen
 
 ### 민감정보 확인
 
-증빙은 PR과 Jira(HDIT, HOM, 원장)에 그대로 올라가고, HDIT와 HOM 게시는 개발완료 전환에 딸려 따로 승인받지 않는다(원장 댓글만 게시 전에 검수받는다). 그래서 파일을 만든 직후에 확인한다.
+증빙은 PR과 Jira(HDIT, 원장)에 그대로 올라가고, HDIT 게시는 개발완료 전환에 딸려 따로 승인받지 않는다(원장 댓글만 게시 전에 검수받는다). 그래서 파일을 만든 직후에 확인한다.
 
 - GIF는 프레임 시트가 아니라 프레임 전체로 확인한다. 시트는 최대 12장 샘플이라 잠깐 비친 화면을 놓친다. 프레임 폴더의 JPEG를 전부 Read로 훑거나, 프레임이 많으면 `tile`로 여러 장의 시트를 나눠 만들어 전부 본다.
 
@@ -326,7 +326,7 @@ sips -g pixelWidth -g pixelHeight $KEY-diagram-*.png
 ### 다이어그램을 넣는 범위
 
 - 다이어그램은 화면 증빙에 딸려 간다. 화면 증빙이 있는 HDIT 증빙 댓글과 `QA_Bug` HDIT의 합친 댓글에만 넣는다. 자리는 화면 미디어 블록 아래다.
-- 원본(HOM) 완료 댓글과 원장 완료 댓글에는 넣지 않는다. QA와 PM은 화면으로 확인하고, 흐름도는 개발 근거라 HDIT와 PR에 있으면 충분하다. 원장이 있는 작업은 HDIT 증빙 댓글도 남기지 않으므로 다이어그램은 PR에만 남는다.
+- 원장 완료 댓글에는 넣지 않는다. QA와 PM은 화면으로 확인하고, 흐름도는 개발 근거라 HDIT와 PR에 있으면 충분하다. 원장이 있는 작업은 HDIT 증빙 댓글도 남기지 않으므로 다이어그램은 PR에만 남는다.
 - 화면 증빙 없이 다이어그램만 남긴 작업(`meta.txt`의 `format: none`)은 Jira에 넣지 않고 PR에만 둔다. `[개발완료]`와 `테스트방법 :` 머리가 맞지 않기 때문이다.
 - 티켓 설명에 같은 다이어그램이 이미 있으면 넣지 않는다. 판정 대상은 댓글을 다는 HDIT 티켓의 설명이다. `GET /rest/api/3/issue/<HDIT키>?fields=description`의 ADF에서 `expand`(`attrs.title`이 `Mermaid 원본`) 안 `codeBlock` 텍스트를 모아, 보관 폴더의 `.mmd`와 공백을 정규화해 비교한다. 남긴 `.mmd`가 모두(AS-IS가 없으면 TO-BE 하나) 일치할 때만 건너뛰고 그 사실을 완료 보고에 한 줄로 남긴다. 하나라도 다르면 남긴 다이어그램을 모두 넣는다. 첨부 파일 이름으로는 판정하지 않는다. 설명에 붙인 다이어그램은 이름 규칙이 다를 수 있다(HDIT-6070은 `HDIT-voter-phone-*`).
 
@@ -346,8 +346,8 @@ sips -g pixelWidth -g pixelHeight $KEY-diagram-*.png
 
 v3 ADF로 미디어를 넣으려면 media 파일 id(UUID)가 필요한데, `GET /rest/api/3/attachment/<id>`의 `mediaApiFileId`는 null로 온다. 그래서 v2 위키 마크업으로 한 번 써서 Jira가 media 노드를 만들게 한 뒤, v3로 다시 쓴다. 티켓마다 아래를 따로 한다.
 
-1. **파일을 그 티켓에 첨부한다.** `POST /rest/api/3/issue/<키>/attachments`, multipart, 헤더 `X-Atlassian-Token: no-check`, 파일 `Content-Type`은 `image/gif` 또는 `image/png`. media는 티켓 단위라 HDIT에 붙인 첨부를 원본 티켓에서 쓸 수 없다. HDIT와 HOM, 원장 각각에 댓글을 다는 티켓마다 첨부한다. `QA_Bug` HDIT의 합친 댓글은 그 댓글에 쓸 파일을 그 HDIT에 한 번만 첨부한다.
-2. **v2로 댓글을 처음 쓴다.** `POST /rest/api/2/issue/<키>/comment`에 머리 문장과 파일 마크업을 함께 보낸다. 파일은 `!<파일명>|width=<w>,height=<h>!`로 쓴다. 원본 댓글이거나 `QA_Bug` HDIT의 합친 댓글이면 멘션을 `[~accountid:<accountId>]`로 이 단계에 넣는다. 멘션 알림은 댓글을 처음 만들 때 확실히 가므로, 수정 단계에서 처음 넣지 않는다. 파일명은 그 티켓에 첨부한 이름이고, width와 height는 파일 실제 크기다(GIF 960×600, 이미지 1440×900. 다르면 `sips`로 잰 값). **width와 height를 둘 다 준다.** width만 주면 Jira가 height를 엉뚱하게 채워(실측 960×183) 플레이어가 납작해진다.
+1. **파일을 그 티켓에 첨부한다.** `POST /rest/api/3/issue/<키>/attachments`, multipart, 헤더 `X-Atlassian-Token: no-check`, 파일 `Content-Type`은 `image/gif` 또는 `image/png`. media는 티켓 단위라 HDIT에 붙인 첨부를 원장 티켓에서 쓸 수 없다. HDIT와 원장 각각에 댓글을 다는 티켓마다 첨부한다. `QA_Bug` HDIT의 합친 댓글은 그 댓글에 쓸 파일을 그 HDIT에 한 번만 첨부한다.
+2. **v2로 댓글을 처음 쓴다.** `POST /rest/api/2/issue/<키>/comment`에 머리 문장과 파일 마크업을 함께 보낸다. 파일은 `!<파일명>|width=<w>,height=<h>!`로 쓴다. 원장 댓글이거나 `QA_Bug` HDIT의 합친 댓글이면 멘션을 `[~accountid:<accountId>]`로 이 단계에 넣는다. 멘션 알림은 댓글을 처음 만들 때 확실히 가므로, 수정 단계에서 처음 넣지 않는다. 파일명은 그 티켓에 첨부한 이름이고, width와 height는 파일 실제 크기다(GIF 960×600, 이미지 1440×900. 다르면 `sips`로 잰 값). **width와 height를 둘 다 준다.** width만 주면 Jira가 height를 엉뚱하게 채워(실측 960×183) 플레이어가 납작해진다.
 3. **media id를 읽는다.** `GET /rest/api/3/issue/<키>/comment/<id>`의 본문을 재귀로 훑어 `type: media` 노드의 `attrs.id`를 모은다. 첨부한 파일 수와 다르면 멈추고 보고한다.
 4. **v3로 전체를 다시 쓴다.** `PUT /rest/api/3/issue/<키>/comment/<id>`에 머리 문단과 미디어 블록을 담는다. media `attrs`는 `{"id": "<media id>", "type": "file", "collection": "<읽은 값>", "width": <w>, "height": <h>}`로 둔다. `collection`은 3단계에서 읽은 값을 그대로 쓰고, width와 height는 2단계와 같다.
 
@@ -376,9 +376,8 @@ AS-IS가 없으면 `layoutSection` 없이 캡션 paragraph와 `mediaSingle`(`lay
 다이어그램을 넣으면 화면 미디어 블록 뒤에 같은 `layoutSection`을 하나 더 두고 캡션을 `AS-IS 흐름`, `TO-BE 흐름`으로 쓴다. AS-IS 다이어그램이 없으면 `layoutSection` 없이 `TO-BE 흐름` 캡션과 `mediaSingle` 하나만 둔다. media `width`와 `height`는 `sips`로 잰 PNG 크기다. 그 뒤 최상위에 `expand`(`attrs.title`은 `Mermaid 원본`) 하나를 두고 AS-IS, TO-BE 원본을 그 순서로 `codeBlock`에 넣는다. `layoutColumn` 안에 넣지 않는 것은 `chucoding:jira` `다이어그램`과 같다. 1단계 첨부와 2단계 v2 파일 마크업에 다이어그램 PNG도 화면 파일 뒤에 넣어, 3단계에서 읽는 media id 순서가 화면, 다이어그램 순이 되게 한다.
 
 - HDIT 댓글이면 머리 문단은 `[개발완료]`, `hardBreak`, `테스트방법 : …`이다.
-- `QA_Bug` HDIT의 합친 댓글이면 머리는 멘션 문단, 본문 제목, 목록, `[개발완료]`와 `테스트방법 :` 문단 순이다. 2단계의 멘션 삽입, 3단계의 멘션 확인, 4단계의 mention 노드 재사용은 아래 원본 댓글과 같이 한다.
-- 원본(HOM) 댓글이면 머리는 `chucoding:jira`의 `원본 티켓 완료 댓글` ADF 전체(멘션 문단, 본문 제목, 목록)이고, 그 뒤에 같은 미디어 블록을 붙인다. 3단계에서 media id와 함께 `type: mention` 노드의 `attrs.id`도 모아, 의도한 멘션 대상이 모두 있는지 확인한다. 빠졌으면 4단계로 가지 말고 그 사실을 보고하고 되묻는다. 4단계에서는 3단계에서 읽은 mention 노드를 그대로 옮겨 쓴다.
-- 원장 댓글이면 머리는 `chucoding:jira`의 `원장 완료 댓글` ADF 전체(멘션 문단, 본문 제목, 목록)이고, 미디어 배치는 아래 `원장 댓글의 미디어`를 따른다. 멘션 확인과 mention 노드 재사용은 원본(HOM) 댓글과 같다.
+- `QA_Bug` HDIT의 합친 댓글이면 머리는 멘션 문단, 본문 제목, 목록, `[개발완료]`와 `테스트방법 :` 문단 순이다. 2단계의 멘션 삽입, 3단계의 멘션 확인, 4단계의 mention 노드 재사용은 아래 원장 댓글과 같이 한다.
+- 원장 댓글이면 머리는 `chucoding:jira`의 `원장 완료 댓글` ADF 전체(멘션 문단, 본문 제목, 목록)이고, 미디어 배치는 아래 `원장 댓글의 미디어`를 따른다. 3단계에서 media id와 함께 `type: mention` 노드의 `attrs.id`도 모아, 의도한 멘션 대상이 모두 있는지 확인한다. 빠졌으면 4단계로 가지 말고 그 사실을 보고하고 되묻는다. 4단계에서는 3단계에서 읽은 mention 노드를 그대로 옮겨 쓴다.
 - 2단계 이후 실패하면 재시도하지 말고 남은 댓글 id와 상태를 보고한다. v2로 쓴 댓글이 그대로 남아 있으면 지우지 않고 그 사실을 보고한다.
 
 ### 원장 댓글의 미디어

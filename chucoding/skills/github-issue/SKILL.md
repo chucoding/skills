@@ -14,7 +14,7 @@ description: GitHub 이슈로 만든 워크스페이스에서 착수부터 이�
 | 입력에 있는 것 | 경로 |
 |------|------|
 | `https://github.com/<owner>/<repo>/issues/<번호>`, `#<번호>`, `<owner>/<repo>#<번호>` | 이 스킬 |
-| Jira 티켓 키(`HDIT-1234`, `HOM-1234`)나 `*.atlassian.net/browse/<키>` | `chucoding:jira` |
+| Jira 티켓 키(`HDIT-1234`)나 `*.atlassian.net/browse/<키>` | `chucoding:jira` |
 
 - 원격이 GitHub라는 사실은 판별 근거가 아니다. Jira로 관리하는 저장소도 GitHub에 있다.
 - 양쪽 다 없으면 어느 경로인지 추측하지 말고 되묻는다.

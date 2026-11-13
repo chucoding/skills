@@ -103,29 +103,25 @@ Jira 탭은 **현재 티켓**과 **메인 티켓** 두 개다. 현재 티켓은 
 
 탭 URL은 `https://rsquare.atlassian.net/browse/<키>`다. 키는 대문자로 쓰고 쿼리를 붙이지 않는다. 키 형식 검증은 §2와 같다.
 
-**링크 유형과 방향을 읽은 경우에만 판정한다.** REST나 Jira MCP는 `issuelinks`에 유형명(`Cloners`, `Relates`, `Discovery - Connected`)과 `inwardIssue`/`outwardIssue`를 준다. 브라우저 snapshot은 이 구조를 주지 않는다. §2가 snapshot이나 4번(URL만 열기)까지 내려갔으면 메인 티켓을 판정하지 않고 `미탐색`으로 보고한다. 사유에 사용한 읽기 수단을 적는다. 구조를 못 읽은 채 `후보 없음`으로 적으면 링크가 없는 티켓과 구분되지 않는다.
+**링크 유형과 방향을 읽은 경우에만 판정한다.** REST나 Jira MCP는 `issuelinks`에 유형명(`Relates`, `Discovery - Connected` 등)과 `inwardIssue`/`outwardIssue`를 준다. 브라우저 snapshot은 이 구조를 주지 않는다. §2가 snapshot이나 4번(URL만 열기)까지 내려갔으면 메인 티켓을 판정하지 않고 `미탐색`으로 보고한다. 사유에 사용한 읽기 수단을 적는다. 구조를 못 읽은 채 `후보 없음`으로 적으면 링크가 없는 티켓과 구분되지 않는다.
 
 메인 티켓은 아래 순서로 먼저 걸리는 것 하나를 고른다.
 
 | 순서 | 조건 | 근거 |
 |---|---|---|
-| 0 | 현재 티켓이 `HOM`이고, 링크 유형 `Cloners`의 상대 프로젝트가 `HDIT` | HOM으로 착수하면 개발 작업이 HDIT 클론에 있다 |
-| 1 | 링크 유형 `Cloners`이고 상대 프로젝트가 `HOM` | QA 원본. `ticket-start`의 HOM ↔ HDIT 연동과 같은 판정 |
-| 2 | 링크 유형 `Cloners`이고 상대 프로젝트가 `HC` | 기획 원본 |
-| 3 | 링크 유형 `Relates`이고 상대가 `HC`이며, 현재 티켓 설명에 `요청:`이나 `출처:` 바로 뒤에 그 키가 있음 | HC 댓글 요청으로 만든 예전 파생 티켓. HC 원본은 더 이상 만들지 않지만 남은 티켓의 맥락을 열기 위해 둔다 |
-| 4 | 링크 유형 `Relates`이고 링크 객체에 상대가 `outwardIssue`로 들어 있음 | 2026-11-05 전에 작업 중 따로 만든 파생 티켓. 그때 `chucoding:jira`는 파생 티켓 링크를 새 티켓 inward, 출발 티켓 outward로 걸었다. 지금은 원인 커밋 티켓 같은 참고 링크만 이 형태로 건다 |
-| 4 | 링크 유형 `Discovery - Connected`이고 링크 객체에 상대가 `inwardIssue`로 들어 있음(`is connected to <상대>`) | 작업 중 따로 만든 파생 티켓이나 PM 원장에서 나온 개발 티켓. `chucoding:jira`의 파생 티켓 링크가 2026-11-05부터 `연결됨`으로 바뀌어 출발 티켓이 `connects to` 쪽에 선다. 위 `Relates` 행은 그 전에 만든 파생 티켓과 지금의 참고 링크용이다 |
+| 1 | 링크 유형 `Cloners`이고 상대 프로젝트가 `HC` | 기획 원본 |
+| 2 | 링크 유형 `Relates`이고 상대가 `HC`이며, 현재 티켓 설명에 `요청:`이나 `출처:` 바로 뒤에 그 키가 있음 | HC 댓글 요청으로 만든 예전 파생 티켓. HC 원본은 더 이상 만들지 않지만 남은 티켓의 맥락을 열기 위해 둔다 |
+| 3 | 링크 유형 `Relates`이고 링크 객체에 상대가 `outwardIssue`로 들어 있음 | 2026-11-05 전에 작업 중 따로 만든 파생 티켓. 그때 `chucoding:jira`는 파생 티켓 링크를 새 티켓 inward, 출발 티켓 outward로 걸었다. 지금은 원인 커밋 티켓 같은 참고 링크만 이 형태로 건다 |
+| 3 | 링크 유형 `Discovery - Connected`이고 링크 객체에 상대가 `inwardIssue`로 들어 있음(`is connected to <상대>`) | 작업 중 따로 만든 파생 티켓이나 PM 원장에서 나온 개발 티켓. `chucoding:jira`의 파생 티켓 링크가 2026-11-05부터 `연결됨`으로 바뀌어 출발 티켓이 `connects to` 쪽에 선다. 위 `Relates` 행은 그 전에 만든 파생 티켓과 지금의 참고 링크용이다 |
 
-- 0순위는 현재 티켓이 HOM일 때만 본다. HOM이 아니면 1순위부터 본다.
-- 링크 방향(`clones`, `is cloned by`)은 0~3번에서 가리지 않는다. 4번만 방향을 본다.
-- 3번의 설명은 ADF라서 `text` 노드와 링크 URL(`marks`의 `href`)까지 이어 읽는다. `요청:`과 키가 다른 노드로 나뉘어 있어도 이어진 텍스트로 비교한다.
+- 링크 방향(`clones`, `is cloned by`)은 1~2번에서 가리지 않는다. 3번만 방향을 본다.
+- 2번의 설명은 ADF라서 `text` 노드와 링크 URL(`marks`의 `href`)까지 이어 읽는다. `요청:`과 키가 다른 노드로 나뉘어 있어도 이어진 텍스트로 비교한다.
 - 키는 뒤에 숫자가 더 이어지지 않는 정확한 키로 비교한다. `HC-29`는 `HC-293`과 일치하지 않는다.
-- 4번은 링크 방향만으로 고른 **추정**이다. 사람이 손으로 건 Relates와 Discovery - Connected는 방향이 임의일 수 있다. §9 보고에 `추정`을 붙여 사용자가 탭을 보고 고칠 수 있게 한다.
-- 4번 후보에 HOM과 HDIT가 함께 있으면 HOM을 후보에서 뺀다. `chucoding:jira`가 파생 링크를 출발 HDIT와 그 HOM 원본에 함께 걸기 때문이다. 두 후보는 한 작업이고, 개발 맥락은 HDIT에 있다. 이 제외는 아래 동률 규칙보다 먼저 적용한다.
-- 4번 후보에 `Discovery - Connected`와 `Relates`가 함께 있으면 `Discovery - Connected` 후보만 남긴다. `chucoding:jira`는 파생 링크를 `Discovery - Connected`로, 원인 커밋의 티켓 같은 참고 링크를 `Relates`로 걸기 때문이다. 이 제외는 아래 동률 규칙보다 먼저 적용한다.
-- `Relates` 4번은 2026-11-05 전의 파생 링크와 참고 링크를 방향만으로 구분하지 못한다. 그래서 어느 유형의 4번으로 열었든 §9 보고에 다른 4번 후보의 키를 전부 남긴다.
+- 3번은 링크 방향만으로 고른 **추정**이다. 사람이 손으로 건 Relates와 Discovery - Connected는 방향이 임의일 수 있다. §9 보고에 `추정`을 붙여 사용자가 탭을 보고 고칠 수 있게 한다.
+- 3번 후보에 `Discovery - Connected`와 `Relates`가 함께 있으면 `Discovery - Connected` 후보만 남긴다. `chucoding:jira`는 파생 링크를 `Discovery - Connected`로, 원인 커밋의 티켓 같은 참고 링크를 `Relates`로 걸기 때문이다. 이 제외는 아래 동률 규칙보다 먼저 적용한다.
+- `Relates` 3번은 2026-11-05 전의 파생 링크와 참고 링크를 방향만으로 구분하지 못한다. 그래서 어느 유형의 3번으로 열었든 §9 보고에 다른 3번 후보의 키를 전부 남긴다.
 - 같은 순서에 후보가 여럿이면 현재 티켓 설명에 키가 적힌 후보를 고른다. 그래도 여럿이면 `issuelinks` 순서상 첫 후보를 연다. 나머지 키는 §9 보고에 남긴다. **되묻지 않는다** — `실행 계약`대로 이 스킬은 떼어서 돌아도 막히지 않아야 한다.
-- 0~4번이 모두 비었으면 현재 티켓 탭만 열고 메인 티켓은 `후보 없음`으로 보고한다. HDIT `QA_Bug`처럼 티켓 자신이 원본인 경우가 여기 든다. 근거로 살펴본 링크 유형과 건수를 적는다.
+- 1~3번이 모두 비었으면 현재 티켓 탭만 열고 메인 티켓은 `후보 없음`으로 보고한다. HDIT `QA_Bug`처럼 티켓 자신이 원본인 경우가 여기 든다. 근거로 살펴본 링크 유형과 건수를 적는다.
 - 부모(Epic)나 `Blocks` 같은 다른 링크 유형은 메인 티켓으로 쓰지 않는다.
 
 ### 3. 링크 찾기
@@ -452,7 +448,7 @@ rm -rf "$DIR"
 ```text
 ✓ Jira 워크벤치 준비: HDIT-1568
 - Jira 현재    열림(새 탭)        착수 입력 HDIT-1568
-- Jira 메인    열림(새 탭)        HOM-2417 (Cloners HOM, §2-1 1순위)
+- Jira 메인    열림(새 탭)        HDIT-4517 (Discovery - Connected inward, §2-1 3순위 추정)
 - 개발 페이지   열림(기존 탭 이동)  ROUTE_PATH.TASK_PLAN='/task' 일치 · localhost:3000
 - 스토리북      미개방            후보 없음 — tab list 에 localhost:6006 탭 0건
 - Swagger      열림(새 탭)        rfms-api (호출부의 rfmsRequest 확인) · 앵커 미확정
@@ -465,9 +461,9 @@ rm -rf "$DIR"
 메인 티켓이 없거나 후보가 여럿인 경우의 줄은 이렇게 적는다.
 
 ```text
-- Jira 메인    미개방            후보 없음 — issuelinks 2건(Blocks 1, Relates inward 1), §2-1 0~4순위 해당 없음
-- Jira 메인    열림(새 탭)        HC-2993 (Relates 요청 출처, §2-1 3순위) · 같은 순위 후보 HC-3001 미개방
-- Jira 메인    열림(새 탭)        HDIT-4380 (Relates outward, §2-1 4순위 추정) · 같은 작업의 HOM-2417은 HDIT 우선으로 미개방
+- Jira 메인    미개방            후보 없음 — issuelinks 2건(Blocks 1, Relates inward 1), §2-1 1~3순위 해당 없음
+- Jira 메인    열림(새 탭)        HC-2993 (Relates 요청 출처, §2-1 2순위) · 같은 순위 후보 HC-3001 미개방
+- Jira 메인    열림(새 탭)        HDIT-4380 (Relates outward, §2-1 3순위 추정) · 같은 순위 후보 HDIT-4386 미개방
 ```
 
 `goto` 가 실패한 경우의 줄은 이렇게 적는다.
