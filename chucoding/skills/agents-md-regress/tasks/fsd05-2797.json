@@ -1,0 +1,31 @@
+{
+  "id": "fsd05-2797",
+  "rules": [
+    "FSD-05",
+    "GRID-02",
+    "FSD-06"
+  ],
+  "source_pr": 2797,
+  "source_review": "https://github.com/dev-rsquare/hd-cloud-client/pull/2797#pullrequestreview-5733748760",
+  "base_commit": "1f4ce791c9f2d096543564fd96213d730abb3d47",
+  "prompt": "ERP 검침 > 분리 > 음식물분리검침(MR08130) 화면(src/pages/erp/meter-reading/separate/SeparateFoodWastePage.tsx)을 만들어 줘. 지금은 헤더만 있는 빈 자리다. BE API 가 아직 없어 모킹으로 조회한다.\n\n- 조회 API(모킹): 실제 경로는 GET /v1/meter-readings/separate/food-waste/{complexCode}, 진입 값은 GET /v1/meter-readings/separate/food-waste/{complexCode}/setup 이다. 경로 끝이 단지코드라 정적 파일은 public/mocks/v1/meter-readings/separate/food-waste/meter-readings.json, setup.json 으로 둔다. 세대 열 개 안팎, 입주구분 둘 이상이 섞인 그럴듯한 값으로 채운다.\n- 조회 응답: { closed: boolean, monthYm: 'yyyyMM', measureStartDate, measureEndDate, households: [...] }. 세대 한 행: dong, ho, custName(상호), dateIn(입주일), dateKey(키불출일), property(특성 코드), remark(메모), sumUseFoodWasteQty, sumFoodWastePrice, users: { <입주구분코드>: { beforeMeter, currentMeter, useFoodWasteQty, beforeUseQty, compareUseQty, foodWastePrice } } (숫자, 없으면 null).\n- 진입 값: { config: { configText }, custDivisions: [{ code, label }], dongs: string[], propertyCodes: [{ code, label }] }. 입주구분은 단지마다 달라 라벨을 그룹 헤더로 쓴다. configText 는 화면 상단에 빨간 글씨로 한 줄 띄운다.\n- 조회 조건은 검침월(yyyyMM) 하나다. 단지는 지금 선택된 단지를 쓴다.\n- 그리드 열: 순번, 동, 호, 입주일, 키불출일, 상호, 특성(코드를 표시 이름으로), 그다음 입주구분마다 그룹 헤더(입주구분 라벨) 아래 전월지침·당월지침·음식물사용량·전월·대비·음식물요금, 그다음 합계 그룹의 음식물사용량·음식물요금, 마지막에 메모. 숫자 칸은 오른쪽 정렬과 천 단위 구분.\n- 당월지침과 메모는 셀 편집이 된다. 마감된 월분이면 편집을 막는다. 저장은 후속 티켓이라 편집만 되게 한다.\n- 맨 아래에 합계 행 한 줄(숫자 칸 합)을 붙인다.\n- 엑셀업로드, 요금적용 팝업, 툴바 버튼, 정렬은 이번 범위가 아니다.\n\n커밋하지 마.",
+  "grading": {
+    "regex": [
+      "new-column-file",
+      "column-builder-decl",
+      "page-use-editable-grid-rows"
+    ],
+    "judge": [
+      "GRID-02",
+      "FSD-06"
+    ]
+  },
+  "agents_md_strip": [
+    "컬럼 빌더, 레이아웃 빌더를 만들지 않는다",
+    "그리드 옵션과 컬럼 정의는 그리드 컴포넌트 안에 인라인으로 둔다",
+    "행 데이터는 그리드 컴포넌트 안에서 쿼리를 구독해",
+    "화면에서 편집 버퍼나 원본 사본을 따로 관리하지 않고",
+    "한 곳에서만 쓰는 단순 값은 상수로 빼지 않고"
+  ],
+  "notes": "원 PR #2797(+5706, 음식물·기타 두 화면)에서 음식물 화면 첫 커밋 aafe4cdf(+2737)의 조회 그리드 부분만 떼어 냈다. 원 첫 커밋의 해당 부분은 model/columns.ts +266, model/total-row.ts +69, ui/SeparateFoodWasteGrid.tsx +45, 페이지 +297, api·types·queries 약 +270, 모킹 JSON +268. 원 지적: FSD-05 컬럼 정의를 model/columns.ts 의 buildSeparateFoodWasteColumnDefs 빌더와 numberColumn·centerColumn·fixed() 조각으로 뺐다, GRID-02 페이지가 목록 쿼리를 구독해 rowData·columnDefs·setup 을 props 로 내려준다, FSD-04/06 한 곳에서만 쓰는 한 줄 함수와 단순 값 상수. base 의 검침 화면들에 build*ColumnDefs 가 10개 넘게 있어 빌더 선례가 강하다. GRID-02 의 원 지적은 페이지가 rowData 를 쥐고 내려주는 모양이라 page-use-editable-grid-rows 정규식(형제 PR 2799 의 useEditableGridRows 모양)으로는 잡히지 않을 수 있어 judge 에 GRID-02 를 넣었다. FSD-06 은 같은 base(1f4ce791)의 형제 PR 2798 이 받은 지적(gas/model/column-options.ts:33 INITIAL_COLUMN_OPTIONS)과 2797 FSD-04 지적 안의 '단순 값 상수'를 근거로 넣었다. 모킹 데이터 형태는 원 첫 커밋 api/types.ts 를 줄여 옮겼다. merge-base 와 첫 커밋 부모가 같다."
+}

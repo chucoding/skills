@@ -1,0 +1,22 @@
+{
+  "id": "reuse04-2751",
+  "rules": [
+    "REUSE-04"
+  ],
+  "source_pr": 2751,
+  "source_review": "https://github.com/dev-rsquare/hd-cloud-client/pull/2751#pullrequestreview-5696618418",
+  "base_commit": "9d7ae408ec1bdf92f20ff3457d5e007225484580",
+  "prompt": "ERP 검침 > 수도 > 수도검침(MR02010) 화면의 툴바에서 비활성으로 둔 [요금적용] 버튼을 동작하게 해 줘(src/pages/erp/meter-reading/water/ui/WaterMeterToolbar.tsx, WaterMeterPage.tsx). 버튼을 누르면 요금적용 팝업(ERP MR02012)을 띄운다.\n\n- 팝업 입력: 계산방식 셀렉트(코드 0 요금재계산, 1 사용량및요금재계산, 2 사용량기준 당월지침계산. 첫 항목이 기본값), 시작 동·호와 종료 동·호, 단가 세 칸(상수도 단가, 하수도 단가, 물이용부담금 단가).\n- 단가 칸은 비워 둘 수 있다. 빈 칸은 '그 성분은 원장 값 그대로'라는 뜻이라 0 이 아니라 null 로 보낸다. 숫자가 아닌 값도 null 로 보낸다.\n- 팝업을 열 때마다 입력을 초기화한다. 단지 설정의 산정기준(calcCode)이 '2'(계산)인 단지만 상수도·하수도 단가를 설정 단가(있으면)로 채운다.\n- 계산방식을 고르지 않았으면 「계산방식을 선택해주세요.」 경고 토스트를 띄우고 보내지 않는다.\n- API: POST /v1/meter-readings/water/price-application, ERP 전용 클라이언트(erpRequest). 요청 본문 { complexCode, yearMonth(yyyyMM), calculationType, dongFrom, dongTo, hoFrom, hoTo, listDongFrom, listDongTo, occupancyType, property, waterUnitPrice, sewageUnitPrice, waterUseChargeUnitPrice } — list* 와 occupancyType, property 는 지금 적용된 조회 조건 값이고 비어 있으면 null. 응답 { appliedCount, targetCount, skippedTroubleCount, discountWarning: string | null }. 타입은 api 함수 옆에 임시로 둔다.\n- 성공하면 「요금재계산 작업이 완료되었습니다. {appliedCount}/{targetCount}세대에 적용했습니다.」에, 고장 세대가 있으면 「고장 {skippedTroubleCount}세대는 건너뛰었습니다.」와 discountWarning 을 줄바꿈으로 이어 성공 토스트로 띄우고, 팝업을 닫고 목록을 다시 받아 온다. 실패하면 서버 오류 문구(없으면 「요금적용에 실패했습니다.」)를 오류 토스트로 띄운다.\n- 조회 API 연결과 다른 툴바 버튼은 이번 범위가 아니다.\n\n커밋하지 마.",
+  "grading": {
+    "regex": [
+      "number-converter-redefined"
+    ],
+    "judge": [
+      "REUSE-04"
+    ]
+  },
+  "agents_md_strip": [
+    "에 이미 있는지 먼저 확인한다"
+  ],
+  "notes": "원 PR #2751(+5457, 수도검침 모킹 제거와 ERP API 8개 연결)에서 첫 커밋 ad3d6a26 의 요금적용 팝업(ui/WaterPriceApplicationModal.tsx +248, api/price-application.ts +27, 뮤테이션 훅)만 떼어 냈다. 원 지적: 빈 값·숫자가 아닌 값을 null 로 바꾸는 함수를 팝업 세 곳(Batch toNumber, Reduction toNumber, Price toUnitPrice)에 새로 만들었다. @shared/lib/form-value 의 toNullableNumber 가 같은 일을 한다. base 는 첫 커밋 부모 9d7ae408 이다. PR 브랜치가 main 을 머지(49a7d262)해서 merge-base(9f26191b)가 33커밋 뒤로 밀려 있기 때문이다(9d7ae408 은 main 위에 있음 확인). number-converter-redefined 정규식은 toNullableNumber·toOptionalNumber 와 같은 이름의 재정의만 잡는다. 원 위반 이름은 toUnitPrice 라 정규식만으로는 거의 안 잡혀 judge 에 REUSE-04 를 넣었다. base 의 ElectricPriceApplicationModal·ElectricBatchApplicationModal 은 Number() 를 직접 쓰는 선례다. AGENTS.md(origin/main)에는 form-value 나 toNullableNumber 를 가리키는 문장이 없다. strip 은 §2 유틸 함수의 일반 문장('src/shared/lib 에 이미 있는지 먼저 확인한다')을 지운다. 그래도 '시작 전 30초' 1번이 §2 를 가리키며 남는다."
+}
