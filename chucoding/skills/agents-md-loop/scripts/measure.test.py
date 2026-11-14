@@ -163,6 +163,33 @@ class MeasureV1(unittest.TestCase):
             self.run_measure()
         self.assertNotIn("수집 실패", err.getvalue())
 
+    def test_time_saving_metrics(self):
+        prs = json.loads(open(os.path.join(self.work, "prs.json")).read())
+        prs[0]["mergedAt"] = "2026-11-16T05:00:00Z"   # 생성 01:00 → 4시간
+        prs[1]["mergedAt"] = "2026-11-17T03:00:00Z"   # 생성 01:00 → 2시간
+        self.dump("prs.json", json.dumps(prs))
+        t = "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
+        self.write(1, "meta", {"commits": [
+            {"authoredDate": "2026-11-16T01:30:00Z", "messageBody": t},
+            {"authoredDate": "2026-11-16T02:30:00Z", "messageBody": "Co-Authored-By: Claude Sonnet 5.5 <x>"},
+            {"authoredDate": "2026-11-16T02:40:00Z", "messageBody": t}]})   # 첫 리뷰 02:00 뒤 커밋 2개
+        self.write(2, "meta", {"commits": [{"authoredDate": "2026-11-17T01:30:00Z", "messageBody": "사람"}]})
+        scope, findings, code, _, extra = self.run_measure()
+        meta = dict(sprint="S", measured_at="d", period_start="a", period_end="b", def_version="v1", ticket="T")
+        get = {(r["metric"], r["rule_id"]): r for r in measure.build_rows(meta, len(scope), findings, code, extra)}
+        self.assertEqual(get[("main_model_share", "Claude Opus 5.5")]["value"], 1)
+        self.assertEqual(get[("main_model_share", "NONE")]["rate"], "0.50")
+        self.assertEqual(get[("review_rounds", "")]["value"], 3)   # PR1 리뷰어 2건 + PR2 1건, 다른 계정 제외
+        self.assertEqual(get[("fix_commits_after_first_review", "")]["value"], 2)
+        lead = get[("merge_lead_time_hours", "")]
+        self.assertEqual((lead["value"], lead["denominator"], lead["rate"]), ("3.0", 2, ""))
+
+    def test_main_model_tie_uses_latest(self):
+        meta = {"commits": [{"authoredDate": "2026-11-16T01:00:00Z", "messageBody": "Co-Authored-By: Claude A <x>"},
+                            {"authoredDate": "2026-11-16T02:00:00Z", "messageBody": "Co-Authored-By: Claude B <x>"}]}
+        self.assertEqual(measure.main_model(meta), "Claude B")
+        self.assertEqual(measure.main_model({}), "NONE")
+
     def test_rows(self):
         scope, findings, code, _, extra = self.run_measure()
         meta = dict(sprint="S", measured_at="2026-11-26", period_start="a", period_end="b", def_version="v1", ticket="T")
@@ -227,6 +254,30 @@ class CollectSince(unittest.TestCase):
             collect.search_date("11/16")
 
 
+class ReportModelChange(unittest.TestCase):
+    """주 모델 1위가 직전과 다르면 요약 맨 위에 주의 줄을 넣는지"""
+
+    def test_model_change_warning(self):
+        def rows(sprint, ticket, model, n):
+            meta = dict(sprint=sprint, measured_at="d", period_start="a", period_end="b", def_version="v1", ticket=ticket)
+            extra = [("main_model_share", model, n, 4), ("main_model_share", "NONE", 4 - n, 4),
+                     ("review_rounds", "", 8, 4), ("fix_commits_after_first_review", "", 2, 4),
+                     ("merge_lead_time_hours", "", "5.5", 3, "")]
+            return measure.build_rows(meta, 4, [], None, extra)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "m.csv")
+            measure.write_rows(rows("S1", "T1", "Claude Opus 5.5", 3), io.StringIO(), path)
+            measure.write_rows(rows("S2", "T2", "Claude Opus 6", 3), io.StringIO(), path)
+            data, order = report.load(path)
+            cur, prev = report.pick(order, "S2")
+            out = report.report(data, cur, prev)
+            self.assertTrue(out.startswith("주의: 주 모델이 바뀌어 지적 수 해석 주의"))
+            self.assertIn("* 주 모델: `Claude Opus 5.5` 75% → `Claude Opus 6` 75%", out)
+            self.assertIn("* `review_rounds` PR당 리뷰 왕복 2.00 → 2.00", out)
+            self.assertIn("머지까지 중앙값(시간) 5.5 → 5.5 (머지 3건)", out)
+            self.assertNotIn("|", out)
+
+
 class Period(unittest.TestCase):
     """period.py 가 직전 보강 PR 머지 시각, 없으면 CSV 마지막 행 종료를 기간 시작으로 고르는지"""
 
@@ -285,6 +336,7 @@ class Report(unittest.TestCase):
             self.assertIn("* `GRID-02` - → 0.10 (-), 지적 1건, PR 1개\n", out)
             self.assertNotIn("|", out)  # 티켓 본문에 표를 쓰지 않는다
             self.assertIn("승격 후보(이번 측정에서 3개 PR 이상 반복): `FSD-04`", out)
+            self.assertIn("* 주 모델: - → -", out)   # 보정 2 이전 행에는 주 모델이 없다
             _, first_prev = report.pick(order, "S1")
             self.assertIsNone(first_prev)
 
