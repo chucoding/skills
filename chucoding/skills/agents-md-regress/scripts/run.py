@@ -35,7 +35,7 @@ TASKS_DIR = os.path.join(HERE, "..", "tasks")
 RUN_FIELDS = ["run_at", "run_id", "task", "source_pr", "base_commit", "agents_md_ref", "agents_md_sha", "variant",
               "model", "effort", "repeat", "rule_id", "method", "violations", "is_error", "input_tokens",
               "output_tokens", "cache_read_tokens", "cache_creation_tokens", "duration_s", "cost_usd",
-              "judge_model", "judge_effort", "judge_cost_usd"]
+              "judge_model", "judge_effort", "judge_cost_usd", "no_change"]
 TIMEOUT_S = 1800
 
 
@@ -58,10 +58,12 @@ def load_tasks(ids):
 
 
 def strip_rules(text, needles):
-    """needles 중 하나라도 든 줄을 지운 AGENTS.md. 지운 줄 수도 돌려준다"""
+    """needles 중 하나라도 든 줄을 지운 AGENTS.md 와, 어느 줄에도 걸리지 않은 needle 목록.
+    하나라도 안 걸리면 규칙 문장이 남은 채 비교군이 되어 가짜 은퇴 후보가 생기므로 호출 쪽이 멈춘다"""
     lines = text.splitlines(keepends=True)
     kept = [ln for ln in lines if not any(n in ln for n in needles)]
-    return "".join(kept), len(lines) - len(kept)
+    unmatched = [n for n in needles if not any(n in ln for ln in lines)]
+    return "".join(kept), unmatched
 
 
 def prepare_worktree(repo, wt, task, agents_md, variant):
@@ -69,9 +71,9 @@ def prepare_worktree(repo, wt, task, agents_md, variant):
     git(repo, "worktree", "add", "--detach", wt, task["base_commit"])
     text = agents_md
     if variant == "stripped":
-        text, removed = strip_rules(agents_md, task.get("agents_md_strip") or [])
-        if removed == 0:
-            raise RuntimeError(f"{task['id']}: agents_md_strip 문자열이 AGENTS.md 에 없어 비교군을 만들 수 없다")
+        text, unmatched = strip_rules(agents_md, task.get("agents_md_strip") or [])
+        if unmatched:
+            raise RuntimeError(f"{task['id']}: agents_md_strip 문자열이 AGENTS.md 에 없다: {unmatched}")
     with open(os.path.join(wt, "AGENTS.md"), "w", encoding="utf-8") as f:
         f.write(text)
     if not os.path.exists(os.path.join(wt, "CLAUDE.md")):
@@ -149,13 +151,23 @@ def main(argv=None):
     runs, judge_calls, cap = plan(tasks, a.model, a.effort, variants, a.repeat, a.budget_usd)
     print(f"조합 {len(runs)}회(과제 {len(tasks)} × 모델 {len(a.model)} × 강도 {len(a.effort)} × 변형 {len(variants)} × 반복 {a.repeat}),"
           f" 채점 프롬프트 {judge_calls}회, 실행 비용 상한 ${cap:.2f}(실행당 ${a.budget_usd:.2f})", file=sys.stderr)
+    # 유료 실행 전에 비교군 문장과 채점 규칙 절을 먼저 확인한다. 어긋나면 계획 단계에서 멈춘다
+    git(a.repo, "fetch", "-q", "origin", a.agents_md_ref.split("/", 1)[-1], check=False)
+    agents_md = git(a.repo, "show", f"{a.agents_md_ref}:AGENTS.md").stdout
+    problems = []
+    if "stripped" in variants:
+        for t in tasks:
+            _, unmatched = strip_rules(agents_md, t.get("agents_md_strip") or [])
+            if unmatched:
+                problems.append(f"{t['id']}: agents_md_strip 이 {a.agents_md_ref} AGENTS.md 에 없음 {unmatched}")
+    problems += grade.check_tasks(tasks)
+    if problems:
+        sys.exit("실행 전 확인 실패:\n" + "\n".join(problems))
     if a.plan or not a.yes:
         if not a.plan:
             print("--yes 가 없어 실행하지 않았다. 계획을 승인받은 뒤 --yes 를 붙인다", file=sys.stderr)
         return
 
-    git(a.repo, "fetch", "-q", "origin", a.agents_md_ref.split("/", 1)[-1], check=False)
-    agents_md = git(a.repo, "show", f"{a.agents_md_ref}:AGENTS.md").stdout
     agents_sha = git(a.repo, "rev-parse", a.agents_md_ref).stdout.strip()
     os.makedirs(os.path.join(a.out, "diffs"), exist_ok=True)
     # ~/.claude 아래는 Claude Code 가 보호 경로로 보고 편집을 거부한다(2026-11-15 실측: 16턴 동안 diff 0줄).
@@ -163,6 +175,12 @@ def main(argv=None):
     wt_root = tempfile.mkdtemp(prefix="agents-md-regress-")
     csv_path = os.path.join(a.out, "runs.csv")
     new_csv = not os.path.exists(csv_path)
+    if not new_csv:
+        with open(csv_path, encoding="utf-8", newline="") as f:
+            header = next(csv.reader(f), [])
+        if header != RUN_FIELDS:
+            # 칸이 바뀐 이전 버전 파일에 이어 쓰면 행이 헤더와 어긋나 새 칸 값이 사라진다
+            sys.exit(f"{csv_path} 의 칸이 지금 실행기와 다르다. 다른 --out 폴더를 쓴다")
     with open(csv_path, "a", encoding="utf-8", newline="") as cf, open(os.path.join(a.out, "runs.jsonl"), "a", encoding="utf-8") as jf:
         w = csv.DictWriter(cf, RUN_FIELDS, lineterminator="\n")
         if new_csv:
@@ -184,7 +202,12 @@ def main(argv=None):
             diff_path = os.path.join(a.out, "diffs", f"{run_id}.diff")
             with open(diff_path, "w", encoding="utf-8") as f:
                 f.write(diff)
-            scores = grade.grade(t, diff, wiki=grade.DEFAULT_WIKI)
+            try:
+                scores = grade.grade(t, diff, wiki=grade.DEFAULT_WIKI)
+            except ValueError:   # 과제 설정 오류는 check_tasks 가 먼저 막는다. 여기서 나면 숨기지 않고 멈춘다
+                raise
+            except Exception as e:   # 이미 비용을 쓴 실행이라 행은 남기고 다음 조합으로 간다
+                scores = grade.error_scores(t, e)
             usage = out.get("usage") or {}
             base_row = dict(run_at=started.isoformat(timespec="seconds"), run_id=run_id, task=t["id"],
                             source_pr=t.get("source_pr", ""), base_commit=t["base_commit"],
@@ -194,7 +217,7 @@ def main(argv=None):
                             cache_read_tokens=usage.get("cache_read_input_tokens", ""),
                             cache_creation_tokens=usage.get("cache_creation_input_tokens", ""),
                             duration_s=round((out.get("duration_ms") or 0) / 1000, 1),
-                            cost_usd=out.get("total_cost_usd", ""))
+                            cost_usd=out.get("total_cost_usd", ""), no_change=not diff.strip())
             for s in scores:
                 w.writerow({**base_row, "rule_id": s["rule_id"], "method": s["method"], "violations": s["violations"],
                             "judge_model": s.get("judge_model", ""), "judge_effort": s.get("judge_effort", ""),
@@ -208,7 +231,8 @@ def main(argv=None):
             cf.flush()
             jf.flush()
             judge_cost = sum(s.get("judge_cost_usd") or 0 for s in scores)
-            print(f"{run_id}: 위반 {sum(s['violations'] or 0 for s in scores)}건, 비용 ${out.get('total_cost_usd', 0) or 0:.3f}"
+            failed = sum(1 for s in scores if s["violations"] is None)
+            print(f"{run_id}: 위반 {sum(s['violations'] or 0 for s in scores)}건, 채점 실패 {failed}건, 비용 ${out.get('total_cost_usd', 0) or 0:.3f}"
                   f"(채점 ${judge_cost:.3f}), diff {diff.count(chr(10))}줄, 오류 {bool(out.get('is_error'))}", file=sys.stderr)
     shutil.rmtree(wt_root, ignore_errors=True)
 

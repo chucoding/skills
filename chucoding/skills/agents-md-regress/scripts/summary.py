@@ -6,7 +6,8 @@ run.py 의 runs.csv(또는 위키 regression-runs.csv)를 읽어 모델 × 추�
 
   python3 summary.py --csv W/runs.csv
 
-- 위반률 = 위반이 1건 이상 나온 실행 수 / 채점된 실행 수. 오류 실행(is_error)과 채점 실패(violations 빈칸)는 빼고 따로 센다.
+- 위반률 = 위반이 1건 이상 나온 실행 수 / 채점된 실행 수. 오류 실행(is_error), 변경 없는 실행(no_change), 채점 실패
+  (violations 빈칸)는 빼고 오류, 무변경, 채점 실패 칸에 따로 센다. 채점 실패는 실행이 아니라 규칙 ID 행 단위로 센다. 변경이 없는 실행을 위반 0건으로 세면 비교군 위반률이 낮아져 가짜 은퇴 후보가 생긴다.
 - 은퇴 후보: 같은 모델 · 강도에서 규칙 문장을 지운 변형(stripped)의 위반률이 지우지 않은 변형(full)보다 높지 않은 규칙.
   규칙 문장 없이도 지킨다는 뜻이라 AGENTS.md 에서 뺄 후보다. 빼는 결정은 사람이 한다.
 - 권장 추론 강도: 모델마다 full 변형의 전체 위반률이 가장 낮은 값과 같은 강도 중 가장 낮은 강도.
@@ -37,19 +38,27 @@ def summarize(rows):
     """집계 dict: rates[(model, effort, variant, rule)] = (위반 실행, 채점 실행), runs[(model, effort, variant)] = 실행별 값"""
     rates = collections.defaultdict(lambda: [0, 0])
     errors = collections.Counter()
+    no_change = collections.Counter()
+    judge_failed = collections.Counter()
     runs = collections.defaultdict(dict)
     for r in rows:
         key = (r["model"], r["effort"], r["variant"])
+        first_row = r["run_id"] not in runs[key]
         if r["is_error"] in ("True", "true", "1"):
-            errors[key] += 1 if r["run_id"] not in runs[key] else 0
+            errors[key] += first_row
+        elif r.get("no_change") in ("True", "true", "1"):
+            no_change[key] += first_row
         runs[key][r["run_id"]] = r
         v = num(r["violations"])
-        if v is None or r["is_error"] in ("True", "true", "1"):
+        if r["is_error"] in ("True", "true", "1") or r.get("no_change") in ("True", "true", "1"):
+            continue
+        if v is None:
+            judge_failed[key] += 1
             continue
         cell = rates[key + (r["rule_id"],)]
         cell[0] += v > 0
         cell[1] += 1
-    return rates, runs, errors
+    return rates, runs, errors, no_change, judge_failed
 
 
 def avg(values):
@@ -58,12 +67,12 @@ def avg(values):
 
 
 def report(rows):
-    rates, runs, errors = summarize(rows)
+    rates, runs, errors, no_change, judge_failed = summarize(rows)
     rules = sorted({k[3] for k in rates})
     keys = sorted(runs, key=lambda k: (k[0], effort_key(k[1]), k[2]))
-    out = ["| 모델 | 강도 | 변형 | 실행 | 오류 | " + " | ".join(f"`{r}` 위반률" for r in rules)
+    out = ["| 모델 | 강도 | 변형 | 실행 | 오류 | 무변경 | 채점 실패 | " + " | ".join(f"`{r}` 위반률" for r in rules)
            + " | 평균 입력 토큰 | 평균 출력 토큰 | 평균 비용 |",
-           "|" + "---|" * (8 + len(rules))]
+           "|" + "---|" * (10 + len(rules))]
     for k in keys:
         rs = runs[k].values()
         cells = []
@@ -74,7 +83,7 @@ def report(rows):
         tok_in = fmt(avg(num(r["input_tokens"]) for r in rs), "{:,.0f}")
         tok_out = fmt(avg(num(r["output_tokens"]) for r in rs), "{:,.0f}")
         cost = fmt(avg(num(r["cost_usd"]) for r in rs), "${:.3f}")
-        out.append(f"| {k[0]} | {k[1]} | {k[2]} | {len(rs)} | {errors[k]} | " + " | ".join(cells)
+        out.append(f"| {k[0]} | {k[1]} | {k[2]} | {len(rs)} | {errors[k]} | {no_change[k]} | {judge_failed[k]} | " + " | ".join(cells)
                    + f" | {tok_in} | {tok_out} | {cost} |")
 
     retire = []
