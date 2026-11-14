@@ -178,6 +178,46 @@ def agent_coauthored(meta):
     return any(re.search(r"Co-Authored-By: Claude", c.get("messageBody") or "", re.I) for c in commits)
 
 
+CLAUDE_TRAILER = re.compile(r"^Co-Authored-By:\s*(Claude[^<\n]*?)\s*<", re.I | re.M)
+
+
+def main_model(meta):
+    """PR 커밋의 Claude 공동 작성 표기 중 가장 많이 나온 모델. 동률이면 가장 늦게 작성된 커밋의 모델, 없으면 NONE"""
+    seen = []
+    for c in (meta or {}).get("commits") or []:
+        for m in CLAUDE_TRAILER.findall(c.get("messageBody") or ""):
+            seen.append((c.get("authoredDate") or "", " ".join(m.split())))
+    if not seen:
+        return "NONE"
+    count = collections.Counter(m for _, m in seen)
+    top = max(count.values())
+    return max((t, m) for t, m in seen if count[m] == top)[1]
+
+
+def review_count(reviews, reviewer):
+    """리뷰어가 제출한 리뷰 수(자동 리뷰 포함, 상태 무관)"""
+    return sum(1 for r in reviews if login(r) == reviewer and r.get("submitted_at"))
+
+
+def commits_after_first_review(reviews, meta, reviewer):
+    """리뷰어의 첫 리뷰 뒤에 작성된 커밋 수. 리베이스는 커밋 시각만 바꾸므로 작성 시각(authoredDate)으로 본다"""
+    times = sorted(r["submitted_at"] for r in reviews if login(r) == reviewer and r.get("submitted_at"))
+    if not times:
+        return 0
+    first = parse_time(times[0])
+    return sum(1 for c in (meta or {}).get("commits") or []
+               if c.get("authoredDate") and parse_time(c["authoredDate"]) > first)
+
+
+def median(values):
+    """중앙값. 빈 목록이면 None"""
+    v = sorted(values)
+    if not v:
+        return None
+    mid = len(v) // 2
+    return v[mid] if len(v) % 2 else (v[mid - 1] + v[mid]) / 2
+
+
 def first_review(reviews, reviewer):
     """리뷰어의 첫 리뷰. (자동 여부, 승인 여부), 없으면 None"""
     rv = sorted((r for r in reviews if login(r) == reviewer and r.get("submitted_at")),
@@ -198,7 +238,7 @@ def build_rows(meta, scope_prs, findings, code=None, extra=None, code_names=None
     meta: sprint, measured_at, period_start, period_end, def_version, ticket
     findings: 자동 리뷰 지적 목록(rule_ids, lens 칸 필요)
     code: (src 추가 줄 수, 지표 Counter) 또는 None(코드 지표 행을 내지 않음)
-    extra: [(metric, rule_id, value, denominator)] 그대로 덧붙일 행
+    extra: [(metric, rule_id, value, denominator)] 또는 rate 를 직접 정한 (metric, rule_id, value, denominator, rate)
     code_names: 행으로 낼 코드 지표 이름. 비우면 정의된 지표 전부(0건도 행을 낸다)
     """
     rows = []
@@ -230,8 +270,10 @@ def build_rows(meta, scope_prs, findings, code=None, extra=None, code_names=None
         row("src_added_lines", "", added)
         for name in code_names or CODE_METRIC_RULES:
             row(f"code:{name}", CODE_METRIC_RULES[name], hits.get(name, 0), added, rate(hits.get(name, 0), added, 1000))
-    for metric, rid, value, denominator in extra or []:
-        row(metric, rid, value, denominator, rate(value, denominator) if denominator != "" else "")
+    for item in extra or []:
+        metric, rid, value, denominator = item[:4]
+        r = item[4] if len(item) > 4 else (rate(value, denominator) if denominator != "" else "")
+        row(metric, rid, value, denominator, r)
     return rows
 
 
@@ -246,6 +288,7 @@ def measure(work, start, end, exclude, reviewer):
     added, hits = 0, collections.Counter()
     first = collections.Counter()
     agent = 0
+    models, rounds, fixes, lead = collections.Counter(), 0, 0, []
     for n in scope:
         raw = os.path.join(work, "raw", str(n))
         missing = [k for k in ("reviews.json", "comments.json", "meta.json")
@@ -261,8 +304,14 @@ def measure(work, start, end, exclude, reviewer):
         a, h = code_metrics(read_text(f"{raw}.diff"))
         added += a
         hits.update(h)
-        ag = agent_coauthored(load_json(f"{raw}.meta.json", {}))
+        pr_meta = load_json(f"{raw}.meta.json", {})
+        ag = agent_coauthored(pr_meta)
         agent += ag
+        models[main_model(pr_meta)] += 1
+        rounds += review_count(reviews, reviewer)
+        fixes += commits_after_first_review(reviews, pr_meta, reviewer)
+        if prs[n].get("mergedAt"):
+            lead.append((parse_time(prs[n]["mergedAt"]) - parse_time(prs[n]["createdAt"])).total_seconds() / 3600)
         fr = first_review(reviews, reviewer)
         if fr:
             kind = "AUTO" if fr[0] else "HUMAN"
@@ -272,6 +321,13 @@ def measure(work, start, end, exclude, reviewer):
     extra = [("agent_coauthored_prs", "", agent, len(scope))]
     for kind in ["AUTO", "HUMAN"]:
         extra.append(("first_review_approved", kind, first[(kind, "approved")], first[(kind, "all")]))
+    # 시간 절약 지표(보정 2). 측정 정의 버전은 그대로 두고 지표만 더한다
+    for model in sorted(models):
+        extra.append(("main_model_share", model, models[model], len(scope)))
+    extra.append(("review_rounds", "", rounds, len(scope)))
+    extra.append(("fix_commits_after_first_review", "", fixes, len(scope)))
+    m = median(lead)
+    extra.append(("merge_lead_time_hours", "", "" if m is None else f"{m:.1f}", len(lead), ""))
     return scope, findings, (added, hits), code_rows, extra
 
 

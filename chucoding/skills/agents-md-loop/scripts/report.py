@@ -43,6 +43,15 @@ def index(rows, key):
     return {(r["metric"], r["rule_id"]): r for r in rows if (r["sprint"], r["def_version"], r["ticket"]) == key}
 
 
+def top_model(idx):
+    """main_model_share 중 PR 수가 가장 많은 (모델, rate). 행이 없으면 None(보정 2 이전 측정)"""
+    shares = [(int(r["value"]), rid, r["rate"]) for (m, rid), r in idx.items() if m == "main_model_share"]
+    if not shares:
+        return None
+    _, rid, r = max(shares)
+    return rid, r
+
+
 def fmt_delta(cur, prev):
     """rate 변화. 둘 중 하나가 없으면 -"""
     if cur == "" or prev == "":
@@ -61,9 +70,19 @@ def report(rows, cur, prev, promote_min=PROMOTE_MIN_PRS):
         f"측정 {cur[0]} ({cur[2]}, 정의 {cur[1]}), 직전 {prev[0] + ' (' + prev[2] + ')' if prev else '없음'}",
         f"범위 PR {scope}건, 자동 리뷰 지적 {get(c, 'auto_findings', 'ALL', 'value')}건"
         f" (PR당 {get(c, 'auto_findings', 'ALL')}, 직전 {get(p, 'auto_findings', 'ALL') or '-'})",
-        "",
-        "규칙별 PR당 지적 수 (직전 → 이번, 변화, 이번 지적 수, 지적이 나온 PR 수)",
     ]
+    cur_top, prev_top = top_model(c), top_model(p)
+    if cur_top and prev_top and cur_top[0] != prev_top[0]:
+        lines.insert(0, f"주의: 주 모델이 바뀌어 지적 수 해석 주의 (직전 `{prev_top[0]}` → 이번 `{cur_top[0]}`)")
+    lines += ["", "시간 지표 (직전 → 이번)"]
+    fmt_top = lambda t: f"`{t[0]}` {float(t[1]) * 100:.0f}%" if t else "-"
+    lines.append(f"* 주 모델: {fmt_top(prev_top)} → {fmt_top(cur_top)}")
+    for m, label in [("review_rounds", "PR당 리뷰 왕복"), ("fix_commits_after_first_review", "PR당 첫 리뷰 뒤 커밋")]:
+        lines.append(f"* `{m}` {label} {get(p, m, '') or '-'} → {get(c, m, '') or '-'}")
+    lines.append(f"* `merge_lead_time_hours` 머지까지 중앙값(시간) {get(p, 'merge_lead_time_hours', '', 'value') or '-'}"
+                 f" → {get(c, 'merge_lead_time_hours', '', 'value') or '-'}"
+                 f" (머지 {get(c, 'merge_lead_time_hours', '', 'denominator') or 0}건)")
+    lines += ["", "규칙별 PR당 지적 수 (직전 → 이번, 변화, 이번 지적 수, 지적이 나온 PR 수)"]
     rule_ids = sorted({r for (m, r) in list(c) + list(p) if m == "auto_findings" and r not in ["ALL", *TAIL_IDS]})
     promote = []
     for rid in rule_ids + TAIL_IDS:
