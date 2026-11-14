@@ -3,12 +3,10 @@
 
   python3 ~/.claude/skills/chucoding/skills/agents-md-regress/scripts/regress.test.py -q
 """
-import csv
 import glob
 import json
 import os
 import sys
-import tempfile
 import unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -50,8 +48,10 @@ class Tasks(unittest.TestCase):
 
 class Strip(unittest.TestCase):
     def test_strip_rules(self):
-        text, removed = run.strip_rules("a\n- 한 곳에서만 쓰는 한 줄 함수\nb\n", ["한 줄 함수"])
-        self.assertEqual((text, removed), ("a\nb\n", 1))
+        text, unmatched = run.strip_rules("a\n- 한 곳에서만 쓰는 한 줄 함수\nb\n", ["한 줄 함수"])
+        self.assertEqual((text, unmatched), ("a\nb\n", []))
+        _, unmatched = run.strip_rules("a\n- 한 줄 함수\n", ["한 줄 함수", "낡은 문장"])
+        self.assertEqual(unmatched, ["낡은 문장"])   # 일부만 어긋나도 잡는다
 
 
 class Grade(unittest.TestCase):
@@ -61,9 +61,27 @@ class Grade(unittest.TestCase):
         got = {s["rule_id"]: s["violations"] for s in grade.grade(task, DIFF)}
         self.assertEqual(got, {"TS-01": 1, "GRID-07": 1, "FSD-05": 2})
 
-    def test_judge_skipped_on_empty_diff(self):
-        task = {"id": "t", "grading": {"regex": [], "judge": ["FSD-04"]}}
-        self.assertEqual(grade.grade(task, "")[0]["violations"], 0)
+    def test_empty_diff_is_not_zero_violations(self):
+        task = {"id": "t", "grading": {"regex": ["as-unknown-as"], "judge": ["FSD-04"]}}
+        self.assertEqual([s["violations"] for s in grade.grade(task, "")], [None, None])
+
+    def test_judge_failure_returns_none(self):
+        n, evidence, _ = grade.judge("NO-99", DIFF)   # 위키에 없는 규칙
+        self.assertIsNone(n)
+        self.assertIn("채점 실패", evidence[0])
+
+
+class Checks(unittest.TestCase):
+    def test_check_tasks_catches_bad_regex_and_missing_rule(self):
+        tasks = [{"id": "t", "grading": {"regex": ["as-unknown-az"], "judge": ["NO-99"]}}]
+        problems = grade.check_tasks(tasks)
+        self.assertTrue(any("as-unknown-az" in p for p in problems))
+        self.assertTrue(any("NO-99" in p for p in problems))
+
+    def test_error_scores_leave_violations_blank(self):
+        rows = grade.error_scores({"rules": ["TS-01", "FSD-04"]}, RuntimeError("x"))
+        self.assertEqual([(r["rule_id"], r["method"], r["violations"]) for r in rows],
+                         [("TS-01", "error", None), ("FSD-04", "error", None)])
 
 
 class Summary(unittest.TestCase):
@@ -75,12 +93,16 @@ class Summary(unittest.TestCase):
         rows = [row("a", "low", "full", "0"), row("b", "low", "full", "1"),
                 row("c", "medium", "full", "0"), row("d", "medium", "full", "1"),
                 row("e", "low", "stripped", "1"), row("f", "low", "stripped", "0"),
-                row("g", "high", "full", "", "True")]
+                row("g", "high", "full", "", "True"),
+                row("h", "low", "stripped", "") | {"no_change": "True"},
+                row("i", "medium", "full", "")]
         out = summary.report(rows)
-        self.assertIn("| M | low | full | 2 | 0 | 1/2 (50%)", out)
+        self.assertIn("| M | low | full | 2 | 0 | 0 | 0 | 1/2 (50%)", out)
+        self.assertIn("| M | low | stripped | 3 | 0 | 1 | 0 | 1/2 (50%)", out)
+        self.assertIn("| M | medium | full | 3 | 0 | 0 | 1 | 1/2 (50%)", out)   # 채점 실패는 따로 센다   # 무변경은 위반률에서 빠진다
         self.assertIn("은퇴 후보(규칙 문장을 지워도 위반이 늘지 않음): `TS-01` (M, low", out)
         self.assertIn("M: `low`", out)
-        self.assertIn("| M | high | full | 1 | 1 | -", out)
+        self.assertIn("| M | high | full | 1 | 1 | 0 | 0 | -", out)
 
 
 if __name__ == "__main__":
