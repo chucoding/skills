@@ -1,0 +1,20 @@
+{
+  "id": "ts01-2925",
+  "rules": [
+    "TS-01"
+  ],
+  "source_pr": 2925,
+  "source_review": "https://github.com/dev-rsquare/hd-cloud-client/pull/2925#pullrequestreview-5857367859",
+  "base_commit": "c5e9e8f99de4091278003afdb4960c008966899a",
+  "prompt": "ERP 검침 > 분리 > 가스분리검침(MR08070) 화면(src/pages/erp/meter-reading/separate/SeparateGasPage.tsx)에 저장을 붙여 줘. 조회는 지금처럼 모킹 그대로 두고, 그리드에서 고친 지침·사용량·요금·메모를 서버에 저장하는 것만 한다.\n\n- 저장 API: PATCH /v1/meter-readings/separate/gas, ERP 전용 클라이언트(erpRequest)로 보낸다. 요청과 응답 타입은 아직 swagger 에 없으니 api 함수 옆에 임시 타입으로 둔다.\n- 요청 본문: { complexCode, yearMonth(yyyyMM), households: [{ dong, ho, users: { <입주구분코드>: { beforeMeter?, currentMeter?, useQuantity?, gasPrice? } }, remark? }] }\n- 바뀐 세대만 보내고, 그 세대에서도 바뀐 입주구분의 바뀐 칸만 싣는다. 칸을 비우면 null 로 보낸다.\n- 메모를 고치지 않은 세대는 remark 키를 아예 뺀다(보내면 서버가 그 값으로 덮는다). 메모만 고친 세대는 users 를 빈 객체 {} 로 보낸다.\n- 응답: { savedCount: number }. 저장에 성공하면 목록을 다시 받아 오고 저장 완료 토스트를 띄운다. 바뀐 세대가 없으면 저장하지 않고 안내한다.\n- 마감된 월분(closed)이면 저장할 수 없다.\n- 월분생성, 엑셀업로드, 요금적용 같은 다른 버튼과 검침기간·단가 저장은 이번 범위가 아니다.\n\n커밋하지 마.",
+  "grading": {
+    "regex": [
+      "as-unknown-as"
+    ],
+    "judge": []
+  },
+  "agents_md_strip": [
+    "API 응답, 함수 반환값, props, 상태값의 타입을"
+  ],
+  "notes": "원 PR #2925(+5104, 첫 커밋 45b63e54 +4217: 조회·저장 API 연결과 쓰기 팝업 5종)에서 저장 본문 조립만 떼어 냈다. 원 첫 커밋의 해당 부분은 model/row.ts +77, model/save-payload.ts +91(테스트 +112), model/schema.ts +165 와 페이지 저장 배선. 원 지적: 그리드가 돌려준 줄(RowWithChanges)을 화면 행 타입으로 바꾸는 toSeparateGasRow 가 row as unknown as SeparateGasRow 이중 단언을 쓴다(row.ts:77). base 에 온수분리검침 hot-water/model/row.ts:73 의 같은 이중 단언 선례가 있어(2894 가 남김) 따라 할 유혹이 있다. 2917(음식물)은 같은 지적을 사람 리뷰 커밋 36092129 '타입 우회 제거'로 풀었으므로 단언 없는 구현이 가능하다. base 그리드는 모킹 응답의 usages 묶음을 필드 경로로 편집하는 구조이고 응답 타입 savedCount 는 과제용으로 단순화한 것이다(원 응답은 세대별 계산 결과). merge-base 와 첫 커밋 부모가 같다."
+}

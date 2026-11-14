@@ -1,0 +1,22 @@
+{
+  "id": "grid07-2816",
+  "rules": [
+    "GRID-07"
+  ],
+  "source_pr": 2816,
+  "source_review": "https://github.com/dev-rsquare/hd-cloud-client/pull/2816#pullrequestreview-5748807379",
+  "base_commit": "53c96f2f6802267d8d3d0f131dca5463e72a6cd5",
+  "prompt": "ERP 검침 > 수도 > 수도감면세대(MR02070) 화면(src/pages/erp/meter-reading/water/reduction/ui/WaterReductionPage.tsx)의 비활성으로 둔 [동호찾기] 버튼을 동작하게 해 줘.\n\n- 버튼을 누르면 수도검침 화면에서 쓰는 동호찾기 팝업(src/pages/erp/meter-reading/water/ui/WaterFindHouseholdModal.tsx)을 그대로 띄운다. 조회된 행이 없으면 버튼은 비활성이다.\n- 서버에 묻지 않고 지금 그리드에 있는 행에서 입력한 동·호의 세대를 찾아 그 행으로 스크롤하고 포커스를 옮긴다. 못 찾으면 팝업의 onFind 가 false 를 돌려 팝업이 원래 문구로 알린다.\n- 동·호 비교는 앞자리 0 을 무시한다(0101 로 쳐도 101 세대를 찾는다). src/pages/erp/meter-reading/water/model/row.ts 에 이미 그런 키 함수가 있다.\n- 이 그리드에는 동 소계 행과 맨 아래 합계 행이 섞여 있다. 그 행들의 호 칸에는 세대 수가 들어 있으니 찾기 대상에서 뺀다.\n- 조회 API 연결이나 인쇄는 이번 범위가 아니다.\n\n커밋하지 마.",
+  "grading": {
+    "regex": [
+      "grid-api-direct"
+    ],
+    "judge": [
+      "GRID-07"
+    ]
+  },
+  "agents_md_strip": [
+    "를 직접 호출하지 않는다. 행 읽기, 선택값 관리"
+  ],
+  "notes": "원 PR #2816(+3153, 수도감면세대 API 연결과 검침 10화면 인쇄)에서 첫 커밋 b66437a2 가 페이지에 새로 넣은 동호찾기(handleFindHousehold, 원래 페이지 변경 +92 중 약 50줄)만 떼어 냈다. 원 지적: 동호찾기가 gridRef.current?.api.forEachNode 를 화면에서 직접 부른다. base 에 같은 일을 하는 findGridDisplayedRowIndex(@shared/lib/grid/index.ts:205), WaterFindHouseholdModal, toWaterDongHoKey 가 모두 있고, base 의 WaterMeterPage 등은 forEachNode 직접 호출 선례라 따라 할 유혹이 있다. 채점 주의: 머지된 최종본도 const api = gridRef.current?.api 로 api 를 꺼내 revealGridVirtualRow 에 넘긴다. 이 줄은 grid-api-direct 정규식(api 뒤 .메서드)에는 안 걸리지만, 스크롤을 gridRef.current.api.ensureIndexVisible(...) 처럼 직접 부르면 정답에 가까운 구현도 1건 잡힐 수 있다. merge-base 와 첫 커밋 부모가 같다(main 머지 이력 없음)."
+}

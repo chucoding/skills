@@ -1,0 +1,30 @@
+{
+  "id": "ts01-2790",
+  "rules": [
+    "TS-01",
+    "FSD-04"
+  ],
+  "source_pr": 2790,
+  "source_review": "https://github.com/dev-rsquare/hd-cloud-client/pull/2790#pullrequestreview-5731882801",
+  "base_commit": "45d1f8728e734ceb5392f17aa9e951682f30a529",
+  "prompt": "급여 > 연말정산 > 근로소득간이지급명세서 화면(src/pages/payroll/year-end-tax/SimplifiedStatementPage.tsx, 기능 코드는 src/features/payroll/simplified-statement)에 2027 귀속부터 지급월 조회를 넣어 줘. 국세청이 2027년 1월 지급분부터 매월 제출로 바꿨다. 서버는 귀속연도가 2027 이상이면 지급시기(paymentPeriod)로 JANUARY~DECEMBER 만, 2026 이하이면 FIRST_HALF·SECOND_HALF 만 받고, 어긋나면 400 으로 거절한다.\n\n- 지급시기 타입(@entities/payroll/api/types 의 YearEndPaymentPeriod)에 JANUARY~DECEMBER 열두 값을 더한다.\n- 검색: 귀속연도가 2027 이상이면 상·하반기 라디오 대신 지급월 셀렉트(1월~12월)를 보여 준다. 기본값은 2027 이상이면 1월, 아니면 상반기다. 귀속연도를 고쳐 2027 경계를 넘으면 지급시기를 그 해 기본값으로 되돌린다(연도가 네 자리가 되기 전에는 판정하지 않는다). 정산일자 기간은 월이면 그 달 한 달, 반기면 1~6월 또는 7~12월이다.\n- URL 복원: 쿼리스트링의 지급시기가 그 해의 선택지에 없으면 그 해 기본값으로 바꾼다(taxYear=2027&paymentPeriod=FIRST_HALF 는 JANUARY).\n- 원천징수의무자 집계(B) 그리드: 응답 행에 paymentMonth(지급월, 1~12)가 더해진다. 월 조회일 때 「지급월」 열을 더하고, 기존 「근무시기」 열은 행의 지급시기를 반기 이름(상반기/하반기)으로 보여 준다. 월이면 그 달이 속한 반기다.\n- 전산매체 파일의 지급시기 칸 값은 월이어도 그 달이 속한 반기 코드('1' 또는 '2')다.\n- 월 조회일 때는 인쇄 서식이 아직 없어 인쇄 버튼을 그리지 않고, 검색 영역 아래에 「월별 간이지급명세서 인쇄 서식은 준비 중입니다.」 안내(info)를 띄운다.\n- 소득자(C) 그리드의 월 열 구성 변경은 이번 범위가 아니다.\n\n커밋하지 마.",
+  "grading": {
+    "regex": [
+      "as-unknown-as",
+      "new-model-test-file"
+    ],
+    "judge": [
+      "TS-01",
+      "FSD-04"
+    ]
+  },
+  "agents_md_strip": [
+    "API 응답, 함수 반환값, props, 상태값의 타입을",
+    "한 곳에서만 쓰는 한 줄짜리 로직은 함수로 빼지 않는다",
+    "은 상용 코드의 호출 지점이 하나라는 뜻이다",
+    "는 본문이 식 하나인 함수다",
+    "안의 판정과 문구도 컬럼 정의에 그대로 적는다",
+    "테스트하려고 상용 코드의 로직을 함수로 빼서 export 하지 않는다"
+  ],
+  "notes": "원 PR #2790(+821, 첫 커밋 a0c4d959 +774)에서 C 그리드 월 열 구성만 빼고 거의 그대로 옮겼다. 원 지적: 새 함수 getSimplifiedStatementHalfYearLabel(paymentPeriod: unknown)과 getSimplifiedStatementPaymentPeriodLabel 이 인자를 unknown 으로 받고, 한 곳에서만 쓰는 isPaymentPeriod 가드로 좁혔다(TS-01, FSD-04 ⑥). 이 과제의 TS-01 위반은 unknown 인자라 as-unknown-as 정규식으로는 거의 잡히지 않는다. 그래서 TS-01 을 judge 에도 넣었다(사용자 지시의 judge 대상은 FSD-04, FSD-06 이었지만 정규식 공백을 메우려고 넓혔다). new-model-test-file 은 원 PR 이 model/payment-period.test.ts 를 새로 만든 것을 보려고 넣었다(CODE-10, 보조 지표). AGENTS.md §6 은 '함수 인자'를 명시하지 않는다(위키 TS-01 은 명시). strip 은 §6 첫 문단만 지우고 '예외는 좁히기 전 단계뿐이다' 문단은 남는다. merge-base 와 첫 커밋 부모가 같다."
+}

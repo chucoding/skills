@@ -1,0 +1,29 @@
+{
+  "id": "fsd04-2860",
+  "rules": [
+    "FSD-04",
+    "FSD-06"
+  ],
+  "source_pr": 2860,
+  "source_review": "https://github.com/dev-rsquare/hd-cloud-client/pull/2860#pullrequestreview-5798547533",
+  "base_commit": "4bf44230928cbe9d342098013022587daf116e29",
+  "prompt": "ERP 검침 > 공통/바우처 > 수도조견조회(MR07050) 화면(src/pages/erp/meter-reading/water/price-table/ui/WaterPriceTablePage.tsx)에 인쇄를 붙여 줘. 지금은 그리드 위 유틸 버튼 묶음에 인쇄가 연결돼 있지 않다.\n\n- 배선은 같은 수도 묶음의 수도감면세대 화면과 같게 한다: 그리드 위 유틸 버튼 묶음의 인쇄 옵션으로 인쇄 사유 모달을 거쳐 리포트 서버(AIViewer)로 보내고, 인쇄할 때 인쇄 이력을 남긴다.\n- 서식은 R_MR07050_01 한 벌뿐이다.\n- 머리말 파라미터: title = 고른 조견표구분의 표시 이름(코드가 아니라 콤보에 보이는 글자), form_to = \"<사용량 시작> 부터 <사용량 끝> 까지\"(예: \"1 부터 100 까지\"), proj_name = 단지명.\n- 본문 행 칸 이름: qty1(사용량), w_price_1(상수도 요금), s_price_1(하수도 요금), uw_price_1(물이용부담금), tot_price_1(합계).\n- 화면 그리드는 한 행에 왼쪽(…1)·오른쪽(…2) 두 토막으로 접혀 있는데, 인쇄는 이것을 사용량 오름차순 한 줄 목록으로 다시 펴서 싣는다. 사용량이 0 이거나 비어 있는 칸은 싣지 않는다.\n- 조회 API 연결은 이번 범위가 아니다. 지금 화면이 받는 데이터 그대로 쓴다.\n\n커밋하지 마.",
+  "grading": {
+    "regex": [
+      "new-model-test-file"
+    ],
+    "judge": [
+      "FSD-04",
+      "FSD-06"
+    ]
+  },
+  "agents_md_strip": [
+    "한 곳에서만 쓰는 한 줄짜리 로직은 함수로 빼지 않는다",
+    "은 상용 코드의 호출 지점이 하나라는 뜻이다",
+    "는 본문이 식 하나인 함수다",
+    "안의 판정과 문구도 컬럼 정의에 그대로 적는다",
+    "테스트하려고 상용 코드의 로직을 함수로 빼서 export 하지 않는다",
+    "한 곳에서만 쓰는 단순 값은 상수로 빼지 않고"
+  ],
+  "notes": "원 PR #2860(+1287, 수도조견조회 API 연결과 인쇄)에서 인쇄 부분만 떼어 냈다. 원 첫 커밋 dc9ccbbe 의 인쇄 관련 추가는 model/print.ts +57, model/print.test.ts +66, 페이지 +122(조회 변경 포함). 원 지적: 호출 지점이 하나인 한 줄 함수 createWaterPriceTableReportSearch(객체 리터럴), toWaterPriceTableReportRows(filter·map)를 model 에 export 하고 단위 테스트를 붙였다. base 에 2816 이 남긴 */household/model/print.ts + print.test.ts 가 10벌 있어 그 선례를 따라 할지가 시험 대상이다. FSD-06 은 같은 패턴을 지적한 2816 리뷰가 서식명 상수(*_REPORT_FORM)를 함께 짚었기 때문에 넣었다(2860 원 지적 자체는 FSD-04). base 는 조회가 모킹이고 행이 접힌 두 토막 형태(qty1/qty2…)라 원 PR 과 달리 펴는 로직이 필요하다. merge-base 와 첫 커밋 부모가 같다."
+}
