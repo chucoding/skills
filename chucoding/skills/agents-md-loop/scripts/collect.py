@@ -5,7 +5,7 @@
 집계는 같은 폴더를 `measure.py` 에 넘겨 한다. 절차는 chucoding 플러그인 `agents-md-loop` 스킬의 SKILL.md,
 측정 정의는 위키 `homedot-hub/knowledge/standards/effect/measurement.md` 를 본다.
 
-  python3 ~/.claude/skills/chucoding/skills/agents-md-loop/scripts/collect.py --work W --since 2026-11-16
+  python3 ~/.claude/skills/chucoding/skills/agents-md-loop/scripts/collect.py --work W --since 2026-11-16T00:00:00+09:00
 
 작업 폴더 구성
   prs.json          gh pr list 결과(검색어로 거른 전체)
@@ -20,6 +20,7 @@ GitHub 에 남은 기록을 읽기만 하므로 같은 인자로 다시 돌려�
 이미 받은 PR 은 건너뛰고, --refresh 를 주면 다시 받는다.
 """
 import argparse
+import datetime as dt
 import json
 import os
 import re
@@ -55,6 +56,13 @@ def paginate_json(endpoint):
     return json.dumps(merged, ensure_ascii=False)
 
 
+def search_date(since):
+    """GitHub 검색 created:>= 에 넣을 날짜. 날짜 한정자는 UTC 기준이라 UTC 날짜에서 하루 앞당겨 기간 초반 PR 을 놓치지 않음"""
+    t = dt.datetime.fromisoformat(since.replace("Z", "+00:00"))
+    t = t if t.tzinfo else t.replace(tzinfo=dt.timezone.utc)
+    return (t.astimezone(dt.timezone.utc).date() - dt.timedelta(days=1)).isoformat()
+
+
 def in_scope(pr, scope):
     """PR 이 바꾼 파일 중 하나라도 범위 경로에 들면 참"""
     return any(scope.search(f["path"]) for f in (pr.get("files") or []))
@@ -63,7 +71,8 @@ def in_scope(pr, scope):
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--work", required=True, help="작업 폴더. 없으면 만든다")
-    p.add_argument("--since", required=True, help="PR 생성일 하한(YYYY-MM-DD). GitHub 검색 created:>= 에 쓴다")
+    p.add_argument("--since", required=True,
+                   help="기간 시작(YYYY-MM-DD 또는 시간대를 붙인 ISO 시각). 검색은 넓게 하고 정확한 필터는 measure.py 가 한다")
     p.add_argument("--repo", default=DEFAULT_REPO)
     p.add_argument("--reviewer", default=DEFAULT_REVIEWER, help="reviewed-by 검색에 쓰는 리뷰어 계정")
     p.add_argument("--scope-regex", default=DEFAULT_SCOPE_REGEX, help="범위 파일 경로 정규식")
@@ -72,8 +81,10 @@ def main(argv=None):
     p.add_argument("--refresh", action="store_true", help="이미 받은 PR 도 다시 받는다")
     a = p.parse_args(argv)
 
-    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", a.since):
-        sys.exit("--since 는 YYYY-MM-DD 형식이어야 한다")
+    try:
+        since = search_date(a.since)
+    except ValueError:
+        sys.exit("--since 는 YYYY-MM-DD 또는 ISO 시각이어야 한다")
     os.makedirs(os.path.join(a.work, "raw"), exist_ok=True)
     scope = re.compile(a.scope_regex)
 
@@ -81,7 +92,7 @@ def main(argv=None):
     try:
         gh([
             "pr", "list", "--repo", a.repo, "--state", "all",
-            "--search", f"reviewed-by:{a.reviewer} created:>={a.since}",
+            "--search", f"reviewed-by:{a.reviewer} created:>={since}",
             "--limit", str(a.limit),
             "--json", "number,title,createdAt,mergedAt,closedAt,state,author,additions,deletions,files,headRefName",
         ], prs_path)
@@ -122,6 +133,9 @@ def main(argv=None):
                 continue
             with open(path, "w", encoding="utf-8") as f:
                 f.write(text)
+            if os.path.exists(f"{path}.error"):
+                # 다시 받는 데 성공했으면 지난 실패 기록을 지운다. measure.py 가 .error 로 수집 실패를 판정한다
+                os.remove(f"{path}.error")
     for line in failed:
         print(f"경고: {line}", file=sys.stderr)
     print(f"검색 PR {len(prs)}건, 범위 PR {len(nums)}건 → {a.work}")

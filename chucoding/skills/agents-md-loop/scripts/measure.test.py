@@ -5,6 +5,7 @@
 
 환경변수 MEASUREMENTS_CSV 에 위키 measurements.csv 경로를 주면 그 파일의 형식과 키 중복도 본다
 """
+import contextlib
 import csv
 import importlib.util
 import io
@@ -135,6 +136,33 @@ class MeasureV1(unittest.TestCase):
         self.assertEqual(hits["rq-await-void-invalidate"], 0)  # 테스트 파일 안이라 세지 않는다
         self.assertTrue(code_rows[0]["agent_coauthored"])
 
+    def test_deleted_user_does_not_crash(self):
+        reviews = json.load(open(os.path.join(self.work, "raw", "1.reviews.json"), encoding="utf-8"))
+        reviews.append({"id": 99, "user": None, "submitted_at": "2026-11-16T04:00:00Z", "state": "COMMENTED", "body": AUTO_BODY})
+        self.write(1, "reviews", reviews)
+        self.write(1, "comments", [{"id": 5, "user": None, "body": AUTO_BODY}])
+        _, findings, *_ = self.run_measure()
+        self.assertEqual(len(findings), 4)
+
+    def test_collect_failure_warning(self):
+        os.remove(os.path.join(self.work, "raw", "1.comments.json"))
+        self.dump("raw/2.meta.json.error", "gh 실패")
+        self.write(2, "comments", [])
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            self.run_measure()
+        self.assertIn("#1 comments.json 수집 실패", err.getvalue())
+        self.assertIn("#2 meta.json 수집 실패", err.getvalue())
+
+    def test_no_failure_warning_when_complete(self):
+        self.write(1, "comments", [])
+        self.write(2, "comments", [])
+        self.write(2, "meta", {"commits": []})
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            self.run_measure()
+        self.assertNotIn("수집 실패", err.getvalue())
+
     def test_rows(self):
         scope, findings, code, _, extra = self.run_measure()
         meta = dict(sprint="S", measured_at="2026-11-26", period_start="a", period_end="b", def_version="v1", ticket="T")
@@ -183,6 +211,20 @@ class AppendRows(unittest.TestCase):
                 measure.main(["--rows", rows_path, "--append", csv_path])
             with self.assertRaises(SystemExit):
                 measure.main(["--rows", rows_path])  # --append 없이는 거절
+
+
+class CollectSince(unittest.TestCase):
+    """collect.py 가 GitHub 검색 날짜를 UTC 기준 하루 앞당겨 기간 초반 PR 을 놓치지 않는지"""
+
+    def test_search_date(self):
+        spec = importlib.util.spec_from_file_location("collect", os.path.join(HERE, "collect.py"))
+        collect = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(collect)
+        self.assertEqual(collect.search_date("2026-11-16T00:00:00+09:00"), "2026-11-14")  # UTC 11-15 15:00
+        self.assertEqual(collect.search_date("2026-11-20T01:00:00Z"), "2026-11-19")
+        self.assertEqual(collect.search_date("2026-11-16"), "2026-11-15")  # 시간대 없는 날짜는 UTC 로 본다
+        with self.assertRaises(ValueError):
+            collect.search_date("11/16")
 
 
 class Period(unittest.TestCase):
