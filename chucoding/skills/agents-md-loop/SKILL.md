@@ -60,7 +60,7 @@ project = HDIT AND summary ~ "\"AGENTS.md 보강\"" ORDER BY created DESC
 python3 $S/period.py --prev-ticket <직전 보강 티켓 키> --csv "$W/measurements.main.csv" > "$W/period.json"
 ```
 
-- 출력의 `start`가 기간 시작이고, `basis`는 설명 `측정 기간` 절에 그대로 적는 근거 한 줄이다. `open`에 PR 번호가 있으면 직전 보강 PR이 아직 머지 전이라는 사실과 그 PR 번호도 같은 절에 적는다.
+- 출력의 `start`가 기간 시작이고, `basis`는 설명 `측정 기간과 측정 정의 버전` 절에 그대로 적는 근거 한 줄이다. `open`에 PR 번호가 있으면 직전 보강 PR이 아직 머지 전이라는 사실과 그 PR 번호도 같은 절에 적는다.
 - 근거는 티켓에만 남긴다. CSV에는 `period_start` 칸에 시작 시각만 들어가고 칸을 늘리지 않는다.
 - 사용자가 기간을 지정하면 그 값으로 덮어쓰고, 근거에 `사용자 지정`이라고 적는다.
 - `period_end`에 시각 없이 날짜만 있으면(기준선 행의 `2026-11-13`) `measure.py`가 그날 00:00 UTC로 읽는다. 그 값에서 이어질 때는 근거에 이 사실을 덧붙인다.
@@ -111,7 +111,7 @@ python3 $S/period.py --prev-ticket <직전 보강 티켓 키> --csv "$W/measurem
 기간 시작은 1단계 `period.json`의 `start`이고 종료는 이 단계의 실행 시각이다. 스프린트의 `startDate`와 `endDate`는 쓰지 않는다. 측정 정의 v1의 범위 경로, 리뷰어, 제외 PR은 스크립트 기본값이다. 정의가 바뀌었으면 인자로 넘긴다.
 
 ```bash
-python3 $S/collect.py --work "$W" --since <start의 KST 날짜> --exclude 2339,2348,2528,2539,2626,2666
+python3 $S/collect.py --work "$W" --since <start> --exclude 2339,2348,2528,2539,2626,2666
 python3 $S/measure.py --work "$W" --start <start> \
   --sprint <스프린트명> --ticket <티켓키> > "$W/rows.csv"
 ```
@@ -129,6 +129,7 @@ python3 $S/measure.py --work "$W" --start <start> \
 - 규칙 ID는 자동 리뷰 지적 **제목**에 붙은 표기를 정규식으로 센다. 제목에 ID가 없는 지적은 `NO_RULE_ID` 한 칸이다. 군집으로 나눠 봐야 하는 질문이 있을 때만 `$W/items.jsonl`을 읽어 분류하고, 분류 결과는 행으로 쌓지 않고 티켓 댓글에 적는다.
 - `diff 없음` 경고가 나온 PR(diff가 GitHub 한도인 파일 300개를 넘는 PR 등)은 코드 지표에서 빠진다. 4단계 해석에 적는다.
 - `collect.py`가 `--limit`에 닿았다고 경고하면 늘려서 다시 돌린다.
+- `measure.py`가 `수집 실패` 경고를 내면 그 PR은 지적이 0건으로 들어간다. 위 `collect.py` 명령에 `--refresh`를 붙여(같은 `--since`와 `--exclude`) 다시 받고, 그래도 실패하면 4단계 해석에 PR 번호를 적는다.
 
 ## 3. 위키 CSV 행 추가
 
@@ -161,7 +162,7 @@ python3 $S/report.py --csv "$W/measurements.preview.csv" --sprint <스프린트�
 - 출력은 같은 측정 정의 버전의 직전 측정과 비교한 규칙별 PR당 지적 수 목록, 코드 지표 목록, 승격 후보 줄이다. 줄 형식이 고정돼 있어 스프린트 사이에 나란히 읽힌다.
 - **승격 후보**는 이번 측정에서 같은 규칙 ID의 지적이 **3개 PR 이상**에서 나온 규칙이다(`auto_findings_prs`). `CONV`가 후보면 기준서에 아직 없는 관행이 반복된다는 뜻이다.
 - **은퇴 후보**: 한 규칙의 `auto_findings`가 3스프린트 연속 0건이고, 그 규칙의 코드 지표가 있으면 그것도 같은 기간 0건인 규칙이다. `AGENTS.md`에서 뺄지는 사람이 정하고 기준서 규칙 자체는 남는다. 미리보기 CSV에서 직접 확인해 있으면 적는다.
-- 설명 `측정 기간` 절의 `<end>`를 `rows.csv`의 `period_end`로 채운다.
+- 설명 `측정 기간과 측정 정의 버전` 절의 `<end>`를 `rows.csv`의 `period_end`로 채운다.
 - 출력을 티켓 설명의 `결과 요약` 절에 그대로 넣고, 같은 출력을 댓글로도 남긴다. 그 아래에 해석을 몇 줄 붙인다.
   - 대조군(보강하지 않은 규칙과 `LENS_BUG`, `LENS_ADVERSARIAL`)이 함께 줄었으면 보강 효과로 읽지 않는다.
   - 0단계에서 찾은 기준서 변경과 `diff 없음` PR을 적는다.

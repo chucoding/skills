@@ -100,6 +100,11 @@ def load_json(path, default=None):
     return json.loads(text) if text.strip() else ([] if default is None else default)
 
 
+def login(item):
+    """리뷰와 코멘트 작성자 계정. 삭제된 계정은 user 가 null 이라 None"""
+    return (item.get("user") or {}).get("login")
+
+
 def rule_ids(title):
     """지적 제목에 붙은 규칙 ID 목록(중복 제거, 정렬)"""
     return sorted(set(RULE_ID.findall(title)))
@@ -120,13 +125,13 @@ def extract_findings(n, reviews, comments, reviewer):
 
     for r in sorted(reviews, key=lambda x: x.get("submitted_at") or ""):
         body = (r.get("body") or "").strip()
-        if r["user"]["login"] != reviewer or not r.get("submitted_at") or AUTO_MARK not in body:
+        if login(r) != reviewer or not r.get("submitted_at") or AUTO_MARK not in body:
             continue
         for m in FINDING.finditer(body):
             add("auto-body", m.group(1), m.group(2).strip(), m.group(3), f"review-{r['id']}")
     for c in comments:
         body = c.get("body") or ""
-        if c["user"]["login"] != reviewer or c.get("in_reply_to_id") or AUTO_MARK not in body:
+        if login(c) != reviewer or c.get("in_reply_to_id") or AUTO_MARK not in body:
             continue
         first = next((ln for ln in body.splitlines() if ln.strip() and not ln.startswith("<!--")), "")
         add("auto-inline", None, first.lstrip("#* ").strip(), body, f"comment-{c['id']}")
@@ -175,7 +180,7 @@ def agent_coauthored(meta):
 
 def first_review(reviews, reviewer):
     """리뷰어의 첫 리뷰. (자동 여부, 승인 여부), 없으면 None"""
-    rv = sorted((r for r in reviews if r["user"]["login"] == reviewer and r.get("submitted_at")),
+    rv = sorted((r for r in reviews if login(r) == reviewer and r.get("submitted_at")),
                 key=lambda r: r["submitted_at"])
     if not rv:
         return None
@@ -243,6 +248,11 @@ def measure(work, start, end, exclude, reviewer):
     agent = 0
     for n in scope:
         raw = os.path.join(work, "raw", str(n))
+        missing = [k for k in ("reviews.json", "comments.json", "meta.json")
+                   if not os.path.exists(f"{raw}.{k}") or os.path.exists(f"{raw}.{k}.error")]
+        if missing:
+            # 받지 못한 파일은 빈 목록으로 읽혀 지적 0건으로 들어간다. collect.py --refresh 로 다시 받고 해석에 적는다
+            print(f"경고: #{n} {', '.join(missing)} 수집 실패, 지적이 0건으로 들어감", file=sys.stderr)
         reviews = load_json(f"{raw}.reviews.json")
         findings += extract_findings(n, reviews, load_json(f"{raw}.comments.json"), reviewer)
         if not os.path.exists(f"{raw}.diff"):
