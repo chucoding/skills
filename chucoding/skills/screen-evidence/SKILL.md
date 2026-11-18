@@ -142,11 +142,13 @@ OUT=$HOME/.cache/chucoding/screen-evidence/$KEY/frames-to-be
 
 스크립트에 담긴 판단은 다음과 같다.
 
-- **조작은 페이지 안에서 `setTimeout`으로 예약한다.** Node 쪽은 프레임 수신과 ack만 한다. Node에서 `evaluate`나 `click`을 섞으면 같은 연결을 쓰느라 프레임 수신이 끊긴다.
-- **ack는 프레임을 받는 즉시 `await`로 보낸다.** 늦으면 프레임이 끊긴다.
-- **화면이 바뀔 때만 프레임이 온다.** 정지 구간에는 프레임이 없고, concat 목록의 `duration`이 실제 시간을 지켜 준다.
+- **프레임은 `Page.captureScreenshot`을 이어 호출해 모은다.** 녹화 시간 동안 JPEG 캡처를 반복하고, 캡처가 돌아온 시각을 프레임 시각으로 쓴다. 실측은 초당 12~14장이고 0.4초 전환이 5장으로 담긴다.
+- **조작은 페이지 안에서 `setTimeout`으로 예약한다.** Node 쪽은 캡처 반복만 한다. Node에서 `evaluate`나 `click`을 섞으면 같은 연결을 쓰느라 조작 시각이 캡처 왕복에 밀린다.
+- **직전과 같은 화면은 버린다.** 정지 구간에는 프레임이 쌓이지 않고, concat 목록의 `duration`이 실제 시간을 지켜 준다. 그래서 출력의 `frames`(저장한 장수)는 `shots`(캡처한 횟수)보다 적다.
+- **캡처 실패는 삼키지 않는다.** `.catch(() => {})`를 붙이지 않아 오류가 나면 그 문구와 함께 실패로 끝난다. 오류를 가리면 프레임이 모자란 원인을 찾느라 녹화를 여러 번 다시 하게 된다.
+- **캡처 속도를 잰다.** 초당 캡처(`shotsPerSec`)가 5장 미만이면 프레임을 저장하지 않고 실패로 끝난다. 동작이 끊겨 담기기 때문이다.
 - **ego 창을 앞으로 가져온다.** 창이 다른 창 뒤에 있으면 rAF가 초당 2회로 떨어져 애니메이션이 진행되지 않는다. 그래서 스크립트를 백그라운드로 띄운 뒤 `open -a "ego lite"`로 창을 앞으로 가져온다. 사용자 화면의 포커스를 ego가 가져가므로 녹화 전에 한 줄로 알린다.
-- **rAF 횟수를 잰다.** 스크립트가 끝에 `{"frames":…,"rafPerSec":…}`를 출력한다. `rafPerSec`가 15 미만이면 창이 가려진 상태였으므로 다시 녹화한다.
+- **rAF 횟수를 잰다.** 스크립트가 끝에 `{"frames":…,"shots":…,"shotsPerSec":…,"rafPerSec":…}`를 출력한다. `rafPerSec`가 15 미만이면 창이 가려진 상태였으므로 다시 녹화한다.
 
 ### 실패했던 방법
 
@@ -154,6 +156,7 @@ OUT=$HOME/.cache/chucoding/screen-evidence/$KEY/frames-to-be
 
 - **브라우저 안 MediaRecorder로 webm 인코딩**: AS-IS 영상이 멈춘 화면으로 인코딩돼 있었다.
 - **macOS `screencapture -v`**: ego 앱이 Spaces 개요 화면으로 바뀌어 사용자 데스크톱을 건드린다.
+- **`Page.startScreencast`로 프레임 받기**: 프레임이 3장에서 멈춘다. 프레임마다 `Page.screencastFrameAck`에 `sessionId`를 실어 보내야 다음 프레임이 오는데, ego-browser의 `page.cdp`와 `task.cdp`는 params의 `sessionId`를 잘못 놓인 CDP 세션 값으로 보고 거부한다(`Page.screencastFrameAck does not take sessionId in params`). params에서 빼면 `Invalid parameters`, 세 번째 인자로 넘기면 `unknown option: sessionId`다. ego-browser 0.6.3.14(안내서 v2.2.1)에서 실측했다. ego-browser가 이 호출을 받게 바뀐 것을 실제 실행으로 확인하기 전에는 되돌리지 않는다.
 
 ### AS-IS 녹화(기존 기능 수정)
 
@@ -189,7 +192,7 @@ bash <이 스킬 디렉토리>/scripts/encode.sh "$FF" ~/.cache/chucoding/screen
 
 - 첫 프레임이 1440×900인지 출력으로 확인한다.
 - **프레임 시트(`sheet.png`)를 Read로 열어 눈으로 확인한다.** AS-IS에는 결함이나 이전 동작이, TO-BE에는 바뀐 동작이 실제로 담겼는지 본다. 담기지 않았으면 GIF를 쓰지 않고 다시 녹화한다. 아래 `민감정보 확인`도 함께 한다.
-- 프레임이 0장이면 `record.mjs`와 `encode.sh` 모두 실패로 끝난다. 창 가림(`rafPerSec`)이나 조작 셀렉터를 확인하고 다시 녹화한다.
+- 초당 캡처가 5장 미만이면 `record.mjs`가, 프레임 폴더에 프레임이 0장이면 `encode.sh`가 실패로 끝난다. 출력된 오류 문구와 창 가림(`rafPerSec`)을 확인하고 다시 녹화한다. `frames`가 1이면 화면이 한 번도 바뀌지 않은 것이므로 조작 셀렉터를 확인한다.
 - 결과는 960×600 GIF다. 인코딩 옵션(`fps=25`, `palettegen=stats_mode=diff`, `paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle`, `-loop 0`)은 확정본이라 바꾸지 않는다.
 
 ### 민감정보 확인

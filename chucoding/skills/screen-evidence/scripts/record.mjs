@@ -20,27 +20,31 @@ try {
 
   await page.cdp('Page.bringToFront')
   await page.waitForTimeout(2500)
-  await page.events() // 이전 이벤트 비우기
 
+  // 녹화 시간(ms)과 초당 캡처 하한. 실측은 초당 약 14장
+  const RECORD_MS = 6000
+  const MIN_SHOTS_PER_SEC = 5
   const frames = []
-  await page.cdp('Page.startScreencast', { format: 'jpeg', quality: 80, maxWidth: 1440, maxHeight: 900, everyNthFrame: 1 })
-  // 조작은 페이지 안 setTimeout으로 예약하고 Node는 프레임 수신과 ack만 담당
-  // Node에서 evaluate나 click을 섞으면 같은 연결을 공유해 프레임 수신이 끊김(실측: 두 번째 이동 프레임 2장)
+  let shots = 0
+  // 조작은 페이지 안 setTimeout으로 예약하고 Node는 캡처 반복만 담당
+  // Node에서 evaluate나 click을 섞으면 같은 연결을 공유해 조작 시각이 캡처 왕복에 밀림
   await page.evaluate(() => {
     setTimeout(() => document.querySelector('<조작1 셀렉터>').click(), 1200)
     setTimeout(() => document.querySelector('<조작2 셀렉터>').click(), 3600)
   })
+  // Page.startScreencast는 쓰지 않음. ego-browser의 page.cdp가 params의 sessionId를 거부해
+  // Page.screencastFrameAck를 보낼 수 없고, ack가 없으면 프레임이 3장에서 멈춤
+  // 캡처 실패는 삼키지 않고 그대로 던져 원인이 출력에 남게 함
   const t0 = Date.now()
-  while (Date.now() - t0 < 6000) {
-    for (const e of await page.events()) {
-      if (e.method === 'Page.screencastFrame') {
-        frames.push({ data: e.params.data, ts: e.params.metadata.timestamp })
-        // ack는 await로 즉시 전송. 늦으면 프레임 누락
-        await page.cdp('Page.screencastFrameAck', { sessionId: e.params.sessionId }).catch(() => {})
-      }
+  while (Date.now() - t0 < RECORD_MS) {
+    const shot = await page.cdp('Page.captureScreenshot', { format: 'jpeg', quality: 80 })
+    shots++
+    // 직전과 같은 화면은 버림. 정지 구간의 길이는 concat 목록의 duration이 유지
+    if (frames.length === 0 || frames[frames.length - 1].data !== shot.data) {
+      frames.push({ data: shot.data, ts: Date.now() / 1000 })
     }
   }
-  await page.cdp('Page.stopScreencast')
+  const shotsPerSec = Number((shots / ((Date.now() - t0) / 1000)).toFixed(1))
 
   // 녹화 직후 rAF 횟수 측정. 초당 15 미만이면 창이 가려진 상태라 재녹화 필요
   const rafPerSec = await page.evaluate(
@@ -57,10 +61,10 @@ try {
       }),
   )
 
-  // 프레임 0장이면 저장하지 않고 실패 종료. 창 가림이나 조작 셀렉터 오류가 원인
-  if (frames.length === 0) {
-    console.log(JSON.stringify({ frames: 0, rafPerSec, error: '프레임 없음. 다시 녹화 필요' }))
-    throw new Error('녹화 프레임 0장')
+  // 캡처가 초당 하한에 못 미치면 저장하지 않고 실패 종료. 동작이 끊겨 담기므로 GIF로 쓸 수 없음
+  if (shotsPerSec < MIN_SHOTS_PER_SEC) {
+    console.log(JSON.stringify({ frames: frames.length, shots, shotsPerSec, rafPerSec, error: '캡처 속도 부족. 다시 녹화 필요' }))
+    throw new Error(`초당 캡처 ${shotsPerSec}장. 하한 ${MIN_SHOTS_PER_SEC}장 미만`)
   }
 
   // 재녹화 시 이전 프레임이 시트에 섞이지 않도록 폴더 비우기. 보관 폴더의 frames- 폴더만 대상
@@ -81,7 +85,7 @@ try {
   }
   list += `file 'f${String(frames.length - 1).padStart(4, '0')}.jpg'\n`
   await writeFile(`${OUT}/list.txt`, list)
-  console.log(JSON.stringify({ frames: frames.length, rafPerSec }))
+  console.log(JSON.stringify({ frames: frames.length, shots, shotsPerSec, rafPerSec }))
 } finally {
   await page.cdp('Emulation.clearDeviceMetricsOverride').catch(() => {})
   await task.finish({ keep: [] })
