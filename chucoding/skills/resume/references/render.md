@@ -4,7 +4,7 @@
 
 ## 1. 원본 구조
 
-- `resume.html`, `portfolio.html`, `common.css` 세 파일이다. 글꼴은 Pretendard, 쪽은 A4다.
+- `resume.html`, `portfolio.html`, `common.css` 세 파일이다. 글꼴은 Pretendard(지원 회사 글꼴로 바꿨으면 그 글꼴, SKILL.md 1절), 쪽은 A4다.
 - 쪽마다 `.page { height: 297mm; overflow: hidden; }`이다. **넘친 내용은 쪽이 늘지 않고 조용히 잘린다.** 그래서 고칠 때마다 마지막 줄 위치를 확인한다.
 - 링크는 `<a href>`로 넣어야 PDF에 링크로 남는다.
 
@@ -46,7 +46,8 @@ PyMuPDF가 필요하면 스크래치패드에 venv를 만들어 설치하고 `-I
 | 줄 수 | 고친 문단이 시안에서 보여 준 줄 수와 같음 |
 | 링크 | 쪽별 링크 수가 이전과 같음 |
 | 숨은 텍스트 | 지운 문장이나 옛 내용이 텍스트 레이어에 0건 |
-| 이전 회사 흔적 | 다른 회사 원본으로 시작했으면 이전 회사 이름이 텍스트 레이어에 0건, 이전 브랜드 색 값이 HTML과 CSS에 0건(SKILL.md 1절) |
+| 이전 회사 흔적 | 다른 회사 원본으로 시작했으면 이전 지원 회사 이름이 HTML과 텍스트 레이어에 0건(재직 이력 자리는 제외), 이전 브랜드에서 온 색(hex, `rgb()`, `hsl()`)이 HTML과 CSS에 0건(SKILL.md 1절) |
+| 글꼴 | 지원 회사 글꼴로 바꿨으면 `page.get_fonts()`의 글꼴 이름이 그 글꼴과 같음 |
 
 ```python
 import fitz, sys
