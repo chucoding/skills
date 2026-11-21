@@ -42,7 +42,7 @@ PyMuPDF가 필요하면 스크래치패드에 venv를 만들어 설치하고 `-I
 | 항목 | 기준 |
 |------|------|
 | 쪽수 | 이력서와 포트폴리오 모두 이전과 같음 |
-| 잘림 | 각 쪽 마지막 텍스트 블록의 아래 끝이 쪽 번호(footer) 위에 있고, 여백을 pt로 보고 |
+| 잘림 | 각 쪽 마지막 본문 줄의 아래 끝이 쪽 번호(footer) 줄 위에 있고(gap이 0보다 큼), 여백을 pt로 보고 |
 | 줄 수 | 고친 문단이 시안에서 보여 준 줄 수와 같음 |
 | 링크 | 쪽별 링크 수가 이전과 같음 |
 | 숨은 텍스트 | 지운 문장이나 옛 내용이 텍스트 레이어에 0건 |
@@ -54,13 +54,19 @@ import fitz, sys
 doc = fitz.open(sys.argv[1])
 print('pages', doc.page_count)
 for i, page in enumerate(doc):
-    blocks = [b for b in page.get_text('blocks') if b[4].strip()]
-    body = [b for b in blocks if b[1] < page.rect.height - 40]
-    foot = [b for b in blocks if b[1] >= page.rect.height - 40]
-    last = max(b[3] for b in body) if body else 0
-    foot_top = min(b[1] for b in foot) if foot else page.rect.height
-    print(i + 1, 'gap', round(foot_top - last, 1), 'links', len(page.get_links()))
+    H = page.rect.height
+    lines = [(l['bbox'][1], l['bbox'][3], ''.join(s['text'] for s in l['spans']).strip())
+             for b in page.get_text('dict')['blocks'] for l in b.get('lines', [])]
+    lines = [l for l in lines if l[2]]
+    # footer는 위치가 아니라 쪽 번호 줄로 찾는다. 같은 높이의 줄(문서 이름)도 footer다
+    num = [l for l in lines if l[2] == str(i + 1) and l[0] > H - 60]
+    foot_top = min(l[0] for l in num) if num else H
+    body = [l for l in lines if not (num and abs(l[0] - foot_top) < 2)]
+    last = max(body, key=lambda l: l[1]) if body else (0, 0, '')
+    print(i + 1, 'gap', round(foot_top - last[1], 1), 'links', len(page.get_links()), '|', last[2][:20])
 ```
+
+- 위치(쪽 아래 40pt)로 footer를 가르면, 넘친 본문 줄이 footer 영역으로 분류돼 gap이 양수로 나온다. 2026-11-21 컬리 이력서 시험본에서 2쪽 마지막 줄이 쪽 번호와 27pt 겹쳤는데 이 방식은 8pt 여유로 보고했다. 그래서 줄 단위로 읽고 쪽 번호 줄로 footer를 찾는다. gap이 음수면 겹친 것이다.
 
 - 지운 문장은 `page.get_text()`에서 검색해 0건인지 본다. PDF를 직접 고쳤던 파일은 화면에 안 보이는 옛 내용이 텍스트 레이어에 남아, 채용 시스템의 텍스트 추출과 본문을 복사하는 리뷰어에게 그대로 읽힌다.
 - 의존성 없이 확인하려면 macOS PDFKit을 쓴다.
