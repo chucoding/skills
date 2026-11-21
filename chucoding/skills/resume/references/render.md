@@ -42,7 +42,7 @@ PyMuPDF가 필요하면 스크래치패드에 venv를 만들어 설치하고 `-I
 | 항목 | 기준 |
 |------|------|
 | 쪽수 | 이력서와 포트폴리오 모두 이전과 같음 |
-| 잘림 | 각 쪽 마지막 본문 줄의 아래 끝이 쪽 번호(footer) 줄 위에 있고(gap이 0보다 큼), 여백을 pt로 보고 |
+| 잘림 | 각 쪽 마지막 본문 줄의 아래 끝이 쪽 번호(footer) 줄 위에 있고(gap이 0보다 큼), `footer 못 찾음`과 `footer 줄에 본문 겹침` 출력이 없음. 여백을 pt로 보고 |
 | 줄 수 | 고친 문단이 시안에서 보여 준 줄 수와 같음 |
 | 링크 | 쪽별 링크 수가 이전과 같음 |
 | 숨은 텍스트 | 지운 문장이나 옛 내용이 텍스트 레이어에 0건 |
@@ -52,21 +52,31 @@ PyMuPDF가 필요하면 스크래치패드에 venv를 만들어 설치하고 `-I
 ```python
 import fitz, sys
 doc = fitz.open(sys.argv[1])
+FOOT_LABEL = sys.argv[2]   # .foot 왼쪽 문서 이름
 print('pages', doc.page_count)
 for i, page in enumerate(doc):
     H = page.rect.height
     lines = [(l['bbox'][1], l['bbox'][3], ''.join(s['text'] for s in l['spans']).strip())
              for b in page.get_text('dict')['blocks'] for l in b.get('lines', [])]
     lines = [l for l in lines if l[2]]
-    # footer는 위치가 아니라 쪽 번호 줄로 찾는다. 같은 높이의 줄(문서 이름)도 footer다
+    # footer는 위치가 아니라 쪽 번호 줄로 찾는다
     num = [l for l in lines if l[2] == str(i + 1) and l[0] > H - 60]
-    foot_top = min(l[0] for l in num) if num else H
-    body = [l for l in lines if not (num and abs(l[0] - foot_top) < 2)]
+    if not num:
+        print(i + 1, 'footer 못 찾음 — 쪽 번호 형식이나 위치를 확인하고 이미지로 직접 본다')
+        continue
+    foot_top = min(l[0] for l in num)
+    # footer 줄은 쪽 번호와 문서 이름(FOOT_LABEL)뿐. 같은 높이에 그 밖의 글이 있으면 본문이 겹친 것
+    foot_row = [l for l in lines if abs(l[0] - foot_top) < 2]
+    extra = [l for l in foot_row if l[2] not in (str(i + 1), FOOT_LABEL)]
+    body = [l for l in lines if l not in foot_row or l in extra]
     last = max(body, key=lambda l: l[1]) if body else (0, 0, '')
-    print(i + 1, 'gap', round(foot_top - last[1], 1), 'links', len(page.get_links()), '|', last[2][:20])
+    print(i + 1, 'gap', round(foot_top - last[1], 1), 'links', len(page.get_links()), '|', last[2][:20],
+          '| footer 줄에 본문 겹침: ' + ', '.join(l[2][:20] for l in extra) if extra else '')
 ```
 
-- 위치(쪽 아래 40pt)로 footer를 가르면, 넘친 본문 줄이 footer 영역으로 분류돼 gap이 양수로 나온다. 2026-11-21 컬리 이력서 시험본에서 2쪽 마지막 줄이 쪽 번호와 27pt 겹쳤는데 이 방식은 8pt 여유로 보고했다. 그래서 줄 단위로 읽고 쪽 번호 줄로 footer를 찾는다. gap이 음수면 겹친 것이다.
+- 위 코드를 스크래치패드 `check.py`로 저장해 `<venv>/bin/python -I check.py <pdf> '<.foot 왼쪽 문구>'`로 실행한다. 문구는 원본 HTML의 `<div class="foot"><span>…</span>`에서 그대로 읽고, 이력서와 포트폴리오처럼 문서가 다르면 문서마다 그 문서의 문구를 넘긴다. 문구가 틀리면 정상 footer도 `footer 줄에 본문 겹침`으로 나온다.
+- `FOOT_LABEL`은 `.foot` 왼쪽의 문서 이름(예: `'서현석 이력서'`)이다. 원본 HTML의 `.foot`는 왼쪽에 문서 이름, 오른쪽에 쪽 번호 숫자만 두고 쪽 아래 9mm에 놓이므로, 쪽 번호 줄은 쪽 아래 60pt 안에 있다. 이 구조를 바꿨으면 위 조건도 함께 고친다.
+- 위치(쪽 아래 40pt)로 footer를 가르면, 넘친 본문 줄이 footer 영역으로 분류돼 gap이 양수로 나온다. 2026-11-21 컬리 이력서 시험본에서 2쪽 마지막 줄이 쪽 번호와 27pt 겹쳤는데 이 방식은 8pt 여유로 보고했다. 그래서 줄 단위로 읽고 쪽 번호 줄로 footer를 찾는다. gap이 0 이하이거나 `footer 못 찾음`, `footer 줄에 본문 겹침`이 나오면 통과가 아니다.
 
 - 지운 문장은 `page.get_text()`에서 검색해 0건인지 본다. PDF를 직접 고쳤던 파일은 화면에 안 보이는 옛 내용이 텍스트 레이어에 남아, 채용 시스템의 텍스트 추출과 본문을 복사하는 리뷰어에게 그대로 읽힌다.
 - 의존성 없이 확인하려면 macOS PDFKit을 쓴다.
